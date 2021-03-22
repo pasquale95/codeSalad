@@ -21,20 +21,20 @@ public class Main {
             QuestionA.isUniqueCharsAfter(string);
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Question A (AFTER) after execution time: " + (endTime - startTime));
+        System.out.println("Question A (AFTER) execution time: " + (endTime - startTime));
 
         startTime = System.currentTimeMillis();
         for (String string : strings) {
             QuestionB.isUniqueCharsAfter(string);
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Question B (BEFORE) after execution time: " + (endTime - startTime));
+        System.out.println("Question B (BEFORE) execution time: " + (endTime - startTime));
 
         startTime = System.currentTimeMillis();
         for (String string : strings) {
             QuestionB.isUniqueCharsAfter(string);
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Question B (AFTER) after execution time: " + (endTime - startTime));
+        System.out.println("Question B (AFTER) execution time: " + (endTime - startTime));
     }
 }
