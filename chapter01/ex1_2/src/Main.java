@@ -10,18 +10,18 @@ public class Main {
         String[] firsts = {"stressed", "", "stressed", "stressed"};
         String[] seconds = {"desserts", "", "genesis", "textarea"};
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         for (int i = 0; i < firsts.length; i++) {
             Question.arePermutationsBefore(firsts[i], seconds[i]);
         }
-        long endTime = System.currentTimeMillis();
-        System.out.println("Question (BEFORE) execution time: " + (endTime - startTime));
+        long endTime = System.nanoTime();
+        System.out.println("Question (BEFORE) execution time: " + (endTime - startTime) + " ns");
 
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         for (int i = 0; i < firsts.length; i++) {
             Question.arePermutationsAfter(firsts[i], seconds[i]);
         }
-        endTime = System.currentTimeMillis();
-        System.out.println("Question (BEFORE) execution time: " + (endTime - startTime));
+        endTime = System.nanoTime();
+        System.out.println("Question (AFTER) execution time: " + (endTime - startTime) + " ns");
     }
 }

@@ -9,32 +9,32 @@ public class Main {
     public static void main(String[] args) {
         String[] strings = {"alpha", "beta", "gamma"};
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         for (String string : strings) {
             QuestionA.isUniqueCharsBefore(string);
         }
-        long endTime = System.currentTimeMillis();
-        System.out.println("Question A (BEFORE) execution time: " + (endTime - startTime));
+        long endTime = System.nanoTime();
+        System.out.println("Question A (BEFORE) execution time: " + (endTime - startTime) + " ns");
 
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         for (String string : strings) {
             QuestionA.isUniqueCharsAfter(string);
         }
-        endTime = System.currentTimeMillis();
-        System.out.println("Question A (AFTER) execution time: " + (endTime - startTime));
+        endTime = System.nanoTime();
+        System.out.println("Question A (AFTER) execution time: " + (endTime - startTime) + " ns");
 
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         for (String string : strings) {
             QuestionB.isUniqueCharsAfter(string);
         }
-        endTime = System.currentTimeMillis();
-        System.out.println("Question B (BEFORE) execution time: " + (endTime - startTime));
+        endTime = System.nanoTime();
+        System.out.println("Question B (BEFORE) execution time: " + (endTime - startTime) + " ns");
 
-        startTime = System.currentTimeMillis();
+        startTime = System.nanoTime();
         for (String string : strings) {
             QuestionB.isUniqueCharsAfter(string);
         }
-        endTime = System.currentTimeMillis();
-        System.out.println("Question B (AFTER) execution time: " + (endTime - startTime));
+        endTime = System.nanoTime();
+        System.out.println("Question B (AFTER) execution time: " + (endTime - startTime) + " ns");
     }
 }

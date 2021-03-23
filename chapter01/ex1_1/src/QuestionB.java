@@ -10,6 +10,7 @@ public class QuestionB {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {
+                    // if two chars are equal, return false
                     return false;
                 }
             }
