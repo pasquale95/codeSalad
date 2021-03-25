@@ -12,11 +12,6 @@ public class After implements Runnable {
 
     private final String[] input;
 
-    /**
-     * Implementation after reading the hints and the official solution.
-     *
-     * @param input
-     */
     public After(String[] input) {
         this.input = input;
     }

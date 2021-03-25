@@ -16,7 +16,7 @@ class Tester {
         assertTrue(Before.arePermutations("stressed", "desserts"));
         assertTrue(Before.arePermutations("", ""));
         assertFalse(Before.arePermutations("stressed", "genesis"));
-        assertFalse(Before.arePermutations("stressed", "textarea"));
+        assertTrue(Before.arePermutations("the classroom", "school master"));
     }
 
     @Test
@@ -24,6 +24,6 @@ class Tester {
         assertTrue(After.arePermutations("stressed", "desserts"));
         assertTrue(After.arePermutations("", ""));
         assertFalse(After.arePermutations("stressed", "genesis"));
-        assertFalse(After.arePermutations("stressed", "textarea"));
+        assertTrue(Before.arePermutations("the classroom", "school master"));
     }
 }

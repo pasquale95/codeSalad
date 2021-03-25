@@ -23,6 +23,13 @@ public class Before implements Runnable {
         }
     }
 
+    /**
+     * Complexity: O(n log(n))
+     *
+     * @param first
+     * @param second
+     * @return boolean
+     */
     public static boolean arePermutations(String first, String second) {
         if (first.length() != second.length()) {
             // permutations must have same length

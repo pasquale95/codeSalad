@@ -7,14 +7,13 @@
 public class Main {
 
     public static void main(String[] args) {
-        chapter01();
+        timeSolutions();
     }
 
     /**
      * Run all solutions for chapter01
      */
-    public static void chapter01() {
-        chapter01.ex1_1.Solution.main(null);
-        chapter01.ex1_2.Solution.main(null);
+    public static void timeSolutions() {
+        chapter01.Main.timeSolutions();
     }
 }
