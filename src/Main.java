@@ -11,7 +11,14 @@ public class Main {
     }
 
     /**
-     * Run all solutions for chapter01
+     * Run all solutions
+     */
+    public static void runSolutions() {
+        chapter01.Main.runSolutions();
+    }
+
+    /**
+     * Time all solutions
      */
     public static void timeSolutions() {
         chapter01.Main.timeSolutions();
