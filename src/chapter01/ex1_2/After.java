@@ -17,7 +17,7 @@ public class After implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i; j < input.length; j++) {
+            for (int j = i + 1; j < input.length; j++) {
                 arePermutations(input[i], input[j]);
             }
         }
@@ -25,6 +25,7 @@ public class After implements Runnable {
 
     /**
      * Constraint 1: we can assume that the string only contains ASCII chars (128 totally).
+     * Constraint 2: capital letters count the same as lowercase
      *
      * @param first
      * @param second
@@ -37,6 +38,8 @@ public class After implements Runnable {
         }
         // if permutations, first should balance the negative balance of the second
         int[] chars = new int[128];
+        first = first.toLowerCase();
+        second = second.toLowerCase();
         for (int i = 0; i < first.length(); i++) {
             chars[first.charAt(i)]++;
             chars[second.charAt(i)]--;

@@ -1,5 +1,7 @@
 package chapter01.ex1_2;
 
+import java.util.Locale;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -17,7 +19,7 @@ public class Before implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i; j < input.length; j++) {
+            for (int j = i + 1; j < input.length; j++) {
                 arePermutations(input[i], input[j]);
             }
         }
@@ -35,11 +37,11 @@ public class Before implements Runnable {
             // permutations must have same length
             return false;
         }
-        String firstSorted = first.chars()
+        String firstSorted = first.toLowerCase().chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
-        String secondSorted = second.chars()
+        String secondSorted = second.toLowerCase().chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();

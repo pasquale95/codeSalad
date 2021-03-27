@@ -55,13 +55,10 @@ public class After implements Runnable {
      * @return boolean
      */
     public static boolean isUniqueCharsDifficult(String stringToCheck) {
-        //stringToCheck = stringToCheck.chars()
-        //        .sorted()
-        //        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-        //        .toString();
-        char[] chars = stringToCheck.toCharArray();
-        Arrays.sort(chars);
-        stringToCheck = new String(chars);
+        stringToCheck = stringToCheck.chars()
+                .sorted()
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             if (stringToCheck.charAt(i) == stringToCheck.charAt(i+1)) {
                 return false;
