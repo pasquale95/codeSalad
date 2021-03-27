@@ -16,6 +16,9 @@ class Tester {
         assertTrue(Before.isUniqueCharsEasy(""));
         assertFalse(Before.isUniqueCharsEasy("alpha"));
         assertTrue(Before.isUniqueCharsEasy("beta"));
+        assertTrue(Before.isUniqueCharsDifficult(""));
+        assertFalse(Before.isUniqueCharsDifficult("alpha"));
+        assertTrue(Before.isUniqueCharsDifficult("beta"));
     }
 
     @Test
@@ -23,5 +26,8 @@ class Tester {
         assertTrue(After.isUniqueCharsEasy(""));
         assertFalse(After.isUniqueCharsEasy("alpha"));
         assertTrue(After.isUniqueCharsEasy("beta"));
+        assertTrue(After.isUniqueCharsDifficult(""));
+        assertFalse(After.isUniqueCharsDifficult("alpha"));
+        assertTrue(After.isUniqueCharsDifficult("beta"));
     }
 }

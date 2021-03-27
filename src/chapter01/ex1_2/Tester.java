@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class Tester {
 
     @Test
-    void arePalindromeBeforeQuestion() {
+    void arePalindromeBefore() {
         assertTrue(Before.arePermutations("stressed", "desserts"));
         assertTrue(Before.arePermutations("", ""));
         assertFalse(Before.arePermutations("stressed", "genesis"));
-        assertTrue(Before.arePermutations("the classroom", "school master"));
+        assertTrue(Before.arePermutations("The classroom", "School master"));
     }
 
     @Test
-    void arePalindromeAfterQuestion() {
+    void arePalindromeAfter() {
         assertTrue(After.arePermutations("stressed", "desserts"));
         assertTrue(After.arePermutations("", ""));
         assertFalse(After.arePermutations("stressed", "genesis"));
-        assertTrue(Before.arePermutations("the classroom", "school master"));
+        assertTrue(After.arePermutations("The classroom", "School master"));
     }
 }
