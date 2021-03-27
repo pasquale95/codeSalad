@@ -1,4 +1,5 @@
 package chapter01.ex1_2;
+import static utils.Colors.*;
 
 import utils.Timer;
 
@@ -11,7 +12,7 @@ import utils.Timer;
 public class Solution {
 
     public static final String PROBLEM = "Chapter 1. Ex 1.2";
-    public static final String[] strings = {"stressed", "", "School master", "desserts", "The classroom"};
+    public static final String[] strings = {"stressed", "School master", "desserts", "The classroom"};
 
     /**
      * Chapter 1
@@ -20,11 +21,13 @@ public class Solution {
      * is a permutation of the other.
      */
     public static void main(String[] args) {
-        System.out.println(PROBLEM);
+        printBlue(PROBLEM);
         for (int i = 0; i < strings.length - 1; i++) {
-            for (int j = i; j < strings.length; j++) {
-                System.out.println(strings[i] + " and " + strings[j] + " are permutations: " +
-                        After.arePermutations(strings[i], strings[j]));
+            for (int j = i + 1; j < strings.length; j++) {
+                System.out.println(colorYellow('"' + strings[i] + '"')
+                        + " and " + colorYellow('"' + strings[j] + '"')
+                        + " are permutations: " + After.arePermutations(strings[i], strings[j])
+                );
             }
         }
     }

@@ -1,4 +1,5 @@
 package chapter01.ex1_1;
+import static utils.Colors.*;
 
 import utils.Timer;
 
@@ -20,9 +21,9 @@ public class Solution {
      * Question B: What if you cannot use additional data structures?
      */
     public static void main(String[] args) {
-        System.out.println(PROBLEM);
+        printBlue(PROBLEM);
         for (String string : strings) {
-            System.out.println(string + " has unique chars: " + After.isUniqueCharsDifficult(string));
+            System.out.println(colorYellow('"' + string + '"') + " has unique chars: " + After.isUniqueCharsDifficult(string));
         }
     }
 
