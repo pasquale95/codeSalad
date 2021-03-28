@@ -18,7 +18,7 @@ class Ex1_1 {
     @Test
     @Order(1)
     void isUniqueCharsBefore() {
-        Assertions.assertTrue(Before.isUniqueCharsEasy(""));
+        assertTrue(Before.isUniqueCharsEasy(""));
         assertFalse(Before.isUniqueCharsEasy("alpha"));
         assertTrue(Before.isUniqueCharsEasy("beta"));
         assertTrue(Before.isUniqueCharsDifficult(""));
@@ -28,7 +28,7 @@ class Ex1_1 {
 
     @Test
     @Order(2) void isUniqueCharsAfter() {
-        Assertions.assertTrue(After.isUniqueCharsEasy(""));
+        assertTrue(After.isUniqueCharsEasy(""));
         assertFalse(After.isUniqueCharsEasy("alpha"));
         assertTrue(After.isUniqueCharsEasy("beta"));
         assertTrue(After.isUniqueCharsDifficult(""));

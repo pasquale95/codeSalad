@@ -18,7 +18,7 @@ class Ex1_2 {
     @Test
     @Order(1)
     void arePalindromeBefore() {
-        Assertions.assertTrue(Before.arePermutations("stressed", "desserts"));
+        assertTrue(Before.arePermutations("stressed", "desserts"));
         assertTrue(Before.arePermutations("", ""));
         assertFalse(Before.arePermutations("stressed", "genesis"));
         assertTrue(Before.arePermutations("The classroom", "School master"));
@@ -27,7 +27,7 @@ class Ex1_2 {
     @Test
     @Order(2)
     void arePalindromeAfter() {
-        Assertions.assertTrue(After.arePermutations("stressed", "desserts"));
+        assertTrue(After.arePermutations("stressed", "desserts"));
         assertTrue(After.arePermutations("", ""));
         assertFalse(After.arePermutations("stressed", "genesis"));
         assertTrue(After.arePermutations("The classroom", "School master"));
