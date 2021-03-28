@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 repositories {
@@ -9,6 +10,10 @@ repositories {
 sourceSets {
     main.java.srcDir "src/code"
     test.java.srcDir "src/test"
+}
+
+application {
+    mainClass.set("Main")
 }
 
 jar {

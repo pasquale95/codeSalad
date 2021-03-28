@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         runSolutions();
+        //timeSolutions();
     }
 
     /**
@@ -18,6 +19,7 @@ public class Main {
     public static void runSolutions() {
         chapter01.ex1_1.Solution.main(null);
         chapter01.ex1_2.Solution.main(null);
+        chapter01.ex1_3.Solution.main(null);
     }
 
     /**
@@ -26,5 +28,6 @@ public class Main {
     public static void timeSolutions() {
         chapter01.ex1_1.Solution.time();
         chapter01.ex1_2.Solution.time();
+        chapter01.ex1_3.Solution.time();
     }
 }

@@ -7,7 +7,22 @@
 public class Main {
 
     public static void main(String[] args) {
-        timeSolutions();
+        boolean timing = false;
+        // home-made options parser in order to not require any 3rd party java package
+        if (args.length > 0) {
+            for (String arg : args) {
+                if ("-t".equals(arg)) {
+                    timing = true;
+                    break;
+                }
+            }
+        }
+        // run solutions
+        if (timing) {
+            timeSolutions();
+        } else {
+            runSolutions();
+        }
     }
 
     /**
