@@ -1,6 +1,9 @@
-package chapter01.ex1_1;
+package chapter01;
 
-import org.junit.jupiter.api.Test;
+import chapter01.ex1_1.After;
+import chapter01.ex1_1.Before;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -9,11 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-class Tester {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class Ex1_1 {
 
     @Test
+    @Order(1)
     void isUniqueCharsBefore() {
-        assertTrue(Before.isUniqueCharsEasy(""));
+        Assertions.assertTrue(Before.isUniqueCharsEasy(""));
         assertFalse(Before.isUniqueCharsEasy("alpha"));
         assertTrue(Before.isUniqueCharsEasy("beta"));
         assertTrue(Before.isUniqueCharsDifficult(""));
@@ -22,8 +27,8 @@ class Tester {
     }
 
     @Test
-    void isUniqueCharsAfter() {
-        assertTrue(After.isUniqueCharsEasy(""));
+    @Order(2) void isUniqueCharsAfter() {
+        Assertions.assertTrue(After.isUniqueCharsEasy(""));
         assertFalse(After.isUniqueCharsEasy("alpha"));
         assertTrue(After.isUniqueCharsEasy("beta"));
         assertTrue(After.isUniqueCharsDifficult(""));
