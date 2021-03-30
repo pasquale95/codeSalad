@@ -1,8 +1,6 @@
 package chapter01.ex1_4;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
