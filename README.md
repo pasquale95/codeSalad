@@ -13,7 +13,7 @@ Generally speaking, you will not need any additional library to run the code ins
 
 ## Table of contents
 
-1. [Chapter 1 - Arrays and Strings](chapter01): `1 / 9`  complete.
+1. [Chapter 1 - Arrays and Strings](chapter01): `4 / 9`  complete.
 
 ## Building
 

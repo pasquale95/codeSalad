@@ -24,14 +24,14 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         System.out.println(colorYellow('"' + input + '"') + " is a permutation of a palindrome: " +
-                Before.isPermutationOfPalindrome(input));
+                After.isPermutationOfPalindrome(input));
     }
 
     public static void time() {
         Before before = new Before(input);
-        //After after = new After(toCharsWithExtraRoom(input), input.length());
-        //Timer timer = new Timer(PROBLEM, before, after);
+        After after = new After(input);
+        Timer timer = new Timer(PROBLEM, before, after);
 
-        //timer.start(); TODO
+        timer.start();
     }
 }
