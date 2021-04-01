@@ -22,7 +22,7 @@ The project is based on [Gradle](https://github.com/gradle/gradle) automation to
 
 ## Problems
 
-1. [Chapter 1 - Arrays and Strings](chapter01): `4 / 9`  complete.
+1. [Chapter 1 - Arrays and Strings](src/code/chapter01): `4 / 9`  complete.
 
 ## Linux - macOS
 
