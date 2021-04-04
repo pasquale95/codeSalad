@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Random;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -82,6 +84,35 @@ public class LinkedListNode {
         if (!this.isTail()) {
             next.prev = this.prev;
         }
+    }
+
+    /**
+     * Return a cloned LinkedListNode
+     */
+    public LinkedListNode clone() {
+        LinkedListNode clone = new LinkedListNode(this.data);
+        LinkedListNode headCloned = clone;
+        for (LinkedListNode node = this; !node.isTail(); node = node.getNext()) {
+            clone = clone.append(node.next.getData());
+        }
+        return headCloned;
+    }
+
+    /**
+     * Return a random linked list of the specified length
+     * and with values in the range [0, dataRange)
+     *
+     * @param length
+     * @param dataRange
+     */
+    public static LinkedListNode createRandomLinkedList(int length, int dataRange) {
+        Random r = new Random();
+        LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
+        LinkedListNode head = node;
+        for (int i = 1; i < length; i++) {
+            node = node.append(r.nextInt(dataRange));
+        }
+        return head;
     }
 
     /**

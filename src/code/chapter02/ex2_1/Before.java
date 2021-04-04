@@ -18,7 +18,8 @@ public class Before implements Runnable {
 
     @Override
     public void run() {
-        removeDuplicates(this.head);
+        removeDuplicatesA(this.head.clone());
+        removeDuplicatesB(this.head);
     }
 
     /**
@@ -26,7 +27,22 @@ public class Before implements Runnable {
      *
      * @param head
      */
-    public static void removeDuplicates(LinkedListNode head) {
+    public static void removeDuplicatesA(LinkedListNode head) {
+        for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {
+            for (LinkedListNode node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
+                if (node.getData() == node1.getData()) {
+                    node1.delete();
+                }
+            }
+        }
+    }
+
+    /**
+     * Complexity: O(n^2)
+     *
+     * @param head
+     */
+    public static void removeDuplicatesB(LinkedListNode head) {
         for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {
             for (LinkedListNode node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
                 if (node.getData() == node1.getData()) {
