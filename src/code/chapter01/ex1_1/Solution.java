@@ -1,6 +1,7 @@
 package chapter01.ex1_1;
 import static utils.Colors.*;
 
+import utils.StringGenerator;
 import utils.Timer;
 
 /**
@@ -28,6 +29,7 @@ public class Solution {
     }
 
     public static void time() {
+        String[] strings = StringGenerator.generateRandomStringArray(200, 10, true);
         Before before = new Before(strings);
         After after = new After(strings);
 

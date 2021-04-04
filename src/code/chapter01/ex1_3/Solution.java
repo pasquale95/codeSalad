@@ -2,6 +2,7 @@ package chapter01.ex1_3;
 
 import chapter01.ex1_3.Before;
 import chapter01.ex1_3.After;
+import utils.StringGenerator;
 import utils.Timer;
 
 import static utils.Colors.*;
@@ -42,6 +43,7 @@ public class Solution {
     }
 
     public static void time() {
+        String input = StringGenerator.generateRandomString(1000, false);
         Before before = new Before(toCharsWithExtraRoom(input), input.length());
         After after = new After(toCharsWithExtraRoom(input), input.length());
         Timer timer = new Timer(PROBLEM, before, after);

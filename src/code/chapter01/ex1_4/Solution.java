@@ -1,5 +1,6 @@
 package chapter01.ex1_4;
 
+import utils.StringGenerator;
 import utils.Timer;
 
 import static utils.Colors.colorYellow;
@@ -32,6 +33,7 @@ public class Solution {
     }
 
     public static void time() {
+        String input = StringGenerator.generateRandomString(1000, false);
         Before before = new Before(input);
         After after = new After(input);
         Timer timer = new Timer(PROBLEM, before, after);
