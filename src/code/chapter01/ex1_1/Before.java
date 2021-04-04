@@ -17,8 +17,8 @@ public class Before implements Runnable {
     @Override
     public void run() {
         for (String string : this.input) {
-            isUniqueCharsEasy(string);
-            isUniqueCharsDifficult(string);
+            isUniqueCharsA(string);
+            isUniqueCharsB(string);
         }
     }
 
@@ -28,7 +28,7 @@ public class Before implements Runnable {
      * @param stringToCheck
      * @return boolean
      */
-    public static boolean isUniqueCharsEasy(String stringToCheck) {
+    public static boolean isUniqueCharsA(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {
@@ -47,7 +47,7 @@ public class Before implements Runnable {
      * @param stringToCheck
      * @return boolean
      */
-    public static boolean isUniqueCharsDifficult(String stringToCheck) {
+    public static boolean isUniqueCharsB(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {

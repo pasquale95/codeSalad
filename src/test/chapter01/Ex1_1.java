@@ -18,21 +18,21 @@ class Ex1_1 {
     @Test
     @Order(1)
     void isUniqueCharsBefore() {
-        assertTrue(Before.isUniqueCharsEasy(""));
-        assertFalse(Before.isUniqueCharsEasy("alpha"));
-        assertTrue(Before.isUniqueCharsEasy("beta"));
-        assertTrue(Before.isUniqueCharsDifficult(""));
-        assertFalse(Before.isUniqueCharsDifficult("alpha"));
-        assertTrue(Before.isUniqueCharsDifficult("beta"));
+        assertTrue(Before.isUniqueCharsA(""));
+        assertFalse(Before.isUniqueCharsA("alpha"));
+        assertTrue(Before.isUniqueCharsA("beta"));
+        assertTrue(Before.isUniqueCharsB(""));
+        assertFalse(Before.isUniqueCharsB("alpha"));
+        assertTrue(Before.isUniqueCharsB("beta"));
     }
 
     @Test
     @Order(2) void isUniqueCharsAfter() {
-        assertTrue(After.isUniqueCharsEasy(""));
-        assertFalse(After.isUniqueCharsEasy("alpha"));
-        assertTrue(After.isUniqueCharsEasy("beta"));
-        assertTrue(After.isUniqueCharsDifficult(""));
-        assertFalse(After.isUniqueCharsDifficult("alpha"));
-        assertTrue(After.isUniqueCharsDifficult("beta"));
+        assertTrue(After.isUniqueCharsA(""));
+        assertFalse(After.isUniqueCharsA("alpha"));
+        assertTrue(After.isUniqueCharsA("beta"));
+        assertTrue(After.isUniqueCharsB(""));
+        assertFalse(After.isUniqueCharsB("alpha"));
+        assertTrue(After.isUniqueCharsB("beta"));
     }
 }

@@ -19,8 +19,8 @@ public class After implements Runnable {
     @Override
     public void run() {
         for (String string : this.input) {
-            isUniqueCharsEasy(string);
-            isUniqueCharsDifficult(string);
+            isUniqueCharsA(string);
+            isUniqueCharsB(string);
         }
     }
 
@@ -32,7 +32,7 @@ public class After implements Runnable {
      * @param stringToCheck
      * @return boolean
      */
-    public static boolean isUniqueCharsEasy(String stringToCheck) {
+    public static boolean isUniqueCharsA(String stringToCheck) {
         int bitVector = 0;
         String stringToCheckLower = stringToCheck.toLowerCase();
         for (int i = 0; i < stringToCheck.length(); i++) {
@@ -48,13 +48,14 @@ public class After implements Runnable {
     }
 
     /**
-     * 1st constraint: the input string can be modified.
+     * 1st constraint: the input string can be modified;
+     * 2nd constraint: no additional data structures.
      * Complexity: O(n log(n))
      *
      * @param stringToCheck
      * @return boolean
      */
-    public static boolean isUniqueCharsDifficult(String stringToCheck) {
+    public static boolean isUniqueCharsB(String stringToCheck) {
         stringToCheck = stringToCheck.chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
