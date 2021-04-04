@@ -27,7 +27,7 @@ public class Solution {
         printBlue(PROBLEM);
         LinkedListNode head = LinkedListNode.createRandomLinkedList(10, 8);
         System.out.print(colorYellow(head.toString()) + " after removing updates: ");
-        Before.removeDuplicatesA(head);
+        After.removeDuplicatesB(head);
         System.out.println(head.toString());
     }
 
