@@ -1,6 +1,5 @@
 package chapter02.ex2_2;
 
-import chapter02.ex2_1.After;
 import chapter02.ex2_2.Before;
 import utils.LinkedListNode;
 import utils.Timer;
@@ -16,7 +15,7 @@ import static utils.Colors.*;
 public class Solution {
 
     private static final String PROBLEM = "Chapter 2. Ex 2.2";
-    private static final int KTH = 9;
+    private static final int KTH = 3;
 
     /**
      * Chapter 2
@@ -27,21 +26,21 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         LinkedListNode head = LinkedListNode.createRandomLinkedList(10, 8);
-        LinkedListNode kth = Before.findKthToLast(head, KTH);
+        LinkedListNode kth = After.findKthToLast(head, KTH);
         if (kth != null) {
-            System.out.print("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is: " + kth.getData());
+            System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is: " + kth.getData());
         } else {
-            System.out.print(colorRed("The k index " + KTH + " from the last is out-of-bounds for the linked list ")
+            System.out.println(colorRed("The k index " + KTH + " from the last is out-of-bounds for the linked list ")
                     + colorYellow(head.toString()));
         }
+        time();
     }
 
     public static void time() {
-        // TODO
-        //LinkedListNode head = LinkedListNode.createRandomLinkedList(200, 200);
-        //Before before = new Before(head.clone());
-        //After after = new After(head.clone());
-        //Timer timer = new Timer(PROBLEM, before, after);
-        //timer.start();
+        LinkedListNode head = LinkedListNode.createRandomLinkedList(20, 20);
+        Before before = new Before(head.clone(), 12);
+        After after = new After(head.clone(), 12);
+        Timer timer = new Timer(PROBLEM, before, after);
+        timer.start();
     }
 }
