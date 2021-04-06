@@ -9,21 +9,23 @@ package chapter02;
 public class Main {
 
     public static void main(String[] args) {
-        //runSolutions();
-        timeSolutions();
+        runSolutions();
+        //timeSolutions();
     }
 
     /**
-     * Run all solutions for chapter 1
+     * Run all solutions for chapter 2
      */
     public static void runSolutions() {
         chapter02.ex2_1.Solution.main(null);
+        chapter02.ex2_2.Solution.main(null);
     }
 
     /**
-     * Time all solutions for chapter 1
+     * Time all solutions for chapter 2
      */
     public static void timeSolutions() {
         chapter02.ex2_1.Solution.time();
+        chapter02.ex2_2.Solution.time();
     }
 }
