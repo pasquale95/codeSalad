@@ -19,18 +19,18 @@ class Ex1_3 {
     @Test
     @Order(1)
     void urlifyBefore() {
-        assertEquals(Before.urlify(Solution.toCharsWithExtraRoom("Mr John Smith"), 13), "Mr%20John%20Smith");
-        assertEquals(Before.urlify(Solution.toCharsWithExtraRoom(" Mr "), 4), "%20Mr%20");
-        assertEquals(Before.urlify(Solution.toCharsWithExtraRoom("     "), 5), "%20%20%20%20%20");
-        assertEquals(Before.urlify(Solution.toCharsWithExtraRoom(""), 0), "");
+        assertEquals("Mr%20John%20Smith", Before.urlify(Solution.toCharsWithExtraRoom("Mr John Smith"), 13));
+        assertEquals("%20Mr%20", Before.urlify(Solution.toCharsWithExtraRoom(" Mr "), 4));
+        assertEquals("%20%20%20%20%20", Before.urlify(Solution.toCharsWithExtraRoom("     "), 5));
+        assertEquals("", Before.urlify(Solution.toCharsWithExtraRoom(""), 0));
     }
 
     @Test
     @Order(2)
     void urlifyAfter() {
-        assertEquals(After.urlify(Solution.toCharsWithExtraRoom("Mr John Smith"), 13), "Mr%20John%20Smith");
-        assertEquals(After.urlify(Solution.toCharsWithExtraRoom(" Mr "), 4), "%20Mr%20");
-        assertEquals(After.urlify(Solution.toCharsWithExtraRoom("     "), 5), "%20%20%20%20%20");
-        assertEquals(After.urlify(Solution.toCharsWithExtraRoom(""), 0), "");
+        assertEquals("Mr%20John%20Smith", After.urlify(Solution.toCharsWithExtraRoom("Mr John Smith"), 13));
+        assertEquals("%20Mr%20", After.urlify(Solution.toCharsWithExtraRoom(" Mr "), 4));
+        assertEquals("%20%20%20%20%20", After.urlify(Solution.toCharsWithExtraRoom("     "), 5));
+        assertEquals("", After.urlify(Solution.toCharsWithExtraRoom(""), 0));
     }
 }
