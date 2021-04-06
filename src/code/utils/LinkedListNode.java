@@ -170,4 +170,26 @@ public class LinkedListNode {
     public int getData() {
         return data;
     }
+
+    @Override
+    public boolean equals(Object node) {
+        if (!(node instanceof LinkedListNode)) {
+            return false;
+        }
+        LinkedListNode runner = this;
+        LinkedListNode runner1 = (LinkedListNode) node;
+        while (runner != null || runner1 != null) {
+            if (runner == null || runner1 == null) {
+                // linked list with different length
+                return false;
+            }
+            if (runner.getData() != runner1.getData()) {
+                // nodes with different data
+                return false;
+            }
+            runner = runner.getNext();
+            runner1 = runner1.getNext();
+        }
+        return true;
+    }
 }
