@@ -33,7 +33,6 @@ public class Solution {
             System.out.println(colorRed("The k index " + KTH + " from the last is out-of-bounds for the linked list ")
                     + colorYellow(head.toString()));
         }
-        time();
     }
 
     public static void time() {
