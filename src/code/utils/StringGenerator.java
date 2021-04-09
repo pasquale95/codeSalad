@@ -46,4 +46,17 @@ public class StringGenerator {
         }
         return stringBuilder.toString();
     }
+
+    /**
+     * Convert the string to a char array with 2 extra cells for each space char inside the string.
+     * @param   string The string to convert.
+     * @return  Char array with extra space.
+     */
+    public static char[] toCharsWithExtraRoom(String string) {
+        char[] chars = new char[3*string.length()-2*string.replace(" ", "").length()];
+        for (int i = 0; i < string.length(); i++) {
+            chars[i] = string.charAt(i);
+        }
+        return chars;
+    }
 }

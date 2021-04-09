@@ -32,7 +32,6 @@ public class Solution {
         String[] strings = StringGenerator.generateRandomStringArray(200, 10, true);
         Before before = new Before(strings);
         After after = new After(strings);
-
         Timer timer = new Timer(PROBLEM, before, after);
         timer.start();
     }

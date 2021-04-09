@@ -38,7 +38,6 @@ public class Solution {
         Before before = new Before(strings);
         After after = new After(strings);
         Timer timer = new Timer(PROBLEM, before, after);
-
         timer.start();
     }
 }

@@ -2,11 +2,9 @@ package chapter02.ex2_3;
 
 import utils.LinkedListNode;
 import utils.Timer;
-
 import java.util.Random;
 
-import static utils.Colors.colorYellow;
-import static utils.Colors.printBlue;
+import static utils.Colors.*;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

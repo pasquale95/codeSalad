@@ -4,6 +4,7 @@ import utils.StringGenerator;
 import utils.Timer;
 
 import static utils.Colors.*;
+import static utils.StringGenerator.toCharsWithExtraRoom;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -32,20 +33,11 @@ public class Solution {
                 After.urlify(toCharsWithExtraRoom(input), input.length()));
     }
 
-    public static char[] toCharsWithExtraRoom(String string) {
-        char[] chars = new char[3*string.length()-2*string.replace(" ", "").length()];
-        for (int i = 0; i < string.length(); i++) {
-            chars[i] = string.charAt(i);
-        }
-        return chars;
-    }
-
     public static void time() {
         String input = StringGenerator.generateRandomString(1000, false);
         Before before = new Before(toCharsWithExtraRoom(input), input.length());
         After after = new After(toCharsWithExtraRoom(input), input.length());
         Timer timer = new Timer(PROBLEM, before, after);
-
         timer.start();
     }
 }

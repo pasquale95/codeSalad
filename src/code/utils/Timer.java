@@ -13,12 +13,21 @@ public class Timer {
     private final Runnable after;
     private final String problem;
 
+    /**
+     * Timer to time two runnable objects and give the timing difference.
+     * @param   problem The problem index.
+     * @param   before The solution before reading the hints.
+     * @param   after The solution after reading the hints.
+     */
     public Timer(String problem, Runnable before, Runnable after) {
         this.problem = problem;
         this.before = before;
         this.after = after;
     }
 
+    /**
+     * Start timing.
+     */
     public void start() {
         long beforeTime = time(this.before);
         long afterTime = time(this.after);
@@ -33,6 +42,11 @@ public class Timer {
         }
     }
 
+    /**
+     * Time a runnable instance.
+     * @param   runnable The runnable instance to time.
+     * @return  The time required to complete.
+     */
     public static long time(Runnable runnable) {
         long startTime = System.nanoTime();
         runnable.run();
