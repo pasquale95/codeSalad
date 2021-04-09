@@ -28,7 +28,7 @@ public class After implements Runnable {
      * @param trueLength
      */
     public static String urlify(char[] input, int trueLength) {
-        int finalLength = trueLength + 2*countChar(input, ' ', 0, trueLength) - 1;
+        int finalLength = trueLength + 2*countSpaces(input, trueLength) - 1;
 
         for (int i = trueLength - 1; i >= 0; i--) {
             if (input[i] == ' ') {
@@ -45,16 +45,13 @@ public class After implements Runnable {
     /**
      * Count how many times a char appears in a char array subset
      * between start (included) and end (excluded)
-     *
      * @param chars
-     * @param charToCount
-     * @param start
      * @param end
      */
-    private static int countChar(char[] chars, char charToCount, int start, int end) {
+    private static int countSpaces(char[] chars, int end) {
         int times = 0;
-        for (int i = start; i < end; i++) {
-            if (chars[i] == charToCount) {
+        for (int i = 0; i < end; i++) {
+            if (chars[i] == ' ') {
                 times++;
             }
         }

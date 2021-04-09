@@ -1,7 +1,5 @@
 package chapter01.ex1_1;
 
-import java.util.Arrays;
-
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95

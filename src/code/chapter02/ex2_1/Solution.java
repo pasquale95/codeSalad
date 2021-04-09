@@ -3,8 +3,6 @@ package chapter02.ex2_1;
 import utils.LinkedListNode;
 import utils.Timer;
 
-import java.util.Random;
-
 import static utils.Colors.*;
 
 /**

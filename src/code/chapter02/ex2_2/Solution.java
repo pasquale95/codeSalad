@@ -1,6 +1,5 @@
 package chapter02.ex2_2;
 
-import chapter02.ex2_2.Before;
 import utils.LinkedListNode;
 import utils.Timer;
 
