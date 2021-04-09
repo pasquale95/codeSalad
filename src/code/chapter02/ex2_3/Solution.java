@@ -14,7 +14,6 @@ import static utils.Colors.*;
  */
 public class Solution {
 
-    // TODO cleanup all code
     private static final String PROBLEM = "Chapter 2. Ex 2.3";
     private static final int LIST_LENGTH = 10;
 

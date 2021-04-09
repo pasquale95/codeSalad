@@ -22,12 +22,12 @@ public class After implements Runnable {
     }
 
     /**
-     * Complexity: TODO
+     * Complexity: O(1)
      *
      * @param   node The node to delete
      */
     public static void removeLinkedListNode(LinkedListNode node) {
-        if (node.isTail()) {
+        if (node == null || node.isTail()) {
             return;
         }
         node.setData(node.getNext().getData());

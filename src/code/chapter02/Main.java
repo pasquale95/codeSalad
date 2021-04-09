@@ -9,8 +9,8 @@ package chapter02;
 public class Main {
 
     public static void main(String[] args) {
-        runSolutions();
-        //timeSolutions();
+        //runSolutions();
+        timeSolutions();
     }
 
     /**
@@ -19,6 +19,7 @@ public class Main {
     public static void runSolutions() {
         chapter02.ex2_1.Solution.main(null);
         chapter02.ex2_2.Solution.main(null);
+        chapter02.ex2_3.Solution.main(null);
     }
 
     /**
@@ -27,5 +28,6 @@ public class Main {
     public static void timeSolutions() {
         chapter02.ex2_1.Solution.time();
         chapter02.ex2_2.Solution.time();
+        chapter02.ex2_3.Solution.time();
     }
 }

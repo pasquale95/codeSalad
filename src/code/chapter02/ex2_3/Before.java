@@ -27,7 +27,8 @@ public class Before implements Runnable {
      * @param   node The node to delete
      */
     public static void removeLinkedListNode(LinkedListNode node) {
-        if (node.isTail()) {
+        if (node == null || node.isTail()) {
+            // We don't expect to have a null node or the tail
             return;
         }
         node.setData(node.getNext().getData());
