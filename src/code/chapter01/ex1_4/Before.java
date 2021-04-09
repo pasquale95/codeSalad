@@ -24,7 +24,8 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n)
      *
-     * @param input
+     * @param   input The input string to check
+     * @return  True if the string is a permutation of a palindrome.
      */
     public static boolean isPermutationOfPalindrome(String input) {
         // make lowercase since we can ignore casing

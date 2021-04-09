@@ -24,7 +24,7 @@ public class Before implements Runnable {
     /**
      * Complexity: O(1)
      *
-     * @param node
+     * @param   node The node to delete
      */
     public static void removeLinkedListNode(LinkedListNode node) {
         if (node.isTail()) {

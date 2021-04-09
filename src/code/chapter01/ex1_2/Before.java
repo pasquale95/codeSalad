@@ -26,9 +26,9 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n log(n))
      *
-     * @param first
-     * @param second
-     * @return boolean
+     * @param   first The first string.
+     * @param   second The second string to compare.
+     * @return  True if the two strings are permutations of the same charset.
      */
     public static boolean arePermutations(String first, String second) {
         if (first.length() != second.length()) {

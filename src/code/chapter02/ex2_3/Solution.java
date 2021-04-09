@@ -47,7 +47,7 @@ public class Solution {
 
     /**
      * Retrieve node to prune in the linked list
-     * @param head
+     * @param   head The head of the linked list.
      */
     private static LinkedListNode getNodeToPrune(LinkedListNode head) {
         Random r = new Random();

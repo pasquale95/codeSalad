@@ -24,8 +24,9 @@ public class After implements Runnable {
     /**
      * Complexity: O(n)
      *
-     * @param input
-     * @param trueLength
+     * @param   input The input char array with extra spaces for additional chars.
+     * @param   trueLength The real string length.
+     * @return  The urlified string.
      */
     public static String urlify(char[] input, int trueLength) {
         int finalLength = trueLength + 2*countSpaces(input, trueLength) - 1;
@@ -43,10 +44,11 @@ public class After implements Runnable {
     }
 
     /**
-     * Count how many times a char appears in a char array subset
-     * between start (included) and end (excluded)
-     * @param chars
-     * @param end
+     * Count how many times the space appears in a char array subset.
+     *
+     * @param   chars The input char array with extra spaces for additional chars.
+     * @param   end The last index (excluded) to check.
+     * @return  The number of spaces in the passed char array.
      */
     private static int countSpaces(char[] chars, int end) {
         int times = 0;

@@ -27,9 +27,9 @@ public class After implements Runnable {
      * Constraint 1: we can assume that the string only contains ASCII chars (128 totally).
      * Constraint 2: capital letters count the same as lowercase
      *
-     * @param first
-     * @param second
-     * @return boolean
+     * @param   first The first string.
+     * @param   second The second string to compare.
+     * @return  True if the two strings are permutations of the same charset.
      */
     public static boolean arePermutations(String first, String second) {
         if (first.length() != second.length()) {

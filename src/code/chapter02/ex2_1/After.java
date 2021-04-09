@@ -27,17 +27,17 @@ public class After implements Runnable {
     /**
      * Complexity: O(n)
      *
-     * @param node
+     * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesA(LinkedListNode node) {
+    public static void removeDuplicatesA(LinkedListNode head) {
         HashSet<Integer> hashTable = new HashSet<>();
-        while (node != null) {
-            if (hashTable.contains(node.getData())) {
-                node.delete();
+        while (head != null) {
+            if (hashTable.contains(head.getData())) {
+                head.delete();
             } else {
-                hashTable.add(node.getData());
+                hashTable.add(head.getData());
             }
-            node = node.getNext();
+            head = head.getNext();
         }
     }
 
@@ -45,7 +45,7 @@ public class After implements Runnable {
      * Constraint 1: no temporary buffer is allowed
      * Complexity: O(n^2)
      *
-     * @param head
+     * @param   head The node from where to start removing duplicates.
      */
     public static void removeDuplicatesB(LinkedListNode head) {
         LinkedListNode current = head;

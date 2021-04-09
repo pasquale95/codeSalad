@@ -25,7 +25,7 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n^2)
      *
-     * @param head
+     * @param   head The node from where to start removing duplicates.
      */
     public static void removeDuplicatesA(LinkedListNode head) {
         for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {
@@ -40,7 +40,7 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n^2)
      *
-     * @param head
+     * @param   head The node from where to start removing duplicates.
      */
     public static void removeDuplicatesB(LinkedListNode head) {
         for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {

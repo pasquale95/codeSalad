@@ -27,8 +27,8 @@ public class After implements Runnable {
      * 2nd constraint: uppercase and lowercase chars count for the same;
      * Complexity: O(n)
      *
-     * @param stringToCheck
-     * @return boolean
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
      */
     public static boolean isUniqueCharsA(String stringToCheck) {
         int bitVector = 0;
@@ -50,8 +50,8 @@ public class After implements Runnable {
      * 2nd constraint: no additional data structures.
      * Complexity: O(n log(n))
      *
-     * @param stringToCheck
-     * @return boolean
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
      */
     public static boolean isUniqueCharsB(String stringToCheck) {
         stringToCheck = stringToCheck.chars()

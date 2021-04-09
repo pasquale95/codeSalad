@@ -1,7 +1,5 @@
 package chapter01.ex1_3;
 
-import chapter01.ex1_3.Before;
-import chapter01.ex1_3.After;
 import utils.StringGenerator;
 import utils.Timer;
 

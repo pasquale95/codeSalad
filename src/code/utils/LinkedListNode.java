@@ -16,7 +16,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Homemade double-linked list to use for our exercises on lists.
-     * @param data
+     * @param   data The node data.
      */
     public LinkedListNode(int data) {
         this.data = data;
@@ -24,7 +24,8 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Create and append new node to current one.
-     * @param data
+     * @param   data The node data.
+     * @return  The appended node.
      */
     public LinkedListNode append(int data) {
         LinkedListNode node = new LinkedListNode(data);
@@ -34,7 +35,8 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Create and prepend new node to current one.
-     * @param data
+     * @param   data The node data.
+     * @return  The prepended node.
      */
     public LinkedListNode prepend(int data) {
         LinkedListNode node = new LinkedListNode(data);
@@ -44,7 +46,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Append node to current one.
-     * @param node
+     * @param   node The node to append.
      */
     public void append(LinkedListNode node) {
         if (this != node) {
@@ -58,7 +60,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Prepend node to current one.
-     * @param node
+     * @param   node The node to prepend.
      */
     public void prepend(LinkedListNode node) {
         if (this != node) {
@@ -84,6 +86,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Return a cloned LinkedListNode
+     * @return  A cloned Linked list starting from this node.
      */
     public LinkedListNode clone() {
         LinkedListNode clone = new LinkedListNode(this.data);
@@ -98,8 +101,9 @@ public class LinkedListNode implements Cloneable {
      * Return a random linked list of the specified length
      * and with values in the range [0, dataRange)
      *
-     * @param length
-     * @param dataRange
+     * @param   length The random linked list number of nodes.
+     * @param   dataRange The nodes can have value in the range [0, dataRange).
+     * @return  The head of a random generated linked list.
      */
     public static LinkedListNode createRandomLinkedList(int length, int dataRange) {
         Random r = new Random();
@@ -169,7 +173,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Change node data
-     * @param data
+     * @param   data The node data.
      */
     public void setData(int data) {
         this.data = data;

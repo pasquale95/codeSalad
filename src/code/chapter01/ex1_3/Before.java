@@ -25,8 +25,9 @@ public class Before implements Runnable {
      * Assumption 1: cannot use an additional variable
      * Complexity: O(n^2)
      *
-     * @param input
-     * @param trueLength
+     * @param   input The input char array with extra spaces for additional chars.
+     * @param   trueLength The real string length.
+     * @return  The urlified string.
      */
     public static String urlify(char[] input, int trueLength) {
         for (int i = 0; i < trueLength; i++) {

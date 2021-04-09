@@ -30,14 +30,22 @@ public class After implements Runnable {
     /**
      * Complexity: O(n)
      *
-     * @param head
-     * @param k
+     * @param   head The head of the linked list.
+     * @param   k The index of the node to find, starting from 0 for the tail.
      */
     public static LinkedListNode findKthToLast(LinkedListNode head, int k) {
         Index index = new Index();
         return kthToLast(head, k+1, index); // k+1 since the last element is 0 pos ahead of itself
     }
 
+    /**
+     * Recursive method to find the kth element from the tail.
+     *
+     * @param   node The current node.
+     * @param   k The index of the node to find, starting from 0 for the tail.
+     * @param   index Counter starting from 0.
+     * @return  The kth node.
+     */
     protected static LinkedListNode kthToLast(LinkedListNode node, int k, Index index) {
         if (node == null) {
             return null;

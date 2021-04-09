@@ -26,15 +26,15 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n)
      *
-     * @param head
-     * @param kth
+     * @param   head The head of the linked list.
+     * @param   k The index of the node to find, starting from 0 for the tail.
      */
-    public static LinkedListNode findKthToLast(LinkedListNode head, int kth) {
+    public static LinkedListNode findKthToLast(LinkedListNode head, int k) {
         int length = 0;
         for (LinkedListNode node = head; node != null; node = node.getNext()) {
             length++;
         }
-        length -= (kth + 1); // +1 since the tail is "0 steps to last"
+        length -= (k + 1); // +1 since the tail is "0 steps to last"
         if (length < 0) {
             // list is shorter than k+1
             return null;

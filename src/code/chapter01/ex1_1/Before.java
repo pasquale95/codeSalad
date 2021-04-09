@@ -25,8 +25,8 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n^2)
      *
-     * @param stringToCheck
-     * @return boolean
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
      */
     public static boolean isUniqueCharsA(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
@@ -44,8 +44,8 @@ public class Before implements Runnable {
     /**
      * Complexity: O(n^2)
      *
-     * @param stringToCheck
-     * @return boolean
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
      */
     public static boolean isUniqueCharsB(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
