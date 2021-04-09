@@ -8,9 +8,9 @@ import java.util.Random;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class LinkedListNode {
+public class LinkedListNode implements Cloneable {
 
-    private final int data;
+    private int data;
     private LinkedListNode prev;
     private LinkedListNode next;
 
@@ -47,14 +47,12 @@ public class LinkedListNode {
      * @param node
      */
     public void append(LinkedListNode node) {
-        if (this != node && node != null) {
-            // connect rest of the list to new element
-            if (!this.isTail()) {
-                node.next = this.next;
-                node.next.prev = node;
-            }
+        if (this != node) {
+            // prevent circular list
             this.next = node;
-            node.prev = this;
+            if (node != null && node.prev != this) {
+                node.prepend(this);
+            }
         }
     }
 
@@ -63,14 +61,12 @@ public class LinkedListNode {
      * @param node
      */
     public void prepend(LinkedListNode node) {
-        if (this != node && node != null) {
+        if (this != node) {
             // prevent circular list
-            if (!this.isHead()) {
-                node.prev = this.prev;
-                node.prev.next = node;
-            }
             this.prev = node;
-            node.next = this;
+            if (node != null && node.next != this) {
+                node.append(this);
+            }
         }
     }
 
@@ -169,6 +165,14 @@ public class LinkedListNode {
      */
     public int getData() {
         return data;
+    }
+
+    /**
+     * Change node data
+     * @param data
+     */
+    public void setData(int data) {
+        this.data = data;
     }
 
     @Override
