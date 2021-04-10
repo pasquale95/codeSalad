@@ -17,14 +17,15 @@ public class StringGenerator {
     /**
      * Generate an array of strings each of the specified length.
      * @param   total Number of random strings to generate.
-     * @param   length Length of the single string inside the pool.
+     * @param   length Max length of the single string inside the pool.
      * @param   onlyLowerCase True if the string can only contain lowercase alphabet chars (no space).
      * @return  Array of random generated strings.
      */
     public static String[] generateRandomStringArray(int total, int length, boolean onlyLowerCase) {
+        Random r = new Random();
         String[] strings = new String[total];
         for (int i = 0; i < total; i++) {
-            strings[i] = generateRandomString(length, onlyLowerCase);
+            strings[i] = generateRandomString(r.nextInt(length) + 1, onlyLowerCase);
         }
         return strings;
     }
