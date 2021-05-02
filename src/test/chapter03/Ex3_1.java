@@ -24,22 +24,22 @@ public class Ex3_1 {
     @Order(1)
     void checkTripleStackBefore() throws StackOverflowException, EmptyStackException {
         Before.allocateStack(6);
-        Before.pushFirstStack(1);
-        Before.pushFirstStack(3);
-        Before.pushSecondStack(5);
-        Before.pushThirdStack(6);
-        Before.pushThirdStack(10);
-        Before.pushThirdStack(13);
-        assertEquals(1, Before.popFirstStack());
-        assertEquals(5, Before.popSecondStack());
-        assertEquals(3, Before.popFirstStack());
-        assertThrows(EmptyStackException.class, Before::popSecondStack);
-        Before.pushSecondStack(20);
-        Before.pushSecondStack(22);
-        Before.pushSecondStack(24);
-        assertThrows(StackOverflowException.class, () -> {Before.pushFirstStack(1);});
-        assertEquals(6, Before.popThirdStack());
-        assertEquals(20, Before.popSecondStack());
+        Before.pushToStack(1, 1);
+        Before.pushToStack(3, 1);
+        Before.pushToStack(5, 2);
+        Before.pushToStack(6, 3);
+        Before.pushToStack(10, 3);
+        Before.pushToStack(13, 3);
+        assertEquals(1, Before.popFromStack(1));
+        assertEquals(5, Before.popFromStack(2));
+        assertEquals(3, Before.popFromStack(1));
+        assertThrows(EmptyStackException.class, () -> {Before.popFromStack(2);});
+        Before.pushToStack(20, 1);
+        Before.pushToStack(22, 2);
+        Before.pushToStack(24, 2);
+        assertThrows(StackOverflowException.class, () -> {Before.pushToStack(1, 1);});
+        assertEquals(6, Before.popFromStack(3));
+        assertEquals(20, Before.popFromStack(1));
     }
 
     @Test

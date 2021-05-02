@@ -19,22 +19,22 @@ public class Solution {
     /**
      * Chapter 3
      * Ex3.1: Three in One
-     * TODO
+     * Describe how you could use a single array to implement three stacks.
      */
     public static void main(String[] args) {
         printBlue(PROBLEM);
         Before.allocateStack(6);
         try {
-            Before.pushFirstStack(5);
-            Before.pushSecondStack(2);
-            Before.pushSecondStack(1);
-            Before.pushThirdStack(4);
-            Before.pushFirstStack(10);
-            Before.pushFirstStack(18);
+            Before.pushToStack(5, 1);
+            Before.pushToStack(2, 2);
+            Before.pushToStack(1, 2);
+            Before.pushToStack(4, 3);
+            Before.pushToStack(10, 1);
+            Before.pushToStack(18, 1);
             System.out.println("Pop from " + colorYellow(Before.firstStackToString())
-                    + "gives: " + Before.popFirstStack()
+                    + "gives: " + Before.popFromStack(1)
                     + ", while pop from " + colorYellow(Before.secondStackToString())
-                    + "gives: " + Before.popSecondStack()
+                    + "gives: " + Before.popFromStack(2)
             );
         } catch (StackOverflowException | EmptyStackException e) {
             e.printStackTrace();

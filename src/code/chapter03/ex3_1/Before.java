@@ -31,7 +31,7 @@ public class Before implements Runnable {
      * @param   stackNumber The stack number.
      * @throws  StackOverflowException Thrown if stack is already full.
      */
-    private static void pushToStack(int data, int stackNumber) throws StackOverflowException {
+    public static void pushToStack(int data, int stackNumber) throws StackOverflowException {
         checkStackDimensions();
         stack[stackSize] = data;
         stackIndicator[stackSize++] = stackNumber;
@@ -44,7 +44,7 @@ public class Before implements Runnable {
      * @return  The data at the top of the chosen stack.
      * @throws  EmptyStackException Thrown if stack is already empty.
      */
-    private static int popFromStack(int stackNumber) throws EmptyStackException {
+    public static int popFromStack(int stackNumber) throws EmptyStackException {
         for (int i = 0; i < stackIndicator.length; i++) {
             if (stackIndicator[i] == stackNumber) {
                 int val = stack[i];
@@ -98,30 +98,6 @@ public class Before implements Runnable {
     public static void allocateStack(int size) {
         stack = new int[size];
         stackIndicator = new int[size];
-    }
-
-    public static void pushFirstStack(int data) throws StackOverflowException {
-        pushToStack(data, 1);
-    }
-
-    public static void pushSecondStack(int data) throws StackOverflowException {
-        pushToStack(data, 2);
-    }
-
-    public static void pushThirdStack(int data) throws StackOverflowException {
-        pushToStack(data, 3);
-    }
-
-    public static int popFirstStack() throws EmptyStackException {
-        return popFromStack(1);
-    }
-
-    public static int popSecondStack() throws EmptyStackException {
-        return popFromStack(2);
-    }
-
-    public static int popThirdStack() throws EmptyStackException {
-        return popFromStack(3);
     }
 
     public static String firstStackToString() {
