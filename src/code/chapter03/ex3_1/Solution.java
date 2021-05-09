@@ -31,10 +31,12 @@ public class Solution {
             Before.pushToStack(4, 3);
             Before.pushToStack(10, 1);
             Before.pushToStack(18, 1);
-            System.out.println("Pop from " + colorYellow(Before.firstStackToString())
+            System.out.println("Pop from stack 1: " + colorYellow(Before.stackToString(1))
                     + "gives: " + Before.popFromStack(1)
-                    + ", while pop from " + colorYellow(Before.secondStackToString())
+                    + ", while pop from stack 2: " + colorYellow(Before.stackToString(2))
                     + "gives: " + Before.popFromStack(2)
+                    + ", while pop from stack 3: " + colorYellow(Before.stackToString(3))
+                    + "gives: " + Before.popFromStack(3)
             );
         } catch (StackOverflowException | EmptyStackException e) {
             e.printStackTrace();

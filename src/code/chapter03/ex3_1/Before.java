@@ -39,13 +39,14 @@ public class Before implements Runnable {
 
     /**
      * Complexity: O(n)
+     * WARNING: pop from stack should be O(1)!
      *
      * @param   stackNumber The stack number.
      * @return  The data at the top of the chosen stack.
      * @throws  EmptyStackException Thrown if stack is already empty.
      */
     public static int popFromStack(int stackNumber) throws EmptyStackException {
-        for (int i = 0; i < stackIndicator.length; i++) {
+        for (int i = stackIndicator.length - 1; i >= 0; i--) {
             if (stackIndicator[i] == stackNumber) {
                 int val = stack[i];
                 shiftArrayToLeft(i);
@@ -68,20 +69,6 @@ public class Before implements Runnable {
     }
 
     /**
-     * @param   stackNumber The stack number.
-     * @return  The stack in string format.
-     */
-    private static String stackToString(int stackNumber) {
-        StringBuilder sb = new StringBuilder().append("| ");
-        for (int i = 0; i < stackSize; i++) {
-            if (stackIndicator[i] == stackNumber) {
-                sb.append(stack[i]).append(" | ");
-            }
-        }
-        return sb.toString();
-    }
-
-    /**
      * Check stack dimensions.
      * @throws  StackOverflowException Thrown if stack is already full.
      */
@@ -100,15 +87,17 @@ public class Before implements Runnable {
         stackIndicator = new int[size];
     }
 
-    public static String firstStackToString() {
-        return "Stack 1: " + stackToString(1);
-    }
-
-    public static String secondStackToString() {
-        return "Stack 2: " + stackToString(2);
-    }
-
-    public static String thirdStackToString() {
-        return "Stack 3: " + stackToString(3);
+    /**
+     * @param   stackNumber The stack number.
+     * @return  The stack in string format.
+     */
+    public static String stackToString(int stackNumber) {
+        StringBuilder sb = new StringBuilder().append("| ");
+        for (int i = 0; i < stackSize; i++) {
+            if (stackIndicator[i] == stackNumber) {
+                sb.append(stack[i]).append(" | ");
+            }
+        }
+        return sb.toString();
     }
 }
