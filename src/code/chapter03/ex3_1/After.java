@@ -9,76 +9,118 @@ package chapter03.ex3_1;
 public class After implements Runnable {
 
     static class StackInfo {
-        int start, size, capacity;
+        int stackNumber, start, size, capacity;
 
-        public StackInfo(int start, int capacity) {
+        public StackInfo(int stackNumber, int start, int capacity) {
+            this.stackNumber = stackNumber;
             this.start = start;
             this.capacity = capacity;
         }
 
+        /**
+         * @return Index of last inserted element.
+         */
         public int lastElementIndex() {
-            return start + size - 1;
+            return adjustIndex(start + size - 1);
         }
 
-        public int push() {
-            return start + ++size - 1;
+        /**
+         * Push data into current stack.
+         * @param   data The data to push
+         * @throws  StackOverflowException If current stack is full and no expansion has been performed.
+         */
+        public void push(int data) throws StackOverflowException {
+            if (!isFull()) {
+                stack[adjustIndex(start + size++)] = data;
+            } else {
+                throw new StackOverflowException("Error: Stack " + stackNumber + " is full.");
+            }
         }
 
-        public int pop() {
-            return start + size-- - 1;
+        /**
+         * Pop data from current stack.
+         * @return  The last inserted element.
+         * @throws  EmptyStackException If no element is in the current stack.
+         */
+        public int pop() throws EmptyStackException {
+            if (!isEmpty()) {
+                return stack[adjustIndex(start + --size)];
+            } else {
+                throw new EmptyStackException("Error: Stack " + stackNumber + " is empty.");
+            }
         }
 
+        /**
+         * @return  True if the current stack has no elements.
+         */
         public boolean isEmpty() {
             return size == 0;
         }
 
+        /**
+         * @return  True if the current element is full.
+         */
         public boolean isFull() {
             return size == capacity;
         }
     }
 
-    private static final int STACKS = 3;
+    public static final int STACKS = 3;
+    private final int[] numbers, stackSequence;
     private static int[] stack;
     private static int stackSize = 0;
     private static StackInfo[] stackInfo;
 
-    public After(int size) {
-        allocateStack(size);
+    public After(int[] numbers, int[] stackSequence) {
+        this.numbers = numbers;
+        this.stackSequence = stackSequence;
+        allocateStack(numbers.length);
     }
 
     @Override
     public void run() {
-        // TODO
+        try {
+            for (int i = 0; i < numbers.length && i < stackSequence.length; i++) {
+                pushToStack(numbers[i], stackSequence[i]);
+            }
+            for (int i : stackSequence) {
+                popFromStack(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Complexity: TODO
+     * Complexity: O(n) when stack is full, O(1) otherwise
      *
      * @param   data The data to push in the stack.
      * @param   stackNumber The stack number.
      * @throws  StackOverflowException Thrown if stack is already full.
      */
     public static void pushToStack(int data, int stackNumber) throws StackOverflowException {
-        if (isFull()) {
+        if (areAllFull()) {
             throw new StackOverflowException("Error: Reached stack maximum capacity.");
         }
         StackInfo currentStack = stackInfo[stackNumber];
         if (currentStack.isFull()) {
-            throw new StackOverflowException("Stack " + stackNumber + " is full.");
+            // my stack is full, but at least another one is not -> expand current one
+            expandStack(stackNumber);
+            currentStack.capacity++;
         }
-        stack[currentStack.push()] = data;
+        currentStack.push(data);
         stackSize++;
     }
 
     /**
-     * Complexity: TODO
+     * Complexity: O(1)
      *
      * @param   stackNumber The stack number.
      * @return  The data at the top of the chosen stack.
      * @throws  EmptyStackException Thrown if stack is already empty.
      */
     public static int popFromStack(int stackNumber) throws EmptyStackException {
-        if (isEmpty()) {
+        if (areAllEmpty()) {
             throw new EmptyStackException("Error: Stacks are empty.");
         }
         StackInfo currentStack = stackInfo[stackNumber];
@@ -86,50 +128,96 @@ public class After implements Runnable {
             throw new EmptyStackException("Error: Stack " + stackNumber + " is empty.");
         }
         stackSize--;
-        return stack[currentStack.pop()];
+        return currentStack.pop();
     }
 
     /**
-     * Shift array to left by 1 starting from pos.
-     * @param   pos The position from where to start the shift (the element at pos is lost).
+     * Expand a stack adding 1 slot.
+     * @param   stackNumber The stack number to expand.
      */
-    /*private static void shiftArrayToLeft(int pos) {
-        for (; pos < stackSize - 1; pos++) {
-            stack[pos] = stack[pos+1];
-            stackIndicator[pos] = stackIndicator[pos+1];
-        }
-        stackSize--;
-    }*/
+    private static void expandStack(int stackNumber) {
+        shrinkAndShiftStack((stackNumber + 1) % STACKS);
+    }
 
     /**
-     * Check stack dimensions.
-     * @throws  StackOverflowException Thrown if stack is already full.
+     * Shift claimed stack and shrink it if possible, otherwise go ahead until a stack can be shrunk.
+     * @param   stackNumber The stack number to shift and shrink.
      */
-    private static void checkStackDimensions() throws StackOverflowException {
-        if (stackSize >= stack.length) {
-            throw new StackOverflowException("Error: Reached stack maximum capacity.");
+    private static void shrinkAndShiftStack(int stackNumber) {
+        StackInfo currentStack = stackInfo[stackNumber];
+        if (currentStack.isFull()) {
+            // cannot shrink this stack, we must proceed with next
+            shrinkAndShiftStack((stackNumber + 1) % STACKS);
+            currentStack.capacity++;
         }
+        // shift stack elements one pos right
+        int destination = nextIndex(currentStack.lastElementIndex());
+        int size = currentStack.size;
+        while (size > 0) {
+            stack[destination] = stack[previousIndex(destination)];
+            destination = previousIndex(destination);
+            size--;
+        }
+        // shift stack beginning and decrease capacity by 1
+        currentStack.start = nextIndex(currentStack.start);
+        currentStack.capacity--;
+    }
+
+    /**
+     * Return next index in circular stack
+     * @param   index The current index
+     * @return  The next index
+     */
+    private static int nextIndex(int index) {
+        return adjustIndex(index + 1);
+    }
+
+    /**
+     * Return previous index in circular stack
+     * @param   index The current index
+     * @return  The previous index
+     */
+    private static int previousIndex(int index) {
+        return adjustIndex(index - 1);
+    }
+
+    /**
+     * Adjust index for circular stack.
+     * @param   index The index to adjust.
+     * @return  The index correctly adjusted.
+     */
+    private static int adjustIndex(int index) {
+        int capacity = stack.length;
+        // use this formula to prevent issues with negative integers (e.g. -1 % 5 = -1)
+        return ((index % capacity) + capacity) % capacity;
     }
 
     /**
      * Allocate stack array and stackIndicator.
-     * @param   size The stack size.
+     * @param   capacity The stack capacity.
      */
-    public static void allocateStack(int size) {
-        stack = new int[size];
-        int defaultSize = size / STACKS + (size % STACKS) / (STACKS - 1);
-        int i = 0;
+    public static void allocateStack(int capacity) {
+        stack = new int[capacity];
+        stackInfo = new StackInfo[STACKS];
+        int defaultCapacity = capacity / STACKS + (capacity % STACKS) / (STACKS - 1);
+        int i;
         for (i = 0; i < STACKS-1; i++) {
-            stackInfo[i] = new StackInfo(i*defaultSize, defaultSize);
+            stackInfo[i] = new StackInfo(i, i*defaultCapacity, defaultCapacity);
         }
-        stackInfo[i] = new StackInfo(i*defaultSize, size - defaultSize * (STACKS - 1));
+        stackInfo[i] = new StackInfo(i, i*defaultCapacity, capacity - defaultCapacity * (STACKS - 1));
     }
 
-    private static boolean isFull() {
+    /**
+     * @return  True if all stacks are full.
+     */
+    private static boolean areAllFull() {
         return stack.length == stackSize;
     }
 
-    private static boolean isEmpty() {
+    /**
+     * @return  True if all stacks are empty.
+     */
+    private static boolean areAllEmpty() {
         return stackSize == 0;
     }
 
@@ -138,13 +226,11 @@ public class After implements Runnable {
      * @return  The stack in string format.
      */
     public static String stackToString(int stackNumber) {
-        /*StringBuilder sb = new StringBuilder().append("| ");
-        for (int i = 0; i < stackSize; i++) {
-            if (stackIndicator[i] == stackNumber) {
-                sb.append(stack[i]).append(" | ");
-            }
+        StringBuilder sb = new StringBuilder().append("| ");
+        StackInfo currentStack = stackInfo[stackNumber];
+        for (int i = 0; i < currentStack.size; i++) {
+            sb.append(stack[currentStack.start + i]).append(" | ");
         }
-        return sb.toString();*/
-        return "";
+        return sb.toString();
     }
 }

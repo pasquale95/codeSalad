@@ -8,20 +8,30 @@ package chapter03.ex3_1;
  */
 public class Before implements Runnable {
 
-    private static final int STACKS = 3;
-    private final int[] numbers;
+    public static final int STACKS = 3;
+    private final int[] numbers, stackSequence;
     private static int[] stack;
     private static int[] stackIndicator;
     private static int stackSize;
 
-    public Before(int[] numbers, int length) {
+    public Before(int[] numbers, int[] stackSequence) {
         this.numbers = numbers;
-        allocateStack(length);
+        this.stackSequence = stackSequence;
+        allocateStack(numbers.length);
     }
 
     @Override
     public void run() {
-        // TODO
+        try {
+            for (int i = 0; i < numbers.length && i < stackSequence.length; i++) {
+                pushToStack(numbers[i], stackSequence[i]);
+            }
+            for (int i : stackSequence) {
+                popFromStack(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -46,7 +56,7 @@ public class Before implements Runnable {
      * @throws  EmptyStackException Thrown if stack is already empty.
      */
     public static int popFromStack(int stackNumber) throws EmptyStackException {
-        for (int i = stackIndicator.length - 1; i >= 0; i--) {
+        for (int i = stackSize - 1; i >= 0; i--) {
             if (stackIndicator[i] == stackNumber) {
                 int val = stack[i];
                 shiftArrayToLeft(i);
