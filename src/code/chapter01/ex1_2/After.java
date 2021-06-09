@@ -46,7 +46,7 @@ public class After implements Runnable {
         }
         // check occurrences
         for (int characterOccurrence : chars) {
-            if (characterOccurrence < 0) {
+            if (characterOccurrence != 0) {
                 return false;
             }
         }
