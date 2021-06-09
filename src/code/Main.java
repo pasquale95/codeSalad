@@ -31,6 +31,7 @@ public class Main {
     public static void runSolutions() {
         chapter01.Main.runSolutions();
         chapter02.Main.runSolutions();
+        chapter03.Main.runSolutions();
     }
 
     /**
@@ -39,5 +40,6 @@ public class Main {
     public static void timeSolutions() {
         chapter01.Main.timeSolutions();
         chapter02.Main.timeSolutions();
+        chapter03.Main.timeSolutions();
     }
 }
