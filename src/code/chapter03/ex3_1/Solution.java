@@ -1,8 +1,9 @@
 package chapter03.ex3_1;
 
+import utils.ArrayGenerator;
+import utils.EmptyStackException;
+import utils.StackOverflowException;
 import utils.Timer;
-
-import java.util.Random;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -25,15 +26,13 @@ public class Solution {
      */
     public static void main(String[] args) {
         printBlue(PROBLEM);
-        Before.allocateStack(6);
         try {
-            After.allocateStack(6);
-            After.pushToStack(5, 0);
-            After.pushToStack(2, 1);
-            After.pushToStack(1, 1);
-            After.pushToStack(4, 2);
-            After.pushToStack(10, 0);
-            After.pushToStack(18, 0);
+            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
+            int[] stackSequence = ArrayGenerator.generateRandomIntArray(10, Before.STACKS);
+            After.allocateStack(numbers.length);
+            for (int i = 0; i < numbers.length; i++) {
+                After.pushToStack(numbers[i], stackSequence[i]);
+            }
             System.out.println("Pop from stack 0: " + colorYellow(After.stackToString(0))
                     + "gives: " + After.popFromStack(0)
                     + ", while pop from stack 1: " + colorYellow(After.stackToString(1))
@@ -47,12 +46,8 @@ public class Solution {
     }
 
     public static void time() {
-        int[] numbers = new int[NUMBERS], stackSequence = new int[NUMBERS];
-        Random r = new Random();
-        for (int i = 0; i < NUMBERS; i++) {
-            numbers[i] = r.nextInt(1000);
-            stackSequence[i] = r.nextInt(Before.STACKS);
-        }
+        int[] numbers = ArrayGenerator.generateRandomIntArray(NUMBERS, 1000);
+        int[] stackSequence = ArrayGenerator.generateRandomIntArray(NUMBERS, Before.STACKS);
         Before before = new Before(numbers, stackSequence);
         After after = new After(numbers, stackSequence);
         Timer timer = new Timer(PROBLEM, before, after);

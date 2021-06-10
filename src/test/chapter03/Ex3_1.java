@@ -2,8 +2,8 @@ package chapter03;
 
 import chapter03.ex3_1.Before;
 import chapter03.ex3_1.After;
-import chapter03.ex3_1.EmptyStackException;
-import chapter03.ex3_1.StackOverflowException;
+import utils.EmptyStackException;
+import utils.StackOverflowException;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
