@@ -24,4 +24,18 @@ public class ArrayGenerator {
         }
         return integers;
     }
+
+    /**
+     * Generate an array of random booleans.
+     * @param   size The array size.
+     * @return  The array of random booleans.
+     */
+    public static boolean[] generateRandomBooleanArray(int size) {
+        Random r = new Random();
+        boolean[] booleans = new boolean[size];
+        for (int i = 0; i < size; i++) {
+            booleans[i] = (r.nextInt(2) % 2) == 0;
+        }
+        return booleans;
+    }
 }
