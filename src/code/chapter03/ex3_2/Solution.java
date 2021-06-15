@@ -2,6 +2,7 @@ package chapter03.ex3_2;
 
 import utils.ArrayGenerator;
 import utils.EmptyStackException;
+import utils.Timer;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -15,22 +16,25 @@ import static utils.Colors.printBlue;
 public class Solution {
 
     private static final String PROBLEM = "Chapter 3. Ex 3.2";
+    private static final int SIZE = 5000;
 
     /**
      * Chapter 3
-     * Ex3.2: TODO
+     * Ex3.2: Stack Min
+     * How would you design a stack which, in addition to push and pop, has a function
+     * min which returns the minimum element? Push, pop and min should all operate in O(1) time.
      */
     public static void main(String[] args) {
         printBlue(PROBLEM);
         try {
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
             for (int number : numbers) {
-                Before.push(number);
+                After.push(number);
             }
-            System.out.println("Min in stack " + colorYellow(Before.stackToString())
-                    + "is " + Before.min()
-                    + ". Pop returns " + Before.pop()
-                    + " and the min after the pop is " + Before.min() + "."
+            System.out.println("Min in stack " + colorYellow(After.stackToString())
+                    + "is " + After.min()
+                    + ". Pop returns " + After.pop()
+                    + " and the min after the pop is " + After.min() + "."
             );
         } catch (EmptyStackException e) {
             e.printStackTrace();
@@ -38,15 +42,11 @@ public class Solution {
     }
 
     public static void time() {
-        //int[] numbers = new int[NUMBERS], stackSequence = new int[NUMBERS];
-        //Random r = new Random();
-        //for (int i = 0; i < NUMBERS; i++) {
-        //    numbers[i] = r.nextInt(1000);
-        //    stackSequence[i] = r.nextInt(Before.STACKS);
-        //}
-        //Before before = new Before(numbers, stackSequence);
-        //After after = new After(numbers, stackSequence);
-        //Timer timer = new Timer(PROBLEM, before, after);
-        //timer.start();
+        int[] numbers = ArrayGenerator.generateRandomIntArray(SIZE, 10000);
+        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(SIZE);
+        Before before = new Before(numbers, booleans);
+        After after = new After(numbers, booleans);
+        Timer timer = new Timer(PROBLEM, before, after);
+        timer.start();
     }
 }
