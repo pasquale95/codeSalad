@@ -36,7 +36,7 @@ public class Solution {
         printBlue(PROBLEM);
         try {
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
-            Before.SetOfStacks setOfStacks = Before.retrieveSetOfStacks(THRESHOLD);
+            Before.SetOfStacks setOfStacks = new Before.SetOfStacks(THRESHOLD);
             for (int number : numbers) {
                 setOfStacks.push(number);
             }

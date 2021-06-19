@@ -155,15 +155,6 @@ public class Before implements Runnable {
         }
     }
 
-    /**
-     *
-     * @param   threshold The single stack threshold.
-     * @return  The SetOfStacks object.
-     */
-    public static SetOfStacks retrieveSetOfStacks(int threshold) {
-        return new SetOfStacks(threshold);
-    }
-
     @Override
     public void run() {
         // TODO
