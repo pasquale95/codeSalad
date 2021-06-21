@@ -90,6 +90,11 @@ public class Before implements Runnable {
             this.threshold = threshold;
         }
 
+        /**
+         * Push element in the current stack, if not full yet.
+         * Otherwise create a new stack and link previous one to current.
+         * @param   data The data to push in the stack.
+         */
         public void push(int data) {
             if (isEmpty()) {
                 this.top = new Stack(threshold);
@@ -104,6 +109,11 @@ public class Before implements Runnable {
             this.top.push(new StackElement(data));
         }
 
+        /**
+         * Pop in the classic way (i.e. pop from the last created stack).
+         * @return  The top of the last created stack.
+         * @throws  EmptyStackException If the setOfStacks does not contain any stack.
+         */
         public int pop() throws EmptyStackException {
             if (isEmpty()) {
                 throw new EmptyStackException("Error: SetOfStacks is empty.");
@@ -117,6 +127,13 @@ public class Before implements Runnable {
             return toPop;
         }
 
+        /**
+         * Pop element from the stack at the given index (stack 0 is the first one created,
+         * i.e. at the end of the chain).
+         * @param   index The index of the stack to pop from.
+         * @return  The top of the chosen stack.
+         * @throws  EmptyStackException If the chosen stack does not exist.
+         */
         public int popAt(int index) throws EmptyStackException {
             // stacks are numbered as FIFO -> first stack being created is stack 0
             int stacksToPop = this.stacks - index - 1;
@@ -136,6 +153,7 @@ public class Before implements Runnable {
             // evict current stack if empty and link its previous to its aboveCurrent
             if (current.isEmpty() && aboveCurrent != null) {
                 aboveCurrent.setPrevious(current.getPrevious());
+                this.stacks--;
             }
             return toPop;
         }
