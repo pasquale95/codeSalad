@@ -10,77 +10,6 @@ import utils.EmptyStackException;
  */
 public class Before implements Runnable {
 
-    static class StackElement {
-        private final int data;
-        private StackElement previous;
-
-        public StackElement(int data) {
-            this.data = data;
-        }
-
-        public StackElement getPrevious() {
-            return previous;
-        }
-
-        public void setPrevious(StackElement previous) {
-            this.previous = previous;
-        }
-
-        public int getData() {
-            return data;
-        }
-    }
-
-    static class Stack {
-        private final int threshold;
-        private Stack previous;
-        private StackElement top;
-        private int size;
-
-        public Stack(int threshold) {
-            this.threshold = threshold;
-        }
-
-        public void push(StackElement element) {
-            element.setPrevious(this.top);
-            this.top = element;
-            this.size++;
-        }
-
-        public StackElement pop() {
-            StackElement toPop = this.top;
-            this.top = this.top.getPrevious();
-            this.size--;
-            return toPop;
-        }
-
-        public void setPrevious(Stack previous) {
-            this.previous = previous;
-        }
-
-        public Stack getPrevious() {
-            return this.previous;
-        }
-
-        public boolean isEmpty() {
-            return this.size == 0;
-        }
-
-        public boolean isFull() {
-            return this.size == threshold;
-        }
-
-        public String toString() {
-            StackElement runner = this.top;
-            StringBuilder sb = new StringBuilder("|");
-            while (runner != null) {
-                sb.append(runner.getData()).append("|");
-                runner = runner.getPrevious();
-            }
-            return sb.toString();
-        }
-    }
-
     public static class SetOfStacks {
         private Stack top;
         private final int threshold;
@@ -164,7 +93,7 @@ public class Before implements Runnable {
 
         public String toString() {
             Stack runner = this.top;
-            StringBuilder sb = new StringBuilder("* ");
+            StringBuilder sb = new StringBuilder("** ");
             while (runner != null) {
                 sb.append(runner.toString()).append(" ** ");
                 runner = runner.getPrevious();
@@ -173,8 +102,32 @@ public class Before implements Runnable {
         }
     }
 
+    private final int[] numbers;
+    private final int threshold;
+
+    public Before(int[] numbers, int threshold) {
+        this.numbers = numbers;
+        this.threshold = threshold;
+    }
+
     @Override
     public void run() {
-        // TODO
+        try {
+            SetOfStacks setOfStacks = new SetOfStacks(this.threshold);
+            // measure push()
+            for (int number : this.numbers) {
+                setOfStacks.push(number);
+            }
+            // measure popAt()
+            for (int i = 0; i < setOfStacks.stacks; i++) {
+                setOfStacks.popAt(i);
+            }
+            // measure pop()
+            for (int i = 0; i < this.numbers.length / 2; i++) {
+                setOfStacks.pop();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
