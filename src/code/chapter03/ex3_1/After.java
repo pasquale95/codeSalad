@@ -12,7 +12,10 @@ import utils.StackOverflowException;
 public class After implements Runnable {
 
     static class StackInfo {
-        int stackNumber, start, size, capacity;
+        final int stackNumber;
+        int start;
+        int size;
+        int capacity;
 
         public StackInfo(int stackNumber, int start, int capacity) {
             this.stackNumber = stackNumber;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class After implements Runnable {
 
     public static class SetOfStacks {
-        ArrayList<Stack> stacks = new ArrayList<>();
+        final ArrayList<Stack> stacks = new ArrayList<>();
         private final int threshold;
 
         public SetOfStacks(int threshold) {

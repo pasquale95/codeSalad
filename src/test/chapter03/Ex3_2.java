@@ -5,7 +5,6 @@ import chapter03.ex3_2.After;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import utils.EmptyStackException;
-import utils.StackOverflowException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

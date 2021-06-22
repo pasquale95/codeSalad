@@ -95,7 +95,7 @@ public class Before implements Runnable {
             Stack runner = this.top;
             StringBuilder sb = new StringBuilder("** ");
             while (runner != null) {
-                sb.append(runner.toString()).append(" ** ");
+                sb.append(runner).append(" ** ");
                 runner = runner.getPrevious();
             }
             return sb.toString();
