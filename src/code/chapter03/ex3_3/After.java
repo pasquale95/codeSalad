@@ -74,6 +74,10 @@ public class After implements Runnable {
             return toPop;
         }
 
+        public boolean isEmpty() {
+            return stacks.isEmpty();
+        }
+
         public String toString() {
             StringBuilder sb = new StringBuilder("** ");
             for (int i = stacks.size() - 1; i >= 0; i--) {

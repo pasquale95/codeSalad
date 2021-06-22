@@ -38,4 +38,23 @@ public class Ex3_3 {
         }
         assertThrows(EmptyStackException.class, setOfStacks::pop);
     }
+
+    @Test
+    @Order(1)
+    void checkStackOfPlatesAfter() throws EmptyStackException {
+        After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
+        for (int number : NUMBERS) {
+            setOfStacks.push(number);
+        }
+        assertEquals(93, setOfStacks.pop());
+        assertEquals(1, setOfStacks.pop());
+        assertEquals(5, setOfStacks.popAt(0));
+        setOfStacks.push(45);
+        assertEquals(13, setOfStacks.popAt(1));
+        assertEquals(45, setOfStacks.pop());
+        while (!setOfStacks.isEmpty()) {
+            setOfStacks.pop();
+        }
+        assertThrows(EmptyStackException.class, setOfStacks::pop);
+    }
 }
