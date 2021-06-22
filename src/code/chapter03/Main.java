@@ -14,16 +14,20 @@ public class Main {
     }
 
     /**
-     * Run all solutions for chapter 2
+     * Run all solutions for chapter 3
      */
     public static void runSolutions() {
         chapter03.ex3_1.Solution.main(null);
+        chapter03.ex3_2.Solution.main(null);
+        chapter03.ex3_3.Solution.main(null);
     }
 
     /**
-     * Time all solutions for chapter 2
+     * Time all solutions for chapter 3
      */
     public static void timeSolutions() {
         chapter03.ex3_1.Solution.time();
+        chapter03.ex3_2.Solution.time();
+        chapter03.ex3_3.Solution.time();
     }
 }

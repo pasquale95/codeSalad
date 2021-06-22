@@ -1,6 +1,5 @@
 package chapter03.ex3_3;
 
-import chapter03.ex3_2.After;
 import utils.ArrayGenerator;
 import utils.EmptyStackException;
 import utils.Timer;
@@ -36,12 +35,13 @@ public class Solution {
         printBlue(PROBLEM);
         try {
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
-            Before.SetOfStacks setOfStacks = new Before.SetOfStacks(THRESHOLD);
+            After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
             for (int number : numbers) {
                 setOfStacks.push(number);
             }
             System.out.println("Set of stacks is composed by these stacks: " + colorYellow(setOfStacks.toString())
-                    + "; 2 pops return respectively "
+                    + "; 3 pops return respectively "
+                    + colorYellow(String.valueOf(setOfStacks.pop())) + ", "
                     + colorYellow(String.valueOf(setOfStacks.pop())) + " and "
                     + colorYellow(String.valueOf(setOfStacks.pop())) + "; "
                     + "pop from 1st stack returns " + colorYellow(String.valueOf(setOfStacks.popAt(0))) + ". "
@@ -53,12 +53,10 @@ public class Solution {
     }
 
     public static void time() {
-        // TODO
-        //int[] numbers = ArrayGenerator.generateRandomIntArray(SIZE, 10000);
-        //boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(SIZE);
-        //Before before = new Before(numbers, booleans);
-        //After after = new After(numbers, booleans);
-        //Timer timer = new Timer(PROBLEM, before, after);
-        //timer.start();
+        int[] numbers = ArrayGenerator.generateRandomIntArray(5000, 10000);
+        Before before = new Before(numbers, 20);
+        After after = new After(numbers, 20);
+        Timer timer = new Timer(PROBLEM, before, after);
+        timer.start();
     }
 }
