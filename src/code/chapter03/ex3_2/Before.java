@@ -71,7 +71,7 @@ public class Before implements Runnable {
      * @param   data The value to push at the top of the stack.
      */
     public static void push(int data) {
-        if (size == 0) {
+        if (isEmpty()) {
             top = new StackElement(data, data);
         } else {
             StackElement newElement;
@@ -94,7 +94,7 @@ public class Before implements Runnable {
      * @throws  EmptyStackException If the stack is empty the pop isn't feasible.
      */
     public static int pop() throws EmptyStackException {
-        if (size == 0) {
+        if (isEmpty()) {
             throw new EmptyStackException("Error: stack is empty.");
         }
         int toPop = top.getData();
@@ -110,13 +110,13 @@ public class Before implements Runnable {
      * @throws  EmptyStackException If the stack is empty no min value exists.
      */
     public static int min() throws EmptyStackException {
-        if (size == 0) {
+        if (isEmpty()) {
             throw new EmptyStackException("Error: stack is empty.");
         }
         return top.getMin();
     }
 
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return size == 0;
     }
 
