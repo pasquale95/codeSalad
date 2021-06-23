@@ -2,8 +2,8 @@ package chapter03;
 
 import chapter03.ex3_1.Before;
 import chapter03.ex3_1.After;
-import chapter03.ex3_1.EmptyStackException;
-import chapter03.ex3_1.StackOverflowException;
+import utils.EmptyStackException;
+import utils.StackOverflowException;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -18,17 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Ex3_1 {
 
     public static final int STACK_ONE = 0, STACK_TWO = 1, STACK_THREE = 2;
+    public static final int[] numbers = {1, 3, 5, 6, 10, 13};
+    public static final int[] stackSequence = {STACK_ONE, STACK_ONE, STACK_TWO, STACK_THREE, STACK_THREE, STACK_THREE};
 
     @Test
     @Order(1)
     void checkTripleStackBefore() throws StackOverflowException, EmptyStackException {
         Before.allocateStack(6);
-        Before.pushToStack(1, STACK_ONE);
-        Before.pushToStack(3, STACK_ONE);
-        Before.pushToStack(5, STACK_TWO);
-        Before.pushToStack(6, STACK_THREE);
-        Before.pushToStack(10, STACK_THREE);
-        Before.pushToStack(13, STACK_THREE);
+        for (int i = 0; i < numbers.length; i++) {
+            Before.pushToStack(numbers[i], stackSequence[i]);
+        }
         assertEquals(3, Before.popFromStack(STACK_ONE));
         assertEquals(5, Before.popFromStack(STACK_TWO));
         assertEquals(1, Before.popFromStack(STACK_ONE));
@@ -45,12 +44,9 @@ public class Ex3_1 {
     @Order(2)
     void checkTripleStackAfter() throws StackOverflowException, EmptyStackException {
         After.allocateStack(6);
-        After.pushToStack(1, STACK_ONE);
-        After.pushToStack(3, STACK_ONE);
-        After.pushToStack(5, STACK_TWO);
-        After.pushToStack(6, STACK_THREE);
-        After.pushToStack(10, STACK_THREE);
-        After.pushToStack(13, STACK_THREE);
+        for (int i = 0; i < numbers.length; i++) {
+            After.pushToStack(numbers[i], stackSequence[i]);
+        }
         assertEquals(3, After.popFromStack(STACK_ONE));
         assertEquals(5, After.popFromStack(STACK_TWO));
         assertEquals(1, After.popFromStack(STACK_ONE));

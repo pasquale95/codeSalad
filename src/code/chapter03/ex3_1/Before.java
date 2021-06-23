@@ -1,5 +1,8 @@
 package chapter03.ex3_1;
 
+import utils.EmptyStackException;
+import utils.StackOverflowException;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -39,7 +42,7 @@ public class Before implements Runnable {
      *
      * @param   data The data to push in the stack.
      * @param   stackNumber The stack number.
-     * @throws  StackOverflowException Thrown if stack is already full.
+     * @throws StackOverflowException Thrown if stack is already full.
      */
     public static void pushToStack(int data, int stackNumber) throws StackOverflowException {
         checkStackDimensions();
@@ -53,7 +56,7 @@ public class Before implements Runnable {
      *
      * @param   stackNumber The stack number.
      * @return  The data at the top of the chosen stack.
-     * @throws  EmptyStackException Thrown if stack is already empty.
+     * @throws EmptyStackException Thrown if stack is already empty.
      */
     public static int popFromStack(int stackNumber) throws EmptyStackException {
         for (int i = stackSize - 1; i >= 0; i--) {

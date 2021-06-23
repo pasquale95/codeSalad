@@ -119,7 +119,7 @@ public class LinkedListNode implements Cloneable {
      * Print all nodes starting from this.
      */
     public void printForward() {
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 
     /**

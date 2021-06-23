@@ -1,5 +1,8 @@
 package chapter03.ex3_1;
 
+import utils.EmptyStackException;
+import utils.StackOverflowException;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -9,7 +12,10 @@ package chapter03.ex3_1;
 public class After implements Runnable {
 
     static class StackInfo {
-        int stackNumber, start, size, capacity;
+        final int stackNumber;
+        int start;
+        int size;
+        int capacity;
 
         public StackInfo(int stackNumber, int start, int capacity) {
             this.stackNumber = stackNumber;
@@ -27,7 +33,7 @@ public class After implements Runnable {
         /**
          * Push data into current stack.
          * @param   data The data to push
-         * @throws  StackOverflowException If current stack is full and no expansion has been performed.
+         * @throws StackOverflowException If current stack is full and no expansion has been performed.
          */
         public void push(int data) throws StackOverflowException {
             if (!isFull()) {
@@ -40,7 +46,7 @@ public class After implements Runnable {
         /**
          * Pop data from current stack.
          * @return  The last inserted element.
-         * @throws  EmptyStackException If no element is in the current stack.
+         * @throws EmptyStackException If no element is in the current stack.
          */
         public int pop() throws EmptyStackException {
             if (!isEmpty()) {

@@ -1,4 +1,4 @@
-package chapter03.ex3_1;
+package utils;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -6,8 +6,8 @@ package chapter03.ex3_1;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class StackOverflowException extends Exception {
-    public StackOverflowException(String errorMessage) {
+public class EmptyStackException extends Exception {
+    public EmptyStackException(String errorMessage) {
         super(errorMessage);
     }
 }

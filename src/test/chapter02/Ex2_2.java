@@ -22,8 +22,7 @@ class Ex2_2 {
     static void init() {
         // create linked list to clean
         head = new LinkedListNode(13);
-        LinkedListNode tmp = head;
-        tmp.append(43).append(31).append(12).append(15).append(3).append(5);
+        head.append(43).append(31).append(12).append(15).append(3).append(5);
     }
 
     @Test

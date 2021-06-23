@@ -23,12 +23,10 @@ class Ex2_1 {
     static void init() {
         // create linked list to clean
         withDuplicates = new LinkedListNode(3);
-        LinkedListNode tmp = withDuplicates;
-        tmp.append(4).append(3).append(2).append(5).append(3).append(5);
+        withDuplicates.append(4).append(3).append(2).append(5).append(3).append(5);
         // expected result
         noDuplicates = new LinkedListNode(3);
-        tmp = noDuplicates;
-        tmp.append(4).append(2).append(5);
+        noDuplicates.append(4).append(2).append(5);
     }
 
     @Test
