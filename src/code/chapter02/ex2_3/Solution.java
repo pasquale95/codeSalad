@@ -30,8 +30,8 @@ public class Solution {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, 100);
         LinkedListNode nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
-        Before.removeLinkedListNode(nodeToPrune);
-        System.out.println(head);
+        After.removeLinkedListNode(nodeToPrune);
+        System.out.println(colorYellow(head.toString()));
     }
 
     public static void time() {
