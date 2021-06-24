@@ -235,7 +235,7 @@ public class After implements Runnable {
         StringBuilder sb = new StringBuilder().append("| ");
         StackInfo currentStack = stackInfo[stackNumber];
         for (int i = 0; i < currentStack.size; i++) {
-            sb.append(stack[currentStack.start + i]).append(" | ");
+            sb.append(stack[adjustIndex(currentStack.start + i)]).append(" | ");
         }
         return sb.toString();
     }
