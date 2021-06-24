@@ -27,10 +27,10 @@ public class Solution {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(10, 8);
         LinkedListNode kth = After.findKthToLast(head, KTH);
         if (kth != null) {
-            System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is: " + kth.getData());
+            System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is " + kth.getData() + ".");
         } else {
             System.out.println(colorRed("The k index " + KTH + " from the last is out-of-bounds for the linked list ")
-                    + colorYellow(head.toString()));
+                    + colorYellow(head.toString()) + ".");
         }
     }
 

@@ -29,13 +29,12 @@ public class Solution {
      */
     public static void main(String[] args) {
         printBlue(PROBLEM);
-        time();
         LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, CEILING);
         Random r = new Random();
         int threshold = r.nextInt(CEILING);
         LinkedListNode partitioned = After.partition(head.clone(), threshold);
         System.out.println(colorYellow(head.toString()) + " after partitioning on the threshold " + threshold
-                + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)));
+                + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
     public static void time() {
