@@ -32,9 +32,9 @@ public class Solution {
                 After.push(number);
             }
             System.out.println("Min in stack " + colorYellow(After.stackToString())
-                    + " is " + After.min()
-                    + ". Pop returns " + After.pop()
-                    + " and the min after the pop is " + After.min() + "."
+                    + " is " + colorYellow(String.valueOf(After.min()))
+                    + ". Pop returns " + colorYellow(String.valueOf(After.pop()))
+                    + " and the min after the pop is " + colorYellow(String.valueOf(After.min())) + "."
             );
         } catch (EmptyStackException e) {
             e.printStackTrace();

@@ -27,7 +27,8 @@ public class Solution {
             for (int j = i + 1; j < strings.length; j++) {
                 System.out.println(colorYellow('"' + strings[i] + '"')
                         + " and " + colorYellow('"' + strings[j] + '"')
-                        + " are permutations: " + After.arePermutations(strings[i], strings[j])
+                        + " are permutations: "
+                        + colorYellow(String.valueOf(After.arePermutations(strings[i], strings[j]))) + "."
                 );
             }
         }

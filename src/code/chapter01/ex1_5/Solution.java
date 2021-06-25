@@ -30,11 +30,11 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         System.out.println("The strings " + colorYellow(one) + " and " + colorYellow(two) +
-                " are one edit away: " + After.areOneAway(one, two));
+                " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(one, two))) + ".");
         System.out.println("The strings " + colorYellow(one) + " and " + colorYellow(three) +
-                " are one edit away: " + After.areOneAway(one, three));
+                " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(one, three))) + ".");
         System.out.println("The strings " + colorYellow(two) + " and " + colorYellow(three) +
-                " are one edit away: " + After.areOneAway(two, three));
+                " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(two, three))) + ".");
     }
 
     public static void time() {

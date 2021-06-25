@@ -29,7 +29,7 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         System.out.println(colorYellow('"' + input + '"') + " is a permutation of a palindrome: " +
-                After.isPermutationOfPalindrome(input));
+                colorYellow(String.valueOf(After.isPermutationOfPalindrome(input))) + ".");
     }
 
     public static void time() {

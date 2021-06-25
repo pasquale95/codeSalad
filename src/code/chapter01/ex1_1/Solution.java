@@ -24,7 +24,8 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         for (String string : strings) {
-            System.out.println(colorYellow('"' + string + '"') + " has unique chars: " + After.isUniqueCharsB(string));
+            System.out.println(colorYellow('"' + string + '"') + " has unique chars: "
+                    + colorYellow(String.valueOf(After.isUniqueCharsB(string))) + ".");
         }
     }
 
