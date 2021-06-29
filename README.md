@@ -32,7 +32,7 @@ Here a list of the commands you need to build, run, time or test the program.
 
 ### Building
 
-To build the programs, inside the the project root run the following command:
+To build the programs, inside the project root run the following command:
 
 ```shell
 $ ./gradlew build
@@ -40,7 +40,7 @@ $ ./gradlew build
 
 ### Running
 
-To run the programs, inside the the project root run the following command:
+To run the programs, inside the project root run the following command:
 
 ```shell
 $ ./gradlew run
@@ -48,7 +48,7 @@ $ ./gradlew run
 
 ### Timing
 
-To time the programs, inside the the project root run the following command:
+To time the programs, inside the project root run the following command:
 
 ```shell
 $ ./gradlew run --args="-t"
@@ -56,7 +56,7 @@ $ ./gradlew run --args="-t"
 
 ### Testing
 
-To test the programs, inside the the project root run the following command:
+To test the programs, inside the project root run the following command:
 
 ```shell
 $ ./gradlew cleanTest && ./gradlew test
