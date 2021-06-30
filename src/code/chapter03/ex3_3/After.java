@@ -1,6 +1,8 @@
 package chapter03.ex3_3;
 
 import utils.EmptyStackException;
+import utils.Stack;
+import utils.StackNode;
 
 import java.util.ArrayList;
 
@@ -44,7 +46,7 @@ public class After implements Runnable {
                     stack = new Stack(this.threshold);
                     stacks.add(stack);
                 }
-                stack.push(new StackElement(data));
+                stack.push(new StackNode(data));
             } catch (EmptyStackException e) {
                 e.printStackTrace();
             }

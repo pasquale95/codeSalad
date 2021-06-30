@@ -1,4 +1,4 @@
-package chapter03.ex3_3;
+package utils;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -10,21 +10,21 @@ public class Stack {
 
     private final int threshold;
     private Stack previous;
-    private StackElement top;
+    private StackNode top;
     private int size;
 
     public Stack(int threshold) {
         this.threshold = threshold;
     }
 
-    public void push(StackElement element) {
+    public void push(StackNode element) {
         element.setPrevious(this.top);
         this.top = element;
         this.size++;
     }
 
-    public StackElement pop() {
-        StackElement toPop = this.top;
+    public StackNode pop() {
+        StackNode toPop = this.top;
         this.top = this.top.getPrevious();
         this.size--;
         return toPop;
@@ -47,7 +47,7 @@ public class Stack {
     }
 
     public String toString() {
-        StackElement runner = this.top;
+        StackNode runner = this.top;
         StringBuilder sb = new StringBuilder("|");
         while (runner != null) {
             sb.append(runner.getData()).append("|");

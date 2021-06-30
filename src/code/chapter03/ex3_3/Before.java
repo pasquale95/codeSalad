@@ -1,6 +1,8 @@
 package chapter03.ex3_3;
 
 import utils.EmptyStackException;
+import utils.Stack;
+import utils.StackNode;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -37,7 +39,7 @@ public class Before implements Runnable {
                 this.top = newStack;
                 this.stacks++;
             }
-            this.top.push(new StackElement(data));
+            this.top.push(new StackNode(data));
         }
 
         /**

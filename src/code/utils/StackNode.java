@@ -1,4 +1,4 @@
-package chapter03.ex3_3;
+package utils;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -6,19 +6,19 @@ package chapter03.ex3_3;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class StackElement {
+public class StackNode {
     private final int data;
-    private StackElement previous;
+    private StackNode previous;
 
-    public StackElement(int data) {
+    public StackNode(int data) {
         this.data = data;
     }
 
-    public StackElement getPrevious() {
+    public StackNode getPrevious() {
         return previous;
     }
 
-    public void setPrevious(StackElement previous) {
+    public void setPrevious(StackNode previous) {
         this.previous = previous;
     }
 
