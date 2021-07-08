@@ -13,6 +13,10 @@ public class Stack {
     private StackNode top;
     private int size;
 
+    public Stack() {
+        this.threshold = Integer.MAX_VALUE;
+    }
+
     public Stack(int threshold) {
         this.threshold = threshold;
     }
@@ -24,10 +28,14 @@ public class Stack {
     }
 
     public StackNode pop() {
-        StackNode toPop = this.top;
+        StackNode toPop = this.peek();
         this.top = this.top.getPrevious();
         this.size--;
         return toPop;
+    }
+
+    public StackNode peek() {
+        return this.top;
     }
 
     public void setPrevious(Stack previous) {

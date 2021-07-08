@@ -40,7 +40,7 @@ public class Ex3_3 {
     }
 
     @Test
-    @Order(1)
+    @Order(2)
     void checkStackOfPlatesAfter() throws EmptyStackException {
         After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
         for (int number : NUMBERS) {
