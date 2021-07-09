@@ -38,7 +38,7 @@ class Ex2_5 {
 
     @Test
     @Order(1)
-    void sumBefore() {
+    void sumListsBefore() {
         testEquals(reverseSum1, Before.reverseOrderSum(addend1, addend2));
         testEquals(forwardSum1, Before.forwardOrderSum(addend1, addend2));
         testEquals(reverseSum2, Before.reverseOrderSum(addend1, addend3));
@@ -47,7 +47,7 @@ class Ex2_5 {
 
     @Test
     @Order(2)
-    void sumAfter() {
+    void sumListsAfter() {
         testEquals(reverseSum1, After.reverseOrderSum(addend1, addend2));
         testEquals(forwardSum1, After.forwardOrderSum(addend1, addend2));
         testEquals(reverseSum2, After.reverseOrderSum(addend1, addend3));

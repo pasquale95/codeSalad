@@ -21,7 +21,7 @@ public class Ex3_4 {
 
     @Test
     @Order(1)
-    void myQueueBefore() throws EmptyQueueException {
+    void queueViaStacksBefore() throws EmptyQueueException {
         Before.MyQueue myQueue = new Before.MyQueue();
         for (int number : NUMBERS) {
             myQueue.add(number);
@@ -41,7 +41,7 @@ public class Ex3_4 {
 
     @Test
     @Order(2)
-    void myQueueAfter() throws EmptyQueueException {
+    void queueViaStacksAfter() throws EmptyQueueException {
         After.MyQueue myQueue = new After.MyQueue();
         for (int number : NUMBERS) {
             myQueue.add(number);

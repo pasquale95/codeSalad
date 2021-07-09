@@ -23,7 +23,7 @@ public class Ex3_1 {
 
     @Test
     @Order(1)
-    void checkTripleStackBefore() throws StackOverflowException, EmptyStackException {
+    void threeInOneBefore() throws StackOverflowException, EmptyStackException {
         Before.allocateStack(6);
         for (int i = 0; i < numbers.length; i++) {
             Before.pushToStack(numbers[i], stackSequence[i]);
@@ -42,7 +42,7 @@ public class Ex3_1 {
 
     @Test
     @Order(2)
-    void checkTripleStackAfter() throws StackOverflowException, EmptyStackException {
+    void threeInOneAfter() throws StackOverflowException, EmptyStackException {
         After.allocateStack(6);
         for (int i = 0; i < numbers.length; i++) {
             After.pushToStack(numbers[i], stackSequence[i]);

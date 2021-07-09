@@ -17,7 +17,7 @@ class Ex1_1 {
 
     @Test
     @Order(1)
-    void isUniqueCharsBefore() {
+    void isUniqueBefore() {
         assertTrue(Before.isUniqueCharsA(""));
         assertFalse(Before.isUniqueCharsA("alpha"));
         assertTrue(Before.isUniqueCharsA("beta"));
@@ -27,7 +27,7 @@ class Ex1_1 {
     }
 
     @Test
-    @Order(2) void isUniqueCharsAfter() {
+    @Order(2) void isUniqueAfter() {
         assertTrue(After.isUniqueCharsA(""));
         assertFalse(After.isUniqueCharsA("alpha"));
         assertTrue(After.isUniqueCharsA("beta"));

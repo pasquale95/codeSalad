@@ -22,7 +22,7 @@ public class Ex3_3 {
 
     @Test
     @Order(1)
-    void checkStackOfPlatesBefore() throws EmptyStackException {
+    void stackOfPlatesBefore() throws EmptyStackException {
         Before.SetOfStacks setOfStacks = new Before.SetOfStacks(THRESHOLD);
         for (int number : NUMBERS) {
             setOfStacks.push(number);
@@ -41,7 +41,7 @@ public class Ex3_3 {
 
     @Test
     @Order(2)
-    void checkStackOfPlatesAfter() throws EmptyStackException {
+    void stackOfPlatesAfter() throws EmptyStackException {
         After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
         for (int number : NUMBERS) {
             setOfStacks.push(number);

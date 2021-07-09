@@ -31,7 +31,7 @@ class Ex2_1 {
 
     @Test
     @Order(1)
-    void removeDuplicatesBefore() {
+    void removeDupsBefore() {
         // test Question A
         LinkedListNode clone = withDuplicates.clone();
         Before.removeDuplicatesA(clone);
@@ -44,7 +44,7 @@ class Ex2_1 {
 
     @Test
     @Order(2)
-    void removeDuplicatesAfter() {
+    void removeDupsAfter() {
         // test Question A
         LinkedListNode clone = withDuplicates.clone();
         After.removeDuplicatesA(clone);

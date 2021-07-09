@@ -51,7 +51,7 @@ public class Solution {
         return matrix;
     }
 
-    public static void printMatrix(int[][] matrix) {
+    private static void printMatrix(int[][] matrix) {
         StringBuilder sb = new StringBuilder();
         for (int[] row : matrix) {
             for (int number: row) {

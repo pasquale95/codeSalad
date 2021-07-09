@@ -29,7 +29,7 @@ class Ex2_3 {
 
     @Test
     @Order(1)
-    void removeLinkedListNodeBefore() {
+    void deleteMiddleNodeBefore() {
         LinkedListNode clone = head.clone();
         LinkedListNode nodeToPrune = clone.getNext();
         Before.removeLinkedListNode(nodeToPrune);
@@ -40,7 +40,7 @@ class Ex2_3 {
 
     @Test
     @Order(2)
-    void removeLinkedListNodeAfter() {
+    void deleteMiddleNodeAfter() {
         LinkedListNode clone = head.clone();
         LinkedListNode nodeToPrune = clone.getNext();
         After.removeLinkedListNode(nodeToPrune);
