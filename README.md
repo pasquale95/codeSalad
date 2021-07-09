@@ -22,7 +22,7 @@ The project is based on [Gradle](https://github.com/gradle/gradle) automation to
 
 ## Problems
 
-1. [Chapter 1 - Arrays and Strings](src/code/chapter01): `6 / 9`  complete.
+1. [Chapter 1 - Arrays and Strings](src/code/chapter01): `7 / 9`  complete.
 1. [Chapter 2 - Linked Lists](src/code/chapter02): `5 / 8`  complete.
 1. [Chapter 3 - Stacks and Queues](src/code/chapter03): `4 / 6`  complete.
 
