@@ -21,7 +21,7 @@ class Ex1_5 {
 
     @Test
     @Order(1)
-    void areOneAwayBefore() {
+    void oneAwayBefore() {
         assertTrue(Before.areOneAway("pales", "pale"));
         assertTrue(Before.areOneAway("pale", "ple"));
         assertTrue(Before.areOneAway("pale", "bale"));
@@ -32,7 +32,7 @@ class Ex1_5 {
 
     @Test
     @Order(2)
-    void areOneAwayAfter() {
+    void oneAwayAfter() {
         assertTrue(After.areOneAway("pales", "pale"));
         assertTrue(After.areOneAway("pale", "ple"));
         assertTrue(After.areOneAway("pale", "bale"));

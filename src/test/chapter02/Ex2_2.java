@@ -27,7 +27,7 @@ class Ex2_2 {
 
     @Test
     @Order(1)
-    void findKthToLastBefore() {
+    void returnKthToLastBefore() {
         LinkedListNode kth = Before.findKthToLast(head, 2);
         assertNotNull(kth);
         assertEquals(15, kth.getData());
@@ -40,7 +40,7 @@ class Ex2_2 {
 
     @Test
     @Order(2)
-    void findKthToLastAfter() {
+    void returnKthToLastAfter() {
         LinkedListNode kth = After.findKthToLast(head, 2);
         assertNotNull(kth);
         assertEquals(15, kth.getData());

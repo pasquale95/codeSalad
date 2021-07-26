@@ -25,7 +25,7 @@ class Ex1_6 {
 
     @Test
     @Order(1)
-    void areOneAwayBefore() {
+    void stringCompressionBefore() {
         assertEquals(BIGGER_COMPRESSED, Before.compress(BIGGER_THAN_COMPRESSION));
         assertEquals(EQUAL_LENGTH_COMPRESSION, Before.compress(EQUAL_LENGTH_COMPRESSION));
         assertEquals(SMALLER_THAN_COMPRESSION, Before.compress(SMALLER_THAN_COMPRESSION));
@@ -33,7 +33,7 @@ class Ex1_6 {
 
     @Test
     @Order(2)
-    void areOneAwayAfter() {
+    void stringCompressionAfter() {
         assertEquals(BIGGER_COMPRESSED, Before.compress(BIGGER_THAN_COMPRESSION));
         assertEquals(EQUAL_LENGTH_COMPRESSION, Before.compress(EQUAL_LENGTH_COMPRESSION));
         assertEquals(SMALLER_THAN_COMPRESSION, Before.compress(SMALLER_THAN_COMPRESSION));

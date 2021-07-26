@@ -99,7 +99,7 @@ public class LinkedListNode implements Cloneable {
 
     /**
      * Return a random linked list of the specified length
-     * and with values in the range [0, dataRange)
+     * and with values in the range [0, dataRange).
      *
      * @param   length The random linked list number of nodes.
      * @param   dataRange The nodes can have value in the range [0, dataRange).
@@ -113,6 +113,22 @@ public class LinkedListNode implements Cloneable {
             node = node.append(r.nextInt(dataRange));
         }
         return head;
+    }
+
+    /**
+     * Return an array of random linked lists, each with values in the range [0, dataRange).
+     *
+     * @param   arraySize The array size.
+     * @param   listLength The size of each linked list in the array.
+     * @param   dataRange The nodes can have value in the range [0, dataRange).
+     * @return  The array of random linked lists.
+     */
+    public static LinkedListNode[] createRandomLinkedListArray(int arraySize, int listLength, int dataRange) {
+        LinkedListNode[] listArray = new LinkedListNode[arraySize];
+        for (int i = 0; i < arraySize; i++) {
+            listArray[i] = createRandomLinkedList(listLength, dataRange);
+        }
+        return listArray;
     }
 
     /**

@@ -20,7 +20,7 @@ class Ex1_4 {
 
     @Test
     @Order(1)
-    void isPermutationOfPalindromeBefore() {
+    void palindromePermutationBefore() {
         assertTrue(Before.isPermutationOfPalindrome("Tact Coa"));
         assertFalse(Before.isPermutationOfPalindrome("Tactic Coa"));
         assertTrue(Before.isPermutationOfPalindrome(""));
@@ -28,7 +28,7 @@ class Ex1_4 {
 
     @Test
     @Order(2)
-    void isPermutationOfPalindromeAfter() {
+    void palindromePermutationAfter() {
         assertTrue(After.isPermutationOfPalindrome("Tact Coa"));
         assertFalse(After.isPermutationOfPalindrome("Tactic Coa"));
         assertTrue(After.isPermutationOfPalindrome(""));
