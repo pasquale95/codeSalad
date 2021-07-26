@@ -28,6 +28,8 @@ public class After implements Runnable {
         }
 
         /**
+         * Complexity: O(1)
+         *
          * Push element in the current stack, if not full yet.
          * Otherwise create a new stack and link previous one to current.
          * @param   data The data to push in the stack.
@@ -49,6 +51,8 @@ public class After implements Runnable {
         }
 
         /**
+         * Complexity: O(1)
+         *
          * Pop in the classic way (i.e. pop from the last created stack).
          * @return  The top of the last created stack.
          * @throws  EmptyStackException If the setOfStacks does not contain any stack.
@@ -62,6 +66,17 @@ public class After implements Runnable {
             return toPop;
         }
 
+        /**
+         * Complexity: O(1)
+         *
+         * Pop element from the stack at the given index (stack 0 is the first one created,
+         * i.e. at the end of the chain).
+         * The complexity O(1) is due to the use of ArrayList<>, which allows constant-time access,
+         * given the element index.
+         * @param   index The index of the stack to pop from.
+         * @return  The top of the chosen stack.
+         * @throws  EmptyStackException If the chosen stack does not exist.
+         */
         public int popAt(int index) throws EmptyStackException {
             if (index < 0 || index > this.stacks.size() - 1) {
                 throw new EmptyStackException("Error: stack " + index + " does not exist");

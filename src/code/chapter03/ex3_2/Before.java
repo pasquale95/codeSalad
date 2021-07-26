@@ -122,9 +122,9 @@ public class Before implements Runnable {
 
     public static String stackToString() {
         StackElement runner = top;
-        StringBuilder sb = new StringBuilder().append("| ");
+        StringBuilder sb = new StringBuilder().append("|");
         while (runner != null) {
-            sb.append(runner.getData()).append(" | ");
+            sb.append(runner.getData()).append("|");
             runner = runner.getPrevious();
         }
         return sb.toString();

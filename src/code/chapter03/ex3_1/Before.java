@@ -105,10 +105,10 @@ public class Before implements Runnable {
      * @return  The stack in string format.
      */
     public static String stackToString(int stackNumber) {
-        StringBuilder sb = new StringBuilder().append("| ");
-        for (int i = 0; i < stackSize; i++) {
+        StringBuilder sb = new StringBuilder().append("|");
+        for (int i = stackSize - 1; i >= 0; i--) {
             if (stackIndicator[i] == stackNumber) {
-                sb.append(stack[i]).append(" | ");
+                sb.append(stack[i]).append("|");
             }
         }
         return sb.toString();

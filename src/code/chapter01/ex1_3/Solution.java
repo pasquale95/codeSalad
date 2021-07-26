@@ -30,7 +30,7 @@ public class Solution {
     public static void main(String[] args) {
         printBlue(PROBLEM);
         System.out.println(colorYellow('"' + input + '"') + " urlified: " +
-                After.urlify(toCharsWithExtraRoom(input), input.length()));
+                colorYellow(After.urlify(toCharsWithExtraRoom(input), input.length())) + ".");
     }
 
     public static void time() {

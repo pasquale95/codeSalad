@@ -34,11 +34,11 @@ public class Solution {
                 After.pushToStack(numbers[i], stackSequence[i]);
             }
             System.out.println("Pop from stack 0: " + colorYellow(After.stackToString(0))
-                    + "gives: " + After.popFromStack(0)
+                    + " gives " + After.popFromStack(0)
                     + ", while pop from stack 1: " + colorYellow(After.stackToString(1))
-                    + "gives: " + After.popFromStack(1)
+                    + " gives " + After.popFromStack(1)
                     + ", while pop from stack 2: " + colorYellow(After.stackToString(2))
-                    + "gives: " + After.popFromStack(2)
+                    + " gives " + After.popFromStack(2) + "."
             );
         } catch (StackOverflowException | EmptyStackException e) {
             e.printStackTrace();

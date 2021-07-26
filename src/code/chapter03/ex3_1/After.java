@@ -232,10 +232,10 @@ public class After implements Runnable {
      * @return  The stack in string format.
      */
     public static String stackToString(int stackNumber) {
-        StringBuilder sb = new StringBuilder().append("| ");
+        StringBuilder sb = new StringBuilder().append("|");
         StackInfo currentStack = stackInfo[stackNumber];
-        for (int i = 0; i < currentStack.size; i++) {
-            sb.append(stack[currentStack.start + i]).append(" | ");
+        for (int i = currentStack.size - 1; i >= 0; i--) {
+            sb.append(stack[adjustIndex(currentStack.start + i)]).append("|");
         }
         return sb.toString();
     }

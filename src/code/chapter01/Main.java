@@ -22,6 +22,7 @@ public class Main {
         chapter01.ex1_3.Solution.main(null);
         chapter01.ex1_4.Solution.main(null);
         chapter01.ex1_5.Solution.main(null);
+        chapter01.ex1_6.Solution.main(null);
     }
 
     /**
@@ -33,5 +34,6 @@ public class Main {
         chapter01.ex1_3.Solution.time();
         chapter01.ex1_4.Solution.time();
         chapter01.ex1_5.Solution.time();
+        chapter01.ex1_6.Solution.time();
     }
 }

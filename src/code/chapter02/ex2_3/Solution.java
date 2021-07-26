@@ -31,7 +31,7 @@ public class Solution {
         LinkedListNode nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
         After.removeLinkedListNode(nodeToPrune);
-        System.out.println(colorYellow(head.toString()));
+        System.out.println(colorYellow(head.toString()) + ".");
     }
 
     public static void time() {
