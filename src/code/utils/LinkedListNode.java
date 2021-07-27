@@ -85,6 +85,19 @@ public class LinkedListNode implements Cloneable {
     }
 
     /**
+     * @return  The size of the linked list with head the given node.
+     */
+    public int getListLength() {
+        int counter = 0;
+        LinkedListNode runner = this;
+        while (runner != null) {
+            counter++;
+            runner = runner.getNext();
+        }
+        return counter;
+    }
+
+    /**
      * Return a cloned LinkedListNode
      * @return  A cloned Linked list starting from this node.
      */
@@ -106,11 +119,14 @@ public class LinkedListNode implements Cloneable {
      * @return  The head of a random generated linked list.
      */
     public static LinkedListNode createRandomLinkedList(int length, int dataRange) {
-        Random r = new Random();
-        LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
-        LinkedListNode head = node;
-        for (int i = 1; i < length; i++) {
-            node = node.append(r.nextInt(dataRange));
+        LinkedListNode head = null;
+        if (length > 0) {
+            Random r = new Random();
+            LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
+            head = node;
+            for (int i = 1; i < length; i++) {
+                node = node.append(r.nextInt(dataRange));
+            }
         }
         return head;
     }
