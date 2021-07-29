@@ -1,5 +1,6 @@
 package chapter01.ex1_5;
 
+import org.json.simple.JSONObject;
 import utils.StringGenerator;
 import utils.Timer;
 
@@ -37,8 +38,8 @@ public class Solution {
                 " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(two, three))) + ".");
     }
 
-    public static void time() {
-        String[] input = StringGenerator.generateRandomStringArray(100, 10, false);
+    public static void time(JSONObject params) {
+        String[] input = StringGenerator.generateRandomStringArray(params);
         Before before = new Before(input);
         After after = new After(input);
         Timer timer = new Timer(PROBLEM, before, after);

@@ -1,5 +1,6 @@
 package chapter01.ex1_6;
 
+import org.json.simple.JSONObject;
 import utils.StringGenerator;
 import utils.Timer;
 
@@ -31,8 +32,8 @@ public class Solution {
                 + colorYellow(After.compress(TO_COMPRESS)) + ".");
     }
 
-    public static void time() {
-        String[] input = StringGenerator.generateRandomStringArray(100, 20, false);
+    public static void time(JSONObject params) {
+        String[] input = StringGenerator.generateRandomStringArray(params);
         Before before = new Before(input);
         After after = new After(input);
         Timer timer = new Timer(PROBLEM, before, after);

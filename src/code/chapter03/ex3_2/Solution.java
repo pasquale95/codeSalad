@@ -1,5 +1,6 @@
 package chapter03.ex3_2;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
 import utils.EmptyStackException;
 import utils.Timer;
@@ -16,7 +17,6 @@ import static utils.Colors.printBlue;
 public class Solution {
 
     private static final String PROBLEM = "Chapter 3. Ex 3.2";
-    private static final int SIZE = 5000;
 
     /**
      * Chapter 3
@@ -41,9 +41,9 @@ public class Solution {
         }
     }
 
-    public static void time() {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(SIZE, 10000);
-        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(SIZE);
+    public static void time(JSONObject params) {
+        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(((Long)params.get("size")).intValue());
         Before before = new Before(numbers, booleans);
         After after = new After(numbers, booleans);
         Timer timer = new Timer(PROBLEM, before, after);

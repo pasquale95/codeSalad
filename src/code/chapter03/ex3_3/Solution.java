@@ -1,5 +1,6 @@
 package chapter03.ex3_3;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
 import utils.EmptyStackException;
 import utils.Timer;
@@ -52,10 +53,11 @@ public class Solution {
         }
     }
 
-    public static void time() {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(5000, 10000);
-        Before before = new Before(numbers, 20);
-        After after = new After(numbers, 20);
+    public static void time(JSONObject params) {
+        int threshold = ((Long) params.get("threshold")).intValue();
+        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        Before before = new Before(numbers, threshold);
+        After after = new After(numbers, threshold);
         Timer timer = new Timer(PROBLEM, before, after);
         timer.start();
     }

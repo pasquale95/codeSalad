@@ -1,5 +1,6 @@
 package chapter02.ex2_4;
 
+import org.json.simple.JSONObject;
 import utils.LinkedListNode;
 import utils.Timer;
 
@@ -37,8 +38,8 @@ public class Solution {
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
-    public static void time() {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(1000, 1000);
+    public static void time(JSONObject params) {
+        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
         Random r = new Random();
         int threshold = r.nextInt(2000);
         Before before = new Before(head.clone(), threshold);

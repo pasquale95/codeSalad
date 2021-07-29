@@ -1,5 +1,8 @@
 package chapter01;
 
+import org.json.simple.JSONObject;
+import utils.Configurator;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -8,9 +11,11 @@ package chapter01;
  */
 public class Main {
 
+    public static final String CHAPTER_CODE = "chapter01";
+
     public static void main(String[] args) {
         //runSolutions();
-        timeSolutions();
+        //timeSolutions();
     }
 
     /**
@@ -29,13 +34,13 @@ public class Main {
     /**
      * Time all solutions for chapter 1
      */
-    public static void timeSolutions() {
-        chapter01.ex1_1.Solution.time();
-        chapter01.ex1_2.Solution.time();
-        chapter01.ex1_3.Solution.time();
-        chapter01.ex1_4.Solution.time();
-        chapter01.ex1_5.Solution.time();
-        chapter01.ex1_6.Solution.time();
-        chapter01.ex1_7.Solution.time();
+    public static void timeSolutions(Configurator configurator) {
+        chapter01.ex1_1.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_1"));
+        chapter01.ex1_2.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_2"));
+        chapter01.ex1_3.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_3"));
+        chapter01.ex1_4.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_4"));
+        chapter01.ex1_5.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_5"));
+        chapter01.ex1_6.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_6"));
+        chapter01.ex1_7.Solution.time(configurator.getConfig(CHAPTER_CODE, "ex1_7"));
     }
 }

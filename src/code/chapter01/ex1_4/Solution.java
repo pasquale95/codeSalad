@@ -1,5 +1,6 @@
 package chapter01.ex1_4;
 
+import org.json.simple.JSONObject;
 import utils.StringGenerator;
 import utils.Timer;
 
@@ -32,8 +33,8 @@ public class Solution {
                 colorYellow(String.valueOf(After.isPermutationOfPalindrome(input))) + ".");
     }
 
-    public static void time() {
-        String input = StringGenerator.generateRandomString(1000, false);
+    public static void time(JSONObject params) {
+        String input = StringGenerator.generateRandomString(params);
         Before before = new Before(input);
         After after = new After(input);
         Timer timer = new Timer(PROBLEM, before, after);

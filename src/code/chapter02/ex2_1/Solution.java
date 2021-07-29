@@ -1,5 +1,6 @@
 package chapter02.ex2_1;
 
+import org.json.simple.JSONObject;
 import utils.LinkedListNode;
 import utils.Timer;
 
@@ -29,8 +30,8 @@ public class Solution {
         System.out.println(colorYellow(head.toString()) + ".");
     }
 
-    public static void time() {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(200, 200);
+    public static void time(JSONObject params) {
+        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
         Before before = new Before(head.clone());
         After after = new After(head.clone());
         Timer timer = new Timer(PROBLEM, before, after);

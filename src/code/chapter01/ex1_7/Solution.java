@@ -1,7 +1,7 @@
 package chapter01.ex1_7;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
-import utils.StringGenerator;
 import utils.Timer;
 
 import static utils.Colors.colorYellow;
@@ -27,7 +27,7 @@ public class Solution {
      */
     public static void main(String[] args) {
         printBlue(PROBLEM);
-        int[][] matrix = generateRandomMatrix(N);
+        int[][] matrix = ArrayGenerator.generateRandomMatrix(N, 100);
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
         After.rotateMatrix(matrix);
@@ -35,20 +35,12 @@ public class Solution {
         printMatrix(matrix);
     }
 
-    public static void time() {
-        int[][] matrix = generateRandomMatrix(1000);
+    public static void time(JSONObject params) {
+        int[][] matrix = ArrayGenerator.generateRandomMatrix(params);
         Before before = new Before(matrix);
         After after = new After(matrix);
         Timer timer = new Timer(PROBLEM, before, after);
         timer.start();
-    }
-
-    public static int[][] generateRandomMatrix(int N) {
-        int[][] matrix = new int[N][];
-        for (int i = 0; i < N; i++) {
-            matrix[i] = ArrayGenerator.generateRandomIntArray(N, 100);
-        }
-        return matrix;
     }
 
     private static void printMatrix(int[][] matrix) {

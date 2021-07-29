@@ -1,0 +1,7 @@
+{
+  "ex1_1": {
+    "total": 2000,
+    "maxLength": 10,
+    "onlyLowerCase": true
+  }
+}

@@ -1,3 +1,9 @@
+import org.json.simple.parser.ParseException;
+import utils.Configurator;
+import utils.Level;
+
+import java.io.IOException;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -18,6 +24,7 @@ public class Main {
             }
         }
         // run solutions
+        //timeSolutions();
         if (timing) {
             timeSolutions();
         } else {
@@ -38,8 +45,13 @@ public class Main {
      * Time all solutions
      */
     public static void timeSolutions() {
-        chapter01.Main.timeSolutions();
-        chapter02.Main.timeSolutions();
-        chapter03.Main.timeSolutions();
+        try {
+            Configurator configurator = new Configurator(Level.LOW);
+            chapter01.Main.timeSolutions(configurator);
+            chapter02.Main.timeSolutions(configurator);
+            chapter03.Main.timeSolutions(configurator);
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

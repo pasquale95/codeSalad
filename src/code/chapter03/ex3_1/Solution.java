@@ -1,5 +1,6 @@
 package chapter03.ex3_1;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
 import utils.EmptyStackException;
 import utils.StackOverflowException;
@@ -29,6 +30,10 @@ public class Solution {
         try {
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
             int[] stackSequence = ArrayGenerator.generateRandomIntArray(10, Before.STACKS);
+            // set at least 1 element per stack -> prevent emptyStackException
+            stackSequence[0] = 0;
+            stackSequence[1] = 1;
+            stackSequence[2] = 2;
             After.allocateStack(numbers.length);
             for (int i = 0; i < numbers.length; i++) {
                 After.pushToStack(numbers[i], stackSequence[i]);
@@ -45,9 +50,12 @@ public class Solution {
         }
     }
 
-    public static void time() {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(NUMBERS, 1000);
-        int[] stackSequence = ArrayGenerator.generateRandomIntArray(NUMBERS, Before.STACKS);
+    public static void time(JSONObject params) {
+        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        int[] stackSequence = ArrayGenerator.generateRandomIntArray(
+                ((Long)params.get("size")).intValue(),
+                Before.STACKS
+        );
         Before before = new Before(numbers, stackSequence);
         After after = new After(numbers, stackSequence);
         Timer timer = new Timer(PROBLEM, before, after);
