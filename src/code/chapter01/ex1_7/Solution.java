@@ -1,9 +1,9 @@
 package chapter01.ex1_7;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
-import utils.StringGenerator;
-import utils.Timer;
-
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -13,8 +13,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 1. Ex 1.7";
     private static final int N = 6;
 
@@ -25,9 +24,10 @@ public class Solution {
      * is represented by an integer, write a method to rotate the image by 90 degrees.
      * Can you do this in place?
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
-        int[][] matrix = generateRandomMatrix(N);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
+        int[][] matrix = ArrayGenerator.generateRandomMatrix(N, 100);
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
         After.rotateMatrix(matrix);
@@ -35,20 +35,15 @@ public class Solution {
         printMatrix(matrix);
     }
 
-    public static void time() {
-        int[][] matrix = generateRandomMatrix(1000);
-        Before before = new Before(matrix);
-        After after = new After(matrix);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
+        int[][] matrix = ArrayGenerator.generateRandomMatrix(params);
+        return new ExerciseSolutions(new Before(matrix), new After(matrix));
     }
 
-    public static int[][] generateRandomMatrix(int N) {
-        int[][] matrix = new int[N][];
-        for (int i = 0; i < N; i++) {
-            matrix[i] = ArrayGenerator.generateRandomIntArray(N, 100);
-        }
-        return matrix;
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 
     private static void printMatrix(int[][] matrix) {

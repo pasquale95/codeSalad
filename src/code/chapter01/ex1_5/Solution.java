@@ -1,8 +1,9 @@
 package chapter01.ex1_5;
 
+import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import utils.StringGenerator;
-import utils.Timer;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -12,7 +13,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
+public class Solution extends SolutionTemplate {
 
     public static final String PROBLEM = "Chapter 1. Ex 1.5";
     public static final String one = "pales";
@@ -27,8 +28,9 @@ public class Solution {
      * Given two strings, write a function to check if they are one edit
      * (or zero edits) away.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         System.out.println("The strings " + colorYellow(one) + " and " + colorYellow(two) +
                 " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(one, two))) + ".");
         System.out.println("The strings " + colorYellow(one) + " and " + colorYellow(three) +
@@ -37,11 +39,14 @@ public class Solution {
                 " are one edit away: " + colorYellow(String.valueOf(After.areOneAway(two, three))) + ".");
     }
 
-    public static void time() {
-        String[] input = StringGenerator.generateRandomStringArray(100, 10, false);
-        Before before = new Before(input);
-        After after = new After(input);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
+        String[] input = StringGenerator.generateRandomStringArray(params);
+        return new ExerciseSolutions(new Before(input), new After(input));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

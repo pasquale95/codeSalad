@@ -1,11 +1,10 @@
 package chapter03.ex3_4;
 
+import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
-import utils.EmptyStackException;
-import utils.Timer;
-
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import java.util.Random;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -15,8 +14,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 3. Ex 3.4";
 
     /**
@@ -24,9 +22,10 @@ public class Solution {
      * Ex3.4: Queue via Stacks
      * Implement a MyQueue class which implements a queue using two stacks.
      */
-    public static void main(String[] args) {
+    @Override
+    public void solve() {
         try {
-            printBlue(PROBLEM);
+            printBlue(getProblemName());
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 50);
             After.MyQueue queue = new After.MyQueue();
             for (int number : numbers) {
@@ -48,12 +47,15 @@ public class Solution {
         }
     }
 
-    public static void time() {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(1000, 10000);
-        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(1000);
-        Before before = new Before(numbers, booleans);
-        After after = new After(numbers, booleans);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
+        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(((Long)params.get("size")).intValue());
+        return new ExerciseSolutions(new Before(numbers, booleans), new After(numbers, booleans));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

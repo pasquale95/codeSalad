@@ -120,6 +120,10 @@ public class Before implements Runnable {
         return size == 0;
     }
 
+    /**
+     * @return  The stack in string format.
+     */
+    @SuppressWarnings("unused")
     public static String stackToString() {
         StackElement runner = top;
         StringBuilder sb = new StringBuilder().append("|");

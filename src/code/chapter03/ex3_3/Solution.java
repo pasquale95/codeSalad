@@ -1,9 +1,7 @@
 package chapter03.ex3_3;
 
-import utils.ArrayGenerator;
-import utils.EmptyStackException;
-import utils.Timer;
-
+import org.json.simple.JSONObject;
+import utils.*;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -13,10 +11,8 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 3. Ex 3.3";
-    private static final int THRESHOLD = 4;
 
     /**
      * Chapter 3
@@ -28,14 +24,15 @@ public class Solution {
      * SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack (that is,
      * pop() should return the same values as it would if there were just a single stack).
      *
-     * FOLLOW UP
+     * FOLLOW-UP
      * Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         try {
             int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
-            After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
+            After.SetOfStacks setOfStacks = new After.SetOfStacks(4);
             for (int number : numbers) {
                 setOfStacks.push(number);
             }
@@ -52,11 +49,15 @@ public class Solution {
         }
     }
 
-    public static void time() {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(5000, 10000);
-        Before before = new Before(numbers, 20);
-        After after = new After(numbers, 20);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
+        int threshold = ((Long) params.get("threshold")).intValue();
+        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        return new ExerciseSolutions(new Before(numbers, threshold), new After(numbers, threshold));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

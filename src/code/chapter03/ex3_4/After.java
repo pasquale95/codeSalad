@@ -1,7 +1,6 @@
 package chapter03.ex3_4;
 
 import utils.EmptyQueueException;
-import utils.EmptyStackException;
 import utils.Stack;
 import utils.StackNode;
 

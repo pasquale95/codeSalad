@@ -1,5 +1,7 @@
 package utils;
 
+import org.json.simple.JSONObject;
+
 import java.util.Random;
 
 /**
@@ -16,6 +18,7 @@ public class StringGenerator {
 
     /**
      * Generate an array of strings each of the specified length.
+     *
      * @param   total Number of random strings to generate.
      * @param   maxLength Max length of the single string inside the pool.
      * @param   onlyLowerCase True if the string can only contain lowercase alphabet chars (no space).
@@ -31,7 +34,22 @@ public class StringGenerator {
     }
 
     /**
+     * Generate an array of strings each of the specified length.
+     *
+     * @param   params Set of parameters to use for generating an array of random strings.
+     * @return  Array of random generated strings.
+     */
+    public static String[] generateRandomStringArray(JSONObject params) {
+        return generateRandomStringArray(
+                ((Long) params.get("total")).intValue(),
+                ((Long) params.get("maxLength")).intValue(),
+                (Boolean) params.get("onlyLowerCase")
+        );
+    }
+
+    /**
      * Generate random string.
+     *
      * @param   length Length of the single string inside the pool.
      * @param   onlyLowerCase True if the string can only contain lowercase alphabet chars (no space).
      */
@@ -49,7 +67,21 @@ public class StringGenerator {
     }
 
     /**
+     * Generate random string.
+     *
+     * @param   params Set of parameters to use for generating a random string.
+     * @return  Array of random generated strings.
+     */
+    public static String generateRandomString(JSONObject params) {
+        return generateRandomString(
+                ((Long) params.get("length")).intValue(),
+                (Boolean) params.get("onlyLowerCase")
+        );
+    }
+
+    /**
      * Convert the string to a char array with 2 extra cells for each space char inside the string.
+     *
      * @param   string The string to convert.
      * @return  Char array with extra space.
      */

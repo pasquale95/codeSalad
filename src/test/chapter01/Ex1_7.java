@@ -2,8 +2,8 @@ package chapter01;
 
 import chapter01.ex1_7.After;
 import chapter01.ex1_7.Before;
-import chapter01.ex1_7.Solution;
 import org.junit.jupiter.api.*;
+import utils.ArrayGenerator;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ class Ex1_7 {
 
     @BeforeEach
     void init() {
-        matrix = Solution.generateRandomMatrix(N);
+        matrix = ArrayGenerator.generateRandomMatrix(N, 100);
         backupMatrix = new int[N][N];
         for (int i = 0; i < N; i++) {
             System.arraycopy(matrix[i], 0, backupMatrix[i], 0, N);

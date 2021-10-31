@@ -1,5 +1,7 @@
 package utils;
 
+import org.json.simple.JSONObject;
+
 import java.util.Random;
 
 /**
@@ -85,6 +87,19 @@ public class LinkedListNode implements Cloneable {
     }
 
     /**
+     * @return  The size of the linked list with head the given node.
+     */
+    public int getListLength() {
+        int counter = 0;
+        LinkedListNode runner = this;
+        while (runner != null) {
+            counter++;
+            runner = runner.getNext();
+        }
+        return counter;
+    }
+
+    /**
      * Return a cloned LinkedListNode
      * @return  A cloned Linked list starting from this node.
      */
@@ -106,13 +121,30 @@ public class LinkedListNode implements Cloneable {
      * @return  The head of a random generated linked list.
      */
     public static LinkedListNode createRandomLinkedList(int length, int dataRange) {
-        Random r = new Random();
-        LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
-        LinkedListNode head = node;
-        for (int i = 1; i < length; i++) {
-            node = node.append(r.nextInt(dataRange));
+        LinkedListNode head = null;
+        if (length > 0) {
+            Random r = new Random();
+            LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
+            head = node;
+            for (int i = 1; i < length; i++) {
+                node = node.append(r.nextInt(dataRange));
+            }
         }
         return head;
+    }
+
+    /**
+     * Return a random linked list of the specified length
+     * and with values in the range [0, dataRange).
+     *
+     * @param   params Set of parameters to use for generating an array of random linked lists.
+     * @return  @return  The head of a random generated linked list.
+     */
+    public static LinkedListNode createRandomLinkedList(JSONObject params) {
+        return createRandomLinkedList(
+                ((Long) params.get("length")).intValue(),
+                ((Long) params.get("dataRange")).intValue()
+        );
     }
 
     /**
@@ -129,6 +161,20 @@ public class LinkedListNode implements Cloneable {
             listArray[i] = createRandomLinkedList(listLength, dataRange);
         }
         return listArray;
+    }
+
+    /**
+     * Return an array of random linked lists, each with values in the range [0, dataRange).
+     *
+     * @param   params Set of parameters to use for generating an array of random linked lists.
+     * @return  The array of random linked lists.
+     */
+    public static LinkedListNode[] createRandomLinkedListArray(JSONObject params) {
+        return createRandomLinkedListArray(
+                ((Long) params.get("arraySize")).intValue(),
+                ((Long) params.get("listLength")).intValue(),
+                ((Long) params.get("dataRange")).intValue()
+        );
     }
 
     /**

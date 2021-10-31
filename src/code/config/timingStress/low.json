@@ -1,0 +1,82 @@
+{
+  "chapter01": {
+    "ex1_1": {
+      "total": 200,
+      "maxLength": 10,
+      "onlyLowerCase": true
+    },
+    "ex1_2": {
+      "total": 200,
+      "maxLength": 10,
+      "onlyLowerCase": true
+    },
+    "ex1_3": {
+      "length": 10,
+      "onlyLowerCase": false
+    },
+    "ex1_4": {
+      "length": 1000,
+      "onlyLowerCase": false
+    },
+    "ex1_5": {
+      "total": 100,
+      "maxLength": 10,
+      "onlyLowerCase": false
+    },
+    "ex1_6": {
+      "total": 100,
+      "maxLength": 20,
+      "onlyLowerCase": false
+    },
+    "ex1_7": {
+      "N": 1000,
+      "ceiling": 100
+    }
+  },
+  "chapter02": {
+    "ex2_1": {
+      "length": 200,
+      "dataRange": 200
+    },
+    "ex2_2": {
+      "length": 20,
+      "dataRange": 20
+    },
+    "ex2_3": {
+      "length": 200,
+      "dataRange": 200
+    },
+    "ex2_4": {
+      "length": 1000,
+      "dataRange": 1000
+    },
+    "ex2_5": {
+      "arraySize": 100,
+      "listLength": 1000,
+      "dataRange": 1000
+    },
+    "ex2_6": {
+      "length": 10,
+      "dataRange": 2
+    }
+  },
+  "chapter03": {
+    "ex3_1": {
+        "size": 200,
+        "ceiling": 1000
+    },
+    "ex3_2": {
+      "size": 5000,
+      "ceiling": 1000
+    },
+    "ex3_3": {
+      "size": 1000,
+      "ceiling": 1000,
+      "threshold": 20
+    },
+    "ex3_4": {
+      "size": 1000,
+      "ceiling": 1000
+    }
+  }
+}

@@ -104,6 +104,7 @@ public class Before implements Runnable {
      * @param   stackNumber The stack number.
      * @return  The stack in string format.
      */
+    @SuppressWarnings("unused")
     public static String stackToString(int stackNumber) {
         StringBuilder sb = new StringBuilder().append("|");
         for (int i = stackSize - 1; i >= 0; i--) {
