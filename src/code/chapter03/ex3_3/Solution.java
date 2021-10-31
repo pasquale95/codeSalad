@@ -2,7 +2,6 @@ package chapter03.ex3_3;
 
 import org.json.simple.JSONObject;
 import utils.*;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 

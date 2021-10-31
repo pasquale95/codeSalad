@@ -1,7 +1,7 @@
 package chapter01;
 
-import chapter01.ex1_6.After;
 import chapter01.ex1_6.Before;
+import chapter01.ex1_6.After;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -34,8 +34,8 @@ class Ex1_6 {
     @Test
     @Order(2)
     void stringCompressionAfter() {
-        assertEquals(BIGGER_COMPRESSED, Before.compress(BIGGER_THAN_COMPRESSION));
-        assertEquals(EQUAL_LENGTH_COMPRESSION, Before.compress(EQUAL_LENGTH_COMPRESSION));
-        assertEquals(SMALLER_THAN_COMPRESSION, Before.compress(SMALLER_THAN_COMPRESSION));
+        assertEquals(BIGGER_COMPRESSED, After.compress(BIGGER_THAN_COMPRESSION));
+        assertEquals(EQUAL_LENGTH_COMPRESSION, After.compress(EQUAL_LENGTH_COMPRESSION));
+        assertEquals(SMALLER_THAN_COMPRESSION, After.compress(SMALLER_THAN_COMPRESSION));
     }
 }

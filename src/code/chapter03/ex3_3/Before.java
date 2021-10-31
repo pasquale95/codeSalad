@@ -25,7 +25,7 @@ public class Before implements Runnable {
          * Complexity: 0(1)
          *
          * Push element in the current stack, if not full yet.
-         * Otherwise create a new stack and link previous one to current.
+         * Otherwise, create a new stack and link previous one to current.
          * @param   data The data to push in the stack.
          */
         public void push(int data) {

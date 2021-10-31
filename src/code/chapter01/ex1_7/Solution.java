@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
-import utils.Timer;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 

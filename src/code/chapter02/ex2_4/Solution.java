@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 import utils.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.SolutionTemplate;
-import utils.Timer;
 import java.util.Random;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
