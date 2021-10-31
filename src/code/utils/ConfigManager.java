@@ -7,12 +7,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-public class Configurator {
-
+public class ConfigManager {
     private final JSONObject configs;
+    private static ConfigManager instance;
 
-    public Configurator(Level level) throws IOException, ParseException {
+    /**
+     * ConfigManager constructor implementing Singleton design pattern.
+     * @param   level The stress level
+     * @throws  IOException If the config file is not found.
+     * @throws  ParseException If the config file has a bad format.
+     */
+    private ConfigManager(Level level) throws IOException, ParseException {
         this.configs = parseConfig(level.getFilename());
+    }
+
+    /**
+     * @return The existing configManager object. If none exist, create a new one and return it.
+     */
+    public static ConfigManager getInstance() throws IOException, ParseException {
+        if (instance == null) {
+            instance = new ConfigManager(Level.LOW);
+        }
+        return instance;
     }
 
     private JSONObject parseConfig(String filename) throws IOException, ParseException {

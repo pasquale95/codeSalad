@@ -1,10 +1,11 @@
 package chapter02.ex2_3;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
 import utils.LinkedListNode;
+import utils.SolutionTemplate;
 import utils.Timer;
 import java.util.Random;
-
 import static utils.Colors.*;
 
 /**
@@ -13,7 +14,7 @@ import static utils.Colors.*;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
+public class Solution extends SolutionTemplate {
 
     private static final String PROBLEM = "Chapter 2. Ex 2.3";
     private static final int LIST_LENGTH = 10;
@@ -26,8 +27,9 @@ public class Solution {
      * the exact middle) of a singly linked list, given only access
      * to that node.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, 100);
         LinkedListNode nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
@@ -35,12 +37,15 @@ public class Solution {
         System.out.println(colorYellow(head.toString()) + ".");
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
-        Before before = new Before(getNodeToPrune(head.clone()));
-        After after = new After(getNodeToPrune(head.clone()));
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(getNodeToPrune(head.clone())), new After(getNodeToPrune(head.clone())));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 
     /**

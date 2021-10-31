@@ -1,9 +1,10 @@
 package chapter01.ex1_3;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import utils.StringGenerator;
 import utils.Timer;
-
 import static utils.Colors.*;
 import static utils.StringGenerator.toCharsWithExtraRoom;
 
@@ -13,8 +14,7 @@ import static utils.StringGenerator.toCharsWithExtraRoom;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     public static final String PROBLEM = "Chapter 1. Ex 1.3";
     public static final String input = "Mr John Smith";
 
@@ -28,17 +28,24 @@ public class Solution {
      * NOTE: if implementing in Java, please use a character array so that you can
      * perform this operation in place.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         System.out.println(colorYellow('"' + input + '"') + " urlified: " +
                 colorYellow(After.urlify(toCharsWithExtraRoom(input), input.length())) + ".");
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         String input = StringGenerator.generateRandomString(params);
-        Before before = new Before(toCharsWithExtraRoom(input), input.length());
-        After after = new After(toCharsWithExtraRoom(input), input.length());
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(
+                new Before(toCharsWithExtraRoom(input), input.length()),
+                new After(toCharsWithExtraRoom(input), input.length())
+        );
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

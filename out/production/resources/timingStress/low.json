@@ -67,16 +67,16 @@
     },
     "ex3_2": {
       "size": 5000,
-      "ceiling": 10000
+      "ceiling": 1000
     },
     "ex3_3": {
-      "size": 5000,
-      "ceiling": 10000,
+      "size": 1000,
+      "ceiling": 1000,
       "threshold": 20
     },
     "ex3_4": {
       "size": 1000,
-      "ceiling": 10000
+      "ceiling": 1000
     }
   }
 }

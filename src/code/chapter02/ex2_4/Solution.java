@@ -1,11 +1,11 @@
 package chapter02.ex2_4;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
 import utils.LinkedListNode;
+import utils.SolutionTemplate;
 import utils.Timer;
-
 import java.util.Random;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -15,7 +15,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
+public class Solution extends SolutionTemplate {
 
     private static final String PROBLEM = "Chapter 2. Ex 2.4";
     private static final int LIST_LENGTH = 10, CEILING = 50;
@@ -28,8 +28,9 @@ public class Solution {
      * (IMPORTANT: The partition element x can appear anywhere in the "right partition";
      * it does not need to appear between the left and the right partitions.)
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, CEILING);
         Random r = new Random();
         int threshold = r.nextInt(CEILING);
@@ -38,14 +39,17 @@ public class Solution {
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
         Random r = new Random();
         int threshold = r.nextInt(2000);
-        Before before = new Before(head.clone(), threshold);
-        After after = new After(head.clone(), threshold);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(head.clone(), threshold), new After(head.clone(), threshold));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 
     /**

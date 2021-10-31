@@ -1,9 +1,9 @@
 package chapter01.ex1_6;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import utils.StringGenerator;
-import utils.Timer;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -13,8 +13,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     public static final String PROBLEM = "Chapter 1. Ex 1.6";
     public static final String TO_COMPRESS = "aaabbbcddaaAAAff";
 
@@ -26,17 +25,21 @@ public class Solution {
      * string would not become smaller than the original string, your method should return the original
      * string. You can assume the string has only uppercase and lowercase letters (a-z).
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         System.out.println("The string " + colorYellow(TO_COMPRESS) + " after compression becomes "
                 + colorYellow(After.compress(TO_COMPRESS)) + ".");
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         String[] input = StringGenerator.generateRandomStringArray(params);
-        Before before = new Before(input);
-        After after = new After(input);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(input), new After(input));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

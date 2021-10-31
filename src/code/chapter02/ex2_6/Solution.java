@@ -1,11 +1,10 @@
 package chapter02.ex2_6;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
 import utils.LinkedListNode;
+import utils.SolutionTemplate;
 import utils.Timer;
-
-import java.util.Random;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -15,8 +14,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 2. Ex 2.6";
 
     /**
@@ -24,19 +22,23 @@ public class Solution {
      * Ex2.6: Palindrome
      * Implement a function to check if a linked list is palindrome.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         LinkedListNode head = LinkedListNode.createRandomLinkedList(5, 2);
         System.out.println("The linked list " + colorYellow(head.toString())
                 + " is palindrome: " + colorYellow(String.valueOf(After.isPalindrome(head)))
         );
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
-        Before before = new Before(head);
-        After after = new After(head);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(head), new After(head));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

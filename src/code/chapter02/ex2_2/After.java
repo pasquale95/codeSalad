@@ -15,16 +15,16 @@ public class After implements Runnable {
     }
 
     private final LinkedListNode head;
-    private final int k;
+    private final int kth;
 
-    public After (LinkedListNode head, int k) {
+    public After (LinkedListNode head, int kth) {
         this.head = head;
-        this.k = k;
+        this.kth = kth;
     }
 
     @Override
     public void run() {
-        findKthToLast(this.head, this.k);
+        findKthToLast(this.head, this.kth);
     }
 
     /**

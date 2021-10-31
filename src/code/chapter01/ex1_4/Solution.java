@@ -1,9 +1,10 @@
 package chapter01.ex1_4;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import utils.StringGenerator;
 import utils.Timer;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -13,8 +14,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     public static final String PROBLEM = "Chapter 1. Ex 1.4";
     public static final String input = "Tact Coa";
 
@@ -27,17 +27,21 @@ public class Solution {
      * The palindrome does not need to be limited to just dictionary words.
      * You can ignore casing and non-letter characters.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         System.out.println(colorYellow('"' + input + '"') + " is a permutation of a palindrome: " +
                 colorYellow(String.valueOf(After.isPermutationOfPalindrome(input))) + ".");
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         String input = StringGenerator.generateRandomString(params);
-        Before before = new Before(input);
-        After after = new After(input);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(input), new After(input));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }

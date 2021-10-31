@@ -2,8 +2,9 @@ package chapter01.ex1_7;
 
 import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
+import utils.ExerciseSolutions;
+import utils.SolutionTemplate;
 import utils.Timer;
-
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -13,8 +14,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 1. Ex 1.7";
     private static final int N = 6;
 
@@ -25,8 +25,9 @@ public class Solution {
      * is represented by an integer, write a method to rotate the image by 90 degrees.
      * Can you do this in place?
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         int[][] matrix = ArrayGenerator.generateRandomMatrix(N, 100);
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
@@ -35,12 +36,15 @@ public class Solution {
         printMatrix(matrix);
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         int[][] matrix = ArrayGenerator.generateRandomMatrix(params);
-        Before before = new Before(matrix);
-        After after = new After(matrix);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(matrix), new After(matrix));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 
     private static void printMatrix(int[][] matrix) {

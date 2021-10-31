@@ -1,9 +1,10 @@
 package chapter02.ex2_2;
 
 import org.json.simple.JSONObject;
+import utils.ExerciseSolutions;
 import utils.LinkedListNode;
+import utils.SolutionTemplate;
 import utils.Timer;
-
 import static utils.Colors.*;
 
 /**
@@ -12,8 +13,7 @@ import static utils.Colors.*;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution {
-
+public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 2. Ex 2.2";
     private static final int KTH = 3;
 
@@ -23,8 +23,9 @@ public class Solution {
      * Implement an algorithm to find the kth to last element of a singly
      * linked list.
      */
-    public static void main(String[] args) {
-        printBlue(PROBLEM);
+    @Override
+    public void solve() {
+        printBlue(getProblemName());
         LinkedListNode head = LinkedListNode.createRandomLinkedList(10, 8);
         LinkedListNode kth = After.findKthToLast(head, KTH);
         if (kth != null) {
@@ -36,11 +37,14 @@ public class Solution {
         }
     }
 
-    public static void time(JSONObject params) {
+    @Override
+    protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
-        Before before = new Before(head.clone(), 12);
-        After after = new After(head.clone(), 12);
-        Timer timer = new Timer(PROBLEM, before, after);
-        timer.start();
+        return new ExerciseSolutions(new Before(head.clone(), 12), new After(head.clone(), 12));
+    }
+
+    @Override
+    protected String getProblemName() {
+        return PROBLEM;
     }
 }
