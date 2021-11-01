@@ -13,11 +13,11 @@ import utils.StackNode;
 public class Before implements Runnable {
 
     public static class MyQueue {
-        private final Stack stack1, stack2;
+        private final Stack<Integer> stack1, stack2;
 
         public MyQueue() {
-            this.stack1 = new Stack();
-            this.stack2 = new Stack();
+            this.stack1 = new Stack<>();
+            this.stack2 = new Stack<>();
         }
 
         /**
@@ -27,7 +27,7 @@ public class Before implements Runnable {
          * @param   data The data to add.
          */
         public void add(int data) {
-            stack1.push(new StackNode(data));
+            stack1.push(data);
         }
 
         /**
@@ -41,7 +41,7 @@ public class Before implements Runnable {
                 throw new EmptyQueueException("Error: queue is empty.");
             }
             invertStack(stack1, stack2);
-            int toRemove = stack2.pop().getData();
+            int toRemove = stack2.pop();
             invertStack(stack2, stack1);
             return toRemove;
         }
@@ -62,7 +62,7 @@ public class Before implements Runnable {
             return stack1.isEmpty();
         }
 
-        private void invertStack(Stack from, Stack to) {
+        private void invertStack(Stack<Integer> from, Stack<Integer> to) {
             while (!from.isEmpty()) {
                 to.push(from.pop());
             }

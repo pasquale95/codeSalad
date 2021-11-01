@@ -14,14 +14,14 @@ import java.util.ArrayList;
 public class After implements Runnable {
 
     public static class SetOfStacks {
-        final ArrayList<Stack> stacks = new ArrayList<>();
+        final ArrayList<Stack<Integer>> stacks = new ArrayList<>();
         private final int threshold;
 
         public SetOfStacks(int threshold) {
             this.threshold = threshold;
         }
 
-        private Stack getLastStack() throws EmptyStackException {
+        private Stack<Integer> getLastStack() throws EmptyStackException {
             if (this.stacks.isEmpty()) {
                 throw new EmptyStackException("Error: SetOfStacks is empty.");
             }
@@ -38,14 +38,14 @@ public class After implements Runnable {
         public void push(int data)  {
             try {
                 if (this.stacks.isEmpty()) {
-                    stacks.add(new Stack(this.threshold));
+                    stacks.add(new Stack<>(this.threshold));
                 }
-                Stack stack = this.getLastStack();
+                Stack<Integer> stack = this.getLastStack();
                 if (stack.isFull()) {
-                    stack = new Stack(this.threshold);
+                    stack = new Stack<>(this.threshold);
                     stacks.add(stack);
                 }
-                stack.push(new StackNode(data));
+                stack.push(data);
             } catch (EmptyStackException e) {
                 e.printStackTrace();
             }
@@ -59,8 +59,8 @@ public class After implements Runnable {
          * @throws  EmptyStackException If the setOfStacks does not contain any stack.
          */
         public int pop() throws EmptyStackException {
-            Stack stack = this.getLastStack();
-            int toPop = stack.pop().getData();
+            Stack<Integer> stack = this.getLastStack();
+            int toPop = stack.pop();
             if (stack.isEmpty()) {
                 this.stacks.remove(stack);
             }
@@ -82,8 +82,8 @@ public class After implements Runnable {
             if (index < 0 || index > this.stacks.size() - 1) {
                 throw new EmptyStackException("Error: stack " + index + " does not exist");
             }
-            Stack stack = this.stacks.get(index);
-            int toPop = stack.pop().getData();
+            Stack<Integer> stack = this.stacks.get(index);
+            int toPop = stack.pop();
             if (stack.isEmpty()) {
                 this.stacks.remove(stack);
             }

@@ -6,23 +6,23 @@ package utils;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class StackNode {
-    private final int data;
-    private StackNode previous;
+public class StackNode<T> {
+    private final T data;
+    private StackNode<T> previous;
 
-    public StackNode(int data) {
+    public StackNode(T data) {
         this.data = data;
     }
 
-    public StackNode getPrevious() {
+    public StackNode<T> getPrevious() {
         return previous;
     }
 
-    public void setPrevious(StackNode previous) {
+    public void setPrevious(StackNode<T> previous) {
         this.previous = previous;
     }
 
-    public int getData() {
+    public T getData() {
         return data;
     }
 }

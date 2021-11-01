@@ -13,7 +13,7 @@ import utils.StackNode;
 public class Before implements Runnable {
 
     public static class SetOfStacks {
-        private Stack top;
+        private Stack<Integer> top;
         private final int threshold;
         private int stacks;
 
@@ -30,16 +30,16 @@ public class Before implements Runnable {
          */
         public void push(int data) {
             if (isEmpty()) {
-                this.top = new Stack(threshold);
+                this.top = new Stack<>(threshold);
                 this.stacks++;
             }
             if (this.top.isFull()) {
-                Stack newStack = new Stack(threshold);
+                Stack<Integer> newStack = new Stack<>(threshold);
                 newStack.setPrevious(this.top);
                 this.top = newStack;
                 this.stacks++;
             }
-            this.top.push(new StackNode(data));
+            this.top.push(data);
         }
 
         /**
@@ -53,7 +53,7 @@ public class Before implements Runnable {
             if (isEmpty()) {
                 throw new EmptyStackException("Error: SetOfStacks is empty.");
             }
-            int toPop = this.top.pop().getData();
+            int toPop = this.top.pop();
             // remove stack if empty after pop and set new top
             if (this.top.isEmpty()) {
                 this.top = this.top.getPrevious();
@@ -77,8 +77,8 @@ public class Before implements Runnable {
             if (stacksToPop < 0) {
                 throw new EmptyStackException("Error: stack " + index + " does not exist");
             }
-            Stack current = this.top;
-            Stack aboveCurrent = null;
+            Stack<Integer> current = this.top;
+            Stack<Integer> aboveCurrent = null;
             // find stack to pop from and its previous one
             while (stacksToPop > 0) {
                 aboveCurrent = current;
@@ -86,7 +86,7 @@ public class Before implements Runnable {
                 stacksToPop--;
             }
             // pop data
-            int toPop = current.pop().getData();
+            int toPop = current.pop();
             // evict current stack if empty and link its previous to its aboveCurrent
             if (current.isEmpty() && aboveCurrent != null) {
                 aboveCurrent.setPrevious(current.getPrevious());
@@ -100,7 +100,7 @@ public class Before implements Runnable {
         }
 
         public String toString() {
-            Stack runner = this.top;
+            Stack<Integer> runner = this.top;
             StringBuilder sb = new StringBuilder("** ");
             while (runner != null) {
                 sb.append(runner).append(" ** ");

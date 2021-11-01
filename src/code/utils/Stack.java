@@ -6,11 +6,11 @@ package utils;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Stack {
+public class Stack<T> {
 
     private final int threshold;
-    private Stack previous;
-    private StackNode top;
+    private Stack<T> previous;
+    private StackNode<T> top;
     private int size;
 
     public Stack() {
@@ -21,28 +21,29 @@ public class Stack {
         this.threshold = threshold;
     }
 
-    public void push(StackNode element) {
+    public void push(T data) {
+        StackNode<T> element = new StackNode<>(data);
         element.setPrevious(this.top);
         this.top = element;
         this.size++;
     }
 
-    public StackNode pop() {
-        StackNode toPop = this.peek();
+    public T pop() {
+        StackNode<T> toPop = this.peek();
         this.top = this.top.getPrevious();
         this.size--;
-        return toPop;
+        return toPop.getData();
     }
 
-    public StackNode peek() {
+    public StackNode<T> peek() {
         return this.top;
     }
 
-    public void setPrevious(Stack previous) {
+    public void setPrevious(Stack<T> previous) {
         this.previous = previous;
     }
 
-    public Stack getPrevious() {
+    public Stack<T> getPrevious() {
         return this.previous;
     }
 
@@ -55,7 +56,7 @@ public class Stack {
     }
 
     public String toString() {
-        StackNode runner = this.top;
+        StackNode<T> runner = this.top;
         StringBuilder sb = new StringBuilder("|");
         while (runner != null) {
             sb.append(runner.getData()).append("|");

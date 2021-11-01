@@ -14,11 +14,11 @@ public class After implements Runnable {
 
     public static class MyQueue {
 
-        private final Stack stack1, stack2;
+        private final Stack<Integer> stack1, stack2;
 
         public MyQueue() {
-            stack1 = new Stack();
-            stack2 = new Stack();
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
         }
 
         /**
@@ -28,7 +28,7 @@ public class After implements Runnable {
          * @param   data The data to add.
          */
         public void add(int data) {
-            this.stack1.push(new StackNode(data));
+            this.stack1.push(data);
         }
 
         /**
@@ -44,7 +44,7 @@ public class After implements Runnable {
             if (stack2.isEmpty()) {
                 fillStack2();
             }
-            return stack2.pop().getData();
+            return stack2.pop();
         }
 
         /**
@@ -72,7 +72,7 @@ public class After implements Runnable {
         public String toString() {
             // bottom comes from stack1
             StringBuilder sb = new StringBuilder();
-            StackNode runner = stack1.peek();
+            StackNode<Integer> runner = stack1.peek();
             while (runner != null) {
                 sb.append("|").append(runner.getData());
                 runner = runner.getPrevious();
