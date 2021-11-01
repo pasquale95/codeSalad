@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 import utils.ArrayGenerator;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
+
+import java.util.Arrays;
 import java.util.Random;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;

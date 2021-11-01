@@ -53,7 +53,7 @@ public class Before implements Runnable {
          */
         public int peek() {
             invertStack(stack1, stack2);
-            int toPeek = stack2.peek().getData();
+            int toPeek = stack2.peek();
             invertStack(stack2, stack1);
             return toPeek;
         }

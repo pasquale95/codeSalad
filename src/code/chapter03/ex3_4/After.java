@@ -56,7 +56,7 @@ public class After implements Runnable {
             if (stack2.isEmpty()) {
                 fillStack2();
             }
-            return stack2.peek().getData();
+            return stack2.peek();
         }
 
         public boolean isEmpty() {
@@ -72,19 +72,13 @@ public class After implements Runnable {
         public String toString() {
             // bottom comes from stack1
             StringBuilder sb = new StringBuilder();
-            StackNode<Integer> runner = stack1.peek();
-            while (runner != null) {
-                sb.append("|").append(runner.getData());
-                runner = runner.getPrevious();
+            if (!stack1.isEmpty()) {
+                sb.append(stack1);
             }
-            // top comes from stack2 reversed
-            StringBuilder sb2 = new StringBuilder();
-            runner = stack2.peek();
-            while (runner != null) {
-                sb2.insert(0, runner.getData()).insert(0, "|");
-                runner = runner.getPrevious();
+            // then add stack2 content reversed
+            if (!stack2.isEmpty()) {
+                sb.append(stack2.toStringReversed().substring(1));
             }
-            sb.append(sb2);
             return sb.toString();
         }
     }

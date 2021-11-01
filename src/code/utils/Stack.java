@@ -29,14 +29,14 @@ public class Stack<T> {
     }
 
     public T pop() {
-        StackNode<T> toPop = this.peek();
+        T toPop = this.peek();
         this.top = this.top.getPrevious();
         this.size--;
-        return toPop.getData();
+        return toPop;
     }
 
-    public StackNode<T> peek() {
-        return this.top;
+    public T peek() {
+        return this.top.getData();
     }
 
     public void setPrevious(Stack<T> previous) {
@@ -60,6 +60,16 @@ public class Stack<T> {
         StringBuilder sb = new StringBuilder("|");
         while (runner != null) {
             sb.append(runner.getData()).append("|");
+            runner = runner.getPrevious();
+        }
+        return sb.toString();
+    }
+
+    public String toStringReversed() {
+        StackNode<T> runner = this.top;
+        StringBuilder sb = new StringBuilder("|");
+        while (runner != null) {
+            sb.insert(0, runner.getData()).insert(0, "|");
             runner = runner.getPrevious();
         }
         return sb.toString();
