@@ -25,4 +25,13 @@ public class StackNode<T> {
     public T getData() {
         return data;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof StackNode<?>)) {
+            return false;
+        }
+        StackNode<?> other = (StackNode<?>) o;
+        return other.data.equals(data);
+    }
 }

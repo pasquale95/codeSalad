@@ -74,4 +74,25 @@ public class Stack<T> {
         }
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Stack<?>)) {
+            return false;
+        }
+        Stack<?> other = (Stack<?>) o;
+        if (other.size != this.size) {
+            return false;
+        }
+        StackNode<T> runner = this.top;
+        StackNode<?> otherRunner = other.top;
+        while (runner != null && otherRunner != null) {
+            if (!runner.equals(otherRunner)) {
+                return false;
+            }
+            runner = runner.getPrevious();
+            otherRunner = otherRunner.getPrevious();
+        }
+        return true;
+    }
 }
