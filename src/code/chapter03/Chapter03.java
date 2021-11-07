@@ -19,6 +19,7 @@ public class Chapter03 extends ChapterTemplate {
         exercises.add(new chapter03.ex3_2.Solution());
         exercises.add(new chapter03.ex3_3.Solution());
         exercises.add(new chapter03.ex3_4.Solution());
+        exercises.add(new chapter03.ex3_5.Solution());
     }
 
     @Override
