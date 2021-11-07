@@ -25,6 +25,7 @@ hs_err_pid*
 # IDE-related files
 *.iml
 .idea/
+out/
 
 # gradle files
 !gradle-wrapper.jar
