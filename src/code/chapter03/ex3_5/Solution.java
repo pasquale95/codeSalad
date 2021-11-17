@@ -18,11 +18,6 @@ import static utils.Colors.printBlue;
 public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 3. Ex 3.5";
 
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        sol.solve();
-    }
-
     /**
      * Chapter 3
      * Ex3.5: Sort Stack
