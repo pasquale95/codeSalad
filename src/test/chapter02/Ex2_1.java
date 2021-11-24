@@ -16,16 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ex2_1 {
 
-    private static LinkedListNode withDuplicates;
-    private static LinkedListNode noDuplicates;
+    private static LinkedListNode<Integer> withDuplicates;
+    private static LinkedListNode<Integer> noDuplicates;
 
     @BeforeAll
     static void init() {
         // create linked list to clean
-        withDuplicates = new LinkedListNode(3);
+        withDuplicates = new LinkedListNode<>(3);
         withDuplicates.append(4).append(3).append(2).append(5).append(3).append(5);
         // expected result
-        noDuplicates = new LinkedListNode(3);
+        noDuplicates = new LinkedListNode<>(3);
         noDuplicates.append(4).append(2).append(5);
     }
 
@@ -33,7 +33,7 @@ class Ex2_1 {
     @Order(1)
     void removeDupsBefore() {
         // test Question A
-        LinkedListNode clone = withDuplicates.clone();
+        LinkedListNode<Integer> clone = withDuplicates.clone();
         Before.removeDuplicatesA(clone);
         assertEquals(noDuplicates, clone);
         // test Question B
@@ -46,7 +46,7 @@ class Ex2_1 {
     @Order(2)
     void removeDupsAfter() {
         // test Question A
-        LinkedListNode clone = withDuplicates.clone();
+        LinkedListNode<Integer> clone = withDuplicates.clone();
         After.removeDuplicatesA(clone);
         assertEquals(noDuplicates, clone);
         // test Question B

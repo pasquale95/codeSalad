@@ -29,8 +29,8 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, 100);
-        LinkedListNode nodeToPrune = getNodeToPrune(head);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, 100, i -> i);
+        LinkedListNode<Integer> nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
         After.removeLinkedListNode(nodeToPrune);
         System.out.println(colorYellow(head.toString()) + ".");
@@ -38,7 +38,7 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
         return new ExerciseSolutions(new Before(getNodeToPrune(head.clone())), new After(getNodeToPrune(head.clone())));
     }
 
@@ -51,7 +51,7 @@ public class Solution extends SolutionTemplate {
      * Retrieve node to prune in the linked list
      * @param   head The head of the linked list.
      */
-    private static LinkedListNode getNodeToPrune(LinkedListNode head) {
+    private static LinkedListNode<Integer> getNodeToPrune(LinkedListNode<Integer> head) {
         Random r = new Random();
         int nodeToPrune = r.nextInt(LIST_LENGTH - 2) + 1; // no head or tail
         for (int i = 0; i < nodeToPrune; i++) {

@@ -24,7 +24,7 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(5, 2);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(5, 2, i -> i);
         System.out.println("The linked list " + colorYellow(head.toString())
                 + " is palindrome: " + colorYellow(String.valueOf(After.isPalindrome(head)))
         );
@@ -32,7 +32,7 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
         return new ExerciseSolutions(new Before(head), new After(head));
     }
 

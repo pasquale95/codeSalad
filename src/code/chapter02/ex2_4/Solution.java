@@ -30,17 +30,17 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, CEILING);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, CEILING, i -> i);
         Random r = new Random();
         int threshold = r.nextInt(CEILING);
-        LinkedListNode partitioned = After.partition(head.clone(), threshold);
+        LinkedListNode<Integer> partitioned = After.partition(head.clone(), threshold);
         System.out.println(colorYellow(head.toString()) + " after partitioning on the threshold " + threshold
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
         Random r = new Random();
         int threshold = r.nextInt(2000);
         return new ExerciseSolutions(new Before(head.clone(), threshold), new After(head.clone(), threshold));
@@ -57,7 +57,7 @@ public class Solution extends SolutionTemplate {
      * @param   threshold The threshold value used for partitioning
      * @return  The linked list as formatted string.
      */
-    private static String partitionFormat(LinkedListNode node, int threshold) {
+    private static String partitionFormat(LinkedListNode<Integer> node, int threshold) {
         StringBuilder sb = new StringBuilder();
         boolean partitionFound = false;
         while (!node.isTail()) {

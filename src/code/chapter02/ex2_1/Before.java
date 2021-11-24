@@ -10,9 +10,9 @@ import utils.LinkedListNode;
  */
 public class Before implements Runnable {
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
 
-    public Before(LinkedListNode head) {
+    public Before(LinkedListNode<Integer> head) {
         this.head = head;
     }
 
@@ -27,10 +27,10 @@ public class Before implements Runnable {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesA(LinkedListNode head) {
-        for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {
-            for (LinkedListNode node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
-                if (node.getData() == node1.getData()) {
+    public static void removeDuplicatesA(LinkedListNode<Integer> head) {
+        for (LinkedListNode<Integer> node = head; node != null && !node.isTail(); node = node.getNext()) {
+            for (LinkedListNode<Integer> node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
+                if (node.getData().equals(node1.getData())) {
                     node1.delete();
                 }
             }
@@ -42,10 +42,10 @@ public class Before implements Runnable {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesB(LinkedListNode head) {
-        for (LinkedListNode node = head; node != null && !node.isTail(); node = node.getNext()) {
-            for (LinkedListNode node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
-                if (node.getData() == node1.getData()) {
+    public static void removeDuplicatesB(LinkedListNode<Integer> head) {
+        for (LinkedListNode<Integer> node = head; node != null && !node.isTail(); node = node.getNext()) {
+            for (LinkedListNode<Integer> node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
+                if (node.getData().equals(node1.getData())) {
                     node1.delete();
                 }
             }

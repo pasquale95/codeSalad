@@ -12,9 +12,9 @@ import java.util.HashSet;
  */
 public class After implements Runnable {
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
 
-    public After(LinkedListNode head) {
+    public After(LinkedListNode<Integer> head) {
         this.head = head;
     }
 
@@ -29,7 +29,7 @@ public class After implements Runnable {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesA(LinkedListNode head) {
+    public static void removeDuplicatesA(LinkedListNode<Integer> head) {
         HashSet<Integer> hashTable = new HashSet<>();
         while (head != null) {
             if (hashTable.contains(head.getData())) {
@@ -47,12 +47,12 @@ public class After implements Runnable {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesB(LinkedListNode head) {
-        LinkedListNode current = head;
+    public static void removeDuplicatesB(LinkedListNode<Integer> head) {
+        LinkedListNode<Integer> current = head;
         while (current != null && !current.isTail()) {
-            LinkedListNode runner = current.getNext();
+            LinkedListNode<Integer> runner = current.getNext();
             while (runner != null) {
-                if (current.getData() == runner.getData()) {
+                if (current.getData().equals(runner.getData())) {
                     runner.delete();
                 }
                 runner = runner.getNext();

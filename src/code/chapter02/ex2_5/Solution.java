@@ -1,9 +1,10 @@
 package chapter02.ex2_5;
 
 import org.json.simple.JSONObject;
-import utils.ExerciseSolutions;
-import utils.LinkedListNode;
-import utils.SolutionTemplate;
+import org.json.simple.parser.ParseException;
+import utils.*;
+
+import java.io.IOException;
 import java.util.Random;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -18,6 +19,14 @@ public class Solution extends SolutionTemplate {
 
     private static final String PROBLEM = "Chapter 2. Ex 2.5";
 
+
+    public static void main(String[] args) throws IOException, ParseException {
+        ConfigManager configManager = ConfigManager.getInstance();
+        Solution sol = new Solution();
+        String[] codes = sol.getClass().getPackageName().split("\\.");
+        sol.time(configManager.getConfig(codes[0], codes[1]));
+    }
+
     /**
      * Chapter 2
      * Ex2.5: Sum Lists
@@ -31,8 +40,16 @@ public class Solution extends SolutionTemplate {
     public void solve() {
         printBlue(getProblemName());
         Random r = new Random();
-        LinkedListNode addend1 = LinkedListNode.createRandomLinkedList(r.nextInt(4)+1, 10);
-        LinkedListNode addend2 = LinkedListNode.createRandomLinkedList(r.nextInt(4)+1, 10);
+        LinkedListNode<Integer> addend1 = LinkedListNode.createRandomLinkedList(
+                r.nextInt(4) + 1,
+                10,
+                i -> i
+        );
+        LinkedListNode<Integer> addend2 = LinkedListNode.createRandomLinkedList(
+                r.nextInt(4)+1,
+                10,
+                i -> i
+        );
         System.out.println("The sum in reverse order of " + colorYellow(addend1.toString())
                 + " and " + colorYellow(addend2.toString())
                 + " is " + colorYellow(After.reverseOrderSum(addend1, addend2).toString())
@@ -42,7 +59,7 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode[] addends = LinkedListNode.createRandomLinkedListArray(params);
+        LinkedListNode<Integer>[] addends = LinkedListNode.createRandomLinkedListArray(params, i -> i);
         return new ExerciseSolutions(new Before(addends), new After(addends));
     }
 

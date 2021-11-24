@@ -10,9 +10,9 @@ import utils.LinkedListNode;
  */
 public class Before implements Runnable {
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
 
-    public Before(LinkedListNode head) {
+    public Before(LinkedListNode<Integer> head) {
         this.head = head;
     }
 
@@ -27,7 +27,7 @@ public class Before implements Runnable {
      * @param   head The head of the linked list to check.
      * @return  True if the linked list is palindrome.
      */
-    public static boolean isPalindrome(LinkedListNode head) {
+    public static boolean isPalindrome(LinkedListNode<Integer> head) {
         int size = head != null ? head.getListLength() : 0;
         if (size > 1) {
             // empty list or with 1 single element are palindrome by definition
@@ -45,8 +45,8 @@ public class Before implements Runnable {
      * @param   level The actual recursion level.
      * @return  The tail node if palindrome, null otherwise.
      */
-    private static LinkedListNode checkPalindromeRecursively(LinkedListNode node, int size, int level) {
-        LinkedListNode mirrored;
+    private static LinkedListNode<Integer> checkPalindromeRecursively(LinkedListNode<Integer> node, int size, int level) {
+        LinkedListNode<Integer> mirrored;
         if (size <= 1) {
             mirrored = node;
         } else if (level >= size/2 - 1) {
@@ -64,7 +64,7 @@ public class Before implements Runnable {
             }
         }
 
-        if (mirrored != null && node.getData() == mirrored.getData()) {
+        if (mirrored != null && node.getData().equals(mirrored.getData())) {
             return mirrored;
         } else {
             return null;

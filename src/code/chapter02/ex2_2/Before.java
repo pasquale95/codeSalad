@@ -10,10 +10,10 @@ import utils.LinkedListNode;
  */
 public class Before implements Runnable {
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
     private final int kth;
 
-    public Before (LinkedListNode head, int kth) {
+    public Before (LinkedListNode<Integer> head, int kth) {
         this.head = head;
         this.kth = kth;
     }
@@ -29,9 +29,9 @@ public class Before implements Runnable {
      * @param   head The head of the linked list.
      * @param   k The index of the node to find, starting from 0 for the tail.
      */
-    public static LinkedListNode findKthToLast(LinkedListNode head, int k) {
+    public static LinkedListNode<Integer> findKthToLast(LinkedListNode<Integer> head, int k) {
         int length = 0;
-        for (LinkedListNode node = head; node != null; node = node.getNext()) {
+        for (LinkedListNode<Integer> node = head; node != null; node = node.getNext()) {
             length++;
         }
         length -= (k + 1); // +1 since the tail is "0 steps to last"

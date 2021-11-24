@@ -10,9 +10,9 @@ import utils.LinkedListNode;
  */
 public class Before implements Runnable {
 
-    private final LinkedListNode[] addends;
+    private final LinkedListNode<Integer>[] addends;
 
-    public Before(LinkedListNode[] addends) {
+    public Before(LinkedListNode<Integer>[] addends) {
         this.addends = addends;
     }
 
@@ -33,8 +33,8 @@ public class Before implements Runnable {
      * @param   addend2 The second addend
      * @return  The sum of the two addends in reverse order.
      */
-    public static LinkedListNode reverseOrderSum(LinkedListNode addend1, LinkedListNode addend2) {
-        LinkedListNode result = null, runner = null;
+    public static LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+        LinkedListNode<Integer> result = null, runner = null;
         int tmp, carry = 0;
         // sum digit by digit
         while (addend1 != null || addend2 != null) {
@@ -51,7 +51,7 @@ public class Before implements Runnable {
             }
             carry = tmp / 10;
             if (runner == null) {
-                runner = new LinkedListNode(tmp % 10);
+                runner = new LinkedListNode<>(tmp % 10);
                 result = runner;
             } else {
                 runner = runner.append(tmp % 10);
@@ -71,7 +71,7 @@ public class Before implements Runnable {
      * @param   addend2 The second addend
      * @return  The sum of the two addends in forward order.
      */
-    public static LinkedListNode forwardOrderSum(LinkedListNode addend1, LinkedListNode addend2) {
+    public static LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         // cloning here since we're not supposed to change the original addend
         return invertLinkedList(reverseOrderSum(invertLinkedList(addend1.clone()), invertLinkedList(addend2.clone())));
     }
@@ -81,10 +81,10 @@ public class Before implements Runnable {
      * @param   head The linked list starting node.
      * @return  The inverted linked list.
      */
-    private static LinkedListNode invertLinkedList(LinkedListNode head) {
-        LinkedListNode runner = head;
+    private static LinkedListNode<Integer> invertLinkedList(LinkedListNode<Integer> head) {
+        LinkedListNode<Integer> runner = head;
         while (!runner.isTail()) {
-            LinkedListNode next = runner.getNext();
+            LinkedListNode<Integer> next = runner.getNext();
             runner.append(next.getNext());
             next.append(head);
             head = next;

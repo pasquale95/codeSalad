@@ -16,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ex2_6 {
 
-    private static LinkedListNode palindrome, notPalindrome;
+    private static LinkedListNode<Integer> palindrome, notPalindrome;
 
     @BeforeAll
     static void init() {
-        palindrome = new LinkedListNode(6);
+        palindrome = new LinkedListNode<>(6);
         palindrome.append(5).append(3).append(5).append(6);
         notPalindrome = palindrome.clone();
         notPalindrome.append(7);
@@ -30,7 +30,7 @@ class Ex2_6 {
     @Order(1)
     void palindromeBefore() {
         assertTrue(Before.isPalindrome(palindrome));
-        assertTrue(Before.isPalindrome(new LinkedListNode(2)));
+        assertTrue(Before.isPalindrome(new LinkedListNode<>(2)));
         assertTrue(Before.isPalindrome(null));
         assertFalse(Before.isPalindrome(notPalindrome));
     }
@@ -39,7 +39,7 @@ class Ex2_6 {
     @Order(2)
     void palindromeAfter() {
         assertTrue(After.isPalindrome(palindrome));
-        assertTrue(After.isPalindrome(new LinkedListNode(2)));
+        assertTrue(After.isPalindrome(new LinkedListNode<>(2)));
         assertTrue(After.isPalindrome(null));
         assertFalse(After.isPalindrome(notPalindrome));
     }

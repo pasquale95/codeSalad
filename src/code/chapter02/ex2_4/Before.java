@@ -10,10 +10,10 @@ import utils.LinkedListNode;
  */
 public class Before implements Runnable {
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
     private final int threshold;
 
-    public Before(LinkedListNode head, int threshold) {
+    public Before(LinkedListNode<Integer> head, int threshold) {
         this.head = head;
         this.threshold = threshold;
     }
@@ -32,20 +32,20 @@ public class Before implements Runnable {
      * @param   threshold The threshold to use for partitioning.
      * @return  The partitioned linked list.
      */
-    public static LinkedListNode partition(LinkedListNode node, int threshold) {
-        LinkedListNode beforeHead = null, beforeTail = null, afterHead = null, afterTail = null;
+    public static LinkedListNode<Integer> partition(LinkedListNode<Integer> node, int threshold) {
+        LinkedListNode<Integer> beforeHead = null, beforeTail = null, afterHead = null, afterTail = null;
         while (node != null) {
             int value = node.getData();
             if (value < threshold) {
                 if (beforeHead == null) {
-                    beforeHead = new LinkedListNode(value);
+                    beforeHead = new LinkedListNode<>(value);
                     beforeTail = beforeHead;
                 } else {
                     beforeTail = beforeTail.append(value);
                 }
             } else {
                 if (afterHead == null) {
-                    afterHead = new LinkedListNode(value);
+                    afterHead = new LinkedListNode<>(value);
                     afterTail = afterHead;
                 } else {
                     afterTail = afterTail.append(value);

@@ -16,23 +16,23 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ex2_5 {
 
-    private static LinkedListNode addend1, addend2, addend3, reverseSum1, forwardSum1, reverseSum2, forwardSum2;
+    private static LinkedListNode<Integer> addend1, addend2, addend3, reverseSum1, forwardSum1, reverseSum2, forwardSum2;
 
     @BeforeAll
     static void init() {
-        addend1 = new LinkedListNode(6);        // 6529
+        addend1 = new LinkedListNode<>(6);        // 6529
         addend1.append(5).append(2).append(9);
-        addend2 = new LinkedListNode(8);        // 8567
+        addend2 = new LinkedListNode<>(8);        // 8567
         addend2.append(5).append(6).append(7);
-        addend3 = new LinkedListNode(6);        // 64
+        addend3 = new LinkedListNode<>(6);        // 64
         addend3.append(4);
-        reverseSum1 = new LinkedListNode(4);    // 9256+7658=16914
+        reverseSum1 = new LinkedListNode<>(4);    // 9256+7658=16914
         reverseSum1.append(1).append(9).append(6).append(1);
-        forwardSum1 = new LinkedListNode(1);    // 6529+8567=15096
+        forwardSum1 = new LinkedListNode<>(1);    // 6529+8567=15096
         forwardSum1.append(5).append(0).append(9).append(6);
-        reverseSum2 = new LinkedListNode(2);    // 9256 + 46 = 9302
+        reverseSum2 = new LinkedListNode<>(2);    // 9256 + 46 = 9302
         reverseSum2.append(0).append(3).append(9);
-        forwardSum2 = new LinkedListNode(6);    // 6529 + 64 = 6593
+        forwardSum2 = new LinkedListNode<>(6);    // 6529 + 64 = 6593
         forwardSum2.append(5).append(9).append(3);
     }
 
@@ -54,7 +54,7 @@ class Ex2_5 {
         testEquals(forwardSum2, After.forwardOrderSum(addend1, addend3));
     }
 
-    private void testEquals(LinkedListNode expected, LinkedListNode given) {
+    private void testEquals(LinkedListNode<Integer> expected, LinkedListNode<Integer> given) {
         while (expected != null &&  given != null) {
             assertEquals(expected, given);
             expected = expected.getNext();

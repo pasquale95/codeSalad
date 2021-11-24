@@ -14,10 +14,10 @@ public class After implements Runnable {
         int index = 0;
     }
 
-    private final LinkedListNode head;
+    private final LinkedListNode<Integer> head;
     private final int kth;
 
-    public After (LinkedListNode head, int kth) {
+    public After (LinkedListNode<Integer> head, int kth) {
         this.head = head;
         this.kth = kth;
     }
@@ -33,7 +33,7 @@ public class After implements Runnable {
      * @param   head The head of the linked list.
      * @param   k The index of the node to find, starting from 0 for the tail.
      */
-    public static LinkedListNode findKthToLast(LinkedListNode head, int k) {
+    public static LinkedListNode<Integer> findKthToLast(LinkedListNode<Integer> head, int k) {
         Index index = new Index();
         return kthToLast(head, k+1, index); // k+1 since the last element is 0 pos ahead of itself
     }
@@ -46,11 +46,11 @@ public class After implements Runnable {
      * @param   index Counter starting from 0.
      * @return  The kth node.
      */
-    protected static LinkedListNode kthToLast(LinkedListNode node, int k, Index index) {
+    protected static LinkedListNode<Integer> kthToLast(LinkedListNode<Integer> node, int k, Index index) {
         if (node == null) {
             return null;
         }
-        LinkedListNode kth = kthToLast(node.getNext(), k, index);
+        LinkedListNode<Integer> kth = kthToLast(node.getNext(), k, index);
         index.index++;
         if (index.index == k) {
             return node;

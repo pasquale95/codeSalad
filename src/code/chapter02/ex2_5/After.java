@@ -10,9 +10,9 @@ import utils.LinkedListNode;
  */
 public class After implements Runnable {
 
-    private final LinkedListNode[] addends;
+    private final LinkedListNode<Integer>[] addends;
 
-    public After(LinkedListNode[] addends) {
+    public After(LinkedListNode<Integer>[] addends) {
         this.addends = addends;
     }
 
@@ -33,7 +33,7 @@ public class After implements Runnable {
      * @param   addend2 The second addend.
      * @return  The sum of the two addends in reverse order.
      */
-    public static LinkedListNode reverseOrderSum(LinkedListNode addend1, LinkedListNode addend2) {
+    public static LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         return recursiveReverseSum(addend1, addend2, 0);
     }
 
@@ -44,16 +44,16 @@ public class After implements Runnable {
      * @param   addend2 The second addend.
      * @return  The sum of the two addends in forward order.
      */
-    public static LinkedListNode forwardOrderSum(LinkedListNode addend1, LinkedListNode addend2) {
+    public static LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         int diffLength = compareLength(addend1, addend2);
         if (diffLength < 0) {
             addend1 = paddingWithZeroes(addend1, Math.abs(diffLength));
         } else if (diffLength > 0) {
             addend2 = paddingWithZeroes(addend2, Math.abs(diffLength));
         }
-        LinkedListNode sum = recursiveForwardSum(addend1, addend2);
+        LinkedListNode<Integer> sum = recursiveForwardSum(addend1, addend2);
         if (sum.getData() > 10) {
-            LinkedListNode head = new LinkedListNode(sum.getData() / 10);
+            LinkedListNode<Integer> head = new LinkedListNode<>(sum.getData() / 10);
             head.append(sum);
             sum.setData(sum.getData() % 10);
             sum = head;
@@ -67,9 +67,9 @@ public class After implements Runnable {
      * @param   zeroes The number of zeroes to add.
      * @return  The padded linked list.
      */
-    private static LinkedListNode paddingWithZeroes(LinkedListNode head, int zeroes) {
+    private static LinkedListNode<Integer> paddingWithZeroes(LinkedListNode<Integer> head, int zeroes) {
         while (zeroes > 0) {
-            LinkedListNode node = new LinkedListNode(0);
+            LinkedListNode<Integer> node = new LinkedListNode<>(0);
             node.append(head);
             head = node;
             zeroes--;
@@ -84,7 +84,7 @@ public class After implements Runnable {
      * @param   b The second linked list.
      * @return  0 if equal, >0 if a is longer than b, <0 otherwise.
      */
-    private static int compareLength(LinkedListNode a, LinkedListNode b) {
+    private static int compareLength(LinkedListNode<Integer> a, LinkedListNode<Integer> b) {
         int diffSize = 0;
         while (a != null || b != null) {
             if (a != null) {
@@ -99,18 +99,18 @@ public class After implements Runnable {
         return diffSize;
     }
 
-    private static LinkedListNode recursiveForwardSum(LinkedListNode addend1, LinkedListNode addend2) {
+    private static LinkedListNode<Integer> recursiveForwardSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         if (addend1.isTail() && addend2.isTail()) {
-            return new LinkedListNode(addend1.getData()+addend2.getData());
+            return new LinkedListNode<>(addend1.getData()+addend2.getData());
         }
-        LinkedListNode next = recursiveForwardSum(addend1.getNext(), addend2.getNext());
-        LinkedListNode current = new LinkedListNode(addend1.getData() + addend2.getData() + next.getData() / 10);
+        LinkedListNode<Integer> next = recursiveForwardSum(addend1.getNext(), addend2.getNext());
+        LinkedListNode<Integer> current = new LinkedListNode<>(addend1.getData() + addend2.getData() + next.getData() / 10);
         next.setData(next.getData() % 10);
         current.append(next);
         return current;
     }
 
-    private static LinkedListNode recursiveReverseSum(LinkedListNode addend1, LinkedListNode addend2, int carry) {
+    private static LinkedListNode<Integer> recursiveReverseSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2, int carry) {
         if (addend1 == null && addend2 == null && carry == 0) {
             return null;
         }
@@ -120,7 +120,7 @@ public class After implements Runnable {
         if (addend2 != null) {
             carry += addend2.getData();
         }
-        LinkedListNode node = new LinkedListNode(carry % 10);
+        LinkedListNode<Integer> node = new LinkedListNode<>(carry % 10);
         if (addend1 != null || addend2 != null) {
             node.append(recursiveReverseSum(
                     addend1 == null ? null : addend1.getNext(),

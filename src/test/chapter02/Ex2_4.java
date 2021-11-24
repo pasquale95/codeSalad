@@ -16,29 +16,29 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Ex2_4 {
 
-    private static LinkedListNode head;
+    private static LinkedListNode<Integer> head;
     private static final int threshold = 15;
 
     @BeforeAll
     static void init() {
-        head = new LinkedListNode(13);
+        head = new LinkedListNode<>(13);
         head.append(43).append(31).append(12).append(15).append(3).append(5).append(14);
     }
 
     @Test
     @Order(1)
     void partitionBefore() {
-        LinkedListNode partitioned = Before.partition(head.clone(), threshold);
+        LinkedListNode<Integer> partitioned = Before.partition(head.clone(), threshold);
         boolean rightHalf = false;
-        LinkedListNode runner = partitioned;
+        LinkedListNode<Integer> runner = partitioned;
         while (runner != null) {
-            if (runner.getData()>threshold) {
+            if (runner.getData() > threshold) {
                 rightHalf = true;
             }
             if (!rightHalf) {
-                assertTrue(runner.getData()<threshold);
+                assertTrue(runner.getData() < threshold);
             } else {
-                assertFalse(runner.getData()<threshold);
+                assertFalse(runner.getData() < threshold);
             }
             runner = runner.getNext();
         }
@@ -47,17 +47,17 @@ class Ex2_4 {
     @Test
     @Order(2)
     void partitionAfter() {
-        LinkedListNode partitioned = After.partition(head.clone(), threshold);
+        LinkedListNode<Integer> partitioned = After.partition(head.clone(), threshold);
         boolean rightHalf = false;
-        LinkedListNode runner = partitioned;
+        LinkedListNode<Integer> runner = partitioned;
         while (runner != null) {
-            if (runner.getData()>threshold) {
+            if (runner.getData() > threshold) {
                 rightHalf = true;
             }
             if (!rightHalf) {
-                assertTrue(runner.getData()<threshold);
+                assertTrue(runner.getData() < threshold);
             } else {
-                assertFalse(runner.getData()<threshold);
+                assertFalse(runner.getData() < threshold);
             }
             runner = runner.getNext();
         }

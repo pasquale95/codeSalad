@@ -10,9 +10,9 @@ import utils.LinkedListNode;
  */
 public class After implements Runnable {
 
-    private final LinkedListNode node;
+    private final LinkedListNode<Integer> node;
 
-    public After(LinkedListNode node) {
+    public After(LinkedListNode<Integer> node) {
         this.node = node;
     }
 
@@ -26,7 +26,7 @@ public class After implements Runnable {
      *
      * @param   node The node to delete
      */
-    public static void removeLinkedListNode(LinkedListNode node) {
+    public static void removeLinkedListNode(LinkedListNode<Integer> node) {
         if (node == null || node.isTail()) {
             return;
         }

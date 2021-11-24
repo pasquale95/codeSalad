@@ -26,8 +26,8 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(10, 8);
-        LinkedListNode kth = After.findKthToLast(head, KTH);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(10, 8, i -> i);
+        LinkedListNode<Integer> kth = After.findKthToLast(head, KTH);
         if (kth != null) {
             System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is " +
                     colorYellow(String.valueOf(kth.getData())) + ".");
@@ -39,7 +39,7 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode head = LinkedListNode.createRandomLinkedList(params);
+        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
         return new ExerciseSolutions(new Before(head.clone(), 12), new After(head.clone(), 12));
     }
 

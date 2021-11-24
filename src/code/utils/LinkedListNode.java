@@ -1,7 +1,6 @@
 package utils;
 
 import org.json.simple.JSONObject;
-
 import java.util.Random;
 
 /**
@@ -10,17 +9,17 @@ import java.util.Random;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class LinkedListNode implements Cloneable {
+public class LinkedListNode<T> implements Cloneable {
 
-    private int data;
-    private LinkedListNode prev;
-    private LinkedListNode next;
+    private T data;
+    private LinkedListNode<T> prev;
+    private LinkedListNode<T> next;
 
     /**
      * Homemade double-linked list to use for our exercises on lists.
      * @param   data The node data.
      */
-    public LinkedListNode(int data) {
+    public LinkedListNode(T data) {
         this.data = data;
     }
 
@@ -29,8 +28,8 @@ public class LinkedListNode implements Cloneable {
      * @param   data The node data.
      * @return  The appended node.
      */
-    public LinkedListNode append(int data) {
-        LinkedListNode node = new LinkedListNode(data);
+    public LinkedListNode<T> append(T data) {
+        LinkedListNode<T> node = new LinkedListNode<>(data);
         this.append(node);
         return node;
     }
@@ -40,8 +39,8 @@ public class LinkedListNode implements Cloneable {
      * @param   data The node data.
      * @return  The prepended node.
      */
-    public LinkedListNode prepend(int data) {
-        LinkedListNode node = new LinkedListNode(data);
+    public LinkedListNode<T> prepend(T data) {
+        LinkedListNode<T> node = new LinkedListNode<>(data);
         this.prepend(node);
         return node;
     }
@@ -50,7 +49,7 @@ public class LinkedListNode implements Cloneable {
      * Append node to current one.
      * @param   node The node to append.
      */
-    public void append(LinkedListNode node) {
+    public void append(LinkedListNode<T> node) {
         if (this != node) {
             // prevent circular list
             this.next = node;
@@ -64,7 +63,7 @@ public class LinkedListNode implements Cloneable {
      * Prepend node to current one.
      * @param   node The node to prepend.
      */
-    public void prepend(LinkedListNode node) {
+    public void prepend(LinkedListNode<T> node) {
         if (this != node) {
             // prevent circular list
             this.prev = node;
@@ -91,7 +90,7 @@ public class LinkedListNode implements Cloneable {
      */
     public int getListLength() {
         int counter = 0;
-        LinkedListNode runner = this;
+        LinkedListNode<T> runner = this;
         while (runner != null) {
             counter++;
             runner = runner.getNext();
@@ -103,31 +102,34 @@ public class LinkedListNode implements Cloneable {
      * Return a cloned LinkedListNode
      * @return  A cloned Linked list starting from this node.
      */
-    public LinkedListNode clone() {
-        LinkedListNode clone = new LinkedListNode(this.data);
-        LinkedListNode headCloned = clone;
-        for (LinkedListNode node = this; !node.isTail(); node = node.getNext()) {
+    public LinkedListNode<T> clone() {
+        LinkedListNode<T> clone = new LinkedListNode<>(this.data);
+        LinkedListNode<T> headCloned = clone;
+        for (LinkedListNode<T> node = this; !node.isTail(); node = node.getNext()) {
             clone = clone.append(node.next.getData());
         }
         return headCloned;
     }
 
     /**
-     * Return a random linked list of the specified length
-     * and with values in the range [0, dataRange).
+     * Return a random linked list of the specified length.
      *
      * @param   length The random linked list number of nodes.
      * @param   dataRange The nodes can have value in the range [0, dataRange).
      * @return  The head of a random generated linked list.
      */
-    public static LinkedListNode createRandomLinkedList(int length, int dataRange) {
-        LinkedListNode head = null;
+    public static <T> LinkedListNode<T> createRandomLinkedList(
+            int length,
+            int dataRange,
+            GenericMapper<Integer, T> mapper
+    ) {
+        LinkedListNode<T> head = null;
         if (length > 0) {
             Random r = new Random();
-            LinkedListNode node = new LinkedListNode(r.nextInt(dataRange));
+            LinkedListNode<T> node = new LinkedListNode<>(mapper.map(r.nextInt(dataRange)));
             head = node;
             for (int i = 1; i < length; i++) {
-                node = node.append(r.nextInt(dataRange));
+                node = node.append(mapper.map(r.nextInt(dataRange)));
             }
         }
         return head;
@@ -140,10 +142,14 @@ public class LinkedListNode implements Cloneable {
      * @param   params Set of parameters to use for generating an array of random linked lists.
      * @return  @return  The head of a random generated linked list.
      */
-    public static LinkedListNode createRandomLinkedList(JSONObject params) {
+    public static <T> LinkedListNode<T> createRandomLinkedList(
+            JSONObject params,
+            GenericMapper<Integer, T> mapper
+    ) {
         return createRandomLinkedList(
                 ((Long) params.get("length")).intValue(),
-                ((Long) params.get("dataRange")).intValue()
+                ((Long) params.get("dataRange")).intValue(),
+                mapper
         );
     }
 
@@ -155,12 +161,18 @@ public class LinkedListNode implements Cloneable {
      * @param   dataRange The nodes can have value in the range [0, dataRange).
      * @return  The array of random linked lists.
      */
-    public static LinkedListNode[] createRandomLinkedListArray(int arraySize, int listLength, int dataRange) {
-        LinkedListNode[] listArray = new LinkedListNode[arraySize];
+    @SuppressWarnings("unchecked")
+    public static <T> LinkedListNode<T>[] createRandomLinkedListArray(
+            int arraySize,
+            int listLength,
+            int dataRange,
+            GenericMapper<Integer, T> mapper
+    ) {
+        LinkedListNode<?>[] array = new LinkedListNode<?>[arraySize];
         for (int i = 0; i < arraySize; i++) {
-            listArray[i] = createRandomLinkedList(listLength, dataRange);
+            array[i] = createRandomLinkedList(listLength, dataRange, mapper);
         }
-        return listArray;
+        return (LinkedListNode<T>[]) array;
     }
 
     /**
@@ -169,11 +181,15 @@ public class LinkedListNode implements Cloneable {
      * @param   params Set of parameters to use for generating an array of random linked lists.
      * @return  The array of random linked lists.
      */
-    public static LinkedListNode[] createRandomLinkedListArray(JSONObject params) {
+    public static <T> LinkedListNode<T>[] createRandomLinkedListArray(
+            JSONObject params,
+            GenericMapper<Integer, T> mapper
+    ) {
         return createRandomLinkedListArray(
                 ((Long) params.get("arraySize")).intValue(),
                 ((Long) params.get("listLength")).intValue(),
-                ((Long) params.get("dataRange")).intValue()
+                ((Long) params.get("dataRange")).intValue(),
+                mapper
         );
     }
 
@@ -189,7 +205,7 @@ public class LinkedListNode implements Cloneable {
      */
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        LinkedListNode node = this;
+        LinkedListNode<T> node = this;
         while (!node.isTail()) {
             stringBuilder.append(node.getData()).append(" -> ");
             node = node.getNext();
@@ -215,21 +231,21 @@ public class LinkedListNode implements Cloneable {
     /**
      * Return next node
      */
-    public LinkedListNode getNext() {
+    public LinkedListNode<T> getNext() {
         return this.next;
     }
 
     /**
      * Return previous node
      */
-    public LinkedListNode getPrev() {
+    public LinkedListNode<T> getPrev() {
         return this.prev;
     }
 
     /**
      * Get node content
      */
-    public int getData() {
+    public T getData() {
         return data;
     }
 
@@ -237,17 +253,17 @@ public class LinkedListNode implements Cloneable {
      * Change node data
      * @param   data The node data.
      */
-    public void setData(int data) {
+    public void setData(T data) {
         this.data = data;
     }
 
     @Override
     public boolean equals(Object node) {
-        if (!(node instanceof LinkedListNode)) {
+        if (!(node instanceof LinkedListNode<?>)) {
             return false;
         }
-        LinkedListNode runner = this;
-        LinkedListNode runner1 = (LinkedListNode) node;
+        LinkedListNode<?> runner = this;
+        LinkedListNode<?> runner1 = (LinkedListNode<?>) node;
         while (runner != null || runner1 != null) {
             if (runner == null || runner1 == null) {
                 // linked list with different length
