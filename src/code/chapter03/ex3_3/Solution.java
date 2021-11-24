@@ -2,6 +2,9 @@ package chapter03.ex3_3;
 
 import org.json.simple.JSONObject;
 import utils.*;
+import utils.Exceptions.EmptyStackException;
+import utils.Generators.ArrayGenerator;
+
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 

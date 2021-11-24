@@ -3,9 +3,9 @@ package chapter01.ex1_3;
 import org.json.simple.JSONObject;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
-import utils.StringGenerator;
+import utils.Generators.StringGenerator;
 import static utils.Colors.*;
-import static utils.StringGenerator.toCharsWithExtraRoom;
+import static utils.Generators.StringGenerator.toCharsWithExtraRoom;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

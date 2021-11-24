@@ -3,7 +3,7 @@ package chapter01;
 import chapter01.ex1_7.After;
 import chapter01.ex1_7.Before;
 import org.junit.jupiter.api.*;
-import utils.ArrayGenerator;
+import utils.Generators.ArrayGenerator;
 
 import java.util.Random;
 

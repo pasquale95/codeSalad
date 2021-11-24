@@ -3,7 +3,7 @@ package chapter01.ex1_1;
 import org.json.simple.JSONObject;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
-import utils.StringGenerator;
+import utils.Generators.StringGenerator;
 import static utils.Colors.*;
 
 /**

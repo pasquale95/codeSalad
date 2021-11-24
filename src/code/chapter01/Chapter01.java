@@ -11,8 +11,6 @@ import java.util.ArrayList;
  * file 'LICENSE', which is part of this source code package.
  */
 public class Chapter01 extends ChapterTemplate {
-    protected static ArrayList<SolutionTemplate> exercises;
-
     public Chapter01() {
         exercises = new ArrayList<>();
         exercises.add(new chapter01.ex1_1.Solution());
@@ -22,10 +20,5 @@ public class Chapter01 extends ChapterTemplate {
         exercises.add(new chapter01.ex1_5.Solution());
         exercises.add(new chapter01.ex1_6.Solution());
         exercises.add(new chapter01.ex1_7.Solution());
-    }
-
-    @Override
-    protected ArrayList<SolutionTemplate> getExercises() {
-        return exercises;
     }
 }

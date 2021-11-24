@@ -1,8 +1,8 @@
 package chapter03.ex3_2;
 
 import org.json.simple.JSONObject;
-import utils.ArrayGenerator;
-import utils.EmptyStackException;
+import utils.Generators.ArrayGenerator;
+import utils.Exceptions.EmptyStackException;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
 import static utils.Colors.colorYellow;

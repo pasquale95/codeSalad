@@ -1,7 +1,7 @@
 package chapter03.ex3_5;
 
 import org.json.simple.JSONObject;
-import utils.ArrayGenerator;
+import utils.Generators.ArrayGenerator;
 import utils.ExerciseSolutions;
 import utils.SolutionTemplate;
 import utils.Stack;

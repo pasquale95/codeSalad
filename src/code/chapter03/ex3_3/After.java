@@ -1,8 +1,8 @@
 package chapter03.ex3_3;
 
-import utils.EmptyStackException;
+import utils.Exceptions.EmptyStackException;
 import utils.Stack;
-import utils.StackNode;
+
 import java.util.ArrayList;
 
 /**

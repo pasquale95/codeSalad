@@ -1,8 +1,7 @@
 package chapter03.ex3_3;
 
-import utils.EmptyStackException;
+import utils.Exceptions.EmptyStackException;
 import utils.Stack;
-import utils.StackNode;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

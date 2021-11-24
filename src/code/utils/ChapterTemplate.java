@@ -9,19 +9,18 @@ import java.util.ArrayList;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class ChapterTemplate {
+    protected ArrayList<SolutionTemplate> exercises = new ArrayList<>();
 
     public void runSolutions() {
-        for (SolutionTemplate sol : getExercises()) {
+        for (SolutionTemplate sol : exercises) {
             sol.solve();
         }
     }
 
     public void timeSolutions(ConfigManager configManager) {
-        for (SolutionTemplate sol : getExercises()) {
+        for (SolutionTemplate sol : exercises) {
             String[] codes = sol.getClass().getPackageName().split("\\.");
             sol.time(configManager.getConfig(codes[0], codes[1]));
         }
     }
-
-    protected abstract ArrayList<SolutionTemplate> getExercises();
 }
