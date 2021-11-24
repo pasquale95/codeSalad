@@ -1,8 +1,6 @@
 package chapter03;
 
-import utils.ChapterTemplate;
-import utils.SolutionTemplate;
-import java.util.ArrayList;
+import utils.architecture.ChapterTemplate;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

@@ -1,9 +1,9 @@
 package chapter02.ex2_6;
 
 import org.json.simple.JSONObject;
-import utils.ExerciseSolutions;
+import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
-import utils.SolutionTemplate;
+import utils.architecture.SolutionTemplate;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 

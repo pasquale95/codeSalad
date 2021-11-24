@@ -5,7 +5,7 @@ import chapter03.ex3_5.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import utils.Generators.ArrayGenerator;
+import utils.generators.ArrayGenerator;
 import utils.Stack;
 
 import java.util.Arrays;

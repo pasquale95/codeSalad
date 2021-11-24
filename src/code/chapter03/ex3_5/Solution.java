@@ -1,9 +1,9 @@
 package chapter03.ex3_5;
 
 import org.json.simple.JSONObject;
-import utils.Generators.ArrayGenerator;
-import utils.ExerciseSolutions;
-import utils.SolutionTemplate;
+import utils.generators.ArrayGenerator;
+import utils.architecture.ExerciseSolutions;
+import utils.architecture.SolutionTemplate;
 import utils.Stack;
 
 import static utils.Colors.colorYellow;

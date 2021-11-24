@@ -1,4 +1,4 @@
-package utils.Exceptions;
+package utils.exceptions;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -6,8 +6,8 @@ package utils.Exceptions;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class EmptyQueueException extends Exception {
-    public EmptyQueueException(String errorMessage) {
+public class EmptyStackException extends Exception {
+    public EmptyStackException(String errorMessage) {
         super(errorMessage);
     }
 }

@@ -1,4 +1,4 @@
-package utils;
+package utils.architecture;
 import static utils.Colors.*;
 
 /**

@@ -1,6 +1,8 @@
 package utils;
 
 import org.json.simple.JSONObject;
+import utils.architecture.GenericMapper;
+
 import java.util.Random;
 
 /**

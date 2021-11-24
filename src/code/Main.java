@@ -2,8 +2,8 @@ import chapter01.Chapter01;
 import chapter02.Chapter02;
 import chapter03.Chapter03;
 import org.json.simple.parser.ParseException;
-import utils.ChapterTemplate;
-import utils.ConfigManager;
+import utils.architecture.ChapterTemplate;
+import utils.architecture.ConfigManager;
 import java.io.IOException;
 import java.util.ArrayList;
 

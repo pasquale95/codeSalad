@@ -1,4 +1,4 @@
-package utils;
+package utils.architecture;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

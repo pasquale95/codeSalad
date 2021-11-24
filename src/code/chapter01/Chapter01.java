@@ -1,7 +1,7 @@
 package chapter01;
 
-import utils.ChapterTemplate;
-import utils.SolutionTemplate;
+import utils.architecture.ChapterTemplate;
+
 import java.util.ArrayList;
 
 /**

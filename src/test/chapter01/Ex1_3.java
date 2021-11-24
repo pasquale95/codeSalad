@@ -5,7 +5,7 @@ import chapter01.ex1_3.Before;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.Generators.StringGenerator.toCharsWithExtraRoom;
+import static utils.generators.StringGenerator.toCharsWithExtraRoom;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

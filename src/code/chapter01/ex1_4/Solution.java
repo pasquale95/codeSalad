@@ -1,9 +1,9 @@
 package chapter01.ex1_4;
 
 import org.json.simple.JSONObject;
-import utils.ExerciseSolutions;
-import utils.SolutionTemplate;
-import utils.Generators.StringGenerator;
+import utils.architecture.ExerciseSolutions;
+import utils.architecture.SolutionTemplate;
+import utils.generators.StringGenerator;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 

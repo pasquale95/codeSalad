@@ -1,7 +1,7 @@
 package chapter03.ex3_1;
 
-import utils.Exceptions.EmptyStackException;
-import utils.Exceptions.StackOverflowException;
+import utils.exceptions.EmptyStackException;
+import utils.exceptions.StackOverflowException;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

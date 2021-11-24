@@ -1,4 +1,4 @@
-package utils;
+package utils.architecture;
 
 public enum Level {
     LOW("timingStress/low.json"),

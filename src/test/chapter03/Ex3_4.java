@@ -4,7 +4,7 @@ import chapter03.ex3_4.After;
 import chapter03.ex3_4.Before;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import utils.Exceptions.EmptyQueueException;
+import utils.exceptions.EmptyQueueException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

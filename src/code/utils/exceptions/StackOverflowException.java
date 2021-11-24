@@ -1,4 +1,4 @@
-package utils.Exceptions;
+package utils.exceptions;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>

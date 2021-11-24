@@ -3,6 +3,9 @@ package chapter02.ex2_5;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import utils.*;
+import utils.architecture.ConfigManager;
+import utils.architecture.ExerciseSolutions;
+import utils.architecture.SolutionTemplate;
 
 import java.io.IOException;
 import java.util.Random;

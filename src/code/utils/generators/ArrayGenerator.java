@@ -1,4 +1,4 @@
-package utils.Generators;
+package utils.generators;
 
 import org.json.simple.JSONObject;
 

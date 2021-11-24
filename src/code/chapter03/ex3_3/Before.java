@@ -1,6 +1,6 @@
 package chapter03.ex3_3;
 
-import utils.Exceptions.EmptyStackException;
+import utils.exceptions.EmptyStackException;
 import utils.Stack;
 
 /**

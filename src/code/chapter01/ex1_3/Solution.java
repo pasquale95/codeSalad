@@ -1,11 +1,11 @@
 package chapter01.ex1_3;
 
 import org.json.simple.JSONObject;
-import utils.ExerciseSolutions;
-import utils.SolutionTemplate;
-import utils.Generators.StringGenerator;
+import utils.architecture.ExerciseSolutions;
+import utils.architecture.SolutionTemplate;
+import utils.generators.StringGenerator;
 import static utils.Colors.*;
-import static utils.Generators.StringGenerator.toCharsWithExtraRoom;
+import static utils.generators.StringGenerator.toCharsWithExtraRoom;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
