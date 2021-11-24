@@ -6,6 +6,7 @@ import utils.*;
 import utils.architecture.ConfigManager;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.ArrayGenerator;
 
 import java.io.IOException;
 import java.util.Random;
@@ -21,14 +22,6 @@ import static utils.Colors.printBlue;
 public class Solution extends SolutionTemplate {
 
     private static final String PROBLEM = "Chapter 2. Ex 2.5";
-
-
-    public static void main(String[] args) throws IOException, ParseException {
-        ConfigManager configManager = ConfigManager.getInstance();
-        Solution sol = new Solution();
-        String[] codes = sol.getClass().getPackageName().split("\\.");
-        sol.time(configManager.getConfig(codes[0], codes[1]));
-    }
 
     /**
      * Chapter 2
@@ -61,8 +54,13 @@ public class Solution extends SolutionTemplate {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode<Integer>[] addends = LinkedListNode.createRandomLinkedListArray(params, i -> i);
+        LinkedListNode<Integer>[] addends = ArrayGenerator.generateObjectArray(
+                params,
+                () -> LinkedListNode.createRandomLinkedList(params, j -> j),
+                LinkedListNode.class
+        );
         return new ExerciseSolutions(new Before(addends), new After(addends));
     }
 

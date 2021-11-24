@@ -1,9 +1,16 @@
 package chapter01.ex1_1;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import utils.LinkedListNode;
+import utils.architecture.ConfigManager;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.ArrayGenerator;
 import utils.generators.StringGenerator;
+
+import java.io.IOException;
+
 import static utils.Colors.*;
 
 /**
@@ -15,6 +22,13 @@ import static utils.Colors.*;
 public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 1. Ex 1.1";
     private static final String[] strings = {"genetics", "salt", "castle", "controlled"};
+
+    public static void main(String[] args) throws IOException, ParseException {
+        ConfigManager configManager = ConfigManager.getInstance();
+        Solution sol = new Solution();
+        String[] codes = sol.getClass().getPackageName().split("\\.");
+        sol.time(configManager.getConfig(codes[0], codes[1]));
+    }
 
     /**
      * Chapter 1
@@ -33,7 +47,11 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        String[] strings = StringGenerator.generateRandomStringArray(params);
+        String[] strings = ArrayGenerator.generateObjectArray(
+                params,
+                () -> StringGenerator.generateRandomString(params),
+                String.class
+        );
         return new ExerciseSolutions(new Before(strings), new After(strings));
     }
 

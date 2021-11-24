@@ -2,7 +2,9 @@ package utils.generators;
 
 import org.json.simple.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.Random;
+import java.util.function.Supplier;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -77,5 +79,46 @@ public class ArrayGenerator {
             booleans[i] = (r.nextInt(2) % 2) == 0;
         }
         return booleans;
+    }
+
+    /**
+     * Generate an array of random objects using a random integer array as baseline and mapping random values
+     * through a supplier.
+     * @param   params Set of parameters to use for generating a random string.
+     * @param   supplier The supplier function mapping an integer to the object T.
+     * @param   clazz The object class.
+     * @return  An array of objects T[].
+     */
+    public static <T> T[] generateObjectArray(
+            JSONObject params,
+            Supplier<T> supplier,
+            Class<T> clazz
+    ) {
+        return generateObjectArray(
+                ((Long) params.get("arraySize")).intValue(),
+                supplier,
+                clazz
+        );
+    }
+
+    /**
+     * Generate an array of random objects using a random integer array as baseline and mapping random values
+     * through a supplier.
+     * @param   arraySize The array size.
+     * @param   supplier The supplier function mapping an integer to the object T
+     * @param   clazz The object class
+     * @return  An array of objects T[].
+     */
+    @SuppressWarnings("unchecked")
+    protected static <T> T[] generateObjectArray(
+            int arraySize,
+            Supplier<T> supplier,
+            Class<T> clazz
+    ) {
+        T[] array = (T[]) Array.newInstance(clazz, arraySize);
+        for (int i = 0; i < arraySize; i++) {
+            array[i] = supplier.get();
+        }
+        return array;
     }
 }

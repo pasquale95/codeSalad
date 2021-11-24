@@ -17,37 +17,6 @@ public class StringGenerator {
             "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
-     * Generate an array of strings each of the specified length.
-     *
-     * @param   total Number of random strings to generate.
-     * @param   maxLength Max length of the single string inside the pool.
-     * @param   onlyLowerCase True if the string can only contain lowercase alphabet chars (no space).
-     * @return  Array of random generated strings.
-     */
-    public static String[] generateRandomStringArray(int total, int maxLength, boolean onlyLowerCase) {
-        Random r = new Random();
-        String[] strings = new String[total];
-        for (int i = 0; i < total; i++) {
-            strings[i] = generateRandomString(r.nextInt(maxLength) + 1, onlyLowerCase);
-        }
-        return strings;
-    }
-
-    /**
-     * Generate an array of strings each of the specified length.
-     *
-     * @param   params Set of parameters to use for generating an array of random strings.
-     * @return  Array of random generated strings.
-     */
-    public static String[] generateRandomStringArray(JSONObject params) {
-        return generateRandomStringArray(
-                ((Long) params.get("total")).intValue(),
-                ((Long) params.get("maxLength")).intValue(),
-                (Boolean) params.get("onlyLowerCase")
-        );
-    }
-
-    /**
      * Generate random string.
      *
      * @param   length Length of the single string inside the pool.
@@ -74,7 +43,7 @@ public class StringGenerator {
      */
     public static String generateRandomString(JSONObject params) {
         return generateRandomString(
-                ((Long) params.get("length")).intValue(),
+                ((Long) params.get("stringSize")).intValue(),
                 (Boolean) params.get("onlyLowerCase")
         );
     }

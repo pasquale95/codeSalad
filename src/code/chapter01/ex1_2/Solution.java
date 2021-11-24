@@ -3,6 +3,7 @@ package chapter01.ex1_2;
 import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.ArrayGenerator;
 import utils.generators.StringGenerator;
 import static utils.Colors.*;
 
@@ -39,7 +40,11 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        String[] strings = StringGenerator.generateRandomStringArray(params);
+        String[] strings = ArrayGenerator.generateObjectArray(
+                params,
+                () -> StringGenerator.generateRandomString(params),
+                String.class
+        );
         return new ExerciseSolutions(new Before(strings), new After(strings));
     }
 

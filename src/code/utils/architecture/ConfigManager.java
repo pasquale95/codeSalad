@@ -26,7 +26,7 @@ public class ConfigManager {
      */
     public static ConfigManager getInstance() throws IOException, ParseException {
         if (instance == null) {
-            instance = new ConfigManager(Level.LOW);
+            instance = new ConfigManager(Level.HIGH);
         }
         return instance;
     }

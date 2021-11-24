@@ -1,31 +1,31 @@
 {
   "chapter01": {
     "ex1_1": {
-      "total": 200,
-      "maxLength": 10,
+      "arraySize": 200,
+      "stringSize": 10,
       "onlyLowerCase": true
     },
     "ex1_2": {
-      "total": 200,
-      "maxLength": 10,
+      "arraySize": 200,
+      "stringSize": 10,
       "onlyLowerCase": true
     },
     "ex1_3": {
-      "length": 10,
+      "stringSize": 10,
       "onlyLowerCase": false
     },
     "ex1_4": {
-      "length": 1000,
+      "stringSize": 1000,
       "onlyLowerCase": false
     },
     "ex1_5": {
-      "total": 100,
-      "maxLength": 10,
+      "arraySize": 100,
+      "stringSize": 10,
       "onlyLowerCase": false
     },
     "ex1_6": {
-      "total": 100,
-      "maxLength": 20,
+      "arraySize": 100,
+      "stringSize": 20,
       "onlyLowerCase": false
     },
     "ex1_7": {
@@ -35,35 +35,36 @@
   },
   "chapter02": {
     "ex2_1": {
-      "length": 200,
+      "listSize": 200,
       "dataRange": 200
     },
     "ex2_2": {
-      "length": 20,
+      "listSize": 20,
       "dataRange": 20
     },
     "ex2_3": {
-      "length": 200,
+      "listSize": 200,
       "dataRange": 200
     },
     "ex2_4": {
-      "length": 1000,
+      "listSize": 1000,
       "dataRange": 1000
     },
     "ex2_5": {
       "arraySize": 100,
-      "listLength": 1000,
+      "ceiling": 100,
+      "listSize": 1000,
       "dataRange": 1000
     },
     "ex2_6": {
-      "length": 10,
+      "listSize": 10,
       "dataRange": 2
     }
   },
   "chapter03": {
     "ex3_1": {
-        "size": 200,
-        "ceiling": 1000
+      "size": 200,
+      "ceiling": 1000
     },
     "ex3_2": {
       "size": 5000,

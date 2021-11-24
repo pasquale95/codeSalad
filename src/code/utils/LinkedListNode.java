@@ -1,9 +1,9 @@
 package utils;
 
 import org.json.simple.JSONObject;
-import utils.architecture.GenericMapper;
 
 import java.util.Random;
+import java.util.function.Function;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -104,6 +104,7 @@ public class LinkedListNode<T> implements Cloneable {
      * Return a cloned LinkedListNode
      * @return  A cloned Linked list starting from this node.
      */
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     public LinkedListNode<T> clone() {
         LinkedListNode<T> clone = new LinkedListNode<>(this.data);
         LinkedListNode<T> headCloned = clone;
@@ -118,20 +119,21 @@ public class LinkedListNode<T> implements Cloneable {
      *
      * @param   length The random linked list number of nodes.
      * @param   dataRange The nodes can have value in the range [0, dataRange).
+     * @param   function The function mapping the integer value to the type T.
      * @return  The head of a random generated linked list.
      */
     public static <T> LinkedListNode<T> createRandomLinkedList(
             int length,
             int dataRange,
-            GenericMapper<Integer, T> mapper
+            Function<Integer, T> function
     ) {
         LinkedListNode<T> head = null;
         if (length > 0) {
             Random r = new Random();
-            LinkedListNode<T> node = new LinkedListNode<>(mapper.map(r.nextInt(dataRange)));
+            LinkedListNode<T> node = new LinkedListNode<>(function.apply(r.nextInt(dataRange)));
             head = node;
             for (int i = 1; i < length; i++) {
-                node = node.append(mapper.map(r.nextInt(dataRange)));
+                node = node.append(function.apply(r.nextInt(dataRange)));
             }
         }
         return head;
@@ -142,56 +144,17 @@ public class LinkedListNode<T> implements Cloneable {
      * and with values in the range [0, dataRange).
      *
      * @param   params Set of parameters to use for generating an array of random linked lists.
-     * @return  @return  The head of a random generated linked list.
+     * @param   function The function mapping the integer value to the type T.
+     * @return  The head of a random generated linked list.
      */
     public static <T> LinkedListNode<T> createRandomLinkedList(
             JSONObject params,
-            GenericMapper<Integer, T> mapper
+            Function<Integer, T> function
     ) {
         return createRandomLinkedList(
-                ((Long) params.get("length")).intValue(),
+                ((Long) params.get("listSize")).intValue(),
                 ((Long) params.get("dataRange")).intValue(),
-                mapper
-        );
-    }
-
-    /**
-     * Return an array of random linked lists, each with values in the range [0, dataRange).
-     *
-     * @param   arraySize The array size.
-     * @param   listLength The size of each linked list in the array.
-     * @param   dataRange The nodes can have value in the range [0, dataRange).
-     * @return  The array of random linked lists.
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> LinkedListNode<T>[] createRandomLinkedListArray(
-            int arraySize,
-            int listLength,
-            int dataRange,
-            GenericMapper<Integer, T> mapper
-    ) {
-        LinkedListNode<?>[] array = new LinkedListNode<?>[arraySize];
-        for (int i = 0; i < arraySize; i++) {
-            array[i] = createRandomLinkedList(listLength, dataRange, mapper);
-        }
-        return (LinkedListNode<T>[]) array;
-    }
-
-    /**
-     * Return an array of random linked lists, each with values in the range [0, dataRange).
-     *
-     * @param   params Set of parameters to use for generating an array of random linked lists.
-     * @return  The array of random linked lists.
-     */
-    public static <T> LinkedListNode<T>[] createRandomLinkedListArray(
-            JSONObject params,
-            GenericMapper<Integer, T> mapper
-    ) {
-        return createRandomLinkedListArray(
-                ((Long) params.get("arraySize")).intValue(),
-                ((Long) params.get("listLength")).intValue(),
-                ((Long) params.get("dataRange")).intValue(),
-                mapper
+                function
         );
     }
 

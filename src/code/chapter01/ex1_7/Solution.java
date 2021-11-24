@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.StringGenerator;
+
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
