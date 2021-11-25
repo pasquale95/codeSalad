@@ -36,28 +36,28 @@
   "chapter02": {
     "ex2_1": {
       "listSize": 5000,
-      "dataRange": 500
+      "ceiling": 500
     },
     "ex2_2": {
       "listSize": 5000,
-      "dataRange": 500
+      "ceiling": 500
     },
     "ex2_3": {
       "listSize": 5000,
-      "dataRange": 1000
+      "ceiling": 1000
     },
     "ex2_4": {
       "listSize": 5000,
-      "dataRange": 500
+      "ceiling": 500
     },
     "ex2_5": {
       "arraySize": 500,
       "listSize": 200,
-      "dataRange": 10
+      "ceiling": 10
     },
     "ex2_6": {
       "listSize": 5000,
-      "dataRange": 2
+      "ceiling": 2
     }
   },
   "chapter03": {

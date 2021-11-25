@@ -14,10 +14,28 @@ import java.util.function.Supplier;
 public class ArrayGenerator {
 
     /**
-     * Generate an array of random integers.
+     * Create a matrix of T objects generated through a supplier.
+     * @param   params Set of parameters to use for generating the matrix.
+     * @param   supplier The supplier function which generates the object T.
+     * @return  A T[N][N] matrix.
+     */
+    public static <T> T[][] generateObjectMatrix(
+            JSONObject params,
+            Supplier<T> supplier,
+            Class<T> clazz
+    ) {
+        return generateObjectMatrix(
+                ((Long) params.get("arraySize")).intValue(),
+                supplier,
+                clazz
+        );
+    }
+
+    /**
+     * Create a matrix of T objects generated through a supplier.
      * @param   N The matrix size
-     * @param   supplier The supplier function mapping an integer to the object T.
-     * @return  A NxN matrix with random generated values.
+     * @param   supplier The supplier function which generates the object T.
+     * @return  A T[N][N] matrix.
      */
     @SuppressWarnings("unchecked")
     public static <T> T[][] generateObjectMatrix(
@@ -33,27 +51,8 @@ public class ArrayGenerator {
     }
 
     /**
-     * Generate an array of random integers.
-     * @param   params Set of parameters to use for generating a random string.
-     * @param   supplier The supplier function mapping an integer to the object T.
-     * @return  A NxN matrix with random generated values.
-     */
-    public static <T> T[][] generateObjectMatrix(
-            JSONObject params,
-            Supplier<T> supplier,
-            Class<T> clazz
-    ) {
-        return generateObjectMatrix(
-                ((Long) params.get("arraySize")).intValue(),
-                supplier,
-                clazz
-        );
-    }
-
-    /**
-     * Generate an array of random objects using a random integer array as baseline and mapping random values
-     * through a supplier.
-     * @param   params Set of parameters to use for generating a random string.
+     * Create an array of T objects generated through a supplier.
+     * @param   params Set of parameters to use for generating the array.
      * @param   supplier The supplier function mapping an integer to the object T.
      * @param   clazz The object class.
      * @return  An array of objects T[].
@@ -71,8 +70,7 @@ public class ArrayGenerator {
     }
 
     /**
-     * Generate an array of random objects using a random integer array as baseline and mapping random values
-     * through a supplier.
+     * Create an array of T objects generated through a supplier.
      * @param   arraySize The array size.
      * @param   supplier The supplier function mapping an integer to the object T
      * @param   clazz The object class

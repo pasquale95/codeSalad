@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
 import utils.generators.ArrayGenerator;
+import utils.generators.RandomGenerator;
 import utils.generators.StringGenerator;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -44,7 +45,7 @@ public class Solution extends SolutionTemplate {
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         String[] strings = ArrayGenerator.generateObjectArray(
                 params,
-                () -> StringGenerator.generateRandomString(params),
+                () -> StringGenerator.generateString(params, () -> RandomGenerator.randomCharGenerator(params)),
                 String.class
         );
         return new ExerciseSolutions(new Before(strings), new After(strings));

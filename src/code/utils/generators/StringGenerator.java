@@ -2,7 +2,7 @@ package utils.generators;
 
 import org.json.simple.JSONObject;
 
-import java.util.Random;
+import java.util.function.Supplier;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -12,40 +12,38 @@ import java.util.Random;
  */
 public class StringGenerator {
 
-    public static final char[] lowerAlphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    public static final char[] lowerUpperAlphabetWithSpace =
-            "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
     /**
-     * Generate random string.
+     * Generate a string.
      *
-     * @param   length Length of the single string inside the pool.
-     * @param   onlyLowerCase True if the string can only contain lowercase alphabet chars (no space).
+     * @param   params Set of parameters to use for generating a string.
+     * @param   supplier The supplier function which generates the object Character.
+     * @return  Array of random generated strings.
      */
-    public static String generateRandomString(int length, boolean onlyLowerCase) {
-        Random r = new Random();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            if (onlyLowerCase) {
-                stringBuilder.append(lowerAlphabet[r.nextInt(lowerAlphabet.length)]);
-            } else {
-                stringBuilder.append(lowerUpperAlphabetWithSpace[r.nextInt(lowerUpperAlphabetWithSpace.length)]);
-            }
-        }
-        return stringBuilder.toString();
+    public static String generateString(
+            JSONObject params,
+            Supplier<Character> supplier
+    ) {
+        return generateString(
+                ((Long) params.get("stringSize")).intValue(),
+                supplier
+        );
     }
 
     /**
-     * Generate random string.
-     *
-     * @param   params Set of parameters to use for generating a random string.
+     * Generate a string.
+     * @param   stringSize Length of the single string inside the pool.
+     * @param   supplier The supplier function which generates the object Character.
      * @return  Array of random generated strings.
      */
-    public static String generateRandomString(JSONObject params) {
-        return generateRandomString(
-                ((Long) params.get("stringSize")).intValue(),
-                (Boolean) params.get("onlyLowerCase")
-        );
+    public static String generateString(
+            int stringSize,
+            Supplier<Character> supplier
+    ) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < stringSize; i++) {
+            stringBuilder.append(supplier.get());
+        }
+        return stringBuilder.toString();
     }
 
     /**
