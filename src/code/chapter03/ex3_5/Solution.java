@@ -5,6 +5,7 @@ import utils.generators.ArrayGenerator;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
 import utils.Stack;
+import utils.generators.RandomGenerator;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -31,8 +32,12 @@ public class Solution extends SolutionTemplate {
         try {
             printBlue(getProblemName());
             Stack<Integer> stack = new Stack<>();
-            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 50);
-            for (int number : numbers) {
+            Integer[] numbers = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(50),
+                    Integer.class
+            );
+            for (Integer number : numbers) {
                 stack.push(number);
             }
             System.out.print("The stack " + colorYellow(stack.toString()) + " is sorted to ");
@@ -45,7 +50,11 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+        );
         return new ExerciseSolutions(new Before(numbers), new After(numbers));
     }
 

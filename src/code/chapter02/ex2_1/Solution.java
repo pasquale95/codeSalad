@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
+
 import static utils.Colors.*;
 
 /**
@@ -25,7 +27,10 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(10, 8, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                10,
+                () -> RandomGenerator.randomIntegerGenerator(8)
+        );
         System.out.print(colorYellow(head.toString()) + " after removing duplicates: ");
         After.removeDuplicatesB(head);
         System.out.println(colorYellow(head.toString()) + ".");
@@ -33,7 +38,10 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params)
+        );
         return new ExerciseSolutions(new Before(head.clone()), new After(head.clone()));
     }
 

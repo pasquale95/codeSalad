@@ -103,10 +103,10 @@ public class After implements Runnable {
         }
     }
 
-    private final int[] numbers;
+    private final Integer[] numbers;
     private final int threshold;
 
-    public After(int[] numbers, int threshold) {
+    public After(Integer[] numbers, int threshold) {
         this.numbers = numbers;
         this.threshold = threshold;
     }

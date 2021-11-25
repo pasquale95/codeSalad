@@ -6,6 +6,7 @@ import utils.exceptions.EmptyStackException;
 import utils.exceptions.StackOverflowException;
 import utils.generators.ArrayGenerator;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -29,8 +30,16 @@ public class Solution extends SolutionTemplate {
     public void solve() {
         printBlue(getProblemName());
         try {
-            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
-            int[] stackSequence = ArrayGenerator.generateRandomIntArray(10, Before.STACKS);
+            Integer[] numbers = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(20),
+                    Integer.class
+            );
+            Integer[] stackSequence = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(Before.STACKS),
+                    Integer.class
+            );
             // set at least 1 element per stack -> prevent emptyStackException
             stackSequence[0] = 0;
             stackSequence[1] = 1;
@@ -53,10 +62,15 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
-        int[] stackSequence = ArrayGenerator.generateRandomIntArray(
-                ((Long)params.get("size")).intValue(),
-                Before.STACKS
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+        );
+        Integer[] stackSequence = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(Before.STACKS),
+                Integer.class
         );
         return new ExerciseSolutions(new Before(numbers, stackSequence), new After(numbers, stackSequence));
     }

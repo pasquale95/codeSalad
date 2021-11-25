@@ -72,10 +72,10 @@ public class Before implements Runnable {
         }
     }
 
-    private final int[] numbers;
-    private final boolean[] remove;
+    private final Integer[] numbers;
+    private final Boolean[] remove;
 
-    public Before(int[] numbers, boolean[] remove) {
+    public Before(Integer[] numbers, Boolean[] remove) {
         this.numbers = numbers;
         this.remove = remove;
     }

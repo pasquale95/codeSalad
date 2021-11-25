@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
+/**
+ * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
+ * @github @pasquale95
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE', which is part of this source code package.
+ */
 public class ConfigManager {
     private final JSONObject configs;
     private static ConfigManager instance;
@@ -26,7 +32,7 @@ public class ConfigManager {
      */
     public static ConfigManager getInstance() throws IOException, ParseException {
         if (instance == null) {
-            instance = new ConfigManager(Level.HIGH);
+            instance = new ConfigManager(Level.LOW);
         }
         return instance;
     }

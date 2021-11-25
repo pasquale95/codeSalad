@@ -5,6 +5,8 @@ import utils.generators.ArrayGenerator;
 import utils.exceptions.EmptyStackException;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
+
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -27,8 +29,12 @@ public class Solution extends SolutionTemplate {
     public void solve() {
         printBlue(getProblemName());
         try {
-            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
-            for (int number : numbers) {
+            Integer[] numbers = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(20),
+                    Integer.class
+            );
+            for (Integer number : numbers) {
                 After.push(number);
             }
             System.out.println("Min in stack " + colorYellow(After.stackToString())
@@ -43,8 +49,16 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
-        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(((Long)params.get("size")).intValue());
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+                );
+        Boolean[] booleans = ArrayGenerator.generateObjectArray(
+                params,
+                RandomGenerator::randomBooleanGenerator,
+                Boolean.class
+                );
         return new ExerciseSolutions(new Before(numbers, booleans), new After(numbers, booleans));
     }
 

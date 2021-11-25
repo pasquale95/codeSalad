@@ -4,8 +4,8 @@ import org.json.simple.JSONObject;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
 
-import java.util.Random;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -27,17 +27,20 @@ public class Solution extends SolutionTemplate {
     public void solve() {
         try {
             printBlue(getProblemName());
-            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 50);
+            Integer[] numbers = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(50),
+                    Integer.class
+            );
             After.MyQueue queue = new After.MyQueue();
-            for (int number : numbers) {
+            for (Integer number : numbers) {
                 queue.add(number);
             }
             System.out.print("Removing from the queue twice " + colorYellow(queue.toString())
                     + " returns " + colorYellow(String.valueOf(queue.remove()))
                     + " and " + colorYellow(String.valueOf(queue.remove())) + ". "
             );
-            Random r = new Random();
-            int randValue = r.nextInt(100);
+            int randValue = RandomGenerator.randomIntegerGenerator(100);
             queue.add(randValue);
             System.out.println("After adding " + colorYellow(String.valueOf(randValue))
                     + ", the queue becomes " + colorYellow(queue.toString())
@@ -50,8 +53,16 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
-        boolean[] booleans = ArrayGenerator.generateRandomBooleanArray(((Long)params.get("size")).intValue());
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+        );
+        Boolean[] booleans = ArrayGenerator.generateObjectArray(
+                params,
+                RandomGenerator::randomBooleanGenerator,
+                Boolean.class
+        );
         return new ExerciseSolutions(new Before(numbers, booleans), new After(numbers, booleans));
     }
 

@@ -9,9 +9,9 @@ import utils.Stack;
  * file 'LICENSE', which is part of this source code package.
  */
 public class After implements Runnable {
-    private final int[] numbers;
+    private final Integer[] numbers;
 
-    public After(int[] numbers) {
+    public After(Integer[] numbers) {
         this.numbers = numbers;
     }
 

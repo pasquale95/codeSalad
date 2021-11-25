@@ -1,15 +1,12 @@
 package chapter02.ex2_5;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import utils.*;
-import utils.architecture.ConfigManager;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
 import utils.generators.ArrayGenerator;
+import utils.generators.RandomGenerator;
 
-import java.io.IOException;
-import java.util.Random;
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -35,16 +32,13 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        Random r = new Random();
-        LinkedListNode<Integer> addend1 = LinkedListNode.createRandomLinkedList(
-                r.nextInt(4) + 1,
-                10,
-                i -> i
+        LinkedListNode<Integer> addend1 = LinkedListNode.createLinkedList(
+                RandomGenerator.randomIntegerGenerator(4) + 1,
+                () -> RandomGenerator.randomIntegerGenerator(10)
         );
-        LinkedListNode<Integer> addend2 = LinkedListNode.createRandomLinkedList(
-                r.nextInt(4)+1,
-                10,
-                i -> i
+        LinkedListNode<Integer> addend2 = LinkedListNode.createLinkedList(
+                RandomGenerator.randomIntegerGenerator(4) + 1,
+                () -> RandomGenerator.randomIntegerGenerator(10)
         );
         System.out.println("The sum in reverse order of " + colorYellow(addend1.toString())
                 + " and " + colorYellow(addend2.toString())
@@ -58,7 +52,10 @@ public class Solution extends SolutionTemplate {
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         LinkedListNode<Integer>[] addends = ArrayGenerator.generateObjectArray(
                 params,
-                () -> LinkedListNode.createRandomLinkedList(params, j -> j),
+                () -> LinkedListNode.createLinkedList(
+                        params,
+                        () -> RandomGenerator.randomIntegerGenerator(params)
+                ),
                 LinkedListNode.class
         );
         return new ExerciseSolutions(new Before(addends), new After(addends));

@@ -4,7 +4,8 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.architecture.SolutionTemplate;
-import java.util.Random;
+import utils.generators.RandomGenerator;
+
 import static utils.Colors.*;
 
 /**
@@ -29,7 +30,10 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, 100, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                LIST_LENGTH,
+                () -> RandomGenerator.randomIntegerGenerator(100)
+        );
         LinkedListNode<Integer> nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
         After.removeLinkedListNode(nodeToPrune);
@@ -38,7 +42,10 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params)
+        );
         return new ExerciseSolutions(new Before(getNodeToPrune(head.clone())), new After(getNodeToPrune(head.clone())));
     }
 
@@ -52,8 +59,7 @@ public class Solution extends SolutionTemplate {
      * @param   head The head of the linked list.
      */
     private static LinkedListNode<Integer> getNodeToPrune(LinkedListNode<Integer> head) {
-        Random r = new Random();
-        int nodeToPrune = r.nextInt(LIST_LENGTH - 2) + 1; // no head or tail
+        int nodeToPrune = RandomGenerator.randomIntegerGenerator(LIST_LENGTH - 2) + 1; // no head or tail
         for (int i = 0; i < nodeToPrune; i++) {
             head = head.getNext();
         }

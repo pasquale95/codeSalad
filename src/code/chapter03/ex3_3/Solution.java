@@ -5,6 +5,7 @@ import utils.architecture.ExerciseSolutions;
 import utils.exceptions.EmptyStackException;
 import utils.generators.ArrayGenerator;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -35,9 +36,13 @@ public class Solution extends SolutionTemplate {
     public void solve() {
         printBlue(getProblemName());
         try {
-            int[] numbers = ArrayGenerator.generateRandomIntArray(10, 20);
+            Integer[] numbers = ArrayGenerator.generateObjectArray(
+                    10,
+                    () -> RandomGenerator.randomIntegerGenerator(20),
+                    Integer.class
+            );
             After.SetOfStacks setOfStacks = new After.SetOfStacks(4);
-            for (int number : numbers) {
+            for (Integer number : numbers) {
                 setOfStacks.push(number);
             }
             System.out.println("Set of stacks is composed by these stacks: " + colorYellow(setOfStacks.toString())
@@ -56,7 +61,11 @@ public class Solution extends SolutionTemplate {
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         int threshold = ((Long) params.get("threshold")).intValue();
-        int[] numbers = ArrayGenerator.generateRandomIntArray(params);
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+        );
         return new ExerciseSolutions(new Before(numbers, threshold), new After(numbers, threshold));
     }
 

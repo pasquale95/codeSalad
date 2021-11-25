@@ -8,9 +8,9 @@ package chapter01.ex1_7;
  */
 public class After implements Runnable {
 
-    private final int[][] matrix;
+    private final Integer[][] matrix;
 
-    public After(int[][] matrix) {
+    public After(Integer[][] matrix) {
         this.matrix = matrix;
     }
 
@@ -25,7 +25,7 @@ public class After implements Runnable {
      * Rotate the matrix of 90°.
      * @param   matrix The matrix to rotate.
      */
-    public static void rotateMatrix(int[][] matrix) {
+    public static void rotateMatrix(Integer[][] matrix) {
         int N = matrix.length, tmp;
         for (int layer = 0; layer < N / 2; layer++) {
             for (int x = layer; x < N - 1 - layer; x++) {

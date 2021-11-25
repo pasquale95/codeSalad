@@ -82,10 +82,10 @@ public class After implements Runnable {
         }
     }
 
-    private final int[] numbers;
-    private final boolean[] remove;
+    private final Integer[] numbers;
+    private final Boolean[] remove;
 
-    public After(int[] numbers, boolean[] remove) {
+    public After(Integer[] numbers, Boolean[] remove) {
         this.numbers = numbers;
         this.remove = remove;
     }
@@ -93,7 +93,7 @@ public class After implements Runnable {
     @Override
     public void run() {
         try {
-            Before.MyQueue queue = new Before.MyQueue();
+            After.MyQueue queue = new After.MyQueue();
             for (int i = 0; i < numbers.length; i++) {
                 queue.add(numbers[i]);
                 if (remove[i]) {

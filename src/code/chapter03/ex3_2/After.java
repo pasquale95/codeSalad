@@ -33,10 +33,10 @@ public class After implements Runnable {
 
     private static StackElement top;
     private static StackElement topMin;
-    private final int[] numbers;
-    private final boolean[] minAndPops;
+    private final Integer[] numbers;
+    private final Boolean[] minAndPops;
 
-    public After(int[] numbers, boolean[] minAndPops) {
+    public After(Integer[] numbers, Boolean[] minAndPops) {
         this.numbers = numbers;
         this.minAndPops = minAndPops;
     }

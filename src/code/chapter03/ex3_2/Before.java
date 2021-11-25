@@ -38,10 +38,10 @@ public class Before implements Runnable {
 
     private static StackElement top;
     private static int size = 0;
-    private final int[] numbers;
-    private final boolean[] minAndPops;
+    private final Integer[] numbers;
+    private final Boolean[] minAndPops;
 
-    public Before(int[] numbers, boolean[] minAndPops) {
+    public Before(Integer[] numbers, Boolean[] minAndPops) {
         this.numbers = numbers;
         this.minAndPops = minAndPops;
     }

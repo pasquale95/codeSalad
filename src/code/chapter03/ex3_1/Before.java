@@ -12,12 +12,12 @@ import utils.exceptions.StackOverflowException;
 public class Before implements Runnable {
 
     public static final int STACKS = 3;
-    private final int[] numbers, stackSequence;
+    private final Integer[] numbers, stackSequence;
     private static int[] stack;
     private static int[] stackIndicator;
     private static int stackSize;
 
-    public Before(int[] numbers, int[] stackSequence) {
+    public Before(Integer[] numbers, Integer[] stackSequence) {
         this.numbers = numbers;
         this.stackSequence = stackSequence;
         allocateStack(numbers.length);

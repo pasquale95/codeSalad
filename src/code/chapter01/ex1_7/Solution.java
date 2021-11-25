@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.SolutionTemplate;
-import utils.generators.StringGenerator;
+import utils.generators.RandomGenerator;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -29,7 +29,11 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        int[][] matrix = ArrayGenerator.generateRandomMatrix(N, 100);
+        Integer[][] matrix = ArrayGenerator.generateObjectMatrix(
+                N,
+                () -> RandomGenerator.randomIntegerGenerator(100),
+                Integer.class
+        );
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
         After.rotateMatrix(matrix);
@@ -39,7 +43,11 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        int[][] matrix = ArrayGenerator.generateRandomMatrix(params);
+        Integer[][] matrix = ArrayGenerator.generateObjectMatrix(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params),
+                Integer.class
+        );
         return new ExerciseSolutions(new Before(matrix), new After(matrix));
     }
 
@@ -48,10 +56,10 @@ public class Solution extends SolutionTemplate {
         return PROBLEM;
     }
 
-    private static void printMatrix(int[][] matrix) {
+    private static void printMatrix(Integer[][] matrix) {
         StringBuilder sb = new StringBuilder();
-        for (int[] row : matrix) {
-            for (int number: row) {
+        for (Integer[] row : matrix) {
+            for (Integer number: row) {
                 sb.append(String.format("%02d", number)).append("|");
             }
             sb.append("\n");

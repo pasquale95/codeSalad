@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.architecture.SolutionTemplate;
+import utils.generators.RandomGenerator;
 
 import static utils.Colors.*;
 
@@ -26,7 +27,10 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(10, 8, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                10,
+                () -> RandomGenerator.randomIntegerGenerator(8)
+        );
         LinkedListNode<Integer> kth = After.findKthToLast(head, KTH);
         if (kth != null) {
             System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is " +
@@ -39,7 +43,10 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params)
+        );
         return new ExerciseSolutions(new Before(head.clone(), 12), new After(head.clone(), 12));
     }
 

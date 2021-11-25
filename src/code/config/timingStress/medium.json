@@ -29,7 +29,7 @@
       "onlyLowerCase": false
     },
     "ex1_7": {
-      "N": 5000,
+      "arraySize": 5000,
       "ceiling": 100
     }
   },
@@ -62,24 +62,24 @@
   },
   "chapter03": {
     "ex3_1": {
-      "size": 5000,
+      "arraySize": 5000,
       "ceiling": 1000
     },
     "ex3_2": {
-      "size": 5000,
+      "arraySize": 5000,
       "ceiling": 1000
     },
     "ex3_3": {
-      "size": 5000,
+      "arraySize": 5000,
       "ceiling": 1000,
       "threshold": 20
     },
     "ex3_4": {
-      "size": 5000,
+      "arraySize": 5000,
       "ceiling": 1000
     },
     "ex3_5": {
-      "size": 5000,
+      "arraySize": 5000,
       "ceiling": 1000
     }
   }

@@ -2,8 +2,7 @@ package utils;
 
 import org.json.simple.JSONObject;
 
-import java.util.Random;
-import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
@@ -115,46 +114,41 @@ public class LinkedListNode<T> implements Cloneable {
     }
 
     /**
-     * Return a random linked list of the specified length.
+     * Return a linked list of the specified length.
      *
-     * @param   length The random linked list number of nodes.
-     * @param   dataRange The nodes can have value in the range [0, dataRange).
-     * @param   function The function mapping the integer value to the type T.
-     * @return  The head of a random generated linked list.
+     * @param   length The linked list number of nodes.
+     * @param   supplier The supplier function which generates the object T.
+     * @return  The head of the generated linked list.
      */
-    public static <T> LinkedListNode<T> createRandomLinkedList(
+    public static <T> LinkedListNode<T> createLinkedList(
             int length,
-            int dataRange,
-            Function<Integer, T> function
+            Supplier<T> supplier
     ) {
         LinkedListNode<T> head = null;
         if (length > 0) {
-            Random r = new Random();
-            LinkedListNode<T> node = new LinkedListNode<>(function.apply(r.nextInt(dataRange)));
+            LinkedListNode<T> node = new LinkedListNode<>(supplier.get());
             head = node;
             for (int i = 1; i < length; i++) {
-                node = node.append(function.apply(r.nextInt(dataRange)));
+                node = node.append(supplier.get());
             }
         }
         return head;
     }
 
     /**
-     * Return a random linked list of the specified length
-     * and with values in the range [0, dataRange).
+     * Return a linked list of the specified length.
      *
-     * @param   params Set of parameters to use for generating an array of random linked lists.
-     * @param   function The function mapping the integer value to the type T.
-     * @return  The head of a random generated linked list.
+     * @param   params Set of parameters to use for generating a linked list.
+     * @param   supplier The supplier function which generates the object T.
+     * @return  The head of the generated linked list.
      */
-    public static <T> LinkedListNode<T> createRandomLinkedList(
+    public static <T> LinkedListNode<T> createLinkedList(
             JSONObject params,
-            Function<Integer, T> function
+            Supplier<T> supplier
     ) {
-        return createRandomLinkedList(
+        return createLinkedList(
                 ((Long) params.get("listSize")).intValue(),
-                ((Long) params.get("dataRange")).intValue(),
-                function
+                supplier
         );
     }
 

@@ -72,12 +72,12 @@ public class After implements Runnable {
     }
 
     public static final int STACKS = 3;
-    private final int[] numbers, stackSequence;
+    private final Integer[] numbers, stackSequence;
     private static int[] stack;
     private static int stackSize = 0;
     private static StackInfo[] stackInfo;
 
-    public After(int[] numbers, int[] stackSequence) {
+    public After(Integer[] numbers, Integer[] stackSequence) {
         this.numbers = numbers;
         this.stackSequence = stackSequence;
         allocateStack(numbers.length);

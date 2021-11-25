@@ -4,7 +4,8 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.architecture.SolutionTemplate;
-import java.util.Random;
+import utils.generators.RandomGenerator;
+
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
 
@@ -30,9 +31,11 @@ public class Solution extends SolutionTemplate {
     @Override
     public void solve() {
         printBlue(getProblemName());
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(LIST_LENGTH, CEILING, i -> i);
-        Random r = new Random();
-        int threshold = r.nextInt(CEILING);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                LIST_LENGTH,
+                () -> RandomGenerator.randomIntegerGenerator(CEILING)
+        );
+        int threshold = RandomGenerator.randomIntegerGenerator(CEILING);
         LinkedListNode<Integer> partitioned = After.partition(head.clone(), threshold);
         System.out.println(colorYellow(head.toString()) + " after partitioning on the threshold " + threshold
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
@@ -40,9 +43,11 @@ public class Solution extends SolutionTemplate {
 
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
-        LinkedListNode<Integer> head = LinkedListNode.createRandomLinkedList(params, i -> i);
-        Random r = new Random();
-        int threshold = r.nextInt(2000);
+        LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
+                params,
+                () -> RandomGenerator.randomIntegerGenerator(params)
+        );
+        int threshold = RandomGenerator.randomIntegerGenerator(params);
         return new ExerciseSolutions(new Before(head.clone(), threshold), new After(head.clone(), threshold));
     }
 

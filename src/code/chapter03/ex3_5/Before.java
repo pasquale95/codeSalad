@@ -10,9 +10,9 @@ import utils.Stack;
  */
 public class Before implements Runnable {
 
-    private final int[] numbers;
+    private final Integer[] numbers;
 
-    public Before(int[] numbers) {
+    public Before(Integer[] numbers) {
         this.numbers = numbers;
     }
 

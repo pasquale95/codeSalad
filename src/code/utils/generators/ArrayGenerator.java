@@ -3,7 +3,6 @@ package utils.generators;
 import org.json.simple.JSONObject;
 
 import java.lang.reflect.Array;
-import java.util.Random;
 import java.util.function.Supplier;
 
 /**
@@ -16,41 +15,19 @@ public class ArrayGenerator {
 
     /**
      * Generate an array of random integers.
-     * @param   size The array size.
-     * @param   ceiling The ceiling for the random function.
-     * @return  The array of random integers.
-     */
-    public static int[] generateRandomIntArray(int size, int ceiling) {
-        Random r = new Random();
-        int[] integers = new int[size];
-        for (int i = 0; i < size; i++) {
-            integers[i] = r.nextInt(ceiling);
-        }
-        return integers;
-    }
-
-    /**
-     * Generate an array of random integers.
-     * @param   params Set of parameters to use for generating a random string.
-     * @return  The array of random integers.
-     */
-    public static int[] generateRandomIntArray(JSONObject params) {
-        return generateRandomIntArray(
-                ((Long) params.get("size")).intValue(),
-                ((Long) params.get("ceiling")).intValue()
-        );
-    }
-
-    /**
-     * Generate an array of random integers.
      * @param   N The matrix size
-     * @param   ceiling The ceiling for the random function.
+     * @param   supplier The supplier function mapping an integer to the object T.
      * @return  A NxN matrix with random generated values.
      */
-    public static int[][] generateRandomMatrix(int N, int ceiling) {
-        int[][] matrix = new int[N][];
+    @SuppressWarnings("unchecked")
+    public static <T> T[][] generateObjectMatrix(
+            int N,
+            Supplier<T> supplier,
+            Class<T> clazz
+    ) {
+        T[][] matrix = (T[][]) Array.newInstance(clazz, N, N);
         for (int i = 0; i < N; i++) {
-            matrix[i] = ArrayGenerator.generateRandomIntArray(N, ceiling);
+            matrix[i] = generateObjectArray(N, supplier, clazz);
         }
         return matrix;
     }
@@ -58,27 +35,19 @@ public class ArrayGenerator {
     /**
      * Generate an array of random integers.
      * @param   params Set of parameters to use for generating a random string.
+     * @param   supplier The supplier function mapping an integer to the object T.
      * @return  A NxN matrix with random generated values.
      */
-    public static int[][] generateRandomMatrix(JSONObject params) {
-        return generateRandomMatrix(
-                ((Long) params.get("N")).intValue(),
-                ((Long) params.get("ceiling")).intValue()
+    public static <T> T[][] generateObjectMatrix(
+            JSONObject params,
+            Supplier<T> supplier,
+            Class<T> clazz
+    ) {
+        return generateObjectMatrix(
+                ((Long) params.get("arraySize")).intValue(),
+                supplier,
+                clazz
         );
-    }
-
-    /**
-     * Generate an array of random booleans.
-     * @param   size The array size.
-     * @return  The array of random booleans.
-     */
-    public static boolean[] generateRandomBooleanArray(int size) {
-        Random r = new Random();
-        boolean[] booleans = new boolean[size];
-        for (int i = 0; i < size; i++) {
-            booleans[i] = (r.nextInt(2) % 2) == 0;
-        }
-        return booleans;
     }
 
     /**
@@ -110,7 +79,7 @@ public class ArrayGenerator {
      * @return  An array of objects T[].
      */
     @SuppressWarnings("unchecked")
-    protected static <T> T[] generateObjectArray(
+    public static <T> T[] generateObjectArray(
             int arraySize,
             Supplier<T> supplier,
             Class<T> clazz

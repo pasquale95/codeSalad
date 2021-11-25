@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import utils.generators.ArrayGenerator;
 import utils.Stack;
+import utils.generators.RandomGenerator;
 
 import java.util.Arrays;
 
@@ -25,7 +26,11 @@ public class Ex3_5 {
     @BeforeEach
     void init() {
         stack = new Stack<>();
-        int[] numbers = ArrayGenerator.generateRandomIntArray(10, 1000);
+        Integer[] numbers = ArrayGenerator.generateObjectArray(
+                10,
+                () -> RandomGenerator.randomIntegerGenerator(1000),
+                Integer.class
+        );
         for (int n : numbers) {
             stack.push(n);
         }

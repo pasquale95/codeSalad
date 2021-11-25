@@ -109,10 +109,10 @@ public class Before implements Runnable {
         }
     }
 
-    private final int[] numbers;
+    private final Integer[] numbers;
     private final int threshold;
 
-    public Before(int[] numbers, int threshold) {
+    public Before(Integer[] numbers, int threshold) {
         this.numbers = numbers;
         this.threshold = threshold;
     }
