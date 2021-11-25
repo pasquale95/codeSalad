@@ -25,13 +25,6 @@ public class Solution extends SolutionTemplate {
     private static final String PROBLEM = "Chapter 1. Ex 1.1";
     private static final String[] strings = {"genetics", "salt", "castle", "controlled"};
 
-    public static void main(String[] args) throws IOException, ParseException {
-        ConfigManager configManager = ConfigManager.getInstance();
-        Solution sol = new Solution();
-        String[] codes = sol.getClass().getPackageName().split("\\.");
-        sol.time(configManager.getConfig(codes[0], codes[1]));
-    }
-
     /**
      * Chapter 1
      * Ex1.1: Is unique
