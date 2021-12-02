@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_7: Rotate Matrix (Before)")
+@DisplayName("Ex1.7: Rotate Matrix (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Checking matrix rotation:")

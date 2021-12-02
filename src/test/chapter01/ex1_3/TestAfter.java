@@ -15,7 +15,7 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("After")
-@DisplayName("Ex1_3: URLify (After)")
+@DisplayName("Ex1.3: URLify (After)")
 public class TestAfter {
 
     @ParameterizedTest(name = "Urlifying \"{1}\" to \"{0}\":")

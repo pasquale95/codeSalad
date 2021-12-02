@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("After")
-@DisplayName("Ex1_7: Rotate Matrix (After)")
+@DisplayName("Ex1.7: Rotate Matrix (After)")
 public class TestAfter {
 
     @ParameterizedTest(name = "Checking matrix rotation:")

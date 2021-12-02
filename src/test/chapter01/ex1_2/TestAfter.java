@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("After")
-@DisplayName("Ex1_2: Check permutations (After)")
+@DisplayName("Ex1.2: Check permutations (After)")
 public class TestAfter {
 
     @ParameterizedTest(name = "Checking if words \"{1}\" and \"{2}\" are permutations:")

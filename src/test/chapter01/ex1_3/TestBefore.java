@@ -16,7 +16,7 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_3: URLify (Before)")
+@DisplayName("Ex1.3: URLify (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Urlifying word \"{1}\" to \"{0}\":")

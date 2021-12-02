@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_5: One Away (Before)")
+@DisplayName("Ex1.5: One Away (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Checking if word \"{1}\" and \"{2}\" are one char away:")

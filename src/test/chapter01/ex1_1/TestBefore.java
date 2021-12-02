@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_1: Is unique (Before)")
+@DisplayName("Ex1.1: Is unique (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Checking char uniqueness for word \"{1}\":")

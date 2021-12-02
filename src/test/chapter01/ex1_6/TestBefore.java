@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_6: String Compression (Before)")
+@DisplayName("Ex1.6: String Compression (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Checking if word \"{1}\" is compressed to \"{0}\":")

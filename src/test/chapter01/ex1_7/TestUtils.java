@@ -19,15 +19,17 @@ public class TestUtils {
      */
     private static Stream<Arguments> getParameters() {
         return Stream.of(
-                Arguments.of(new Integer[][] {
-                        {7,4,1},
-                        {8,5,2},
-                        {9,6,3}
-                }, new Integer[][] {
-                        {1,2,3},
-                        {4,5,6},
-                        {7,8,9}
-                })
+                Arguments.of(
+                        new Integer[][] {
+                                {7,4,1},
+                                {8,5,2},
+                                {9,6,3}
+                        },
+                        new Integer[][] {
+                                {1,2,3},
+                                {4,5,6},
+                                {7,8,9}
+                        })
         );
     }
 }

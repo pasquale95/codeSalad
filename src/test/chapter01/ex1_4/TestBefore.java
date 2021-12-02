@@ -15,7 +15,7 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("Before")
-@DisplayName("Ex1_4: Palindrome Permutation (Before)")
+@DisplayName("Ex1.4: Palindrome Permutation (Before)")
 public class TestBefore {
 
     @ParameterizedTest(name = "Checking if word \"{1}\" is permutation of a palindrome:")

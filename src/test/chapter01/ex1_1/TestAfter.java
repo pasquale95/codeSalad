@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("After")
-@DisplayName("Ex1_1: Is unique (After)")
+@DisplayName("Ex1.1: Is unique (After)")
 public class TestAfter {
 
     @ParameterizedTest(name = "Checking char uniqueness for word \"{1}\":")

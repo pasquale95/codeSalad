@@ -15,7 +15,7 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * file 'LICENSE', which is part of this source code package.
  */
 @Tag("After")
-@DisplayName("Ex1_4: Palindrome Permutation (After)")
+@DisplayName("Ex1.4: Palindrome Permutation (After)")
 public class TestAfter {
 
     @ParameterizedTest(name = "Checking if word \"{1}\" is permutation of a palindrome:")
