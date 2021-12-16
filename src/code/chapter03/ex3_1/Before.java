@@ -98,6 +98,7 @@ public class Before implements Runnable {
     public static void allocateStack(int size) {
         stack = new int[size];
         stackIndicator = new int[size];
+        stackSize = 0;
     }
 
     /**

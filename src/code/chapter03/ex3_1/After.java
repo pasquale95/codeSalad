@@ -205,6 +205,7 @@ public class After implements Runnable {
     public static void allocateStack(int capacity) {
         stack = new int[capacity];
         stackInfo = new StackInfo[STACKS];
+        stackSize = 0;
         int defaultCapacity = capacity / STACKS + (capacity % STACKS) / (STACKS - 1);
         int i;
         for (i = 0; i < STACKS-1; i++) {
