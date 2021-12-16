@@ -17,10 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("Ex1.1: Is unique (Before)")
 public class TestBefore {
 
-    @ParameterizedTest(name = "Checking char uniqueness for word \"{1}\":")
+    @ParameterizedTest(name = "(Question A) Checking char uniqueness for word \"{1}\":")
     @MethodSource("chapter01.ex1_1.TestUtils#getParameters")
-    void check(Boolean expected, String string) {
+    void checkA(Boolean expected, String string) {
         assertEquals(expected, Before.isUniqueCharsA(string));
+    }
+
+    @ParameterizedTest(name = "(Question B) Checking char uniqueness for word \"{1}\":")
+    @MethodSource("chapter01.ex1_1.TestUtils#getParameters")
+    void checkB(Boolean expected, String string) {
         assertEquals(expected, Before.isUniqueCharsB(string));
     }
 }
