@@ -29,5 +29,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty "junit.jupiter.testclass.order.default", "org.junit.jupiter.api.ClassOrderer\$ClassName"
     testLogging.events "passed", "skipped", "failed", "standardOut", "standardError"
 }
