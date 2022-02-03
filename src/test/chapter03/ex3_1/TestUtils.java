@@ -21,14 +21,9 @@ public class TestUtils {
      */
     private static Stream<Arguments> getParameters() {
         return Stream.of(
-                Arguments.of("push", 3, 0),
-                Arguments.of("push", 6, 2),
-                Arguments.of("push", 9, 0),
-                Arguments.of("pop", 9, 0),
-                Arguments.of("push", 5, 1),
-                Arguments.of("pop", 3, 0),
-                Arguments.of("pop", 5, 1),
-                Arguments.of("pop", 6, 2)
-            );
+                Arguments.of(3, 0),
+                Arguments.of(6, 2),
+                Arguments.of(9, 1)
+        );
     }
 }

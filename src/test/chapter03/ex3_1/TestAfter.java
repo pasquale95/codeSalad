@@ -1,8 +1,7 @@
 package chapter03.ex3_1;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import utils.exceptions.EmptyStackException;
@@ -18,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @Tag("After")
 @DisplayName("Ex3.1: Three in One (After)")
+@TestMethodOrder(OrderAnnotation.class)
 public class TestAfter {
 
     @BeforeAll
@@ -25,13 +25,17 @@ public class TestAfter {
         After.allocateStack(TestUtils.STACK_SIZE);
     }
 
-    @ParameterizedTest(name = "Performing a {0} on stack {2} to {0} \"{1}\":")
+    @ParameterizedTest(name = "Performing a push of number {0} on \"stack {1}\":")
     @MethodSource("chapter03.ex3_1.TestUtils#getParameters")
-    void check(String operation, Integer number, Integer stack) throws EmptyStackException, StackOverflowException {
-        if (operation.equals("pop")) {
-            assertEquals(number, After.popFromStack(stack));
-        } else {
-            After.pushToStack(number, stack);
-        }
+    @Order(1)
+    void checkPush(Integer number, Integer stackNumber) throws StackOverflowException {
+        After.pushToStack(number, stackNumber);
+    }
+
+    @ParameterizedTest(name = "Performing a pop from \"stack {1}\" to get {0}:")
+    @MethodSource("chapter03.ex3_1.TestUtils#getParameters")
+    @Order(2)
+    void checkPop(Integer number, Integer stackNumber) throws EmptyStackException {
+        assertEquals(number, After.popFromStack(stackNumber));
     }
 }
