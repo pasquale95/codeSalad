@@ -10,10 +10,10 @@ import utils.architecture.ChapterTemplate;
  */
 public class Chapter03 extends ChapterTemplate {
     public Chapter03() {
-        exercises.add(new chapter03.ex3_1.Solution());
-        exercises.add(new chapter03.ex3_2.Solution());
-        exercises.add(new chapter03.ex3_3.Solution());
-        exercises.add(new chapter03.ex3_4.Solution());
-        exercises.add(new chapter03.ex3_5.Solution());
+        comparators.add(new chapter03.ex3_1.Comparator());
+        comparators.add(new chapter03.ex3_2.Comparator());
+        comparators.add(new chapter03.ex3_3.Comparator());
+        comparators.add(new chapter03.ex3_4.Comparator());
+        comparators.add(new chapter03.ex3_5.Comparator());
     }
 }

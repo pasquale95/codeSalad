@@ -1,7 +1,6 @@
 package chapter03;
 
-import chapter03.ex3_5.Before;
-import chapter03.ex3_5.After;
+import chapter03.ex3_5.post.Solution;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -44,14 +43,14 @@ public class Ex3_5 {
     @Test
     @Order(1)
     void sortStackBefore() {
-        Before.sortStack(stack);
+        chapter03.ex3_5.pre.Solution.sortStack(stack);
         assertEquals(sorted, stack);
     }
 
     @Test
     @Order(2)
     void sortStackAfter() {
-        After.sortStack(stack);
+        Solution.sortStack(stack);
         assertEquals(sorted, stack);
     }
 }

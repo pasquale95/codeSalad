@@ -48,8 +48,13 @@ public class Main {
      * Run all solutions
      */
     public static void runSolutions(ArrayList<ChapterTemplate> chapters) {
-        for (ChapterTemplate chapter : chapters) {
-            chapter.runSolutions();
+        try {
+            for (ChapterTemplate chapter : chapters) {
+                //chapter.runPreSolutions();
+                chapter.runPostSolutions();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

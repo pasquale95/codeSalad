@@ -1,7 +1,6 @@
 package chapter03;
 
-import chapter03.ex3_4.After;
-import chapter03.ex3_4.Before;
+import chapter03.ex3_4.pre.Solution;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import utils.exceptions.EmptyQueueException;
@@ -22,7 +21,7 @@ public class Ex3_4 {
     @Test
     @Order(1)
     void queueViaStacksBefore() throws EmptyQueueException {
-        Before.MyQueue myQueue = new Before.MyQueue();
+        Solution.MyQueue myQueue = new Solution.MyQueue();
         for (int number : NUMBERS) {
             myQueue.add(number);
         }
@@ -42,7 +41,7 @@ public class Ex3_4 {
     @Test
     @Order(2)
     void queueViaStacksAfter() throws EmptyQueueException {
-        After.MyQueue myQueue = new After.MyQueue();
+        chapter03.ex3_4.post.Solution.MyQueue myQueue = new chapter03.ex3_4.post.Solution.MyQueue();
         for (int number : NUMBERS) {
             myQueue.add(number);
         }

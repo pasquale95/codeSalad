@@ -1,7 +1,6 @@
 package chapter03;
 
-import chapter03.ex3_2.Before;
-import chapter03.ex3_2.After;
+import chapter03.ex3_2.pre.Solution;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import utils.exceptions.EmptyStackException;
@@ -23,39 +22,39 @@ public class Ex3_2 {
     @Order(1)
     void stackMinBefore() throws EmptyStackException {
         for (int number : numbers) {
-            Before.push(number);
+            Solution.push(number);
         }
-        assertEquals(13, Before.pop());
-        assertEquals(1, Before.min());
-        assertEquals(11, Before.pop());
-        assertEquals(1, Before.min());
-        assertEquals(1, Before.pop());
-        assertEquals(2, Before.min());
-        assertEquals(2, Before.pop());
-        assertEquals(2, Before.min());
-        while (!Before.isEmpty()) {
-            Before.pop();
+        assertEquals(13, Solution.pop());
+        assertEquals(1, Solution.min());
+        assertEquals(11, Solution.pop());
+        assertEquals(1, Solution.min());
+        assertEquals(1, Solution.pop());
+        assertEquals(2, Solution.min());
+        assertEquals(2, Solution.pop());
+        assertEquals(2, Solution.min());
+        while (!Solution.isEmpty()) {
+            Solution.pop();
         }
-        assertThrows(EmptyStackException.class, Before::pop);
+        assertThrows(EmptyStackException.class, Solution::pop);
     }
 
     @Test
     @Order(2)
     void stackMinAfter() throws EmptyStackException {
         for (int number : numbers) {
-            After.push(number);
+            chapter03.ex3_2.post.Solution.push(number);
         }
-        assertEquals(13, After.pop());
-        assertEquals(1, After.min());
-        assertEquals(11, After.pop());
-        assertEquals(1, After.min());
-        assertEquals(1, After.pop());
-        assertEquals(2, After.min());
-        assertEquals(2, After.pop());
-        assertEquals(2, After.min());
-        while (!After.isEmpty()) {
-            After.pop();
+        assertEquals(13, chapter03.ex3_2.post.Solution.pop());
+        assertEquals(1, chapter03.ex3_2.post.Solution.min());
+        assertEquals(11, chapter03.ex3_2.post.Solution.pop());
+        assertEquals(1, chapter03.ex3_2.post.Solution.min());
+        assertEquals(1, chapter03.ex3_2.post.Solution.pop());
+        assertEquals(2, chapter03.ex3_2.post.Solution.min());
+        assertEquals(2, chapter03.ex3_2.post.Solution.pop());
+        assertEquals(2, chapter03.ex3_2.post.Solution.min());
+        while (!chapter03.ex3_2.post.Solution.isEmpty()) {
+            chapter03.ex3_2.post.Solution.pop();
         }
-        assertThrows(EmptyStackException.class, After::pop);
+        assertThrows(EmptyStackException.class, chapter03.ex3_2.post.Solution::pop);
     }
 }

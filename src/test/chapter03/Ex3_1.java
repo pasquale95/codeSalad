@@ -1,7 +1,6 @@
 package chapter03;
 
-import chapter03.ex3_1.Before;
-import chapter03.ex3_1.After;
+import chapter03.ex3_1.pre.Solution;
 import utils.exceptions.EmptyStackException;
 import utils.exceptions.StackOverflowException;
 import org.junit.jupiter.api.Order;
@@ -24,38 +23,38 @@ public class Ex3_1 {
     @Test
     @Order(1)
     void threeInOneBefore() throws StackOverflowException, EmptyStackException {
-        Before.allocateStack(6);
+        Solution.allocateStack(6);
         for (int i = 0; i < numbers.length; i++) {
-            Before.pushToStack(numbers[i], stackSequence[i]);
+            Solution.pushToStack(numbers[i], stackSequence[i]);
         }
-        assertEquals(3, Before.popFromStack(STACK_ONE));
-        assertEquals(5, Before.popFromStack(STACK_TWO));
-        assertEquals(1, Before.popFromStack(STACK_ONE));
-        assertThrows(EmptyStackException.class, () -> Before.popFromStack(STACK_TWO));
-        Before.pushToStack(20, STACK_ONE);
-        Before.pushToStack(22, STACK_TWO);
-        Before.pushToStack(24, STACK_TWO);
-        assertThrows(StackOverflowException.class, () -> Before.pushToStack(1, STACK_ONE));
-        assertEquals(13, Before.popFromStack(STACK_THREE));
-        assertEquals(20, Before.popFromStack(STACK_ONE));
+        assertEquals(3, Solution.popFromStack(STACK_ONE));
+        assertEquals(5, Solution.popFromStack(STACK_TWO));
+        assertEquals(1, Solution.popFromStack(STACK_ONE));
+        assertThrows(EmptyStackException.class, () -> Solution.popFromStack(STACK_TWO));
+        Solution.pushToStack(20, STACK_ONE);
+        Solution.pushToStack(22, STACK_TWO);
+        Solution.pushToStack(24, STACK_TWO);
+        assertThrows(StackOverflowException.class, () -> Solution.pushToStack(1, STACK_ONE));
+        assertEquals(13, Solution.popFromStack(STACK_THREE));
+        assertEquals(20, Solution.popFromStack(STACK_ONE));
     }
 
     @Test
     @Order(2)
     void threeInOneAfter() throws StackOverflowException, EmptyStackException {
-        After.allocateStack(6);
+        chapter03.ex3_1.post.Solution.allocateStack(6);
         for (int i = 0; i < numbers.length; i++) {
-            After.pushToStack(numbers[i], stackSequence[i]);
+            chapter03.ex3_1.post.Solution.pushToStack(numbers[i], stackSequence[i]);
         }
-        assertEquals(3, After.popFromStack(STACK_ONE));
-        assertEquals(5, After.popFromStack(STACK_TWO));
-        assertEquals(1, After.popFromStack(STACK_ONE));
-        assertThrows(EmptyStackException.class, () -> After.popFromStack(STACK_TWO));
-        After.pushToStack(20, STACK_ONE);
-        After.pushToStack(22, STACK_TWO);
-        After.pushToStack(24, STACK_TWO);
-        assertThrows(StackOverflowException.class, () -> After.pushToStack(1, STACK_ONE));
-        assertEquals(13, After.popFromStack(STACK_THREE));
-        assertEquals(20, After.popFromStack(STACK_ONE));
+        assertEquals(3, chapter03.ex3_1.post.Solution.popFromStack(STACK_ONE));
+        assertEquals(5, chapter03.ex3_1.post.Solution.popFromStack(STACK_TWO));
+        assertEquals(1, chapter03.ex3_1.post.Solution.popFromStack(STACK_ONE));
+        assertThrows(EmptyStackException.class, () -> chapter03.ex3_1.post.Solution.popFromStack(STACK_TWO));
+        chapter03.ex3_1.post.Solution.pushToStack(20, STACK_ONE);
+        chapter03.ex3_1.post.Solution.pushToStack(22, STACK_TWO);
+        chapter03.ex3_1.post.Solution.pushToStack(24, STACK_TWO);
+        assertThrows(StackOverflowException.class, () -> chapter03.ex3_1.post.Solution.pushToStack(1, STACK_ONE));
+        assertEquals(13, chapter03.ex3_1.post.Solution.popFromStack(STACK_THREE));
+        assertEquals(20, chapter03.ex3_1.post.Solution.popFromStack(STACK_ONE));
     }
 }

@@ -1,7 +1,6 @@
 package chapter03;
 
-import chapter03.ex3_3.After;
-import chapter03.ex3_3.Before;
+import chapter03.ex3_3.pre.Solution;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import utils.exceptions.EmptyStackException;
@@ -23,7 +22,7 @@ public class Ex3_3 {
     @Test
     @Order(1)
     void stackOfPlatesBefore() throws EmptyStackException {
-        Before.SetOfStacks setOfStacks = new Before.SetOfStacks(THRESHOLD);
+        Solution.SetOfStacks setOfStacks = new Solution.SetOfStacks(THRESHOLD);
         for (int number : NUMBERS) {
             setOfStacks.push(number);
         }
@@ -42,7 +41,7 @@ public class Ex3_3 {
     @Test
     @Order(2)
     void stackOfPlatesAfter() throws EmptyStackException {
-        After.SetOfStacks setOfStacks = new After.SetOfStacks(THRESHOLD);
+        chapter03.ex3_3.post.Solution.SetOfStacks setOfStacks = new chapter03.ex3_3.post.Solution.SetOfStacks(THRESHOLD);
         for (int number : NUMBERS) {
             setOfStacks.push(number);
         }
