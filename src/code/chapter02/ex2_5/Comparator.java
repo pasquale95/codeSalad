@@ -1,11 +1,9 @@
 package chapter02.ex2_5;
 
-import chapter02.ex2_5.pre.Solution;
 import org.json.simple.JSONObject;
 import utils.*;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.ComparatorTemplate;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
 
@@ -28,11 +26,9 @@ public class Comparator extends ComparatorTemplate {
                 ),
                 LinkedListNode.class
         );
-        return new ExerciseSolutions(new Solution(addends), new chapter02.ex2_5.post.Solution(addends));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter02.ex2_5.pre.Solution(addends),
+                new chapter02.ex2_5.post.Solution(addends)
+        );
     }
 }

@@ -1,12 +1,14 @@
 package chapter01.ex1_3.pre;
 
+import chapter01.ex1_3.SolutionTemplate;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final char[] input;
     private final int trueLength;
@@ -43,5 +45,10 @@ public class Solution implements Runnable {
             }
         }
         return String.valueOf(input);
+    }
+
+    @Override
+    public String solve(char[] input, int trueLength) {
+        return urlify(input, trueLength);
     }
 }

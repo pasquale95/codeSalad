@@ -1,9 +1,7 @@
 package chapter03.ex3_3;
 
-import chapter03.ex3_3.pre.Solution;
 import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ComparatorTemplate;
 import utils.generators.RandomGenerator;
@@ -24,11 +22,9 @@ public class Comparator extends ComparatorTemplate {
                 () -> RandomGenerator.randomIntegerGenerator(params),
                 Integer.class
         );
-        return new ExerciseSolutions(new Solution(numbers, threshold), new chapter03.ex3_3.post.Solution(numbers, threshold));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter03.ex3_3.pre.Solution(numbers, threshold),
+                new chapter03.ex3_3.post.Solution(numbers, threshold)
+        );
     }
 }

@@ -1,5 +1,6 @@
 package chapter02.ex2_3.post;
 
+import chapter02.ex2_3.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> node;
 
@@ -32,5 +33,10 @@ public class Solution implements Runnable {
         }
         node.setData(node.getNext().getData());
         node.append(node.getNext().getNext());
+    }
+
+    @Override
+    public void solve(LinkedListNode<Integer> node) {
+        removeLinkedListNode(node);
     }
 }

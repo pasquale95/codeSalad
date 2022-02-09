@@ -1,12 +1,14 @@
 package chapter01.ex1_2.post;
 
+import chapter01.ex1_2.SolutionTemplate;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final String[] input;
 
@@ -51,5 +53,10 @@ public class Solution implements Runnable {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean solve(String first, String second) {
+        return arePermutations(first, second);
     }
 }

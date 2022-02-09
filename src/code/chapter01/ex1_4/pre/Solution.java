@@ -1,5 +1,7 @@
 package chapter01.ex1_4.pre;
 
+import chapter01.ex1_4.SolutionTemplate;
+
 import java.util.HashMap;
 
 /**
@@ -8,7 +10,7 @@ import java.util.HashMap;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final String input;
 
@@ -47,5 +49,10 @@ public class Solution implements Runnable {
         }
         // if at least 2 chars have an odd frequency, the string cannot be palindrome
         return oddFrequencyChars <= 1;
+    }
+
+    @Override
+    public boolean solve(String input) {
+        return isPermutationOfPalindrome(input);
     }
 }

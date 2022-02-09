@@ -1,5 +1,6 @@
 package chapter02.ex2_5.post;
 
+import chapter02.ex2_5.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer>[] addends;
 
@@ -129,5 +130,15 @@ public class Solution implements Runnable {
             );
         }
         return node;
+    }
+
+    @Override
+    public LinkedListNode<Integer> solve(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+        return reverseOrderSum(addend1, addend2);
+    }
+
+    @Override
+    public LinkedListNode<Integer> solveFollowUp(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+        return forwardOrderSum(addend1, addend2);
     }
 }

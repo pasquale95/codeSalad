@@ -1,12 +1,14 @@
 package chapter01.ex1_5.post;
 
+import chapter01.ex1_5.SolutionTemplate;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final String[] input;
 
@@ -52,5 +54,10 @@ public class Solution implements Runnable {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean solve(String one, String two) {
+        return areOneAway(one, two);
     }
 }

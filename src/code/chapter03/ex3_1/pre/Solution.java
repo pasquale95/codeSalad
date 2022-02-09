@@ -1,5 +1,6 @@
 package chapter03.ex3_1.pre;
 
+import chapter03.ex3_1.SolutionTemplate;
 import utils.exceptions.EmptyStackException;
 import utils.exceptions.StackOverflowException;
 
@@ -9,11 +10,8 @@ import utils.exceptions.StackOverflowException;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
-
-    public static final int STACKS = 3;
+public class Solution extends SolutionTemplate {
     private final Integer[] numbers, stackSequence;
-    private static int[] stack;
     private static int[] stackIndicator;
     private static int stackSize;
 
@@ -101,11 +99,20 @@ public class Solution implements Runnable {
         stackSize = 0;
     }
 
+    @Override
+    public void solvePushToStack(int data, int stackNumber) throws StackOverflowException {
+        pushToStack(data, stackNumber);
+    }
+
+    @Override
+    public int solvePopFromStack(int stackNumber) throws EmptyStackException {
+        return popFromStack(stackNumber);
+    }
+
     /**
      * @param   stackNumber The stack number.
      * @return  The stack in string format.
      */
-    @SuppressWarnings("unused")
     public static String stackToString(int stackNumber) {
         StringBuilder sb = new StringBuilder().append("|");
         for (int i = stackSize - 1; i >= 0; i--) {

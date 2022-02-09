@@ -1,10 +1,8 @@
 package chapter01.ex1_7;
 
-import utils.architecture.ProblemTemplate;
+import utils.architecture.SolutionStrategy;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
-
-import java.lang.reflect.Method;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -15,9 +13,8 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 1 - Ex 1.7: Rotate Matrix";
-    private static final int N = 6;
 
     /**
      * Chapter 1
@@ -26,36 +23,27 @@ public class Problem extends ProblemTemplate {
      * is represented by an integer, write a method to rotate the image by 90 degrees.
      * Can you do this in place?
      */
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        int n = 6;
+
         printBlue(getProblemName());
         Integer[][] matrix = ArrayGenerator.generateObjectMatrix(
-                N,
+                n,
                 () -> RandomGenerator.randomIntegerGenerator(100),
                 Integer.class
         );
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
-        m.invoke(null, (Object) matrix);
+        solve(matrix);
         System.out.println("The matrix after rotation: ");
         printMatrix(matrix);
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter01.ex1_7.pre.Solution.class.getMethod(
-                "rotateMatrix", Integer[][].class)
-        );
-    }
+    public abstract void solve(Integer[][] matrix);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter01.ex1_7.post.Solution.class.getMethod(
-                "rotateMatrix", Integer[][].class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 

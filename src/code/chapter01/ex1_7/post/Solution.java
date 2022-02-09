@@ -1,12 +1,14 @@
 package chapter01.ex1_7.post;
 
+import chapter01.ex1_7.SolutionTemplate;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final Integer[][] matrix;
 
@@ -36,5 +38,10 @@ public class Solution implements Runnable {
                 matrix[x][N - 1 - layer] = tmp;
             }
         }
+    }
+
+    @Override
+    public void solve(Integer[][] matrix) {
+        rotateMatrix(matrix);
     }
 }

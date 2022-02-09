@@ -1,5 +1,6 @@
 package chapter03.ex3_2.pre;
 
+import chapter03.ex3_2.SolutionTemplate;
 import utils.exceptions.EmptyStackException;
 
 /**
@@ -8,7 +9,7 @@ import utils.exceptions.EmptyStackException;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     static class StackElement {
         private final int data, min;
@@ -120,11 +121,26 @@ public class Solution implements Runnable {
         return size == 0;
     }
 
+    @Override
+    public void solvePush(int data) {
+        push(data);
+    }
+
+    @Override
+    public int solvePop() throws EmptyStackException {
+        return pop();
+    }
+
+    @Override
+    public int solveMin() throws EmptyStackException {
+        return min();
+    }
+
     /**
      * @return  The stack in string format.
      */
-    @SuppressWarnings("unused")
-    public static String stackToString() {
+    @Override
+    public String solveStackToString() {
         StackElement runner = top;
         StringBuilder sb = new StringBuilder().append("|");
         while (runner != null) {

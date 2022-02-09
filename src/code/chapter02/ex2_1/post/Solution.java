@@ -1,5 +1,6 @@
 package chapter02.ex2_1.post;
 
+import chapter02.ex2_1.SolutionTemplate;
 import utils.LinkedListNode;
 
 import java.util.HashSet;
@@ -10,7 +11,7 @@ import java.util.HashSet;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> head;
 
@@ -59,5 +60,15 @@ public class Solution implements Runnable {
             }
             current = current.getNext();
         }
+    }
+
+    @Override
+    public void solveQuestionA(LinkedListNode<Integer> head) {
+        removeDuplicatesA(head);
+    }
+
+    @Override
+    public void solveQuestionB(LinkedListNode<Integer> head) {
+        removeDuplicatesB(head);
     }
 }

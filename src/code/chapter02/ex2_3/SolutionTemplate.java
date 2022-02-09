@@ -1,10 +1,8 @@
 package chapter02.ex2_3;
 
 import utils.LinkedListNode;
-import utils.architecture.ProblemTemplate;
+import utils.architecture.SolutionStrategy;
 import utils.generators.RandomGenerator;
-
-import java.lang.reflect.Method;
 
 import static utils.Colors.*;
 
@@ -14,9 +12,8 @@ import static utils.Colors.*;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 2 - Ex 2.3: Delete Middle Node";
-    private static final int LIST_LENGTH = 10;
 
     /**
      * Chapter 2
@@ -26,7 +23,10 @@ public class Problem extends ProblemTemplate {
      * the exact middle) of a singly linked list, given only access
      * to that node.
      */
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        int LIST_LENGTH = 10;
+
         printBlue(getProblemName());
         LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
                 LIST_LENGTH,
@@ -34,26 +34,14 @@ public class Problem extends ProblemTemplate {
         );
         LinkedListNode<Integer> nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
-        m.invoke(null, nodeToPrune);
+        solve(nodeToPrune);
         System.out.println(colorYellow(head.toString()) + ".");
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter02.ex2_3.pre.Solution.class.getMethod(
-                "removeLinkedListNode", LinkedListNode.class)
-        );
-    }
+    public abstract void solve(LinkedListNode<Integer> node);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter02.ex2_3.post.Solution.class.getMethod(
-                "removeLinkedListNode", LinkedListNode.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 
@@ -62,7 +50,7 @@ public class Problem extends ProblemTemplate {
      * @param   head The head of the linked list.
      */
     public static LinkedListNode<Integer> getNodeToPrune(LinkedListNode<Integer> head) {
-        int nodeToPrune = RandomGenerator.randomIntegerGenerator(LIST_LENGTH - 2) + 1; // no head or tail
+        int nodeToPrune = RandomGenerator.randomIntegerGenerator(head.getSize() - 2) + 1; // no head or tail
         for (int i = 0; i < nodeToPrune; i++) {
             head = head.getNext();
         }

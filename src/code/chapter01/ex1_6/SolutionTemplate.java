@@ -1,8 +1,6 @@
 package chapter01.ex1_6;
 
-import utils.architecture.ProblemTemplate;
-
-import java.lang.reflect.Method;
+import utils.architecture.SolutionStrategy;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -13,9 +11,8 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1.6: String Compression";
-    public static final String TO_COMPRESS = "aaabbbcddaaAAAff";
 
     /**
      * Chapter 1
@@ -25,28 +22,19 @@ public class Problem extends ProblemTemplate {
      * string would not become smaller than the original string, your method should return the original
      * string. You can assume the string has only uppercase and lowercase letters (a-z).
      */
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        String to_compress = "aaabbbcddaaAAAff";
+
         printBlue(getProblemName());
-        System.out.println("The string " + colorYellow(TO_COMPRESS) + " after compression becomes "
-                + colorYellow(String.valueOf(m.invoke(null, TO_COMPRESS))) + ".");
+        System.out.println("The string " + colorYellow(to_compress) + " after compression becomes "
+                + colorYellow(String.valueOf(solve(to_compress))) + ".");
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter01.ex1_6.pre.Solution.class.getMethod(
-                "compress", String.class)
-        );
-    }
+    public abstract String solve(String original);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter01.ex1_6.post.Solution.class.getMethod(
-                "compress", String.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 }

@@ -1,12 +1,14 @@
 package chapter01.ex1_1.post;
 
+import chapter01.ex1_1.SolutionTemplate;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate implements Runnable {
 
     private final String[] input;
 
@@ -64,5 +66,15 @@ public class Solution implements Runnable {
             }
         }
         return true;
+    }
+
+    @Override
+    protected boolean solveQuestionA(String stringToCheck) {
+        return isUniqueCharsA(stringToCheck);
+    }
+
+    @Override
+    protected boolean solveQuestionB(String stringToCheck) {
+        return isUniqueCharsB(stringToCheck);
     }
 }

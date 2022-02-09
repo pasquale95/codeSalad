@@ -8,23 +8,23 @@ package utils.architecture;
  */
 public class ExerciseSolutions {
 
-    private final Runnable pre, post;
+    private final SolutionStrategy pre, post;
 
     /**
      * Wrapper class containing the two solutions for a given exercise.
      * @param   pre The solution created before reading the book.
      * @param   post The solution created after reading the book.
      */
-    public ExerciseSolutions(Runnable pre, Runnable post) {
+    public ExerciseSolutions(SolutionStrategy pre, SolutionStrategy post) {
         this.pre = pre;
         this.post = post;
     }
 
-    public Runnable getPre() {
+    public SolutionStrategy getPre() {
         return pre;
     }
 
-    public Runnable getPost() {
+    public SolutionStrategy getPost() {
         return post;
     }
 }

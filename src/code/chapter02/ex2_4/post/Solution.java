@@ -1,5 +1,6 @@
 package chapter02.ex2_4.post;
 
+import chapter02.ex2_4.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> head;
     private final int threshold;
@@ -54,5 +55,10 @@ public class Solution implements Runnable {
         }
 
         return head;
+    }
+
+    @Override
+    public LinkedListNode<Integer> solve(LinkedListNode<Integer> node, int threshold) {
+        return partition(node, threshold);
     }
 }

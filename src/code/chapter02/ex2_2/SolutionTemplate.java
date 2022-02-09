@@ -1,10 +1,8 @@
 package chapter02.ex2_2;
 
 import utils.LinkedListNode;
-import utils.architecture.ProblemTemplate;
+import utils.architecture.SolutionStrategy;
 import utils.generators.RandomGenerator;
-
-import java.lang.reflect.Method;
 
 import static utils.Colors.*;
 
@@ -14,9 +12,8 @@ import static utils.Colors.*;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 2. Ex 2.2: Return Kth to Last";
-    private static final int KTH = 3;
 
     /**
      * Chapter 2
@@ -24,14 +21,16 @@ public class Problem extends ProblemTemplate {
      * Implement an algorithm to find the kth to last element of a singly
      * linked list.
      */
-    @SuppressWarnings("unchecked")
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        int KTH = 3;
+
         printBlue(getProblemName());
         LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
                 10,
                 () -> RandomGenerator.randomIntegerGenerator(8)
         );
-        LinkedListNode<Integer> kth = (LinkedListNode<Integer>) m.invoke(null, head, KTH);
+        LinkedListNode<Integer> kth = solve(head, KTH);
         if (kth != null) {
             System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is " +
                     colorYellow(String.valueOf(kth.getData())) + ".");
@@ -41,22 +40,10 @@ public class Problem extends ProblemTemplate {
         }
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter02.ex2_2.pre.Solution.class.getMethod(
-                "findKthToLast", LinkedListNode.class, int.class)
-        );
-    }
+    public abstract LinkedListNode<Integer> solve(LinkedListNode<Integer> head, int k);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter02.ex2_2.post.Solution.class.getMethod(
-                "findKthToLast", LinkedListNode.class, int.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 }

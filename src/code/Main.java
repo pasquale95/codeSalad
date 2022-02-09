@@ -1,10 +1,9 @@
 import chapter01.Chapter01;
 import chapter02.Chapter02;
 import chapter03.Chapter03;
-import org.json.simple.parser.ParseException;
 import utils.architecture.ChapterTemplate;
 import utils.architecture.ConfigManager;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
 /**
@@ -16,23 +15,28 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<ChapterTemplate> chapters = getChaptersList();
-        boolean timing = false;
-        // home-made options parser in order to not require any 3rd party java package
-        if (args.length > 0) {
-            for (String arg : args) {
-                if ("-t".equals(arg)) {
-                    timing = true;
-                    break;
+        try {
+            ArrayList<ChapterTemplate> chapters = getChaptersList();
+            ConfigManager configManager = ConfigManager.getInstance();
+            boolean timing = false;
+            // home-made options parser in order to not require any 3rd party java package
+            if (args.length > 0) {
+                for (String arg : args) {
+                    if ("-t".equals(arg)) {
+                        timing = true;
+                        break;
+                    }
                 }
             }
-        }
-        // run solutions
-        //timeSolutions();
-        if (timing) {
-            timeSolutions(chapters);
-        } else {
-            runSolutions(chapters);
+            // run solutions
+            //timeSolutions();
+            if (timing) {
+                timeSolutions(configManager, chapters);
+            } else {
+                runSolutions(configManager, chapters);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -47,28 +51,35 @@ public class Main {
     /**
      * Run all solutions
      */
-    public static void runSolutions(ArrayList<ChapterTemplate> chapters) {
-        try {
-            for (ChapterTemplate chapter : chapters) {
-                //chapter.runPreSolutions();
-                chapter.runPostSolutions();
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    public static void runSolutions(ConfigManager configManager, ArrayList<ChapterTemplate> chapters) {
+        runPreSolutions(configManager, chapters);
+        runPostSolutions(configManager, chapters);
+    }
+
+    /**
+     * Run pre solutions
+     */
+    public static void runPreSolutions(ConfigManager configManager, ArrayList<ChapterTemplate> chapters) {
+        for (ChapterTemplate chapter : chapters) {
+            chapter.runPreSolutions(configManager);
+        }
+    }
+
+    /**
+     * Run post solutions
+     */
+    public static void runPostSolutions(ConfigManager configManager, ArrayList<ChapterTemplate> chapters) {
+        for (ChapterTemplate chapter : chapters) {
+            chapter.runPostSolutions(configManager);
         }
     }
 
     /**
      * Time all solutions
      */
-    public static void timeSolutions(ArrayList<ChapterTemplate> chapters) {
-        try {
-            ConfigManager configManager = ConfigManager.getInstance();
-            for (ChapterTemplate chapter : chapters) {
-                chapter.timeSolutions(configManager);
-            }
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
+    public static void timeSolutions(ConfigManager configManager, ArrayList<ChapterTemplate> chapters) {
+        for (ChapterTemplate chapter : chapters) {
+            chapter.timeSolutions(configManager);
         }
     }
 }

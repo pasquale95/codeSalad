@@ -1,11 +1,9 @@
 package chapter03.ex3_5;
 
 import utils.Stack;
-import utils.architecture.ProblemTemplate;
+import utils.architecture.SolutionStrategy;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
-
-import java.lang.reflect.Method;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -16,7 +14,7 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 3 - Ex 3.5: Sort Stack";
 
     /**
@@ -27,7 +25,8 @@ public class Problem extends ProblemTemplate {
      * into any other data structure (such as an array).
      * The stack supports the following operations: push, pop, peek and isEmpty.
      */
-    public void runSolution(Method sortStack) throws Exception {
+    @Override
+    public void runSampleSolution() {
         printBlue(getProblemName());
         Stack<Integer> stack = new Stack<>();
         Integer[] numbers = ArrayGenerator.generateObjectArray(
@@ -39,26 +38,14 @@ public class Problem extends ProblemTemplate {
             stack.push(number);
         }
         System.out.print("The stack " + colorYellow(stack.toString()) + " is sorted to ");
-        sortStack.invoke(null, stack);
+        solveSortStack(stack);
         System.out.println(colorYellow(stack.toString()) + ".");
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(
-                chapter03.ex3_5.pre.Solution.class.getMethod("sortStack", Stack.class)
-        );
-    }
+    public abstract void solveSortStack(Stack<Integer> stack);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(
-                chapter03.ex3_5.post.Solution.class.getMethod("sortStack", Stack.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 }

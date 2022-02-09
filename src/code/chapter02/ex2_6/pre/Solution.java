@@ -1,5 +1,6 @@
 package chapter02.ex2_6.pre;
 
+import chapter02.ex2_6.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> head;
 
@@ -19,6 +20,11 @@ public class Solution implements Runnable {
     @Override
     public void run() {
         isPalindrome(head);
+    }
+
+    @Override
+    public boolean solve(LinkedListNode<Integer> head) {
+        return isPalindrome(head);
     }
 
     /**

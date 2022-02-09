@@ -1,5 +1,6 @@
 package chapter03.ex3_5.pre;
 
+import chapter03.ex3_5.SolutionTemplate;
 import utils.Stack;
 
 /**
@@ -8,7 +9,7 @@ import utils.Stack;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final Integer[] numbers;
 
@@ -45,5 +46,10 @@ public class Solution implements Runnable {
         while (!temporaryStack.isEmpty()) {
             stack.push(temporaryStack.pop());
         }
+    }
+
+    @Override
+    public void solveSortStack(Stack<Integer> stack) {
+        sortStack(stack);
     }
 }

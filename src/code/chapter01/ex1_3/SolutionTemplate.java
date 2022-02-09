@@ -1,8 +1,6 @@
 package chapter01.ex1_3;
 
-import utils.architecture.ProblemTemplate;
-
-import java.lang.reflect.Method;
+import utils.architecture.SolutionStrategy;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -14,9 +12,8 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1.3: URLify";
-    public static final String input = "Mr John Smith";
 
     /**
      * Chapter 1
@@ -28,31 +25,22 @@ public class Problem extends ProblemTemplate {
      * NOTE: if implementing in Java, please use a character array so that you can
      * perform this operation in place.
      */
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        String input = "Mr John Smith";
+
         printBlue(getProblemName());
         System.out.println(
                 colorYellow('"' + input + '"')
                 + " urlified: "
-                + colorYellow((String) m.invoke(null, toCharsWithExtraRoom(input), input.length())) + "."
+                + colorYellow(solve(toCharsWithExtraRoom(input), input.length())) + "."
         );
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter01.ex1_3.pre.Solution.class.getMethod(
-                "urlify", char[].class, int.class)
-        );
-    }
+    public abstract String solve(char[] input, int trueLength);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter01.ex1_3.post.Solution.class.getMethod(
-                "urlify", char[].class, int.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 }

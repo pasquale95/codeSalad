@@ -1,5 +1,6 @@
 package chapter02.ex2_1.pre;
 
+import chapter02.ex2_1.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> head;
 
@@ -50,5 +51,15 @@ public class Solution implements Runnable {
                 }
             }
         }
+    }
+
+    @Override
+    public void solveQuestionA(LinkedListNode<Integer> head) {
+        removeDuplicatesA(head);
+    }
+
+    @Override
+    public void solveQuestionB(LinkedListNode<Integer> head) {
+        removeDuplicatesB(head);
     }
 }

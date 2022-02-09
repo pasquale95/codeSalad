@@ -1,5 +1,6 @@
 package chapter03.ex3_3.post;
 
+import chapter03.ex3_3.SolutionTemplate;
 import utils.exceptions.EmptyStackException;
 import utils.Stack;
 
@@ -11,9 +12,9 @@ import java.util.ArrayList;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
-    public static class SetOfStacks {
+    public static class SetOfStacks implements SolutionTemplate.SetOfStacksStrategy {
         final ArrayList<Stack<Integer>> stacks = new ArrayList<>();
         private final int threshold;
 
@@ -130,5 +131,10 @@ public class Solution implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public SetOfStacksStrategy getSetOfStacksInstance(int stacks) {
+        return new SetOfStacks(stacks);
     }
 }

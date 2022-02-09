@@ -1,5 +1,6 @@
 package chapter03.ex3_3.pre;
 
+import chapter03.ex3_3.SolutionTemplate;
 import utils.exceptions.EmptyStackException;
 import utils.Stack;
 
@@ -9,9 +10,10 @@ import utils.Stack;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
-    public static class SetOfStacks {
+    public static class SetOfStacks implements SolutionTemplate.SetOfStacksStrategy {
+
         private Stack<Integer> top;
         private final int threshold;
         private int stacks;
@@ -136,5 +138,10 @@ public class Solution implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public SetOfStacksStrategy getSetOfStacksInstance(int stacks) {
+        return new SetOfStacks(stacks);
     }
 }

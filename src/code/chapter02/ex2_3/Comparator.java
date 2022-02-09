@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.LinkedListNode;
 import utils.architecture.ComparatorTemplate;
-import utils.architecture.ProblemTemplate;
 import utils.generators.RandomGenerator;
 
 /**
@@ -22,13 +21,8 @@ public class Comparator extends ComparatorTemplate {
                 () -> RandomGenerator.randomIntegerGenerator(params)
         );
         return new ExerciseSolutions(
-                new chapter02.ex2_3.pre.Solution(Problem.getNodeToPrune(head.clone())),
-                new chapter02.ex2_3.post.Solution(Problem.getNodeToPrune(head.clone()))
+                new chapter02.ex2_3.pre.Solution(SolutionTemplate.getNodeToPrune(head.clone())),
+                new chapter02.ex2_3.post.Solution(SolutionTemplate.getNodeToPrune(head.clone()))
         );
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
     }
 }

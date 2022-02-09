@@ -1,8 +1,6 @@
 package chapter01.ex1_4;
 
-import utils.architecture.ProblemTemplate;
-
-import java.lang.reflect.Method;
+import utils.architecture.SolutionStrategy;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -13,9 +11,8 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1.4: Palindrome Permutation";
-    public static final String input = "Tact Coa";
 
     /**
      * Chapter 1
@@ -26,28 +23,19 @@ public class Problem extends ProblemTemplate {
      * The palindrome does not need to be limited to just dictionary words.
      * You can ignore casing and non-letter characters.
      */
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        String input = "Tact Coa";
+
         printBlue(getProblemName());
         System.out.println(colorYellow('"' + input + '"') + " is a permutation of a palindrome: " +
-                colorYellow(String.valueOf(m.invoke(null, input))) + ".");
+                colorYellow(String.valueOf(solve(input))) + ".");
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter01.ex1_4.pre.Solution.class.getMethod(
-                "isPermutationOfPalindrome", String.class)
-        );
-    }
+    public abstract boolean solve(String input);
 
     @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter01.ex1_4.post.Solution.class.getMethod(
-                "isPermutationOfPalindrome", String.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
+    public String getProblemName() {
         return PROBLEM;
     }
 }

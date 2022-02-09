@@ -1,10 +1,8 @@
 package chapter01.ex1_5;
 
-import chapter01.ex1_5.pre.Solution;
 import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.ComparatorTemplate;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
 import utils.generators.StringGenerator;
@@ -23,11 +21,9 @@ public class Comparator extends ComparatorTemplate {
                 () -> StringGenerator.generateString(params, () -> RandomGenerator.randomCharGenerator(params)),
                 String.class
         );
-        return new ExerciseSolutions(new Solution(strings), new chapter01.ex1_5.post.Solution(strings));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter01.ex1_5.pre.Solution(strings),
+                new chapter01.ex1_5.post.Solution(strings)
+        );
     }
 }

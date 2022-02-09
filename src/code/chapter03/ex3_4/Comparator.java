@@ -1,8 +1,6 @@
 package chapter03.ex3_4;
 
-import chapter03.ex3_4.pre.Solution;
 import org.json.simple.JSONObject;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.ComparatorTemplate;
@@ -28,11 +26,9 @@ public class Comparator extends ComparatorTemplate {
                 RandomGenerator::randomBooleanGenerator,
                 Boolean.class
         );
-        return new ExerciseSolutions(new Solution(numbers, booleans), new chapter03.ex3_4.post.Solution(numbers, booleans));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter03.ex3_4.pre.Solution(numbers, booleans),
+                new chapter03.ex3_4.post.Solution(numbers, booleans)
+        );
     }
 }

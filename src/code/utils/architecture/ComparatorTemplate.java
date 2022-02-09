@@ -16,17 +16,12 @@ public abstract class ComparatorTemplate {
     protected abstract ExerciseSolutions getExerciseSolutions(JSONObject params);
 
     /**
-     * @return The problem name.
-     */
-    protected abstract ProblemTemplate getProblem();
-
-    /**
      * Start the timer with the two threads, using the stress configs passed as parameter.
      * @param   params The stress configuration settings.
      */
     public void time(JSONObject params) {
         ExerciseSolutions solutions = getExerciseSolutions(params);
-        Timer timer = new Timer(this.getProblem().getProblemName(), solutions.getPre(), solutions.getPost());
+        Timer timer = new Timer(solutions.getPre().getProblemName(), solutions.getPre(), solutions.getPost());
         timer.start();
     }
 }

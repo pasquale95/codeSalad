@@ -1,5 +1,6 @@
 package chapter03.ex3_4.pre;
 
+import chapter03.ex3_4.SolutionTemplate;
 import utils.exceptions.EmptyQueueException;
 import utils.Stack;
 
@@ -9,9 +10,9 @@ import utils.Stack;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
-    public static class MyQueue {
+    public static class MyQueue implements SolutionTemplate.MyQueue {
         private final Stack<Integer> stack1, stack2;
 
         public MyQueue() {
@@ -93,5 +94,10 @@ public class Solution implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public SolutionTemplate.MyQueue getMyQueueInstance() {
+        return new MyQueue();
     }
 }

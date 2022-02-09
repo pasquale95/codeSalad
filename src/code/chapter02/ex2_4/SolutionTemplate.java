@@ -1,10 +1,8 @@
 package chapter02.ex2_4;
 
 import utils.LinkedListNode;
-import utils.architecture.ProblemTemplate;
+import utils.architecture.SolutionStrategy;
 import utils.generators.RandomGenerator;
-
-import java.lang.reflect.Method;
 
 import static utils.Colors.colorYellow;
 import static utils.Colors.printBlue;
@@ -15,9 +13,8 @@ import static utils.Colors.printBlue;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Problem extends ProblemTemplate {
+public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 2 - Ex 2.4: Partition";
-    private static final int LIST_LENGTH = 10, CEILING = 50;
 
     /**
      * Chapter 2
@@ -27,37 +24,22 @@ public class Problem extends ProblemTemplate {
      * (IMPORTANT: The partition element x can appear anywhere in the "right partition";
      * it does not need to appear between the left and the right partitions.)
      */
-    @SuppressWarnings("unchecked")
-    public void runSolution(Method m) throws Exception {
+    @Override
+    public void runSampleSolution() {
+        int LIST_LENGTH = 10, CEILING = 50;
+        int threshold = RandomGenerator.randomIntegerGenerator(CEILING);
+
         printBlue(getProblemName());
         LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
                 LIST_LENGTH,
                 () -> RandomGenerator.randomIntegerGenerator(CEILING)
         );
-        int threshold = RandomGenerator.randomIntegerGenerator(CEILING);
-        LinkedListNode<Integer> partitioned = (LinkedListNode<Integer>) m.invoke(null, head.clone(), threshold);
+        LinkedListNode<Integer> partitioned = solve(head.clone(), threshold);
         System.out.println(colorYellow(head.toString()) + " after partitioning on the threshold " + threshold
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
-    @Override
-    public void solutionPre() throws Exception {
-        runSolution(chapter02.ex2_4.pre.Solution.class.getMethod(
-                "partition", LinkedListNode.class, int.class)
-        );
-    }
-
-    @Override
-    public void solutionPost() throws Exception {
-        runSolution(chapter02.ex2_4.post.Solution.class.getMethod(
-                "partition", LinkedListNode.class, int.class)
-        );
-    }
-
-    @Override
-    protected String getProblemName() {
-        return PROBLEM;
-    }
+    public abstract LinkedListNode<Integer> solve(LinkedListNode<Integer> node, int threshold);
 
     /**
      * Format list using the proposed scheme "BeforeList   ->    AfterList"
@@ -80,5 +62,10 @@ public class Problem extends ProblemTemplate {
         }
         sb.append(node.getData());
         return sb.toString();
+    }
+
+    @Override
+    public String getProblemName() {
+        return PROBLEM;
     }
 }

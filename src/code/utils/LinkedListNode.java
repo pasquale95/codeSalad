@@ -216,6 +216,22 @@ public class LinkedListNode<T> implements Cloneable {
         this.data = data;
     }
 
+    /**
+     * Complexity: O(N)
+     * @return List size starting from current node.
+     */
+    public Integer getSize() {
+        Integer size = 0;
+        LinkedListNode<T> runner = this;
+
+        while (runner != null) {
+            size++;
+            runner = runner.getNext();
+        }
+
+        return size;
+    }
+
     @Override
     public boolean equals(Object node) {
         if (!(node instanceof LinkedListNode<?>)) {

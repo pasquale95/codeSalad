@@ -1,10 +1,8 @@
 package chapter01.ex1_6;
 
-import chapter01.ex1_6.pre.Solution;
 import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
 import utils.architecture.ComparatorTemplate;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
 import utils.generators.StringGenerator;
@@ -16,6 +14,7 @@ import utils.generators.StringGenerator;
  * file 'LICENSE', which is part of this source code package.
  */
 public class Comparator extends ComparatorTemplate {
+
     @Override
     protected ExerciseSolutions getExerciseSolutions(JSONObject params) {
         String[] strings = ArrayGenerator.generateObjectArray(
@@ -23,11 +22,9 @@ public class Comparator extends ComparatorTemplate {
                 () -> StringGenerator.generateString(params, () -> RandomGenerator.randomCharGenerator(params)),
                 String.class
         );
-        return new ExerciseSolutions(new Solution(strings), new chapter01.ex1_6.post.Solution(strings));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter01.ex1_6.pre.Solution(strings),
+                new chapter01.ex1_6.post.Solution(strings)
+        );
     }
 }

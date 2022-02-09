@@ -1,9 +1,7 @@
 package chapter03.ex3_1;
 
-import chapter03.ex3_1.pre.Solution;
 import org.json.simple.JSONObject;
 import utils.architecture.ExerciseSolutions;
-import utils.architecture.ProblemTemplate;
 import utils.generators.ArrayGenerator;
 import utils.architecture.ComparatorTemplate;
 import utils.generators.RandomGenerator;
@@ -25,14 +23,12 @@ public class Comparator extends ComparatorTemplate {
         );
         Integer[] stackSequence = ArrayGenerator.generateObjectArray(
                 params,
-                () -> RandomGenerator.randomIntegerGenerator(Solution.STACKS),
+                () -> RandomGenerator.randomIntegerGenerator(SolutionTemplate.STACKS),
                 Integer.class
         );
-        return new ExerciseSolutions(new Solution(numbers, stackSequence), new chapter03.ex3_1.post.Solution(numbers, stackSequence));
-    }
-
-    @Override
-    protected ProblemTemplate getProblem() {
-        return new Problem();
+        return new ExerciseSolutions(
+                new chapter03.ex3_1.pre.Solution(numbers, stackSequence),
+                new chapter03.ex3_1.post.Solution(numbers, stackSequence)
+        );
     }
 }

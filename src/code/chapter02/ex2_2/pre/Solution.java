@@ -1,5 +1,6 @@
 package chapter02.ex2_2.pre;
 
+import chapter02.ex2_2.SolutionTemplate;
 import utils.LinkedListNode;
 
 /**
@@ -8,7 +9,7 @@ import utils.LinkedListNode;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution implements Runnable {
+public class Solution extends SolutionTemplate {
 
     private final LinkedListNode<Integer> head;
     private final int kth;
@@ -44,5 +45,10 @@ public class Solution implements Runnable {
             length--;
         }
         return head;
+    }
+
+    @Override
+    public LinkedListNode<Integer> solve(LinkedListNode<Integer> head, int k) {
+        return findKthToLast(head, k);
     }
 }
