@@ -11,9 +11,13 @@ import utils.exceptions.StackOverflowException;
  * file 'LICENSE', which is part of this source code package.
  */
 public class Solution extends SolutionTemplate {
-    private final Integer[] numbers, stackSequence;
-    private static int[] stackIndicator;
-    private static int stackSize;
+    private Integer[] numbers, stackSequence;
+    private int[] stackIndicator;
+    private int stackSize;
+
+    public Solution(Integer stackSize) {
+        allocateStack(stackSize);
+    }
 
     public Solution(Integer[] numbers, Integer[] stackSequence) {
         this.numbers = numbers;
@@ -42,7 +46,8 @@ public class Solution extends SolutionTemplate {
      * @param   stackNumber The stack number.
      * @throws StackOverflowException Thrown if stack is already full.
      */
-    public static void pushToStack(int data, int stackNumber) throws StackOverflowException {
+    @Override
+    public void pushToStack(int data, int stackNumber) throws StackOverflowException {
         checkStackDimensions();
         stack[stackSize] = data;
         stackIndicator[stackSize++] = stackNumber;
@@ -56,7 +61,8 @@ public class Solution extends SolutionTemplate {
      * @return  The data at the top of the chosen stack.
      * @throws EmptyStackException Thrown if stack is already empty.
      */
-    public static int popFromStack(int stackNumber) throws EmptyStackException {
+    @Override
+    public int popFromStack(int stackNumber) throws EmptyStackException {
         for (int i = stackSize - 1; i >= 0; i--) {
             if (stackIndicator[i] == stackNumber) {
                 int val = stack[i];
@@ -71,7 +77,7 @@ public class Solution extends SolutionTemplate {
      * Shift array to left by 1 starting from pos.
      * @param   pos The position from where to start the shift (the element at pos is lost).
      */
-    private static void shiftArrayToLeft(int pos) {
+    private void shiftArrayToLeft(int pos) {
         for (; pos < stackSize - 1; pos++) {
             stack[pos] = stack[pos+1];
             stackIndicator[pos] = stackIndicator[pos+1];
@@ -83,7 +89,7 @@ public class Solution extends SolutionTemplate {
      * Check stack dimensions.
      * @throws  StackOverflowException Thrown if stack is already full.
      */
-    private static void checkStackDimensions() throws StackOverflowException {
+    private void checkStackDimensions() throws StackOverflowException {
         if (stackSize >= stack.length) {
             throw new StackOverflowException("Error: Reached stack maximum capacity.");
         }
@@ -93,27 +99,19 @@ public class Solution extends SolutionTemplate {
      * Allocate stack array and stackIndicator.
      * @param   size The stack size.
      */
-    public static void allocateStack(int size) {
+    @Override
+    public void allocateStack(int size) {
         stack = new int[size];
         stackIndicator = new int[size];
         stackSize = 0;
-    }
-
-    @Override
-    public void solvePushToStack(int data, int stackNumber) throws StackOverflowException {
-        pushToStack(data, stackNumber);
-    }
-
-    @Override
-    public int solvePopFromStack(int stackNumber) throws EmptyStackException {
-        return popFromStack(stackNumber);
     }
 
     /**
      * @param   stackNumber The stack number.
      * @return  The stack in string format.
      */
-    public static String stackToString(int stackNumber) {
+    @Override
+    public String stackToString(int stackNumber) {
         StringBuilder sb = new StringBuilder().append("|");
         for (int i = stackSize - 1; i >= 0; i--) {
             if (stackIndicator[i] == stackNumber) {

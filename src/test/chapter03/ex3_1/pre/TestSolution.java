@@ -19,24 +19,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex3_1: Three in One (Pre)")
 @TestMethodOrder(OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestSolution {
+    Solution sol;
 
     @BeforeAll
-    static void setup() {
-        Solution.allocateStack(TestUtils.STACK_SIZE);
+    void setup() {
+        sol = new Solution(TestUtils.STACK_SIZE);
     }
 
     @ParameterizedTest(name = "Performing a push of number {0} on \"stack {1}\":")
-    @MethodSource("chapter03.ex3_1.TestUtils#getParameters")
+    @MethodSource("chapter03.ex3_1.TestUtils#getParametersPush")
     @Order(1)
     void checkPush(Integer number, Integer stackNumber) throws StackOverflowException {
-        Solution.pushToStack(number, stackNumber);
+        sol.pushToStack(number, stackNumber);
     }
 
     @ParameterizedTest(name = "Performing a pop from \"stack {1}\" to get {0}:")
-    @MethodSource("chapter03.ex3_1.TestUtils#getParameters")
+    @MethodSource("chapter03.ex3_1.TestUtils#getParametersPop")
     @Order(2)
     void checkPop(Integer number, Integer stackNumber) throws EmptyStackException {
-        assertEquals(number, Solution.popFromStack(stackNumber));
+        assertEquals(number, sol.popFromStack(stackNumber));
     }
 }

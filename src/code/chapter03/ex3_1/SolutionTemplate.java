@@ -18,7 +18,7 @@ import static utils.Colors.printBlue;
 public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 3 - Ex 3.1: Three in One";
     protected static final int STACKS = 3;
-    protected static int[] stack;
+    protected int[] stack;
 
     /**
      * Chapter 3
@@ -45,27 +45,28 @@ public abstract class SolutionTemplate implements SolutionStrategy {
             stackSequence[2] = 2;
             allocateStack(numbers.length);
             for (int i = 0; i < numbers.length; i++) {
-                solvePushToStack(numbers[i], stackSequence[i]);
+                pushToStack(numbers[i], stackSequence[i]);
             }
-            System.out.println("Pop from stack 0: " + colorYellow(chapter03.ex3_1.post.Solution.stackToString(0))
-                    + " gives " + colorYellow(String.valueOf(solvePopFromStack(0)))
-                    + ", while pop from stack 1: " + colorYellow(chapter03.ex3_1.post.Solution.stackToString(1))
-                    + " gives " + colorYellow(String.valueOf(solvePopFromStack(1)))
-                    + ", while pop from stack 2: " + colorYellow(chapter03.ex3_1.post.Solution.stackToString(2))
-                    + " gives " + colorYellow(String.valueOf(solvePopFromStack(2))) + "."
+            System.out.println("Pop from stack 0: " + colorYellow(stackToString(0))
+                    + " gives " + colorYellow(String.valueOf(popFromStack(0)))
+                    + ", while pop from stack 1: " + colorYellow(stackToString(1))
+                    + " gives " + colorYellow(String.valueOf(popFromStack(1)))
+                    + ", while pop from stack 2: " + colorYellow(stackToString(2))
+                    + " gives " + colorYellow(String.valueOf(popFromStack(2)))
+                    + "."
             );
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void allocateStack(int size) {
-        stack = new int[size];
-    }
+    public abstract void allocateStack(int size);
 
-    public abstract void solvePushToStack(int data, int stackNumber) throws StackOverflowException;
+    public abstract void pushToStack(int data, int stackNumber) throws StackOverflowException;
 
-    public abstract int solvePopFromStack(int stackNumber) throws EmptyStackException;
+    public abstract int popFromStack(int stackNumber) throws EmptyStackException;
+
+    public abstract String stackToString(int stackNumber);
 
     @Override
     public String getProblemName() {

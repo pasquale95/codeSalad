@@ -14,15 +14,28 @@ import java.util.stream.Stream;
  */
 public class TestUtils {
 
-    public static final Integer STACK_SIZE = 3;
+    public static final Integer STACK_SIZE = 4;
 
     /**
      * @return Test arguments
      */
-    private static Stream<Arguments> getParameters() {
+    private static Stream<Arguments> getParametersPush() {
+        return Stream.of(
+                Arguments.of(3, 0),
+                Arguments.of(2, 2),
+                Arguments.of(6, 2),
+                Arguments.of(9, 1)
+        );
+    }
+
+    /**
+     * @return Test arguments
+     */
+    private static Stream<Arguments> getParametersPop() {
         return Stream.of(
                 Arguments.of(3, 0),
                 Arguments.of(6, 2),
+                Arguments.of(2, 2),
                 Arguments.of(9, 1)
         );
     }
