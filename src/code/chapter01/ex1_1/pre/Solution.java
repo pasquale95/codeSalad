@@ -42,7 +42,6 @@ public class Solution extends SolutionTemplate {
         return true;
     }
 
-
     /**
      * Complexity: O(n^2)
      *
