@@ -1,10 +1,8 @@
 package chapter03.ex3_2.pre;
 
-import org.junit.jupiter.api.DisplayName;
+import chapter03.ex3_1.TestUtils;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import utils.exceptions.EmptyStackException;
@@ -20,26 +18,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex3_2: Stack Min (Pre)")
 @TestMethodOrder(OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestSolution {
+    Solution sol;
+
+    @BeforeAll
+    void setup() {
+        sol = new Solution();
+    }
 
     @ParameterizedTest(name = "Performing push of number {0}:")
     @MethodSource("chapter03.ex3_2.TestUtils#getParametersPush")
     @Order(1)
     void checkPush(Integer number) {
-        Solution.push(number);
+        sol.push(number);
     }
 
     @ParameterizedTest(name = "Performing pop expecting number {0}:")
     @MethodSource("chapter03.ex3_2.TestUtils#getParametersPop")
     @Order(2)
     void checkPop(Integer number) throws EmptyStackException {
-        assertEquals(number, Solution.pop());
+        assertEquals(number, sol.pop());
     }
 
     @ParameterizedTest(name = "Performing min expecting {0}:")
     @MethodSource("chapter03.ex3_2.TestUtils#getParametersMin")
     @Order(3)
     void checkMin(Integer number) throws EmptyStackException {
-        assertEquals(number, Solution.min());
+        assertEquals(number, sol.min());
     }
 }

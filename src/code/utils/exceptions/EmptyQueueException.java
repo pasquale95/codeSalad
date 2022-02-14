@@ -7,6 +7,11 @@ package utils.exceptions;
  * file 'LICENSE', which is part of this source code package.
  */
 public class EmptyQueueException extends Exception {
+
+    public EmptyQueueException() {
+        super("Queue is empty");
+    }
+
     public EmptyQueueException(String errorMessage) {
         super(errorMessage);
     }

@@ -21,11 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(OrderAnnotation.class)
 public class TestSolution {
 
-    Solution.SetOfStacks setOfStacks = null;
+    SetOfStacks setOfStacks = null;
 
     @BeforeAll
     void setup() {
-        setOfStacks = new Solution.SetOfStacks(TestUtils.THRESHOLD);
+        setOfStacks = new SetOfStacks(TestUtils.THRESHOLD);
     }
 
     @ParameterizedTest(name = "Performing push of number {0}:")

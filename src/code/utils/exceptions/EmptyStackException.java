@@ -7,6 +7,11 @@ package utils.exceptions;
  * file 'LICENSE', which is part of this source code package.
  */
 public class EmptyStackException extends Exception {
+
+    public EmptyStackException() {
+        super("Stack is empty.");
+    }
+
     public EmptyStackException(String errorMessage) {
         super(errorMessage);
     }

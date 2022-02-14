@@ -9,6 +9,7 @@ import utils.exceptions.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -17,15 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @Tag("Pre")
 @DisplayName("Ex3_3: Stack of plates (Pre)")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestSolution {
-
-    Solution.SetOfStacks setOfStacks = null;
+    SetOfStacks setOfStacks;
 
     @BeforeAll
     void setup() {
-        setOfStacks = new Solution.SetOfStacks(TestUtils.THRESHOLD);
+        setOfStacks = new SetOfStacks(TestUtils.THRESHOLD);
     }
 
     @ParameterizedTest(name = "Performing push of number {0}:")

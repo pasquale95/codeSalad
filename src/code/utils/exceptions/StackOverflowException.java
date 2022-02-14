@@ -7,6 +7,11 @@ package utils.exceptions;
  * file 'LICENSE', which is part of this source code package.
  */
 public class StackOverflowException extends Exception {
+
+    public StackOverflowException() {
+        super("Stack Overflow: stack reached maximum capacity.");
+    }
+
     public StackOverflowException(String errorMessage) {
         super(errorMessage);
     }
