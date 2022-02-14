@@ -15,7 +15,16 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 3 - Ex 3.2: Stack Min";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3.2: Stack Min";
+    protected Integer[] numbers;
+    protected Boolean[] minAndPops;
+
+    public SolutionTemplate() {}
+
+    public SolutionTemplate(Integer[] numbers, Boolean[] minAndPops) {
+        this.numbers = numbers;
+        this.minAndPops = minAndPops;
+    }
 
     /**
      * Chapter 3
@@ -33,25 +42,43 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                     Integer.class
             );
             for (Integer number : numbers) {
-                solvePush(number);
+                push(number);
             }
-            System.out.println("Min in stack " + colorYellow(String.valueOf(solveStackToString()))
-                    + " is " + colorYellow(String.valueOf(solveMin()))
-                    + ". Pop returns " + colorYellow(String.valueOf(solvePop()))
-                    + " and the min after the pop is " + colorYellow(String.valueOf(solveMin())) + "."
+            System.out.println("Min in stack " + colorYellow(String.valueOf(stackToString()))
+                    + " is " + colorYellow(String.valueOf(min()))
+                    + ". Pop returns " + colorYellow(String.valueOf(pop()))
+                    + " and the min after the pop is " + colorYellow(String.valueOf(min())) + "."
             );
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public abstract void solvePush(int data);
+    @Override
+    public void run() {
+        try {
+            for (Integer data : numbers) {
+                push(data);
+            }
+            for (Boolean isPop : minAndPops) {
+                if (isPop) {
+                    pop();
+                } else {
+                    min();
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-    public abstract int solvePop() throws EmptyStackException;
+    public abstract void push(int data);
 
-    public abstract int solveMin() throws EmptyStackException;
+    public abstract int pop() throws EmptyStackException;
 
-    public abstract String solveStackToString();
+    public abstract int min() throws EmptyStackException;
+
+    public abstract String stackToString();
 
     @Override
     public String getProblemName() {

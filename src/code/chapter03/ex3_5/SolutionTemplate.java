@@ -15,7 +15,12 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 3 - Ex 3.5: Sort Stack";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3.5: Sort Stack";
+    protected final Integer[] numbers;
+
+    public SolutionTemplate(Integer[] numbers) {
+        this.numbers = numbers;
+    }
 
     /**
      * Chapter 3
@@ -38,14 +43,23 @@ public abstract class SolutionTemplate implements SolutionStrategy {
             stack.push(number);
         }
         System.out.print("The stack " + colorYellow(stack.toString()) + " is sorted to ");
-        solveSortStack(stack);
+        sortStack(stack);
         System.out.println(colorYellow(stack.toString()) + ".");
     }
 
-    public abstract void solveSortStack(Stack<Integer> stack);
+    @Override
+    public void run() {
+        Stack<Integer> stack = new Stack<>();
+        for (Integer number : numbers) {
+            stack.push(number);
+        }
+        sortStack(stack);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract void sortStack(Stack<Integer> stack);
 }

@@ -16,9 +16,19 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 3 - Ex 3.1: Three in One";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3.1: Three in One";
+    protected Integer[] numbers, stackSequence, stack;
     protected static final int STACKS = 3;
-    protected int[] stack;
+
+    public SolutionTemplate(Integer stackSize) {
+        allocateStack(stackSize);
+    }
+
+    public SolutionTemplate(Integer[] numbers, Integer[] stackSequence) {
+        this.numbers = numbers;
+        this.stackSequence = stackSequence;
+        allocateStack(numbers.length);
+    }
 
     /**
      * Chapter 3
@@ -60,13 +70,27 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
-    public abstract void allocateStack(int size);
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < numbers.length && i < stackSequence.length; i++) {
+                pushToStack(numbers[i], stackSequence[i]);
+            }
+            for (int i : stackSequence) {
+                popFromStack(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    public abstract void pushToStack(int data, int stackNumber) throws StackOverflowException;
+    public abstract void allocateStack(Integer size);
 
-    public abstract int popFromStack(int stackNumber) throws EmptyStackException;
+    public abstract void pushToStack(Integer data, Integer stackNumber) throws StackOverflowException;
 
-    public abstract String stackToString(int stackNumber);
+    public abstract Integer popFromStack(Integer stackNumber) throws EmptyStackException;
+
+    public abstract String stackToString(Integer stackNumber);
 
     @Override
     public String getProblemName() {

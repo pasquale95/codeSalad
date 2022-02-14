@@ -11,32 +11,15 @@ import utils.exceptions.StackOverflowException;
  * file 'LICENSE', which is part of this source code package.
  */
 public class Solution extends SolutionTemplate {
-    private Integer[] numbers, stackSequence;
-    private int stackSize = 0;
-    private StackInfo[] stackInfo;
+    protected StackInfo[] stackInfo;
+    protected Integer stackSize;
 
     public Solution(Integer stackSize) {
-        allocateStack(stackSize);
+        super(stackSize);
     }
 
     public Solution(Integer[] numbers, Integer[] stackSequence) {
-        this.numbers = numbers;
-        this.stackSequence = stackSequence;
-        allocateStack(numbers.length);
-    }
-
-    @Override
-    public void run() {
-        try {
-            for (int i = 0; i < numbers.length && i < stackSequence.length; i++) {
-                pushToStack(numbers[i], stackSequence[i]);
-            }
-            for (int i : stackSequence) {
-                popFromStack(i);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super(numbers, stackSequence);
     }
 
     /**
@@ -47,9 +30,9 @@ public class Solution extends SolutionTemplate {
      * @throws  StackOverflowException Thrown if stack is already full.
      */
     @Override
-    public void pushToStack(int data, int stackNumber) throws StackOverflowException {
+    public void pushToStack(Integer data, Integer stackNumber) throws StackOverflowException {
         if (areAllFull()) {
-            throw new StackOverflowException("Error: Reached stack maximum capacity.");
+            throw new StackOverflowException();
         }
         StackInfo currentStack = stackInfo[stackNumber];
         if (currentStack.isFull()) {
@@ -70,7 +53,7 @@ public class Solution extends SolutionTemplate {
      * @throws  EmptyStackException Thrown if stack is already empty.
      */
     @Override
-    public int popFromStack(int stackNumber) throws EmptyStackException {
+    public Integer popFromStack(Integer stackNumber) throws EmptyStackException {
         if (areAllEmpty()) {
             throw new EmptyStackException("Error: Stacks are empty.");
         }
@@ -88,7 +71,7 @@ public class Solution extends SolutionTemplate {
      * Expand a stack adding 1 slot.
      * @param   stackNumber The stack number to expand.
      */
-    private void expandStack(int stackNumber) {
+    protected void expandStack(int stackNumber) {
         shrinkAndShiftStack((stackNumber + 1) % STACKS);
     }
 
@@ -96,7 +79,7 @@ public class Solution extends SolutionTemplate {
      * Shift claimed stack and shrink it if possible, otherwise go ahead until a stack can be shrunk.
      * @param   stackNumber The stack number to shift and shrink.
      */
-    private void shrinkAndShiftStack(int stackNumber) {
+    protected void shrinkAndShiftStack(int stackNumber) {
         StackInfo currentStack = stackInfo[stackNumber];
         if (currentStack.isFull()) {
             // cannot shrink this stack, we must proceed with next
@@ -121,8 +104,8 @@ public class Solution extends SolutionTemplate {
      * @param   capacity The stack capacity.
      */
     @Override
-    public void allocateStack(int capacity) {
-        stack = new int[capacity];
+    public void allocateStack(Integer capacity) {
+        stack = new Integer[capacity];
         stackInfo = new StackInfo[STACKS];
         stackSize = 0;
         int defaultCapacity = capacity / STACKS + (capacity % STACKS) / (STACKS - 1);
@@ -136,14 +119,14 @@ public class Solution extends SolutionTemplate {
     /**
      * @return  True if all stacks are full.
      */
-    private boolean areAllFull() {
+    protected boolean areAllFull() {
         return stack.length == stackSize;
     }
 
     /**
      * @return  True if all stacks are empty.
      */
-    private boolean areAllEmpty() {
+    protected boolean areAllEmpty() {
         return stackSize == 0;
     }
 
@@ -152,7 +135,7 @@ public class Solution extends SolutionTemplate {
      * @return  The stack in string format.
      */
     @Override
-    public String stackToString(int stackNumber) {
+    public String stackToString(Integer stackNumber) {
         StringBuilder sb = new StringBuilder().append("|");
         StackInfo currentStack = stackInfo[stackNumber];
         for (int i = currentStack.size - 1; i >= 0; i--) {
@@ -165,7 +148,7 @@ public class Solution extends SolutionTemplate {
      * @param   stack The stack
      * @return  Index of last inserted element; -1 if empty
      */
-    private int lastStackElementIndex(StackInfo stack) {
+    protected int lastStackElementIndex(StackInfo stack) {
         return adjustIndex(stack.start + stack.size - 1);
     }
 
@@ -174,7 +157,7 @@ public class Solution extends SolutionTemplate {
      * @param   index The index to adjust.
      * @return  The index correctly adjusted.
      */
-    private int adjustIndex(int index) {
+    protected int adjustIndex(int index) {
         int capacity = stack.length;
         // use this formula to prevent issues with negative integers (e.g. -1 % 5 = -1)
         return ((index % capacity) + capacity) % capacity;
@@ -185,7 +168,7 @@ public class Solution extends SolutionTemplate {
      * @param   index The current index
      * @return  The next index
      */
-    private int nextIndex(int index) {
+    protected int nextIndex(int index) {
         return adjustIndex(index + 1);
     }
 
@@ -194,7 +177,7 @@ public class Solution extends SolutionTemplate {
      * @param   index The current index
      * @return  The previous index
      */
-    private int previousIndex(int index) {
+    protected int previousIndex(int index) {
         return adjustIndex(index - 1);
     }
 }

@@ -1,5 +1,6 @@
 package chapter03.ex3_3;
 
+import chapter03.ex3_3.pre.SetOfStacks;
 import utils.architecture.SolutionStrategy;
 import utils.exceptions.EmptyStackException;
 import utils.generators.ArrayGenerator;
@@ -15,12 +16,13 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 3 - Ex 3.3: Stack of plates";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3.3: Stack of plates";
+    protected Integer[] numbers;
+    protected int threshold;
 
-    public interface SetOfStacksStrategy {
-        void push(int data);
-        int pop() throws EmptyStackException;
-        int popAt(int stack) throws EmptyStackException;
+    public SolutionTemplate(Integer[] numbers, int threshold) {
+        this.numbers = numbers;
+        this.threshold = threshold;
     }
 
     /**
@@ -60,6 +62,27 @@ public abstract class SolutionTemplate implements SolutionStrategy {
             );
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            SetOfStacksStrategy setOfStacks = getSetOfStacksInstance(this.threshold);
+            // measure push()
+            for (int number : this.numbers) {
+                setOfStacks.push(number);
+            }
+            // measure popAt()
+            for (int i = 0; i < setOfStacks.getStacks(); i++) {
+                setOfStacks.popAt(i);
+            }
+            // measure pop()
+            for (int i = 0; i < this.numbers.length / 2; i++) {
+                setOfStacks.pop();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -1,5 +1,7 @@
 package utils;
 
+import utils.exceptions.EmptyStackException;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -7,19 +9,8 @@ package utils;
  * file 'LICENSE', which is part of this source code package.
  */
 public class Stack<T> {
-
-    private final int threshold;
-    private Stack<T> previous;
-    private StackNode<T> top;
-    private int size;
-
-    public Stack() {
-        this.threshold = Integer.MAX_VALUE;
-    }
-
-    public Stack(int threshold) {
-        this.threshold = threshold;
-    }
+    protected StackNode<T> top;
+    protected int size;
 
     public void push(T data) {
         StackNode<T> element = new StackNode<>(data);
@@ -28,31 +19,22 @@ public class Stack<T> {
         this.size++;
     }
 
-    public T pop() {
+    public T pop() throws EmptyStackException {
         T toPop = this.peek();
         this.top = this.top.getPrevious();
         this.size--;
         return toPop;
     }
 
-    public T peek() {
+    public T peek() throws EmptyStackException {
+        if (this.top == null) {
+            throw new EmptyStackException();
+        }
         return this.top.getData();
-    }
-
-    public void setPrevious(Stack<T> previous) {
-        this.previous = previous;
-    }
-
-    public Stack<T> getPrevious() {
-        return this.previous;
     }
 
     public boolean isEmpty() {
         return this.size == 0;
-    }
-
-    public boolean isFull() {
-        return this.size == threshold;
     }
 
     public String toString() {

@@ -1,20 +1,21 @@
 package chapter03.ex3_1.post;
 
-import utils.exceptions.EmptyStackException;
-import utils.exceptions.StackOverflowException;
-
+/**
+ * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
+ * @github @pasquale95
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE', which is part of this source code package.
+ */
 public class StackInfo {
-    final int stackNumber;
-    int[] stack;
-    int start;
-    int size;
-    int capacity;
+    protected Integer stackNumber, start, size, capacity;
+    protected Integer[] stack;
 
-    public StackInfo(int[] stack, int stackNumber, int start, int capacity) {
+    public StackInfo(Integer[] stack, Integer stackNumber, Integer start, Integer capacity) {
         this.stack = stack;
         this.stackNumber = stackNumber;
         this.start = start;
         this.capacity = capacity;
+        this.size = 0;
     }
 
     /**

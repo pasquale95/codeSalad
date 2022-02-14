@@ -1,5 +1,6 @@
 package chapter03.ex3_4.pre;
 
+import chapter03.ex3_4.MyQueueStrategy;
 import chapter03.ex3_4.SolutionTemplate;
 import utils.exceptions.EmptyQueueException;
 import utils.Stack;
@@ -12,92 +13,12 @@ import utils.Stack;
  */
 public class Solution extends SolutionTemplate {
 
-    public static class MyQueue implements SolutionTemplate.MyQueue {
-        private final Stack<Integer> stack1, stack2;
-
-        public MyQueue() {
-            this.stack1 = new Stack<>();
-            this.stack2 = new Stack<>();
-        }
-
-        /**
-         * Complexity: O(1)
-         *
-         * Adds the data at the bottom of the queue.
-         * @param   data The data to add.
-         */
-        public void add(int data) {
-            stack1.push(data);
-        }
-
-        /**
-         * Complexity: O(n)
-         *
-         * Returns and removes the first element in the queue.
-         * @return The first element in the queue.
-         */
-        public int remove() throws EmptyQueueException {
-            if (isEmpty()) {
-                throw new EmptyQueueException("Error: queue is empty.");
-            }
-            invertStack(stack1, stack2);
-            int toRemove = stack2.pop();
-            invertStack(stack2, stack1);
-            return toRemove;
-        }
-
-        /**
-         * Complexity: O(n)
-         *
-         * @return The first element in the queue.
-         */
-        public int peek() {
-            invertStack(stack1, stack2);
-            int toPeek = stack2.peek();
-            invertStack(stack2, stack1);
-            return toPeek;
-        }
-
-        public boolean isEmpty() {
-            return stack1.isEmpty();
-        }
-
-        private void invertStack(Stack<Integer> from, Stack<Integer> to) {
-            while (!from.isEmpty()) {
-                to.push(from.pop());
-            }
-        }
-
-        public String toString() {
-            return stack1.toString();
-        }
-    }
-
-    private final Integer[] numbers;
-    private final Boolean[] remove;
-
     public Solution(Integer[] numbers, Boolean[] remove) {
-        this.numbers = numbers;
-        this.remove = remove;
+        super(numbers, remove);
     }
 
     @Override
-    public void run() {
-        try {
-            MyQueue queue = new MyQueue();
-            for (int i = 0; i < numbers.length; i++) {
-                queue.add(numbers[i]);
-                if (remove[i]) {
-                    queue.remove();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public SolutionTemplate.MyQueue getMyQueueInstance() {
+    public MyQueue getMyQueueInstance() {
         return new MyQueue();
     }
 }

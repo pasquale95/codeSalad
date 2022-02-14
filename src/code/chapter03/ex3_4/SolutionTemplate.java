@@ -1,5 +1,6 @@
 package chapter03.ex3_4;
 
+import chapter03.ex3_4.pre.MyQueue;
 import utils.architecture.SolutionStrategy;
 import utils.exceptions.EmptyQueueException;
 import utils.generators.ArrayGenerator;
@@ -15,11 +16,13 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 3 - Ex 3.4: Queue via Stacks";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3.4: Queue via Stacks";
+    protected final Integer[] numbers;
+    protected final Boolean[] remove;
 
-    public interface MyQueue {
-        void add(int data);
-        int remove() throws EmptyQueueException;
+    public SolutionTemplate(Integer[] numbers, Boolean[] remove) {
+        this.numbers = numbers;
+        this.remove = remove;
     }
 
     /**
@@ -36,7 +39,7 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                     () -> RandomGenerator.randomIntegerGenerator(50),
                     Integer.class
             );
-            MyQueue queue = getMyQueueInstance();
+            MyQueueStrategy queue = getMyQueueInstance();
             for (Integer number : numbers) {
                 queue.add(number);
             }
@@ -55,10 +58,25 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
-    public abstract MyQueue getMyQueueInstance();
+    @Override
+    public void run() {
+        try {
+            MyQueue queue = new MyQueue();
+            for (int i = 0; i < numbers.length; i++) {
+                queue.add(numbers[i]);
+                if (remove[i]) {
+                    queue.remove();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract MyQueueStrategy getMyQueueInstance();
 }
