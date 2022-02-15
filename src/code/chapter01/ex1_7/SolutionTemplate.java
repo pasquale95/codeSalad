@@ -14,7 +14,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 1 - Ex 1.7: Rotate Matrix";
+    private static final String PROBLEM = "Chapter 1 - Ex 1_7: Rotate Matrix";
 
     /**
      * Chapter 1

@@ -22,20 +22,6 @@ public class Solution extends SolutionTemplate {
         super(numbers, stackSequence);
     }
 
-    @Override
-    public void run() {
-        try {
-            for (int i = 0; i < numbers.length && i < stackSequence.length; i++) {
-                pushToStack(numbers[i], stackSequence[i]);
-            }
-            for (int i : stackSequence) {
-                popFromStack(i);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Complexity: O(1)
      *

@@ -16,7 +16,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    protected static final String PROBLEM = "Chapter 3 - Ex 3.3: Stack of plates";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3_3: Stack of plates";
     protected Integer[] numbers;
     protected int threshold;
 

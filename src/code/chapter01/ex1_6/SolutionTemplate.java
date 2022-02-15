@@ -12,7 +12,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    public static final String PROBLEM = "Chapter 1 - Ex 1.6: String Compression";
+    public static final String PROBLEM = "Chapter 1 - Ex 1_6: String Compression";
 
     /**
      * Chapter 1

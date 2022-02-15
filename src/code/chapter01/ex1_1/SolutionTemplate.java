@@ -11,7 +11,7 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 1 - Ex 1.1: Is unique";
+    private static final String PROBLEM = "Chapter 1 - Ex 1_1: Is unique";
 
     /**
      * Chapter 1

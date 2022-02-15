@@ -14,7 +14,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2.5: Sum Lists";
+    private static final String PROBLEM = "Chapter 2 - Ex 2_5: Sum Lists";
 
     /**
      * Chapter 2

@@ -13,7 +13,7 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    public static final String PROBLEM = "Chapter 1 - Ex 1.3: URLify";
+    public static final String PROBLEM = "Chapter 1 - Ex 1_3: URLify";
 
     /**
      * Chapter 1

@@ -13,7 +13,7 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2. Ex 2.2: Return Kth to Last";
+    private static final String PROBLEM = "Chapter 2. Ex 2_2: Return Kth to Last";
 
     /**
      * Chapter 2

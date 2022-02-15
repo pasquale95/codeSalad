@@ -13,7 +13,7 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2.1: Remove Dups";
+    private static final String PROBLEM = "Chapter 2 - Ex 2_1: Remove Dups";
 
     /**
      * Chapter 2

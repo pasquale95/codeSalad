@@ -13,7 +13,7 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2.3: Delete Middle Node";
+    private static final String PROBLEM = "Chapter 2 - Ex 2_3: Delete Middle Node";
 
     /**
      * Chapter 2

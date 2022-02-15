@@ -14,7 +14,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2.6: Palindrome";
+    private static final String PROBLEM = "Chapter 2 - Ex 2_6: Palindrome";
 
     /**
      * Chapter 2

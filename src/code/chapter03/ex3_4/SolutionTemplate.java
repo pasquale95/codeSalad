@@ -16,7 +16,7 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    protected static final String PROBLEM = "Chapter 3 - Ex 3.4: Queue via Stacks";
+    protected static final String PROBLEM = "Chapter 3 - Ex 3_4: Queue via Stacks";
     protected final Integer[] numbers;
     protected final Boolean[] remove;
 
