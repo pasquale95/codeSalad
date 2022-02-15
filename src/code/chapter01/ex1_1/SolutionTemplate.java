@@ -12,6 +12,11 @@ import static utils.Colors.*;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 1 - Ex 1_1: Is unique";
+    private final String[] input;
+
+    public SolutionTemplate(String[] input) {
+        this.input = input;
+    }
 
     /**
      * Chapter 1
@@ -24,26 +29,34 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         String[] strings = {"genetics", "salt", "castle", "controlled"};
 
         printBlue(getProblemName());
-        printYellow("QUESTION A");
+        printGreen("QUESTION A");
         for (String string : strings) {
             System.out.println(colorYellow('"' + string + '"') + " has unique chars: "
-                    + colorYellow(solveQuestionA(string) + ".")
+                    + colorYellow(isUniqueCharsA(string) + ".")
             );
         }
-        printYellow("QUESTION B");
+        printGreen("QUESTION B");
         for (String string : strings) {
             System.out.println(colorYellow('"' + string + '"') + " has unique chars: "
-                    + colorYellow(solveQuestionB(string) + ".")
+                    + colorYellow(isUniqueCharsB(string) + ".")
             );
         }
     }
 
-    protected abstract boolean solveQuestionA(String stringToCheck);
-
-    protected abstract boolean solveQuestionB(String stringToCheck);
+    @Override
+    public void run() {
+        for (String string : this.input) {
+            isUniqueCharsA(string);
+            isUniqueCharsB(string);
+        }
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    protected abstract boolean isUniqueCharsA(String stringToCheck);
+
+    protected abstract boolean isUniqueCharsB(String stringToCheck);
 }

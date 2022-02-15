@@ -10,17 +10,8 @@ import chapter01.ex1_6.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String[] originals;
-
     public Solution(String[] originals) {
-        this.originals = originals;
-    }
-
-    @Override
-    public void run() {
-        for (String original : this.originals) {
-            compress(original);
-        }
+        super(originals);
     }
 
     /**
@@ -29,7 +20,12 @@ public class Solution extends SolutionTemplate {
      * @param   original The original string.
      * @return  The compressed string
      */
-    public static String compress(String original) {
+    @Override
+    public String compress(String original) {
+        return staticCompress(original);
+    }
+
+    public static String staticCompress(String original) {
         int originalLength = original.length();
         int compressedLength = getCompressedLength(original);
         // if compression is useless, return original without going further with the algorithm
@@ -64,10 +60,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return compressedLength;
-    }
-
-    @Override
-    public String solve(String original) {
-        return compress(original);
     }
 }

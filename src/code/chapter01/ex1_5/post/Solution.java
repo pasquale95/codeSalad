@@ -10,19 +10,8 @@ import chapter01.ex1_5.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String[] input;
-
     public Solution(String[] input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i + 1; j < input.length; j++) {
-                areOneAway(input[i], input[j]);
-            }
-        }
+        super(input);
     }
 
     /**
@@ -32,7 +21,12 @@ public class Solution extends SolutionTemplate {
      * @param two The second string to compare
      * @return True if the strings are one edit away.
      */
-    public static boolean areOneAway(String one, String two) {
+    @Override
+    public boolean areOneAway(String one, String two) {
+        return staticAreOneAway(one, two);
+    }
+
+    public static boolean staticAreOneAway(String one, String two) {
         int diff = one.length() - two.length();
         // check addition/removal edits
         if (Math.abs(diff) > 1) {
@@ -54,10 +48,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return true;
-    }
-
-    @Override
-    public boolean solve(String one, String two) {
-        return areOneAway(one, two);
     }
 }

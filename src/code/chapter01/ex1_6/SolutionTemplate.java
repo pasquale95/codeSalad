@@ -13,6 +13,18 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_6: String Compression";
+    private final String[] originals;
+
+    public SolutionTemplate(String[] originals) {
+        this.originals = originals;
+    }
+
+    @Override
+    public void run() {
+        for (String original : this.originals) {
+            compress(original);
+        }
+    }
 
     /**
      * Chapter 1
@@ -28,13 +40,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
 
         printBlue(getProblemName());
         System.out.println("The string " + colorYellow(to_compress) + " after compression becomes "
-                + colorYellow(String.valueOf(solve(to_compress))) + ".");
+                + colorYellow(String.valueOf(compress(to_compress))) + ".");
     }
-
-    public abstract String solve(String original);
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract String compress(String original);
 }

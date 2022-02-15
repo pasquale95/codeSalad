@@ -15,6 +15,16 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     private static final String PROBLEM = "Chapter 1 - Ex 1_7: Rotate Matrix";
+    private final Integer[][] matrix;
+
+    public SolutionTemplate(Integer[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    @Override
+    public void run() {
+        rotateMatrix(matrix);
+    }
 
     /**
      * Chapter 1
@@ -35,12 +45,12 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         );
         System.out.println("The matrix before rotation: ");
         printMatrix(matrix);
-        solve(matrix);
+        rotateMatrix(matrix);
         System.out.println("The matrix after rotation: ");
         printMatrix(matrix);
     }
 
-    public abstract void solve(Integer[][] matrix);
+    public abstract void rotateMatrix(Integer[][] matrix);
 
     @Override
     public String getProblemName() {

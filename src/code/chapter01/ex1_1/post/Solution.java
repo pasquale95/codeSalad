@@ -8,31 +8,21 @@ import chapter01.ex1_1.SolutionTemplate;
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE', which is part of this source code package.
  */
-public class Solution extends SolutionTemplate implements Runnable {
-
-    private final String[] input;
+public class Solution extends SolutionTemplate {
 
     public Solution(String[] input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        for (String string : this.input) {
-            isUniqueCharsA(string);
-            isUniqueCharsB(string);
-        }
+        super(input);
     }
 
     /**
+     * Complexity: O(n)
      * 1st constraint: just alphabetical characters (numbers don't count);
      * 2nd constraint: uppercase and lowercase chars count for the same;
-     * Complexity: O(n)
      *
      * @param   stringToCheck The string to check.
      * @return  True if there are at least two chars are equal.
      */
-    public static boolean isUniqueCharsA(String stringToCheck) {
+    public static boolean staticIsUniqueCharsA(String stringToCheck) {
         int bitVector = 0;
         String stringToCheckLower = stringToCheck.toLowerCase();
         for (int i = 0; i < stringToCheck.length(); i++) {
@@ -48,14 +38,14 @@ public class Solution extends SolutionTemplate implements Runnable {
     }
 
     /**
+     * Complexity: O(n log(n))
      * 1st constraint: the input string can be modified;
      * 2nd constraint: no additional data structures.
-     * Complexity: O(n log(n))
      *
      * @param   stringToCheck The string to check.
      * @return  True if there are at least two chars are equal.
      */
-    public static boolean isUniqueCharsB(String stringToCheck) {
+    public static boolean staticIsUniqueCharsB(String stringToCheck) {
         stringToCheck = stringToCheck.chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
@@ -69,12 +59,12 @@ public class Solution extends SolutionTemplate implements Runnable {
     }
 
     @Override
-    protected boolean solveQuestionA(String stringToCheck) {
-        return isUniqueCharsA(stringToCheck);
+    protected boolean isUniqueCharsA(String stringToCheck) {
+        return staticIsUniqueCharsA(stringToCheck);
     }
 
     @Override
-    protected boolean solveQuestionB(String stringToCheck) {
-        return isUniqueCharsB(stringToCheck);
+    protected boolean isUniqueCharsB(String stringToCheck) {
+        return staticIsUniqueCharsB(stringToCheck);
     }
 }

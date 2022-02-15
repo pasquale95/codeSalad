@@ -1,5 +1,8 @@
 package chapter01.ex1_1.post;
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,16 +19,22 @@ import static org.junit.jupiter.api.Assertions.*;
 @Tag("Post")
 @DisplayName("Ex1_1: Is unique (Post)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "(Question A) Checking char uniqueness for word \"{1}\":")
     @MethodSource("chapter01.ex1_1.TestUtils#getParameters")
     void checkA(Boolean expected, String string) {
-        assertEquals(expected, Solution.isUniqueCharsA(string));
+        assertEquals(expected, sol.isUniqueCharsA(string));
     }
 
     @ParameterizedTest(name = "(Question B) Checking char uniqueness for word \"{1}\":")
     @MethodSource("chapter01.ex1_1.TestUtils#getParameters")
     void checkB(Boolean expected, String string) {
-        assertEquals(expected, Solution.isUniqueCharsB(string));
+        assertEquals(expected, sol.isUniqueCharsB(string));
     }
 }

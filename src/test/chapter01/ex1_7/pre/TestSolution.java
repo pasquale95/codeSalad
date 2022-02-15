@@ -1,5 +1,6 @@
 package chapter01.ex1_7.pre;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,11 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex1_7: Rotate Matrix (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Checking matrix rotation:")
     @MethodSource("chapter01.ex1_7.TestUtils#getParameters")
     void check(Integer[][] expected, Integer[][] input) {
-        Solution.rotateMatrix(input);
+        sol.rotateMatrix(input);
         for (int i = 0; i < input.length; i++) {
             for (int j = 0; j < input.length; j++) {
                 assertEquals(expected[i][j], input[i][j]);

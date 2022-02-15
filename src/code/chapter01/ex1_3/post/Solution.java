@@ -10,17 +10,8 @@ import chapter01.ex1_3.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final char[] input;
-    private final int trueLength;
-
-    public Solution(char[] input, int trueLength) {
-        this.input = input;
-        this.trueLength = trueLength;
-    }
-
-    @Override
-    public void run() {
-        urlify(input, trueLength);
+    public Solution(char[] input, Integer trueLength) {
+        super(input, trueLength);
     }
 
     /**
@@ -30,7 +21,12 @@ public class Solution extends SolutionTemplate {
      * @param   trueLength The real string length.
      * @return  The urlified string.
      */
-    public static String urlify(char[] input, int trueLength) {
+    @Override
+    public String urlify(char[] input, Integer trueLength) {
+        return staticUrlify(input, trueLength);
+    }
+
+    public static String staticUrlify(char[] input, Integer trueLength) {
         int finalLength = trueLength + 2*countSpaces(input, trueLength) - 1;
 
         for (int i = trueLength - 1; i >= 0; i--) {
@@ -52,7 +48,7 @@ public class Solution extends SolutionTemplate {
      * @param   end The last index (excluded) to check.
      * @return  The number of spaces in the passed char array.
      */
-    private static int countSpaces(char[] chars, int end) {
+    private static int countSpaces(char[] chars, Integer end) {
         int times = 0;
         for (int i = 0; i < end; i++) {
             if (chars[i] == ' ') {
@@ -60,10 +56,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return times;
-    }
-
-    @Override
-    public String solve(char[] input, int trueLength) {
-        return urlify(input, trueLength);
     }
 }

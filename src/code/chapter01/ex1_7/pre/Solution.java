@@ -10,15 +10,8 @@ import chapter01.ex1_7.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final Integer[][] matrix;
-
     public Solution(Integer[][] matrix) {
-        this.matrix = matrix;
-    }
-
-    @Override
-    public void run() {
-        rotateMatrix(matrix);
+        super(matrix);
     }
 
     /**
@@ -27,7 +20,12 @@ public class Solution extends SolutionTemplate {
      * Rotate the matrix of 90°.
      * @param   matrix The matrix to rotate.
      */
-    public static void rotateMatrix(Integer[][] matrix) {
+    @Override
+    public void rotateMatrix(Integer[][] matrix) {
+        staticRotateMatrix(matrix);
+    }
+
+    public static void staticRotateMatrix(Integer[][] matrix) {
         int N = matrix.length, x, y, toRotate, tmp;
         // move from most external layers to internal ones
         for (int k = 0; k < N / 2; k++) {
@@ -47,10 +45,5 @@ public class Solution extends SolutionTemplate {
                 }
             }
         }
-    }
-
-    @Override
-    public void solve(Integer[][] matrix) {
-        rotateMatrix(matrix);
     }
 }

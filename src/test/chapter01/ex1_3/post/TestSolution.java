@@ -1,5 +1,6 @@
 package chapter01.ex1_3.post;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,10 +18,16 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
 @Tag("Post")
 @DisplayName("Ex1_3: URLify (Post)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null, null);
+    }
 
     @ParameterizedTest(name = "Urlifying \"{1}\" to \"{0}\":")
     @MethodSource("chapter01.ex1_3.TestUtils#getParameters")
     void check(String expected, String input) {
-        assertEquals(expected, Solution.urlify(toCharsWithExtraRoom(input), input.length()));
+        assertEquals(expected, sol.urlify(toCharsWithExtraRoom(input), input.length()));
     }
 }

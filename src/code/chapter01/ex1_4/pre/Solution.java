@@ -12,15 +12,8 @@ import java.util.HashMap;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String input;
-
     public Solution(String input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        isPermutationOfPalindrome(input);
+        super(input);
     }
 
     /**
@@ -29,7 +22,12 @@ public class Solution extends SolutionTemplate {
      * @param   input The input string to check
      * @return  True if the string is a permutation of a palindrome.
      */
-    public static boolean isPermutationOfPalindrome(String input) {
+    @Override
+    public boolean isPermutationOfPalindrome(String input) {
+        return staticIsPermutationOfPalindrome(input);
+    }
+
+    public static boolean staticIsPermutationOfPalindrome(String input) {
         // make lowercase since we can ignore casing
         input = input.toLowerCase();
         HashMap<Character, Integer> charFrequency = new HashMap<>();
@@ -49,10 +47,5 @@ public class Solution extends SolutionTemplate {
         }
         // if at least 2 chars have an odd frequency, the string cannot be palindrome
         return oddFrequencyChars <= 1;
-    }
-
-    @Override
-    public boolean solve(String input) {
-        return isPermutationOfPalindrome(input);
     }
 }

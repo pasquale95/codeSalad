@@ -13,6 +13,11 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_4: Palindrome Permutation";
+    private final String input;
+
+    public SolutionTemplate(String input) {
+        this.input = input;
+    }
 
     /**
      * Chapter 1
@@ -29,13 +34,18 @@ public abstract class SolutionTemplate implements SolutionStrategy {
 
         printBlue(getProblemName());
         System.out.println(colorYellow('"' + input + '"') + " is a permutation of a palindrome: " +
-                colorYellow(String.valueOf(solve(input))) + ".");
+                colorYellow(String.valueOf(isPermutationOfPalindrome(input))) + ".");
     }
 
-    public abstract boolean solve(String input);
+    @Override
+    public void run() {
+        isPermutationOfPalindrome(input);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract boolean isPermutationOfPalindrome(String input);
 }

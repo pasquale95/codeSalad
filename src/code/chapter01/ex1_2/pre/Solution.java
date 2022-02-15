@@ -10,19 +10,8 @@ import chapter01.ex1_2.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String[] input;
-
     public Solution(String[] input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i + 1; j < input.length; j++) {
-                arePermutations(input[i], input[j]);
-            }
-        }
+        super(input);
     }
 
     /**
@@ -32,7 +21,12 @@ public class Solution extends SolutionTemplate {
      * @param   second The second string to compare.
      * @return  True if the two strings are permutations of the same charset.
      */
-    public static boolean arePermutations(String first, String second) {
+    @Override
+    public boolean arePermutations(String first, String second) {
+        return staticArePermutations(first, second);
+    }
+
+    public static boolean staticArePermutations(String first, String second) {
         if (first.length() != second.length()) {
             // permutations must have same length
             return false;
@@ -46,10 +40,5 @@ public class Solution extends SolutionTemplate {
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
         return firstSorted.equals(secondSorted);
-    }
-
-    @Override
-    public boolean solve(String first, String second) {
-        return arePermutations(first, second);
     }
 }

@@ -10,28 +10,24 @@ import chapter01.ex1_3.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final char[] input;
-    private final int trueLength;
-
-    public Solution(char[] input, int trueLength) {
-        this.input = input;
-        this.trueLength = trueLength;
-    }
-
-    @Override
-    public void run() {
-        urlify(input, trueLength);
+    public Solution(char[] input, Integer trueLength) {
+        super(input, trueLength);
     }
 
     /**
-     * Assumption 1: cannot use an additional variable
      * Complexity: O(n^2)
+     * Assumption 1: cannot use an additional variable
      *
      * @param   input The input char array with extra spaces for additional chars.
      * @param   trueLength The real string length.
      * @return  The urlified string.
      */
-    public static String urlify(char[] input, int trueLength) {
+    @Override
+    public String urlify(char[] input, Integer trueLength) {
+        return staticUrlify(input, trueLength);
+    }
+
+    public static String staticUrlify(char[] input, Integer trueLength) {
         for (int i = 0; i < trueLength; i++) {
             if (input[i] == ' ') {
                 for (int j = input.length - 1; j > i+2; j--) {
@@ -45,10 +41,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return String.valueOf(input);
-    }
-
-    @Override
-    public String solve(char[] input, int trueLength) {
-        return urlify(input, trueLength);
     }
 }

@@ -1,5 +1,7 @@
 package chapter01.ex1_2.pre;
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,10 +19,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex1_2: Check permutations (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Checking if words \"{1}\" and \"{2}\" are permutations:")
     @MethodSource("chapter01.ex1_2.TestUtils#getParameters")
     void check(Boolean expected, String a, String b) {
-        assertEquals(expected, Solution.arePermutations(a, b));
+        assertEquals(expected, sol.arePermutations(a, b));
     }
 }

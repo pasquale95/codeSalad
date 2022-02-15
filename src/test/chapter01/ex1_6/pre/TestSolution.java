@@ -1,5 +1,6 @@
 package chapter01.ex1_6.pre;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,10 +17,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex1_6: String Compression (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Checking if word \"{1}\" is compressed to \"{0}\":")
     @MethodSource("chapter01.ex1_6.TestUtils#getParameters")
     void check(String expected, String input) {
-        assertEquals(expected, Solution.compress(input));
+        assertEquals(expected, sol.compress(input));
     }
 }

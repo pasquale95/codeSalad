@@ -13,6 +13,11 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_2: Check permutations";
+    private final String[] input;
+
+    public SolutionTemplate(String[] input) {
+        this.input = input;
+    }
 
     /**
      * Chapter 1
@@ -30,17 +35,26 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                 System.out.println(colorYellow('"' + strings[i] + '"')
                         + " and " + colorYellow('"' + strings[j] + '"')
                         + " are permutations: "
-                        + colorYellow(String.valueOf(solve(strings[i], strings[j])))
+                        + colorYellow(String.valueOf(arePermutations(strings[i], strings[j])))
                         + "."
                 );
             }
         }
     }
 
-    public abstract boolean solve(String first, String second);
+    @Override
+    public void run() {
+        for (int i = 0; i < input.length - 1; i++) {
+            for (int j = i + 1; j < input.length; j++) {
+                arePermutations(input[i], input[j]);
+            }
+        }
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract boolean arePermutations(String first, String second);
 }

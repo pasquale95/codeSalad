@@ -14,6 +14,18 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_3: URLify";
+    private final char[] input;
+    private final Integer trueLength;
+
+    public SolutionTemplate(char[] input, Integer trueLength) {
+        this.input = input;
+        this.trueLength = trueLength;
+    }
+
+    @Override
+    public void run() {
+        urlify(input, trueLength);
+    }
 
     /**
      * Chapter 1
@@ -33,14 +45,14 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         System.out.println(
                 colorYellow('"' + input + '"')
                 + " urlified: "
-                + colorYellow(solve(toCharsWithExtraRoom(input), input.length())) + "."
+                + colorYellow(urlify(toCharsWithExtraRoom(input), input.length())) + "."
         );
     }
-
-    public abstract String solve(char[] input, int trueLength);
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract String urlify(char[] input, Integer trueLength);
 }

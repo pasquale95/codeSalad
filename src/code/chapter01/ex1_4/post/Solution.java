@@ -10,15 +10,8 @@ import chapter01.ex1_4.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String input;
-
     public Solution(String input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        isPermutationOfPalindrome(input);
+        super(input);
     }
 
     /**
@@ -27,7 +20,12 @@ public class Solution extends SolutionTemplate {
      * @param   input The input string to check
      * @return  True if the string is a permutation of a palindrome.
      */
-    public static boolean isPermutationOfPalindrome(String input) {
+    @Override
+    public boolean isPermutationOfPalindrome(String input) {
+        return staticIsPermutationOfPalindrome(input);
+    }
+
+    public static boolean staticIsPermutationOfPalindrome(String input) {
         // make lowercase since we can ignore casing
         input = input.toLowerCase();
         int bitVector = 0;
@@ -37,10 +35,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return (bitVector & (bitVector - 1)) == 0;
-    }
-
-    @Override
-    public boolean solve(String input) {
-        return isPermutationOfPalindrome(input);
     }
 }

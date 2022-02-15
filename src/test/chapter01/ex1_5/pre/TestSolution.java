@@ -1,5 +1,6 @@
 package chapter01.ex1_5.pre;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,10 +17,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex1_5: One Away (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Checking if word \"{1}\" and \"{2}\" are one char away:")
     @MethodSource("chapter01.ex1_5.TestUtils#getParameters")
     void check(Boolean expected, String a, String b) {
-        assertEquals(expected, Solution.areOneAway(a, b));
+        assertEquals(expected, sol.areOneAway(a, b));
     }
 }

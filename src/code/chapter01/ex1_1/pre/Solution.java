@@ -10,18 +10,8 @@ import chapter01.ex1_1.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
-    private final String[] input;
-
     public Solution(String[] input) {
-        this.input = input;
-    }
-
-    @Override
-    public void run() {
-        for (String string : this.input) {
-            isUniqueCharsA(string);
-            isUniqueCharsB(string);
-        }
+        super(input);
     }
 
     /**
@@ -30,7 +20,23 @@ public class Solution extends SolutionTemplate {
      * @param   stringToCheck The string to check.
      * @return  True if there are at least two chars are equal.
      */
-    public static boolean isUniqueCharsA(String stringToCheck) {
+    @Override
+    protected boolean isUniqueCharsA(String stringToCheck) {
+        return staticIsUniqueCharsA(stringToCheck);
+    }
+
+    /**
+     * Complexity: O(n^2)
+     *
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
+     */
+    @Override
+    protected boolean isUniqueCharsB(String stringToCheck) {
+        return staticIsUniqueCharsB(stringToCheck);
+    }
+
+    public static boolean staticIsUniqueCharsA(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {
@@ -42,13 +48,7 @@ public class Solution extends SolutionTemplate {
         return true;
     }
 
-    /**
-     * Complexity: O(n^2)
-     *
-     * @param   stringToCheck The string to check.
-     * @return  True if there are at least two chars are equal.
-     */
-    public static boolean isUniqueCharsB(String stringToCheck) {
+    public static boolean staticIsUniqueCharsB(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {
@@ -58,15 +58,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return true;
-    }
-
-    @Override
-    protected boolean solveQuestionA(String stringToCheck) {
-        return isUniqueCharsA(stringToCheck);
-    }
-
-    @Override
-    protected boolean solveQuestionB(String stringToCheck) {
-        return isUniqueCharsB(stringToCheck);
     }
 }
