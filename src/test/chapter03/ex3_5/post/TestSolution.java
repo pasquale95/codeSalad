@@ -17,6 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Post")
 @DisplayName("Ex3_5: Sort Stack (Post)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Sorting stack {0} to {1}:")
     @MethodSource("chapter03.ex3_5.TestUtils#getParameters")

@@ -86,10 +86,10 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
-    public abstract SetOfStacksStrategy getSetOfStacksInstance(int stacks);
-
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract SetOfStacksStrategy getSetOfStacksInstance(int stacks);
 }

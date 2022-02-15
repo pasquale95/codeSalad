@@ -84,6 +84,11 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
+    @Override
+    public String getProblemName() {
+        return PROBLEM;
+    }
+
     public abstract void allocateStack(Integer size);
 
     public abstract void pushToStack(Integer data, Integer stackNumber) throws StackOverflowException;
@@ -91,9 +96,4 @@ public abstract class SolutionTemplate implements SolutionStrategy {
     public abstract Integer popFromStack(Integer stackNumber) throws EmptyStackException;
 
     public abstract String stackToString(Integer stackNumber);
-
-    @Override
-    public String getProblemName() {
-        return PROBLEM;
-    }
 }

@@ -72,6 +72,11 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
+    @Override
+    public String getProblemName() {
+        return PROBLEM;
+    }
+
     public abstract void push(int data);
 
     public abstract int pop() throws EmptyStackException;
@@ -79,9 +84,4 @@ public abstract class SolutionTemplate implements SolutionStrategy {
     public abstract int min() throws EmptyStackException;
 
     public abstract String stackToString();
-
-    @Override
-    public String getProblemName() {
-        return PROBLEM;
-    }
 }

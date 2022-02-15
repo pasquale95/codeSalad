@@ -21,6 +21,11 @@ public class Solution extends SolutionTemplate {
      *
      * @param   stack The stack to sort.
      */
+    @Override
+    public void sortStack(Stack<Integer> stack) {
+        staticSortStack(stack);
+    }
+
     public static void staticSortStack(Stack<Integer> stack) {
         try {
             Stack<Integer> temporaryStack = new Stack<>();
@@ -38,10 +43,5 @@ public class Solution extends SolutionTemplate {
         } catch (EmptyStackException ex) {
             ex.printStackTrace();
         }
-    }
-
-    @Override
-    public void sortStack(Stack<Integer> stack) {
-        staticSortStack(stack);
     }
 }

@@ -17,11 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex3_5: Sort Stack (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Sorting stack {0} to {1}:")
     @MethodSource("chapter03.ex3_5.TestUtils#getParameters")
     void checkAdd(Stack<Integer> stack, Stack<Integer> expected) {
-        Solution.staticSortStack(stack);
+        sol.sortStack(stack);
         assertEquals(stack, expected);
     }
 }
