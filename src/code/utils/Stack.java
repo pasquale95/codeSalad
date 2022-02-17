@@ -57,6 +57,25 @@ public class Stack<T> {
         return sb.toString();
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    public Stack<T> clone() {
+        Stack<T> clone = new Stack<>();
+        Stack<T> tmp = new Stack<>();
+        // create tmp inverted stack
+        StackNode<T> runner = top;
+        while (runner != null) {
+            tmp.push(runner.getData());
+            runner = runner.getPrevious();
+        }
+        // create real clone
+        runner = tmp.top;
+        while (runner != null) {
+            clone.push(runner.getData());
+            runner = runner.getPrevious();
+        }
+        return clone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Stack<?>)) {
