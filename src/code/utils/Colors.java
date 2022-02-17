@@ -30,10 +30,6 @@ public class Colors {
         System.out.println(colorGreen(string));
     }
 
-    public static void printYellow(String string) {
-        System.out.println(colorYellow(string));
-    }
-
     public static String colorBlue(String string) {
         if (ENABLE_COLORS) {
             string = ANSI_BLUE + string + ANSI_RESET;
