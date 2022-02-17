@@ -1,8 +1,6 @@
 package chapter01.ex1_7;
 
 import org.junit.jupiter.params.provider.Arguments;
-import utils.generators.ArrayGenerator;
-import utils.generators.RandomGenerator;
 
 import java.util.stream.Stream;
 

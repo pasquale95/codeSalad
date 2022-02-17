@@ -14,13 +14,20 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2_6: Palindrome";
+    protected static final String PROBLEM = "Chapter 2 - Ex 2_6: Palindrome";
+    protected final LinkedListNode<Integer> head;
 
     /**
      * Chapter 2
      * Ex2_6: Palindrome
      * Implement a function to check if a linked list is palindrome.
+     *
+     * @param head The linked list head.
      */
+    public SolutionTemplate(LinkedListNode<Integer> head) {
+        this.head = head;
+    }
+
     @Override
     public void runSampleSolution() {
         printBlue(getProblemName());
@@ -29,14 +36,19 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                 () -> RandomGenerator.randomIntegerGenerator(2)
         );
         System.out.println("The linked list " + colorYellow(head.toString())
-                + " is palindrome: " + colorYellow(String.valueOf(solve(head)))
+                + " is palindrome: " + colorYellow(String.valueOf(isPalindrome(head)))
         );
     }
 
-    public abstract boolean solve(LinkedListNode<Integer> head);
+    @Override
+    public void run() {
+        isPalindrome(head);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract boolean isPalindrome(LinkedListNode<Integer> head);
 }

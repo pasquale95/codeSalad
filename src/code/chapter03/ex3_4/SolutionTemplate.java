@@ -2,7 +2,6 @@ package chapter03.ex3_4;
 
 import chapter03.ex3_4.pre.MyQueue;
 import utils.architecture.SolutionStrategy;
-import utils.exceptions.EmptyQueueException;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
 
@@ -20,16 +19,19 @@ public abstract class SolutionTemplate implements SolutionStrategy {
     protected final Integer[] numbers;
     protected final Boolean[] remove;
 
+    /**
+     * Chapter 3
+     * Ex3_4: Queue via Stacks
+     * Implement a MyQueue class which implements a queue using two stacks.
+     *
+     * @param numbers The numbers to add in the queue.
+     * @param remove Boolean array where "true" leads to a removal from the queue at the step i.
+     */
     public SolutionTemplate(Integer[] numbers, Boolean[] remove) {
         this.numbers = numbers;
         this.remove = remove;
     }
 
-    /**
-     * Chapter 3
-     * Ex3_4: Queue via Stacks
-     * Implement a MyQueue class which implements a queue using two stacks.
-     */
     @Override
     public void runSampleSolution() {
         try {
@@ -51,6 +53,7 @@ public abstract class SolutionTemplate implements SolutionStrategy {
             queue.add(randValue);
             System.out.println("After adding " + colorYellow(String.valueOf(randValue))
                     + ", the queue becomes " + colorYellow(queue.toString())
+                    + ", peeking gives " + colorYellow(String.valueOf(queue.peek()))
                     + ", removing gives " + colorYellow(String.valueOf(queue.remove())) + "."
             );
         } catch (Exception ex) {

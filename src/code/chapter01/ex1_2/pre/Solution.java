@@ -10,6 +10,9 @@ import chapter01.ex1_2.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] input) {
         super(input);
     }
@@ -23,10 +26,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public boolean arePermutations(String first, String second) {
-        return staticArePermutations(first, second);
-    }
-
-    public static boolean staticArePermutations(String first, String second) {
         if (first.length() != second.length()) {
             // permutations must have same length
             return false;

@@ -13,11 +13,7 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_5: One Away";
-    private final String[] input;
-
-    public SolutionTemplate(String[] input) {
-        this.input = input;
-    }
+    protected final String[] input;
 
     /**
      * Chapter 1
@@ -26,7 +22,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * insert a character, remove a character, or replace a character.
      * Given two strings, write a function to check if they are one edit
      * (or zero edits) away.
+     *
+     * @param input The input strings
      */
+    public SolutionTemplate(String[] input) {
+        this.input = input;
+    }
+
     @Override
     public void runSampleSolution() {
         String one = "pales";

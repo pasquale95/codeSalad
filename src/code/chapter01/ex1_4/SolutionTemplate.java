@@ -13,11 +13,7 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_4: Palindrome Permutation";
-    private final String input;
-
-    public SolutionTemplate(String input) {
-        this.input = input;
-    }
+    protected final String input;
 
     /**
      * Chapter 1
@@ -27,7 +23,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * A permutation is a rearrangement of letters.
      * The palindrome does not need to be limited to just dictionary words.
      * You can ignore casing and non-letter characters.
+     *
+     * @param input The input string
      */
+    public SolutionTemplate(String input) {
+        this.input = input;
+    }
+
     @Override
     public void runSampleSolution() {
         String input = "Tact Coa";

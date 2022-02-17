@@ -10,6 +10,9 @@ import chapter01.ex1_3.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(char[], Integer)
+     */
     public Solution(char[] input, Integer trueLength) {
         super(input, trueLength);
     }
@@ -23,10 +26,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public String urlify(char[] input, Integer trueLength) {
-        return staticUrlify(input, trueLength);
-    }
-
-    public static String staticUrlify(char[] input, Integer trueLength) {
         int finalLength = trueLength + 2*countSpaces(input, trueLength) - 1;
 
         for (int i = trueLength - 1; i >= 0; i--) {
@@ -48,7 +47,7 @@ public class Solution extends SolutionTemplate {
      * @param   end The last index (excluded) to check.
      * @return  The number of spaces in the passed char array.
      */
-    private static int countSpaces(char[] chars, Integer end) {
+    protected static int countSpaces(char[] chars, Integer end) {
         int times = 0;
         for (int i = 0; i < end; i++) {
             if (chars[i] == ' ') {

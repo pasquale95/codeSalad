@@ -16,11 +16,7 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     protected static final String PROBLEM = "Chapter 3 - Ex 3_5: Sort Stack";
-    protected final Integer[] numbers;
-
-    public SolutionTemplate(Integer[] numbers) {
-        this.numbers = numbers;
-    }
+    protected final Stack<Integer> stack;
 
     /**
      * Chapter 3
@@ -29,7 +25,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * You can use an additional temporary stack, but you may not copy the elements
      * into any other data structure (such as an array).
      * The stack supports the following operations: push, pop, peek and isEmpty.
+     *
+     * @param stack The stack to sort.
      */
+    public SolutionTemplate(Stack<Integer> stack) {
+        this.stack = stack;
+    }
+
     @Override
     public void runSampleSolution() {
         printBlue(getProblemName());
@@ -49,10 +51,6 @@ public abstract class SolutionTemplate implements SolutionStrategy {
 
     @Override
     public void run() {
-        Stack<Integer> stack = new Stack<>();
-        for (Integer number : numbers) {
-            stack.push(number);
-        }
         sortStack(stack);
     }
 

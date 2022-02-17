@@ -27,7 +27,7 @@ public class TestSolution {
     @ParameterizedTest(name = "Sorting stack {0} to {1}:")
     @MethodSource("chapter03.ex3_5.TestUtils#getParameters")
     void checkAdd(Stack<Integer> stack, Stack<Integer> expected) {
-        Solution.staticSortStack(stack);
+        sol.sortStack(stack);
         assertEquals(stack, expected);
     }
 }

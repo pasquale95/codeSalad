@@ -1,5 +1,6 @@
 package chapter02.ex2_2.post;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,11 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Post")
 @DisplayName("Ex2_2: Return Kth to Last (Post)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null, null);
+    }
 
     @ParameterizedTest(name = "Checking that in \"{1}\" the kth element from last with k = {2} is \"{0}\":")
     @MethodSource("chapter02.ex2_2.TestUtils#getParameters")
     void check(Integer expected, LinkedListNode<Integer> input, Integer k) {
-        LinkedListNode<Integer> kth = Solution.findKthToLast(input, k);
+        LinkedListNode<Integer> kth = sol.findKthToLast(input, k);
         assertEquals(expected, kth != null ? kth.getData() : null);
     }
 }

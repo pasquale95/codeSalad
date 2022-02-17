@@ -11,16 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer> head;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode)
+     */
     public Solution(LinkedListNode<Integer> head) {
-        this.head = head;
-    }
-
-    @Override
-    public void run() {
-        removeDuplicatesA(this.head.clone());
-        removeDuplicatesB(this.head);
+        super(head);
     }
 
     /**
@@ -28,7 +23,8 @@ public class Solution extends SolutionTemplate {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesA(LinkedListNode<Integer> head) {
+    @Override
+    public void removeDuplicatesA(LinkedListNode<Integer> head) {
         for (LinkedListNode<Integer> node = head; node != null && !node.isTail(); node = node.getNext()) {
             for (LinkedListNode<Integer> node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
                 if (node.getData().equals(node1.getData())) {
@@ -43,7 +39,8 @@ public class Solution extends SolutionTemplate {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesB(LinkedListNode<Integer> head) {
+    @Override
+    public void removeDuplicatesB(LinkedListNode<Integer> head) {
         for (LinkedListNode<Integer> node = head; node != null && !node.isTail(); node = node.getNext()) {
             for (LinkedListNode<Integer> node1 = node.getNext(); node1 != null ; node1 = node1.getNext()) {
                 if (node.getData().equals(node1.getData())) {
@@ -51,15 +48,5 @@ public class Solution extends SolutionTemplate {
                 }
             }
         }
-    }
-
-    @Override
-    public void solveQuestionA(LinkedListNode<Integer> head) {
-        removeDuplicatesA(head);
-    }
-
-    @Override
-    public void solveQuestionB(LinkedListNode<Integer> head) {
-        removeDuplicatesB(head);
     }
 }

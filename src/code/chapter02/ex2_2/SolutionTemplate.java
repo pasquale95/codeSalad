@@ -13,14 +13,24 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2. Ex 2_2: Return Kth to Last";
+    protected static final String PROBLEM = "Chapter 2. Ex 2_2: Return Kth to Last";
+    protected final LinkedListNode<Integer> head;
+    protected final Integer kth;
 
     /**
      * Chapter 2
      * Ex2_2: Return Kth to Last
      * Implement an algorithm to find the kth to last element of a singly
      * linked list.
+     *
+     * @param head  The linked list head.
+     * @param kth   The k value.
      */
+    public SolutionTemplate(LinkedListNode<Integer> head, Integer kth) {
+        this.head = head;
+        this.kth = kth;
+    }
+
     @Override
     public void runSampleSolution() {
         int KTH = 3;
@@ -30,7 +40,7 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                 10,
                 () -> RandomGenerator.randomIntegerGenerator(8)
         );
-        LinkedListNode<Integer> kth = solve(head, KTH);
+        LinkedListNode<Integer> kth = findKthToLast(head, KTH);
         if (kth != null) {
             System.out.println("The " + KTH + "th element from last in " + colorYellow(head.toString()) + " is " +
                     colorYellow(String.valueOf(kth.getData())) + ".");
@@ -40,10 +50,15 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
     }
 
-    public abstract LinkedListNode<Integer> solve(LinkedListNode<Integer> head, int k);
+    @Override
+    public void run() {
+        findKthToLast(this.head, this.kth);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract LinkedListNode<Integer> findKthToLast(LinkedListNode<Integer> head, Integer k);
 }

@@ -11,17 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer> head;
-    private final int threshold;
-
-    public Solution(LinkedListNode<Integer> head, int threshold) {
-        this.head = head;
-        this.threshold = threshold;
-    }
-
-    @Override
-    public void run() {
-        partition(this.head, this.threshold);
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode, Integer)
+     */
+    public Solution(LinkedListNode<Integer> head, Integer threshold) {
+        super(head, threshold);
     }
 
     /**
@@ -33,7 +27,8 @@ public class Solution extends SolutionTemplate {
      * @param   threshold The threshold to use for partitioning.
      * @return  The partitioned linked list.
      */
-    public static LinkedListNode<Integer> partition(LinkedListNode<Integer> node, int threshold) {
+    @Override
+    public LinkedListNode<Integer> partition(LinkedListNode<Integer> node, Integer threshold) {
         LinkedListNode<Integer> beforeHead = null, beforeTail = null, afterHead = null, afterTail = null;
         while (node != null) {
             int value = node.getData();
@@ -61,10 +56,5 @@ public class Solution extends SolutionTemplate {
         // merge two lists
         beforeTail.append(afterHead);
         return beforeHead;
-    }
-
-    @Override
-    public LinkedListNode<Integer> solve(LinkedListNode<Integer> node, int threshold) {
-        return partition(node, threshold);
     }
 }

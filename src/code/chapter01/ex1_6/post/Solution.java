@@ -10,6 +10,9 @@ import chapter01.ex1_6.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] originals) {
         super(originals);
     }
@@ -22,10 +25,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public String compress(String original) {
-        return staticCompress(original);
-    }
-
-    public static String staticCompress(String original) {
         int originalLength = original.length();
         int compressedLength = getCompressedLength(original);
         // if compression is useless, return original without going further with the algorithm
@@ -49,7 +48,7 @@ public class Solution extends SolutionTemplate {
      * @param   original The original string.
      * @return  True if the compressed string is smaller than the original.
      */
-    private static int getCompressedLength(String original) {
+    protected static int getCompressedLength(String original) {
         int compressedLength = 0, originalLength = original.length();
         // count compressed string length
         if (originalLength > 0) {

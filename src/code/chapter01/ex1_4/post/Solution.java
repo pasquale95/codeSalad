@@ -10,6 +10,9 @@ import chapter01.ex1_4.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String)
+     */
     public Solution(String input) {
         super(input);
     }
@@ -22,10 +25,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public boolean isPermutationOfPalindrome(String input) {
-        return staticIsPermutationOfPalindrome(input);
-    }
-
-    public static boolean staticIsPermutationOfPalindrome(String input) {
         // make lowercase since we can ignore casing
         input = input.toLowerCase();
         int bitVector = 0;

@@ -10,6 +10,9 @@ import chapter01.ex1_1.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] input) {
         super(input);
     }
@@ -22,7 +25,8 @@ public class Solution extends SolutionTemplate {
      * @param   stringToCheck The string to check.
      * @return  True if there are at least two chars are equal.
      */
-    public static boolean staticIsUniqueCharsA(String stringToCheck) {
+    @Override
+    public boolean isUniqueCharsA(String stringToCheck) {
         int bitVector = 0;
         String stringToCheckLower = stringToCheck.toLowerCase();
         for (int i = 0; i < stringToCheck.length(); i++) {
@@ -45,7 +49,8 @@ public class Solution extends SolutionTemplate {
      * @param   stringToCheck The string to check.
      * @return  True if there are at least two chars are equal.
      */
-    public static boolean staticIsUniqueCharsB(String stringToCheck) {
+    @Override
+    public boolean isUniqueCharsB(String stringToCheck) {
         stringToCheck = stringToCheck.chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
@@ -56,15 +61,5 @@ public class Solution extends SolutionTemplate {
             }
         }
         return true;
-    }
-
-    @Override
-    protected boolean isUniqueCharsA(String stringToCheck) {
-        return staticIsUniqueCharsA(stringToCheck);
-    }
-
-    @Override
-    protected boolean isUniqueCharsB(String stringToCheck) {
-        return staticIsUniqueCharsB(stringToCheck);
     }
 }

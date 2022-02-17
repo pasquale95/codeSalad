@@ -11,20 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer>[] addends;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode[])
+     */
     public Solution(LinkedListNode<Integer>[] addends) {
-        this.addends = addends;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < addends.length - 1; i++) {
-            for (int j = i + 1; j < addends.length; j++) {
-                reverseOrderSum(this.addends[i], this.addends[j]);
-                forwardOrderSum(this.addends[i], this.addends[j]);
-            }
-        }
+        super(addends);
     }
 
     /**
@@ -34,7 +25,8 @@ public class Solution extends SolutionTemplate {
      * @param   addend2 The second addend
      * @return  The sum of the two addends in reverse order.
      */
-    public static LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+    @Override
+    public LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         LinkedListNode<Integer> result = null, runner = null;
         int tmp, carry = 0;
         // sum digit by digit
@@ -72,7 +64,8 @@ public class Solution extends SolutionTemplate {
      * @param   addend2 The second addend
      * @return  The sum of the two addends in forward order.
      */
-    public static LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+    @Override
+    public LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         // cloning here since we're not supposed to change the original addend
         return invertLinkedList(reverseOrderSum(invertLinkedList(addend1.clone()), invertLinkedList(addend2.clone())));
     }
@@ -82,7 +75,7 @@ public class Solution extends SolutionTemplate {
      * @param   head The linked list starting node.
      * @return  The inverted linked list.
      */
-    private static LinkedListNode<Integer> invertLinkedList(LinkedListNode<Integer> head) {
+    protected LinkedListNode<Integer> invertLinkedList(LinkedListNode<Integer> head) {
         LinkedListNode<Integer> runner = head;
         while (!runner.isTail()) {
             LinkedListNode<Integer> next = runner.getNext();
@@ -91,15 +84,5 @@ public class Solution extends SolutionTemplate {
             head = next;
         }
         return head;
-    }
-
-    @Override
-    public LinkedListNode<Integer> solve(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
-        return reverseOrderSum(addend1, addend2);
-    }
-
-    @Override
-    public LinkedListNode<Integer> solveFollowUp(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
-        return forwardOrderSum(addend1, addend2);
     }
 }

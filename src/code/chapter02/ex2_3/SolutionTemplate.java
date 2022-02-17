@@ -13,7 +13,8 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2_3: Delete Middle Node";
+    protected static final String PROBLEM = "Chapter 2 - Ex 2_3: Delete Middle Node";
+    protected final LinkedListNode<Integer> node;
 
     /**
      * Chapter 2
@@ -22,7 +23,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * (i.e. any node but the first and last node, not necessarily
      * the exact middle) of a singly linked list, given only access
      * to that node.
+     *
+     * @param node The node to remove.
      */
+    public SolutionTemplate(LinkedListNode<Integer> node) {
+        this.node = node;
+    }
+
     @Override
     public void runSampleSolution() {
         int LIST_LENGTH = 10;
@@ -34,11 +41,14 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         );
         LinkedListNode<Integer> nodeToPrune = getNodeToPrune(head);
         System.out.print(colorYellow(head.toString()) + " after removing the node " + nodeToPrune.getData() + ": ");
-        solve(nodeToPrune);
+        removeLinkedListNode(nodeToPrune);
         System.out.println(colorYellow(head.toString()) + ".");
     }
 
-    public abstract void solve(LinkedListNode<Integer> node);
+    @Override
+    public void run() {
+        removeLinkedListNode(this.node);
+    }
 
     @Override
     public String getProblemName() {
@@ -56,4 +66,6 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
         return head;
     }
+
+    public abstract void removeLinkedListNode(LinkedListNode<Integer> node);
 }

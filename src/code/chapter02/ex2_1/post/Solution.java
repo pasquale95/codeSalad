@@ -13,16 +13,11 @@ import java.util.HashSet;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer> head;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode)
+     */
     public Solution(LinkedListNode<Integer> head) {
-        this.head = head;
-    }
-
-    @Override
-    public void run() {
-        removeDuplicatesA(this.head.clone());
-        removeDuplicatesB(this.head);
+        super(head);
     }
 
     /**
@@ -30,7 +25,8 @@ public class Solution extends SolutionTemplate {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesA(LinkedListNode<Integer> head) {
+    @Override
+    public void removeDuplicatesA(LinkedListNode<Integer> head) {
         HashSet<Integer> hashTable = new HashSet<>();
         while (head != null) {
             if (hashTable.contains(head.getData())) {
@@ -48,7 +44,8 @@ public class Solution extends SolutionTemplate {
      *
      * @param   head The node from where to start removing duplicates.
      */
-    public static void removeDuplicatesB(LinkedListNode<Integer> head) {
+    @Override
+    public void removeDuplicatesB(LinkedListNode<Integer> head) {
         LinkedListNode<Integer> current = head;
         while (current != null && !current.isTail()) {
             LinkedListNode<Integer> runner = current.getNext();
@@ -60,15 +57,5 @@ public class Solution extends SolutionTemplate {
             }
             current = current.getNext();
         }
-    }
-
-    @Override
-    public void solveQuestionA(LinkedListNode<Integer> head) {
-        removeDuplicatesA(head);
-    }
-
-    @Override
-    public void solveQuestionB(LinkedListNode<Integer> head) {
-        removeDuplicatesB(head);
     }
 }

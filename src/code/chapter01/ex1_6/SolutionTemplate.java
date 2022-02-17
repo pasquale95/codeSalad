@@ -13,18 +13,7 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_6: String Compression";
-    private final String[] originals;
-
-    public SolutionTemplate(String[] originals) {
-        this.originals = originals;
-    }
-
-    @Override
-    public void run() {
-        for (String original : this.originals) {
-            compress(original);
-        }
-    }
+    protected final String[] originals;
 
     /**
      * Chapter 1
@@ -33,7 +22,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * characters. For example, the string "aabcccccaaa" would become "a1b1c5a3". If the compressed
      * string would not become smaller than the original string, your method should return the original
      * string. You can assume the string has only uppercase and lowercase letters (a-z).
+     *
+     * @param originals The strings to compress.
      */
+    public SolutionTemplate(String[] originals) {
+        this.originals = originals;
+    }
+
     @Override
     public void runSampleSolution() {
         String to_compress = "aaabbbcddaaAAAff";
@@ -41,6 +36,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         printBlue(getProblemName());
         System.out.println("The string " + colorYellow(to_compress) + " after compression becomes "
                 + colorYellow(String.valueOf(compress(to_compress))) + ".");
+    }
+
+    @Override
+    public void run() {
+        for (String original : this.originals) {
+            compress(original);
+        }
     }
 
     @Override

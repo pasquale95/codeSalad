@@ -1,6 +1,5 @@
 package chapter03.ex3_2.pre;
 
-import chapter03.ex3_1.TestUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +23,7 @@ public class TestSolution {
 
     @BeforeAll
     void setup() {
-        sol = new Solution();
+        sol = new Solution(null, null);
     }
 
     @ParameterizedTest(name = "Performing push of number {0}:")

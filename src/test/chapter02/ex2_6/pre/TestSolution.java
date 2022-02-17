@@ -1,5 +1,6 @@
 package chapter02.ex2_6.pre;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,10 +18,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex2_6: Palindrome (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "Checking if {1} is palindrome:")
     @MethodSource("chapter02.ex2_6.TestUtils#getParameters")
     void check(Boolean expected, LinkedListNode<Integer> input) {
-        assertEquals(expected, Solution.isPalindrome(input));
+        assertEquals(expected, sol.isPalindrome(input));
     }
 }

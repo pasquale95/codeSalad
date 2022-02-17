@@ -15,17 +15,11 @@ public class Solution extends SolutionTemplate {
         int index = 0;
     }
 
-    private final LinkedListNode<Integer> head;
-    private final int kth;
-
-    public Solution(LinkedListNode<Integer> head, int kth) {
-        this.head = head;
-        this.kth = kth;
-    }
-
-    @Override
-    public void run() {
-        findKthToLast(this.head, this.kth);
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode, Integer)
+     */
+    public Solution(LinkedListNode<Integer> head, Integer kth) {
+        super(head, kth);
     }
 
     /**
@@ -34,7 +28,8 @@ public class Solution extends SolutionTemplate {
      * @param   head The head of the linked list.
      * @param   k The index of the node to find, starting from 0 for the tail.
      */
-    public static LinkedListNode<Integer> findKthToLast(LinkedListNode<Integer> head, int k) {
+    @Override
+    public LinkedListNode<Integer> findKthToLast(LinkedListNode<Integer> head, Integer k) {
         Index index = new Index();
         return kthToLast(head, k+1, index); // k+1 since the last element is 0 pos ahead of itself
     }
@@ -47,7 +42,7 @@ public class Solution extends SolutionTemplate {
      * @param   index Counter starting from 0.
      * @return  The kth node.
      */
-    protected static LinkedListNode<Integer> kthToLast(LinkedListNode<Integer> node, int k, Index index) {
+    protected static LinkedListNode<Integer> kthToLast(LinkedListNode<Integer> node, Integer k, Index index) {
         if (node == null) {
             return null;
         }
@@ -57,10 +52,5 @@ public class Solution extends SolutionTemplate {
             return node;
         }
         return kth;
-    }
-
-    @Override
-    public LinkedListNode<Integer> solve(LinkedListNode<Integer> head, int k) {
-        return findKthToLast(head, k);
     }
 }

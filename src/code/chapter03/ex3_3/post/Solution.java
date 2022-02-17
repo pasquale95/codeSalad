@@ -11,6 +11,9 @@ import chapter03.ex3_3.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(Integer[], int)
+     */
     public Solution(Integer[] numbers, int threshold) {
         super(numbers, threshold);
     }

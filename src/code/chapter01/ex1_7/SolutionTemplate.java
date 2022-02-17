@@ -14,17 +14,8 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 1 - Ex 1_7: Rotate Matrix";
-    private final Integer[][] matrix;
-
-    public SolutionTemplate(Integer[][] matrix) {
-        this.matrix = matrix;
-    }
-
-    @Override
-    public void run() {
-        rotateMatrix(matrix);
-    }
+    protected static final String PROBLEM = "Chapter 1 - Ex 1_7: Rotate Matrix";
+    protected final Integer[][] matrix;
 
     /**
      * Chapter 1
@@ -32,7 +23,13 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * Given an image represented by an N x N matrix, where each pixel in the image
      * is represented by an integer, write a method to rotate the image by 90 degrees.
      * Can you do this in place?
+     *
+     * @param matrix The matrix to rotate.
      */
+    public SolutionTemplate(Integer[][] matrix) {
+        this.matrix = matrix;
+    }
+
     @Override
     public void runSampleSolution() {
         int n = 6;
@@ -50,14 +47,17 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         printMatrix(matrix);
     }
 
-    public abstract void rotateMatrix(Integer[][] matrix);
+    @Override
+    public void run() {
+        rotateMatrix(matrix);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
 
-    private static void printMatrix(Integer[][] matrix) {
+    protected static void printMatrix(Integer[][] matrix) {
         StringBuilder sb = new StringBuilder();
         for (Integer[] row : matrix) {
             for (Integer number: row) {
@@ -67,4 +67,6 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         }
         System.out.print(colorYellow(sb.toString()));
     }
+
+    public abstract void rotateMatrix(Integer[][] matrix);
 }

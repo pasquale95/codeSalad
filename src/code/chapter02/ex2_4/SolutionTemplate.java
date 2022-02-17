@@ -14,7 +14,9 @@ import static utils.Colors.printBlue;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2_4: Partition";
+    protected static final String PROBLEM = "Chapter 2 - Ex 2_4: Partition";
+    protected final LinkedListNode<Integer> head;
+    protected final Integer threshold;
 
     /**
      * Chapter 2
@@ -23,7 +25,15 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * less than x come before all nodes greater than or equal to x.
      * (IMPORTANT: The partition element x can appear anywhere in the "right partition";
      * it does not need to appear between the left and the right partitions.)
+     *
+     * @param head      The LinkedList head.
+     * @param threshold The threshold to use for partitioning.
      */
+    public SolutionTemplate(LinkedListNode<Integer> head, Integer threshold) {
+        this.head = head;
+        this.threshold = threshold;
+    }
+
     @Override
     public void runSampleSolution() {
         int LIST_LENGTH = 10, CEILING = 50;
@@ -34,12 +44,15 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                 LIST_LENGTH,
                 () -> RandomGenerator.randomIntegerGenerator(CEILING)
         );
-        LinkedListNode<Integer> partitioned = solve(head.clone(), threshold);
+        LinkedListNode<Integer> partitioned = partition(head.clone(), threshold);
         System.out.println(colorYellow(head.toString()) + " after partitioning on the threshold " + threshold
                 + " becomes: " + colorYellow(partitionFormat(partitioned, threshold)) + ".");
     }
 
-    public abstract LinkedListNode<Integer> solve(LinkedListNode<Integer> node, int threshold);
+    @Override
+    public void run() {
+        partition(this.head, this.threshold);
+    }
 
     /**
      * Format list using the proposed scheme "BeforeList   ->    AfterList"
@@ -47,7 +60,7 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      * @param   threshold The threshold value used for partitioning
      * @return  The linked list as formatted string.
      */
-    private static String partitionFormat(LinkedListNode<Integer> node, int threshold) {
+    protected static String partitionFormat(LinkedListNode<Integer> node, Integer threshold) {
         StringBuilder sb = new StringBuilder();
         boolean partitionFound = false;
         while (!node.isTail()) {
@@ -68,4 +81,6 @@ public abstract class SolutionTemplate implements SolutionStrategy {
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract LinkedListNode<Integer> partition(LinkedListNode<Integer> node, Integer threshold);
 }

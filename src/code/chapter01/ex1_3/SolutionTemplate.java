@@ -14,18 +14,8 @@ import static utils.generators.StringGenerator.toCharsWithExtraRoom;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_3: URLify";
-    private final char[] input;
-    private final Integer trueLength;
-
-    public SolutionTemplate(char[] input, Integer trueLength) {
-        this.input = input;
-        this.trueLength = trueLength;
-    }
-
-    @Override
-    public void run() {
-        urlify(input, trueLength);
-    }
+    protected final char[] input;
+    protected final Integer trueLength;
 
     /**
      * Chapter 1
@@ -36,7 +26,15 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      *
      * NOTE: if implementing in Java, please use a character array so that you can
      * perform this operation in place.
+     *
+     * @param input The input strings to urlify as char arrays with space for url special chars.
+     * @param trueLength The initial string length (no urlified).
      */
+    public SolutionTemplate(char[] input, Integer trueLength) {
+        this.input = input;
+        this.trueLength = trueLength;
+    }
+
     @Override
     public void runSampleSolution() {
         String input = "Mr John Smith";
@@ -47,6 +45,11 @@ public abstract class SolutionTemplate implements SolutionStrategy {
                 + " urlified: "
                 + colorYellow(urlify(toCharsWithExtraRoom(input), input.length())) + "."
         );
+    }
+
+    @Override
+    public void run() {
+        urlify(input, trueLength);
     }
 
     @Override

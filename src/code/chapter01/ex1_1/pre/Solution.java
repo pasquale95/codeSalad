@@ -10,6 +10,9 @@ import chapter01.ex1_1.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] input) {
         super(input);
     }
@@ -21,22 +24,7 @@ public class Solution extends SolutionTemplate {
      * @return  True if there are at least two chars are equal.
      */
     @Override
-    protected boolean isUniqueCharsA(String stringToCheck) {
-        return staticIsUniqueCharsA(stringToCheck);
-    }
-
-    /**
-     * Complexity: O(n^2)
-     *
-     * @param   stringToCheck The string to check.
-     * @return  True if there are at least two chars are equal.
-     */
-    @Override
-    protected boolean isUniqueCharsB(String stringToCheck) {
-        return staticIsUniqueCharsB(stringToCheck);
-    }
-
-    public static boolean staticIsUniqueCharsA(String stringToCheck) {
+    public boolean isUniqueCharsA(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {
@@ -48,7 +36,14 @@ public class Solution extends SolutionTemplate {
         return true;
     }
 
-    public static boolean staticIsUniqueCharsB(String stringToCheck) {
+    /**
+     * Complexity: O(n^2)
+     *
+     * @param   stringToCheck The string to check.
+     * @return  True if there are at least two chars are equal.
+     */
+    @Override
+    public boolean isUniqueCharsB(String stringToCheck) {
         for (int i = 0; i < stringToCheck.length()-1; i++) {
             for (int j = i+1; j < stringToCheck.length(); j++) {
                 if (stringToCheck.charAt(i) == stringToCheck.charAt(j)) {

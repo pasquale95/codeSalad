@@ -11,19 +11,21 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 1 - Ex 1_1: Is unique";
-    private final String[] input;
-
-    public SolutionTemplate(String[] input) {
-        this.input = input;
-    }
+    protected static final String PROBLEM = "Chapter 1 - Ex 1_1: Is unique";
+    protected final String[] input;
 
     /**
      * Chapter 1
      * Ex1_1: Is unique
      * Question A: Implement an algorithm to determine if a string has all unique characters.
      * Question B: What if you cannot use additional data structures?
+     *
+     * @param input The input strings.
      */
+    public SolutionTemplate(String[] input) {
+        this.input = input;
+    }
+
     @Override
     public void runSampleSolution() {
         String[] strings = {"genetics", "salt", "castle", "controlled"};
@@ -56,7 +58,7 @@ public abstract class SolutionTemplate implements SolutionStrategy {
         return PROBLEM;
     }
 
-    protected abstract boolean isUniqueCharsA(String stringToCheck);
+    public abstract boolean isUniqueCharsA(String stringToCheck);
 
-    protected abstract boolean isUniqueCharsB(String stringToCheck);
+    public abstract boolean isUniqueCharsB(String stringToCheck);
 }

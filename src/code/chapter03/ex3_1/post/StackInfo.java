@@ -7,8 +7,11 @@ package chapter03.ex3_1.post;
  * file 'LICENSE', which is part of this source code package.
  */
 public class StackInfo {
-    protected Integer stackNumber, start, size, capacity;
-    protected Integer[] stack;
+    protected final Integer stackNumber;
+    protected Integer start;
+    protected Integer size;
+    protected Integer capacity;
+    protected final Integer[] stack;
 
     public StackInfo(Integer[] stack, Integer stackNumber, Integer start, Integer capacity) {
         this.stack = stack;
@@ -29,6 +32,6 @@ public class StackInfo {
      * @return  True if the current element is full.
      */
     public boolean isFull() {
-        return size == capacity;
+        return size.equals(capacity);
     }
 }

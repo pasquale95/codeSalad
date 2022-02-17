@@ -11,20 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer> head;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode)
+     */
     public Solution(LinkedListNode<Integer> head) {
-        this.head = head;
-    }
-
-    @Override
-    public void run() {
-        isPalindrome(head);
-    }
-
-    @Override
-    public boolean solve(LinkedListNode<Integer> head) {
-        return isPalindrome(head);
+        super(head);
     }
 
     /**
@@ -33,7 +24,7 @@ public class Solution extends SolutionTemplate {
      * @param   head The head of the linked list to check.
      * @return  True if the linked list is palindrome.
      */
-    public static boolean isPalindrome(LinkedListNode<Integer> head) {
+    public boolean isPalindrome(LinkedListNode<Integer> head) {
         int size = head != null ? head.getListLength() : 0;
         if (size > 1) {
             // empty list or with 1 single element are palindrome by definition
@@ -50,7 +41,7 @@ public class Solution extends SolutionTemplate {
      * @param   length The linked list size.
      * @return  The tail node if palindrome, null otherwise.
      */
-    private static LinkedListNode<Integer> checkPalindromeRecursively(LinkedListNode<Integer> node, int length) {
+    protected static LinkedListNode<Integer> checkPalindromeRecursively(LinkedListNode<Integer> node, int length) {
         if (length <= 0 || (length == 1 && node.isTail())) {
             // if list is long 1 node we must not return null, otherwise it will be considered as not palindrome
             return node;

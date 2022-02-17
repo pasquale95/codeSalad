@@ -10,6 +10,9 @@ import chapter01.ex1_3.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(char[], Integer)
+     */
     public Solution(char[] input, Integer trueLength) {
         super(input, trueLength);
     }
@@ -24,10 +27,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public String urlify(char[] input, Integer trueLength) {
-        return staticUrlify(input, trueLength);
-    }
-
-    public static String staticUrlify(char[] input, Integer trueLength) {
         for (int i = 0; i < trueLength; i++) {
             if (input[i] == ' ') {
                 for (int j = input.length - 1; j > i+2; j--) {

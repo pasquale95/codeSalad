@@ -10,6 +10,9 @@ import chapter01.ex1_6.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] originals) {
         super(originals);
     }
@@ -22,10 +25,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public String compress(String original) {
-        return staticCompress(original);
-    }
-
-    public static String staticCompress(String original) {
         StringBuilder sb = new StringBuilder();
         int counter = 0;
         if (!original.isEmpty()) {

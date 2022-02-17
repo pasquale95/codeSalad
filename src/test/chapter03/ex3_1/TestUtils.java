@@ -1,9 +1,7 @@
 package chapter03.ex3_1;
 
 import org.junit.jupiter.params.provider.Arguments;
-import utils.LinkedListNode;
 
-import java.util.ArrayList;
 import java.util.stream.Stream;
 
 /**

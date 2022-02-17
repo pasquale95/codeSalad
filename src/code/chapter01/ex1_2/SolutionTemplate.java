@@ -13,18 +13,20 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     public static final String PROBLEM = "Chapter 1 - Ex 1_2: Check permutations";
-    private final String[] input;
-
-    public SolutionTemplate(String[] input) {
-        this.input = input;
-    }
+    protected final String[] input;
 
     /**
      * Chapter 1
      * Ex1_2: Check permutations
      * Given two strings, write a method to decide if one
      * is a permutation of the other.
+     *
+     * @param input The input strings
      */
+    public SolutionTemplate(String[] input) {
+        this.input = input;
+    }
+
     @Override
     public void runSampleSolution() {
         String[] strings = {"stressed", "School master", "desserts", "The classroom"};

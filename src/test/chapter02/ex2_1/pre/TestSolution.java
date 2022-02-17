@@ -1,5 +1,6 @@
 package chapter02.ex2_1.pre;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,18 +18,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("Pre")
 @DisplayName("Ex2_1: Remove Dups (Pre)")
 public class TestSolution {
+    Solution sol;
+
+    @BeforeEach
+    public void setup() {
+        sol = new Solution(null);
+    }
 
     @ParameterizedTest(name = "(Question A) Removing duplicates from \"{1}\" to become \"{0}\":")
     @MethodSource("chapter02.ex2_1.TestUtils#getParameters")
     void checkA(LinkedListNode<Integer> expected, LinkedListNode<Integer> input) {
-        Solution.removeDuplicatesA(input);
+        sol.removeDuplicatesA(input);
         assertEquals(expected, input);
     }
 
     @ParameterizedTest(name = "(Question B) Removing duplicates from \"{1}\" to become \"{0}\":")
     @MethodSource("chapter02.ex2_1.TestUtils#getParameters")
     void checkB(LinkedListNode<Integer> expected, LinkedListNode<Integer> input) {
-        Solution.removeDuplicatesB(input);
+        sol.removeDuplicatesB(input);
         assertEquals(expected, input);
     }
 }

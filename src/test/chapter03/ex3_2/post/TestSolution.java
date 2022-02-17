@@ -21,7 +21,7 @@ public class TestSolution {
 
     @BeforeAll
     void setup() {
-        sol = new Solution();
+        sol = new Solution(null, null);
     }
 
     @ParameterizedTest(name = "Performing push of number {0}:")

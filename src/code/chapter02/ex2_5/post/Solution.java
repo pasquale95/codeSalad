@@ -11,20 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer>[] addends;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode[])
+     */
     public Solution(LinkedListNode<Integer>[] addends) {
-        this.addends = addends;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < addends.length - 1; i++) {
-            for (int j = i + 1; j < addends.length; j++) {
-                reverseOrderSum(this.addends[i], this.addends[j]);
-                forwardOrderSum(this.addends[i], this.addends[j]);
-            }
-        }
+        super(addends);
     }
 
     /**
@@ -34,7 +25,8 @@ public class Solution extends SolutionTemplate {
      * @param   addend2 The second addend.
      * @return  The sum of the two addends in reverse order.
      */
-    public static LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+    @Override
+    public LinkedListNode<Integer> reverseOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         return recursiveReverseSum(addend1, addend2, 0);
     }
 
@@ -45,7 +37,8 @@ public class Solution extends SolutionTemplate {
      * @param   addend2 The second addend.
      * @return  The sum of the two addends in forward order.
      */
-    public static LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+    @Override
+    public LinkedListNode<Integer> forwardOrderSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
         int diffLength = compareLength(addend1, addend2);
         if (diffLength < 0) {
             addend1 = paddingWithZeroes(addend1, Math.abs(diffLength));
@@ -68,7 +61,7 @@ public class Solution extends SolutionTemplate {
      * @param   zeroes The number of zeroes to add.
      * @return  The padded linked list.
      */
-    private static LinkedListNode<Integer> paddingWithZeroes(LinkedListNode<Integer> head, int zeroes) {
+    protected static LinkedListNode<Integer> paddingWithZeroes(LinkedListNode<Integer> head, int zeroes) {
         while (zeroes > 0) {
             LinkedListNode<Integer> node = new LinkedListNode<>(0);
             node.append(head);
@@ -85,7 +78,7 @@ public class Solution extends SolutionTemplate {
      * @param   b The second linked list.
      * @return  0 if equal, >0 if a is longer than b, <0 otherwise.
      */
-    private static int compareLength(LinkedListNode<Integer> a, LinkedListNode<Integer> b) {
+    protected static int compareLength(LinkedListNode<Integer> a, LinkedListNode<Integer> b) {
         int diffSize = 0;
         while (a != null || b != null) {
             if (a != null) {
@@ -100,18 +93,7 @@ public class Solution extends SolutionTemplate {
         return diffSize;
     }
 
-    private static LinkedListNode<Integer> recursiveForwardSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
-        if (addend1.isTail() && addend2.isTail()) {
-            return new LinkedListNode<>(addend1.getData()+addend2.getData());
-        }
-        LinkedListNode<Integer> next = recursiveForwardSum(addend1.getNext(), addend2.getNext());
-        LinkedListNode<Integer> current = new LinkedListNode<>(addend1.getData() + addend2.getData() + next.getData() / 10);
-        next.setData(next.getData() % 10);
-        current.append(next);
-        return current;
-    }
-
-    private static LinkedListNode<Integer> recursiveReverseSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2, int carry) {
+    protected static LinkedListNode<Integer> recursiveReverseSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2, int carry) {
         if (addend1 == null && addend2 == null && carry == 0) {
             return null;
         }
@@ -132,13 +114,14 @@ public class Solution extends SolutionTemplate {
         return node;
     }
 
-    @Override
-    public LinkedListNode<Integer> solve(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
-        return reverseOrderSum(addend1, addend2);
-    }
-
-    @Override
-    public LinkedListNode<Integer> solveFollowUp(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
-        return forwardOrderSum(addend1, addend2);
+    protected static LinkedListNode<Integer> recursiveForwardSum(LinkedListNode<Integer> addend1, LinkedListNode<Integer> addend2) {
+        if (addend1.isTail() && addend2.isTail()) {
+            return new LinkedListNode<>(addend1.getData()+addend2.getData());
+        }
+        LinkedListNode<Integer> next = recursiveForwardSum(addend1.getNext(), addend2.getNext());
+        LinkedListNode<Integer> current = new LinkedListNode<>(addend1.getData() + addend2.getData() + next.getData() / 10);
+        next.setData(next.getData() % 10);
+        current.append(next);
+        return current;
     }
 }

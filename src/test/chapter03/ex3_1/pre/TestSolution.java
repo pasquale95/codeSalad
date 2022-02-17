@@ -25,7 +25,8 @@ public class TestSolution {
 
     @BeforeAll
     void setup() {
-        sol = new Solution(TestUtils.STACK_SIZE);
+        sol = new Solution(null, null);
+        sol.allocateStack(TestUtils.STACK_SIZE);
     }
 
     @ParameterizedTest(name = "Performing a push of number {0} on \"stack {1}\":")

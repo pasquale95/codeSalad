@@ -4,6 +4,8 @@ import chapter03.ex3_1.SolutionTemplate;
 import utils.exceptions.EmptyStackException;
 import utils.exceptions.StackOverflowException;
 
+import java.util.Objects;
+
 /**
  * @author Pasquale Convertini <pasqualeconvertini95@gmail.com>
  * @github @pasquale95
@@ -14,10 +16,10 @@ public class Solution extends SolutionTemplate {
     protected Integer[] stackIndicator;
     protected Integer stackSize;
 
-    public Solution(Integer stackSize) {
-        super(stackSize);
-    }
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(Integer[], Integer[])
+     */
     public Solution(Integer[] numbers, Integer[] stackSequence) {
         super(numbers, stackSequence);
     }
@@ -47,7 +49,7 @@ public class Solution extends SolutionTemplate {
     @Override
     public Integer popFromStack(Integer stackNumber) throws EmptyStackException {
         for (int i = stackSize - 1; i >= 0; i--) {
-            if (stackIndicator[i] == stackNumber) {
+            if (Objects.equals(stackIndicator[i], stackNumber)) {
                 int val = stack[i];
                 shiftArrayToLeft(i);
                 return val;
@@ -97,7 +99,7 @@ public class Solution extends SolutionTemplate {
     public String stackToString(Integer stackNumber) {
         StringBuilder sb = new StringBuilder().append("|");
         for (int i = stackSize - 1; i >= 0; i--) {
-            if (stackIndicator[i] == stackNumber) {
+            if (Objects.equals(stackIndicator[i], stackNumber)) {
                 sb.append(stack[i]).append("|");
             }
         }

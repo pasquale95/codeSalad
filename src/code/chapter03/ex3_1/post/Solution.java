@@ -14,10 +14,9 @@ public class Solution extends SolutionTemplate {
     protected StackInfo[] stackInfo;
     protected Integer stackSize;
 
-    public Solution(Integer stackSize) {
-        super(stackSize);
-    }
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(Integer[], Integer[])
+     */
     public Solution(Integer[] numbers, Integer[] stackSequence) {
         super(numbers, stackSequence);
     }

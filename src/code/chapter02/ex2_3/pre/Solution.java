@@ -11,15 +11,11 @@ import utils.LinkedListNode;
  */
 public class Solution extends SolutionTemplate {
 
-    private final LinkedListNode<Integer> node;
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(LinkedListNode)
+     */
     public Solution(LinkedListNode<Integer> node) {
-        this.node = node;
-    }
-
-    @Override
-    public void run() {
-        removeLinkedListNode(this.node);
+        super(node);
     }
 
     /**
@@ -27,17 +23,13 @@ public class Solution extends SolutionTemplate {
      *
      * @param   node The node to delete
      */
-    public static void removeLinkedListNode(LinkedListNode<Integer> node) {
+    @Override
+    public void removeLinkedListNode(LinkedListNode<Integer> node) {
         if (node == null || node.isTail()) {
             // We don't expect to have a null node or the tail
             return;
         }
         node.setData(node.getNext().getData());
         node.append(node.getNext().getNext());
-    }
-
-    @Override
-    public void solve(LinkedListNode<Integer> node) {
-        removeLinkedListNode(node);
     }
 }

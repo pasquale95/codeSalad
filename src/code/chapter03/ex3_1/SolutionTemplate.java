@@ -17,24 +17,27 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     protected static final String PROBLEM = "Chapter 3 - Ex 3_1: Three in One";
-    protected Integer[] numbers, stackSequence, stack;
+    protected final Integer[] numbers;
+    protected final Integer[] stackSequence;
+    protected Integer[] stack;
     protected static final int STACKS = 3;
-
-    public SolutionTemplate(Integer stackSize) {
-        allocateStack(stackSize);
-    }
-
-    public SolutionTemplate(Integer[] numbers, Integer[] stackSequence) {
-        this.numbers = numbers;
-        this.stackSequence = stackSequence;
-        allocateStack(numbers.length);
-    }
 
     /**
      * Chapter 3
      * Ex3_1: Three in One
      * Describe how you could use a single array to implement three stacks.
+     *
+     * @param numbers The numbers to push in the stacks.
+     * @param stackSequence Array containing the stack number where to push the number at the same index in "numbers".
      */
+    public SolutionTemplate(Integer[] numbers, Integer[] stackSequence) {
+        this.numbers = numbers;
+        this.stackSequence = stackSequence;
+        if (numbers != null) {
+            allocateStack(numbers.length);
+        }
+    }
+
     @Override
     public void runSampleSolution() {
         try {

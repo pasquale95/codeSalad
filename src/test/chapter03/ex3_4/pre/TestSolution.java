@@ -1,13 +1,10 @@
 package chapter03.ex3_4.pre;
 
-import chapter03.ex3_3.TestUtils;
-import chapter03.ex3_3.pre.SetOfStacks;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import utils.exceptions.EmptyQueueException;
-import utils.exceptions.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

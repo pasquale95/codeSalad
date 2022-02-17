@@ -10,6 +10,9 @@ import chapter01.ex1_5.SolutionTemplate;
  */
 public class Solution extends SolutionTemplate {
 
+    /**
+     * @see SolutionTemplate#SolutionTemplate(String[])
+     */
     public Solution(String[] input) {
         super(input);
     }
@@ -23,10 +26,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public boolean areOneAway(String one, String two) {
-        return staticAreOneAway(one, two);
-    }
-
-    public static boolean staticAreOneAway(String one, String two) {
         int diff = one.length() - two.length();
         // check addition/removal edits
         if (Math.abs(diff) > 1) {

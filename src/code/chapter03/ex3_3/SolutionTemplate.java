@@ -1,8 +1,6 @@
 package chapter03.ex3_3;
 
-import chapter03.ex3_3.pre.SetOfStacks;
 import utils.architecture.SolutionStrategy;
-import utils.exceptions.EmptyStackException;
 import utils.generators.ArrayGenerator;
 import utils.generators.RandomGenerator;
 
@@ -17,13 +15,8 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     protected static final String PROBLEM = "Chapter 3 - Ex 3_3: Stack of plates";
-    protected Integer[] numbers;
-    protected int threshold;
-
-    public SolutionTemplate(Integer[] numbers, int threshold) {
-        this.numbers = numbers;
-        this.threshold = threshold;
-    }
+    protected final Integer[] numbers;
+    protected final int threshold;
 
     /**
      * Chapter 3
@@ -38,7 +31,15 @@ public abstract class SolutionTemplate implements SolutionStrategy {
      *
      * FOLLOW-UP
      * Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
+     *
+     * @param numbers The numbers to push into the stack.
+     * @param threshold The maximum allowed size for a single stack in the set.
      */
+    public SolutionTemplate(Integer[] numbers, int threshold) {
+        this.numbers = numbers;
+        this.threshold = threshold;
+    }
+
     @Override
     public void runSampleSolution() {
         try {

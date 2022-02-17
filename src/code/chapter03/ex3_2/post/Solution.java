@@ -13,10 +13,9 @@ public class Solution extends SolutionTemplate {
     protected StackElement top;
     protected StackElement topMin;
 
-    public Solution() {
-        super();
-    }
-
+    /**
+     * @see SolutionTemplate#SolutionTemplate(Integer[], Boolean[])
+     */
     public Solution(Integer[] numbers, Boolean[] minAndPops) {
         super(numbers, minAndPops);
     }

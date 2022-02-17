@@ -16,22 +16,23 @@ import static utils.Colors.printBlue;
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
     protected static final String PROBLEM = "Chapter 3 - Ex 3_2: Stack Min";
-    protected Integer[] numbers;
-    protected Boolean[] minAndPops;
-
-    public SolutionTemplate() {}
-
-    public SolutionTemplate(Integer[] numbers, Boolean[] minAndPops) {
-        this.numbers = numbers;
-        this.minAndPops = minAndPops;
-    }
+    protected final Integer[] numbers;
+    protected final Boolean[] minAndPops;
 
     /**
      * Chapter 3
      * Ex3_2: Stack Min
      * How would you design a stack which, in addition to push and pop, has a function
      * min which returns the minimum element? Push, pop and min should all operate in O(1) time.
+     *
+     * @param numbers The numbers to push in the stack.
+     * @param minAndPops Boolean array where "true" performs a pop, "false" a min operation.
      */
+    public SolutionTemplate(Integer[] numbers, Boolean[] minAndPops) {
+        this.numbers = numbers;
+        this.minAndPops = minAndPops;
+    }
+
     @Override
     public void runSampleSolution() {
         try {

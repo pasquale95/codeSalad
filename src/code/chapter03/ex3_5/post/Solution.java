@@ -12,8 +12,11 @@ import utils.exceptions.EmptyStackException;
  */
 public class Solution extends SolutionTemplate {
 
-    public Solution(Integer[] numbers) {
-        super(numbers);
+    /**
+     * @see SolutionTemplate#SolutionTemplate(Stack)
+     */
+    public Solution(Stack<Integer> stack) {
+        super(stack);
     }
 
     /**
@@ -23,10 +26,6 @@ public class Solution extends SolutionTemplate {
      */
     @Override
     public void sortStack(Stack<Integer> stack) {
-        staticSortStack(stack);
-    }
-
-    public static void staticSortStack(Stack<Integer> stack) {
         try {
             Stack<Integer> temporaryStack = new Stack<>();
             int tmp;

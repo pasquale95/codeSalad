@@ -13,43 +13,56 @@ import static utils.Colors.*;
  * file 'LICENSE', which is part of this source code package.
  */
 public abstract class SolutionTemplate implements SolutionStrategy {
-    private static final String PROBLEM = "Chapter 2 - Ex 2_1: Remove Dups";
+    protected static final String PROBLEM = "Chapter 2 - Ex 2_1: Remove Dups";
+    protected final LinkedListNode<Integer> head;
 
     /**
      * Chapter 2
      * Ex2_1: Remove Dups
      * Question A: Write code to remove duplicates from an unsorted linked list.
      * Question B: How would you runSampleSolution this problem if a temporary buffer is not allowed?
+     *
+     * @param head The linked list head.
      */
+    public SolutionTemplate(LinkedListNode<Integer> head) {
+        this.head = head;
+    }
+
     @Override
     public void runSampleSolution() {
         printBlue(getProblemName());
         // Question A
-        printYellow("QUESTION A");
+        printGreen("QUESTION A");
         LinkedListNode<Integer> head = LinkedListNode.createLinkedList(
                 10,
                 () -> RandomGenerator.randomIntegerGenerator(8)
         );
         System.out.print(colorYellow(head.toString()) + " after removing duplicates: ");
-        solveQuestionA(head);
+        removeDuplicatesA(head);
         System.out.println(colorYellow(head.toString()) + ".");
         // Question B
-        printYellow("QUESTION B");
+        printGreen("QUESTION B");
         head = LinkedListNode.createLinkedList(
                 10,
                 () -> RandomGenerator.randomIntegerGenerator(8)
         );
         System.out.print(colorYellow(head.toString()) + " after removing duplicates: ");
-        solveQuestionB(head);
+        removeDuplicatesB(head);
         System.out.println(colorYellow(head.toString()) + ".");
     }
 
-    public abstract void solveQuestionA(LinkedListNode<Integer> head);
-
-    public abstract void solveQuestionB(LinkedListNode<Integer> head);
+    @Override
+    public void run() {
+        removeDuplicatesA(this.head.clone());
+        removeDuplicatesB(this.head);
+    }
 
     @Override
     public String getProblemName() {
         return PROBLEM;
     }
+
+    public abstract void removeDuplicatesA(LinkedListNode<Integer> head);
+
+    public abstract void removeDuplicatesB(LinkedListNode<Integer> head);
 }
