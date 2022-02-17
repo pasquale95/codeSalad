@@ -25,6 +25,7 @@ public class Solution extends SolutionTemplate {
      * @param   trueLength The real string length.
      * @return  The urlified string.
      */
+    @SuppressWarnings("ManualArrayCopy")
     @Override
     public String urlify(char[] input, Integer trueLength) {
         for (int i = 0; i < trueLength; i++) {
